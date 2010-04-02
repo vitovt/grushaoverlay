@@ -1,0 +1,22 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Categories=Network;InstantMessaging;Telephony;
+Comment[uk]=A P2P-VoiceIP client.
+Comment=A P2P-VoiceIP client.
+Exec=LD_PRELOAD=/usr/lib/libv4l/v4l1compat.so PULSE_SERVER="" skype & skype-call-recorder
+GenericName[uk]=
+GenericName=
+Icon=skype
+MimeType=
+Name[uk]=Skype VoIP
+Name=Skype VoIP
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+TryExec=skype
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=

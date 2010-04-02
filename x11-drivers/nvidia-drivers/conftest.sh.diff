@@ -1,0 +1,99 @@
+--- conftest.sh.orig	2010-02-09 10:02:37.764308981 +0200
++++ conftest.sh	2010-02-09 10:07:41.847274697 +0200
+@@ -30,18 +30,18 @@
+     # Xen guest support, it is no longer possible to determine the
+     # target environment at build time. Therefore, if both
+     # CONFIG_XEN and CONFIG_PARAVIRT are present, text_xen() treats
+     # the kernel as a stand-alone kernel.
+     #
+-    FILE="linux/autoconf.h"
++    FILE="generated/autoconf.h"
+ 
+     if [ -f $HEADERS/$FILE -o -f $OUTPUT/include/$FILE ]; then
+         #
+         # We are looking at a configured source tree; verify
+         # that it's not a Xen kernel.
+         #
+-        echo "#include <linux/autoconf.h>
++	echo "#include <generated/autoconf.h>
+         #if defined(CONFIG_XEN) && !defined(CONFIG_PARAVIRT)
+         #error CONFIG_XEN defined!
+         #endif
+         " > conftest$$.c
+ 
+@@ -109,11 +109,16 @@
+     if [ -n "$BUILD_PARAMS" ]; then
+         CFLAGS="$CFLAGS -D$BUILD_PARAMS"
+     fi
+ }
+ 
+-CONFTEST_PREAMBLE="#include <linux/autoconf.h>
++CONFTEST_PREAMBLE="#include <linux/version.h>                                                 
++    #if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,33)                                          
++    #include <generated/autoconf.h>                                                           
++    #else                                                                                     
++    #include <linux/autoconf.h>                                                               
++    #endif                                 
+     #if defined(CONFIG_XEN) && \
+         defined(CONFIG_XEN_INTERFACE_VERSION) &&  !defined(__XEN_INTERFACE_VERSION__)
+     #define __XEN_INTERFACE_VERSION__ CONFIG_XEN_INTERFACE_VERSION
+     #endif"
+ 
+@@ -1263,11 +1268,11 @@
+             if [ "$VERBOSE" = "full_output" ]; then
+                 echo "*** Unable to determine the target kernel version. ***";
+                 echo "";
+             fi
+         fi
+-        exit $RET
++#        exit $RET
+     ;;
+ 
+     get_uname)
+         #
+         # Print UTS_RELEASE from the kernel sources, if the kernel header
+@@ -1285,15 +1290,14 @@
+             #
+             # We are either looking at a configured kernel source
+             # tree or at headers shipped for a specific kernel.
+             # Determine the kernel version using a compile check.
+             #
+-            FILE="linux/utsrelease.h"
+-
++            FILE="generated/utsrelease.h"
+             if [ -f $HEADERS/$FILE -o -f $OUTPUT/include/$FILE ]; then
+                 echo "$CONFTEST_PREAMBLE
+-                #include <linux/utsrelease.h>
++                #include <generated/utsrelease.h>
+                 int main() {
+                     printf(\"%s\", UTS_RELEASE);
+                     return 0;
+                 }" > conftest$$.c
+             else
+@@ -1344,11 +1348,11 @@
+         # Check if the kernel was compiled with rivafb support. If so, then
+         # exit, since the driver no longer works with rivafb.
+         #
+         RET=1
+         VERBOSE=$6
+-        FILE="linux/autoconf.h"
++        FILE="generated/autoconf.h"
+ 
+         if [ -f $HEADERS/$FILE -o -f $OUTPUT/include/$FILE ]; then
+             #
+             # We are looking at a configured source tree; verify
+             # that its configuration doesn't include rivafb using
+@@ -1398,12 +1402,11 @@
+         # Check if the kernel was compiled with nvidiafb support. If so, then
+         # exit, since the driver doesn't work with nvidiafb.
+         #
+         RET=1
+         VERBOSE=$6
+-        FILE="linux/autoconf.h"
+-
++        FILE="generated/autoconf.h"
+         if [ -f $HEADERS/$FILE -o -f $OUTPUT/include/$FILE ]; then
+             #
+             # We are looking at a configured source tree; verify
+             # that its configuration doesn't include nvidiafb using
+             # a compile check.

@@ -1,0 +1,21 @@
+[Desktop Entry]
+Comment[uk]=
+Comment=
+Encoding=UTF-8
+Exec=xdg-open http://linux.grusha.org.ua/bugs
+GenericName[uk]=
+GenericName=
+Icon=start-here
+MimeType=
+Name[uk]=Повідомити про помилку
+Name=Повідомити про помилку
+Name[ru]=Сообщить об ошибке
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=

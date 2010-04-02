@@ -1,0 +1,34 @@
+# CompCache settings...
+
+# load ramzswap kernel module on start?
+LOAD_ON_START="yes"
+
+# unload ramzswap kernel module on stop?
+UNLOAD_ON_STOP="yes"
+
+# number of device
+NUM_DEVICES="1"
+
+#**************************************************************************************
+#			#####NOTE#####
+#memlimit_kb parameter is used only when backing_swap is used.
+#If you don't want to provide any backing swap, then you must use disksize_kb instead.
+
+#BTW, disksize_kb is upper limit on uncompressed worth of data given device can hold.
+#While, memlimit_kb is upper limit on compressed worth of data given device can hold.
+
+#I understand that specifying disksize_kb value as upper limit on uncompressed data size
+#seems bit counter-intuitive but this is how it is... We need to present a "fixed-size" disk to kernel.
+#**************************************************************************************
+
+# for each /dev/ramzswapN, specify these arguments for rszcontrol
+# `man rzscontrol` for more informations.
+
+RAMZSWAP_OPTS_0="--disksize_kb=128000"
+#RAMZSWAP_OPTS_0="--memlimit_kb=500000"
+#RAMZSWAP_OPTS_0="--backing_swap=/dev/sda1 --memlimit_kb=800000"
+#RAMZSWAP_OPTS_0="--backing_swap=/dev/VolGroup00/LogVol01 --memlimit_kb=800000"
+#RAMZSWAP_OPTS_0="--backing_swap=/dev/VolGroup00/LogVol01 --memlimit_kb=10240 --disksize_kb=10240"
+#RAMZSWAP_OPTS_0="--backing_swap=/path/to/swap.file --memlimit_kb=10240 --disksize_kb=10240"
+#RAMZSWAP_OPTS_1="--disksize_kb=20480"
+

@@ -1,0 +1,47 @@
+*** patches/dev300/apply.orig	2009-09-16 13:29:52.000000000 +0400
+--- patches/dev300/apply	2009-09-22 08:54:19.000000000 +0400
+***************
+*** 156,161 ****
+--- 156,167 ----
+  InfraLinuxJaunty:  UbuntuJaunty, CustomUserConfig, InfraPatches, InfraUnixPatches, Infra1252toLocale, InfraNotSolaris, InfraLinuxOnly
+  InfraLinuxIntrepid:  UbuntuIntrepid, CustomUserConfig, InfraPatches, InfraUnixPatches, Infra1252toLocale, InfraNotSolaris, InfraLinuxOnly
+  InfraLinuxHardy:  UbuntuHardy, CustomUserConfig, InfraPatches, InfraUnixPatches, Infra1252toLocale, InfraNotSolaris, InfraLinuxOnly
++ InfraGentooBase: Gentoo, SVGImport, UpdaterRemoval, Layout, LayoutDialogs, CJK, OOXML, Split, Fpickers, QuickStarter, CustomUserConfig, NotInfraLinux, InfraPatches, InfraUnixPatches, Infra1252toLocale, InfraNotSolaris, CustomKeyBinding, InfraLinuxOnly
++ InfraGentoo: InfraGentooBase
++ InfraGentooPG: InfraGentooBase, InfraUnixPatchesPG, PostgreSQL
++ InfraDictru: InfraDictRU
++ InfraDictuk: InfraDictUK
++ InfraDicttr: InfraDictTR
+  InfraSolaris:  LinuxCommon, CustomUserConfig, InfraPatches, NotInfraLinux, Infra1252toLocale, InfraSolaris, NotDebian, IntegrateExtensions
+  InfraWin32: Win32Common, OOXMLExport, CustomUserConfig, InfraPatches, NotInfraLinux, InfraWin32Patches, Infra1252toLocale, InfraNotSolaris, IntegrateExtensions
+  InfraFake: QuickStarter, WMF, SVGImport, UnitTesting, Layout, CJK, EMFPlus, Fpickers, LayoutDialogs, UnitBootstrap, AutoCorrectCapsLock
+***************
+*** 3448,3453 ****
+--- 3454,3468 ----
+  i103475-msword.diff, i#103475, rail
+  webdav-lock-crash.diff
+  
++ [InfraDictRU]
++ dictionaries-ru-RU.diff
++ 
++ [InfraDictUK]
++ dict-uk.diff
++ 
++ [InfraDictTR]
++ extensions-zemberek.diff
++ 
+  [NotInfraLinux]
+  build-xterm-title.diff
+  no-ure-sdk.diff
+***************
+*** 3473,3478 ****
+--- 3488,3496 ----
+  sfx2-remove-check-update-on-fileload.diff, kohei
+  default-system-fpicker.diff, michael
+  
++ [InfraUnixPatchesPG]
++ connectivity-freebsd-libs.diff
++ 
+  [InfraUnixPatches]
+  connectivity-freebsd-libs.diff
+  freebsd-store-alloca.diff

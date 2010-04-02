@@ -1,0 +1,16 @@
+Enable swap free notify if kernel was patched
+
+--- compat.h	2010-02-08 07:40:00.000000000 +0200
++++ compat.h	2010-02-08 07:40:19.000000000 +0200
+@@ -1,10 +1,10 @@
+ #ifndef _RAMZSWAP_COMPAT_H_
+ #define _RAMZSWAP_COMPAT_H_
+ 
+ /* Uncomment this if you are using swap free notify patch */
+-//#define CONFIG_SWAP_FREE_NOTIFY
++#define CONFIG_SWAP_FREE_NOTIFY
+ 
+ #if (LINUX_VERSION_CODE < KERNEL_VERSION(2,6,31))
+ #define blk_queue_physical_block_size(q, size) \
+ 	blk_queue_hardsect_size(q, size)
+ #define blk_queue_logical_block_size(q, size)

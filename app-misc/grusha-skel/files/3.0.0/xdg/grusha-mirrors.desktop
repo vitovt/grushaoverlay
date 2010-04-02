@@ -1,0 +1,22 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Comment[uk]=
+Comment=
+Encoding=UTF-8
+Exec=xdg-open http://linux.grusha.org.ua/download
+GenericName[uk]=
+GenericName=
+Icon=start-here
+MimeType=
+Name[uk]=Завантажити Grusha Linux
+Name[ru]=Загрузить Grusha Linux
+Name=Download Grusha Linux
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=

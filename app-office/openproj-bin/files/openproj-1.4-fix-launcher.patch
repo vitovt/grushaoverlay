@@ -1,0 +1,11 @@
+--- openproj.sh.orig	2008-04-23 22:51:32.000000000 +0200
++++ openproj.sh	2008-06-06 10:39:58.455855893 +0200
+@@ -64,7 +64,7 @@
+ JAVA_EXE="java"
+ JAVA_OPTS="-Xms128m -Xmx768m"
+ #OPENPROJ_HOME0="/usr/share/openproj"
+-OPENPROJ_HOME0=`(dirname $0)`
++OPENPROJ_HOME0="/opt/openproj"
+ OPENPROJ_HOME="$OPENPROJ_HOME0"
+ LOG_LEVEL="DEBUG"
+ LOG_FILE="/dev/null"

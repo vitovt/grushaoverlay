@@ -1,0 +1,22 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Comment[uk]=
+Comment=
+Encoding=UTF-8
+Exec=xdg-open http://grusha.org.ua/tours
+GenericName[uk]=
+GenericName=
+Icon=start-here
+MimeType=
+Name[uk]=Туризм
+Name[ru]=Туризм
+Name=Ukrainian Tours
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=

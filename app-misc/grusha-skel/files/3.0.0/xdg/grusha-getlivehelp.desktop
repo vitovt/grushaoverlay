@@ -1,0 +1,22 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Comment[uk]=
+Comment=
+Encoding=UTF-8
+Exec=xdg-open http://linux.grusha.org.ua/chat
+GenericName[uk]=
+GenericName=
+Icon=start-here
+MimeType=
+Name[uk]=Допомога Online
+Name[ru]=Помощь Online
+Name=Get Live Help
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
