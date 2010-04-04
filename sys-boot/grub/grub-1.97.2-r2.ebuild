@@ -28,7 +28,8 @@ RDEPEND=">=sys-libs/ncurses-5.2-r5
 		media-fonts/unifont
 	)"
 DEPEND="${RDEPEND}
-	dev-lang/ruby"
+	dev-lang/ruby
+	dev-perl/Locale-gettext"
 PDEPEND="${PDEPEND}
 	sys-boot/os-prober"
 PROVIDE="virtual/bootloader"
