@@ -1,0 +1,32 @@
+diff -dPNur xmms-wma-1.0.5/xmms-wma.c xmms-wma-1.0.5-ds/xmms-wma.c
+--- xmms-wma-1.0.5/xmms-wma.c	2010-02-07 15:46:56.000000000 +0100
++++ xmms-wma-1.0.5-ds/xmms-wma.c	2010-02-07 15:58:23.000000000 +0100
+@@ -350,14 +350,14 @@
+ }
+ static void wma_playbuff(int out_size)
+ {
+-    AVFifoBuffer f;
++    AVFifoBuffer *f;
+     int sst_buff;
+ 
+-    av_fifo_init(&f, out_size*2);
+-    av_fifo_generic_write(&f, wma_outbuf, out_size, NULL);
++    f = av_fifo_alloc(out_size*2);
++    av_fifo_generic_write(f, wma_outbuf, out_size, NULL);
+ 
+-    while ((av_fifo_size(&f) > 0) && wma_decode) {
+-	if (av_fifo_read(&f, wma_s_outbuf, wma_st_buff)) break;
++    while ((av_fifo_size(f) > 0) && wma_decode) {
++	if (av_fifo_generic_read(f, wma_s_outbuf, wma_st_buff, NULL)) break;
+ 	
+         if(wma_eq_on)
+             sst_buff = iir((gpointer)&wma_s_outbuf, wma_st_buff);
+@@ -371,7 +371,7 @@
+ 	wma_ip.output->write_audio((short *)wma_s_outbuf, sst_buff);
+ 	memset(wma_s_outbuf, 0, sst_buff);
+     }
+-    av_fifo_free(&f);
++    av_fifo_free(f);
+     return;
+ }
+ 

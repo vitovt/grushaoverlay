@@ -1,0 +1,165 @@
+diff -dPNur zip-2.32/unix/dsrecode.h zip-2.32-2/unix/dsrecode.h
+--- zip-2.32/unix/dsrecode.h	1970-01-01 01:00:00.000000000 +0100
++++ zip-2.32-2/unix/dsrecode.h	2008-10-07 11:22:48.000000000 +0200
+@@ -0,0 +1,130 @@
++/******* WARNING: Multi-byte output encodings isn't supported! Comments
++may been striped!!!! 
++I don't close 2 opened iconv descriptors. I think this wouldn't cause any
++problem. *******/
++
++#include <iconv.h>
++#include <errno.h>
++#include <locale.h>
++
++#define CHARSET_MAX_STRING_SIZE 4096
++#define LOCALE_STRING_LENGTH 64
++#define CHARSET_MAX_ERRORS 0
++#define ENV_VARIABLE "LC_CTYPE"
++#define LOCALE_VARIABLE LC_CTYPE
++
++static iconv_t ds_oem = (iconv_t)-1;
++static iconv_t ds_iso = (iconv_t)-1;
++
++extern int errno;
++static char xmms_charset_tmp[CHARSET_MAX_STRING_SIZE];
++static char charset_default[LOCALE_STRING_LENGTH]="";
++
++// Multi-byte strings still unsupported
++static void iconv_copysymbol(char **in_buf, size_t *in_left, char **out_buf, size_t *out_left) {
++    if ((out_left>0)&&(in_left>0)) {
++	(**out_buf)=(**in_buf);
++	(*out_buf)++;
++	(*in_buf)++;
++	(*in_left)--;
++	(*out_left)--;
++    }
++}
++
++static char *ds_recode(iconv_t icnv, char *buf, size_t len, size_t *rlen) {
++    char *in_buf, *out_buf, *res, err;
++    size_t in_left, out_left, olen;
++    int errors=0;
++    
++    if (!len) {
++	len=strlen(buf);
++    } else {
++	olen=strlen(buf);
++	if (olen<len) len=olen;
++    }
++
++    if (iconv(icnv, NULL, NULL, NULL, NULL) == -1) return NULL;
++
++    in_buf = buf;
++    in_left = len;
++    out_buf = xmms_charset_tmp;
++    out_left = CHARSET_MAX_STRING_SIZE;
++
++loop:
++    err=iconv(icnv, &in_buf, &in_left, &out_buf, &out_left);
++    if (err<0) {
++        if (errno==E2BIG) {
++    	    *(int*)(xmms_charset_tmp+(CHARSET_MAX_STRING_SIZE-sizeof(int)))=0;
++	} else if (errno==EILSEQ) {
++	    if (errors<CHARSET_MAX_ERRORS) {
++	        errors++;
++		iconv_copysymbol(&in_buf, &in_left, &out_buf, &out_left);
++		if (in_left>0) goto loop;
++	    } else return NULL;
++	} else return NULL;
++    }
++        
++    olen = CHARSET_MAX_STRING_SIZE - out_left;
++    res = malloc(olen+1);
++    if (!res) return NULL;
++
++    memcpy(res,xmms_charset_tmp,olen);
++    res[olen]=0;
++    if (rlen) *rlen=olen;
++    return res;
++}
++
++
++static void charset_setdefault() {
++    char *str1, *str2;
++    str1 = (char*)setlocale(LOCALE_VARIABLE, NULL);
++    if (str1) { 
++	if (!strcasecmp(str1,"C")) {
++	    setlocale(LC_ALL, ""); 
++	    str1 = setlocale(LOCALE_VARIABLE, NULL);
++	}
++    } else str1 = getenv(ENV_VARIABLE);
++    if (str1) {
++        str2 = strrchr(str1,'.');
++        if (str2) {
++	    strncpy(charset_default,str2+1,LOCALE_STRING_LENGTH);
++	    charset_default[LOCALE_STRING_LENGTH-1]=0;
++	    str2 = strchr(charset_default,'@');
++    	    if (str2) *str2 = 0;
++	} else {
++    	    strcpy(charset_default,"KOI8-R");
++	}
++    } else {
++        strcpy(charset_default,"KOI8-R");
++    }
++}
++
++void ds_ex2in(char *string) {
++    char *str;
++    if (ds_oem == (iconv_t)-1) {
++	if (!charset_default[0]) charset_setdefault();
++	ds_oem = iconv_open("CP866",charset_default);
++	if (!ds_oem) return;
++    }
++    str=ds_recode(ds_oem,string,0,NULL);
++    if (str) {
++	strncpy(string,str,strlen(string)+1);
++	free(str);
++    }
++}
++
++void ds_in2ex(char *dst, char *string) {
++    char *str;
++    if (ds_iso == (iconv_t)-1) {
++	if (!charset_default[0]) charset_setdefault();
++	ds_iso = iconv_open(charset_default, "CP866");
++	if (!ds_iso) return;
++    }
++    str=ds_recode(ds_iso,string,0,NULL);
++    if (str) {
++	strncpy(dst,str,strlen(string)+1);
++	free(str);
++    } else {
++	strncpy(dst,string,strlen(string)+1);
++    }
++}
+diff -dPNur zip-2.32/unix/unix.c zip-2.32-2/unix/unix.c
+--- zip-2.32/unix/unix.c	2006-05-30 00:35:00.000000000 +0200
++++ zip-2.32-2/unix/unix.c	2008-10-07 11:23:45.000000000 +0200
+@@ -219,6 +219,8 @@
+   return ZE_OK;
+ }
+ 
++#include "dsrecode.h"
++
+ char *ex2in(x, isdir, pdosflag)
+ char *x;                /* external file name */
+ int isdir;              /* input: x is a directory */
+@@ -266,6 +268,8 @@
+ 
+ #ifdef EBCDIC
+   strtoasc(n, n);       /* here because msname() needs native coding */
++#else
++  ds_ex2in(n);
+ #endif
+ 
+   /* Returned malloc'ed name */
+@@ -288,7 +292,8 @@
+ #ifdef EBCDIC
+   strtoebc(x, n);
+ #else
+-  strcpy(x, n);
++//  strcpy(x, n);
++    ds_in2ex(x,n);
+ #endif
+   return x;
+ }

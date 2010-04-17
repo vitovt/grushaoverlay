@@ -20,8 +20,9 @@
       <language to="en" tag="ar"/>
       <text-translation url="http://www.google.com/translate_t?text=${text:escape}&amp;langpair=${from}|${to}&amp;ie=utf8&amp;oe=utf8">
 	<pre-marker text="id=result_box"/>
+	<pre-marker text="mouseover"/>
 	<pre-marker text="&gt;"/>
-	<post-marker text="&lt;/div&gt;"/>
+	<post-marker text="&lt;br&gt;"/>
       </text-translation>
       <web-page-translation url="http://www.google.com/translate_c?u=${url:escape}&amp;langpair=${from}|${to}"/>
     </group>
@@ -60,7 +61,7 @@
       <language to="*" tag="uk" service-tag="Ukr"/>
       <text-translation 
     	    url="http://pereklad.online.ua/"
-	    post="TranFrom=${from}&amp;TranTo=${to}&amp;SrcTxt=${text:charset=CP1251,escape}">
+	    post="TranFrom=${from}&amp;TranTo=${to}&amp;SrcTxt=${text:escape}">
 	<pre-marker text="id=&quot;DstTxt&quot;"/>
 	<pre-marker text="&gt;"/>
 	<post-marker text="&lt;/textarea&gt;"/>
@@ -72,7 +73,7 @@
       <language to="*" tag="fr" service-tag="Fra"/>
       <text-translation 
     	    url="http://pereklad.online.ua/"
-	    post="TranFrom=${from}&amp;TranTo=${to}&amp;SrcTxt=${text:charset=ISO-8859-1,escape}"
+	    post="TranFrom=${from}&amp;TranTo=${to}&amp;SrcTxt=${text:escape}"
 	    response-charset="ISO-8859-1">
 	<pre-marker text="id=&quot;DstTxt&quot;"/>
 	<pre-marker text="&gt;"/>
@@ -87,7 +88,7 @@
       <language to="" tag="fr" service-tag="Fra"/>
       <text-translation 
     	    url="http://pereklad.online.ua/"
-	    post="TranFrom=${from}&amp;TranTo=${to}&amp;SrcTxt=${text:charset=CP1251,escape}"
+	    post="TranFrom=${from}&amp;TranTo=${to}&amp;SrcTxt=${text:escape}"
 	    response-charset="ISO-8859-1">
 	<pre-marker text="id=&quot;DstTxt&quot;"/>
 	<pre-marker text="&gt;"/>
@@ -102,7 +103,7 @@
       <language to="ru,uk" tag="fr" service-tag="Fra"/>
       <text-translation 
     	    url="http://pereklad.online.ua/"
-	    post="TranFrom=${from}&amp;TranTo=${to}&amp;SrcTxt=${text:charset=ISO-8859-1,escape}">
+	    post="TranFrom=${from}&amp;TranTo=${to}&amp;SrcTxt=${text:escape}">
 	<pre-marker text="id=&quot;DstTxt&quot;"/>
 	<pre-marker text="&gt;"/>
 	<post-marker text="&lt;/textarea&gt;"/>
@@ -114,7 +115,7 @@
       <language to="ru,uk" tag="lv" service-tag="Lat"/>
       <text-translation 
     	    url="http://pereklad.online.ua/"
-	    post="TranFrom=${from}&amp;TranTo=${to}&amp;SrcTxt=${text:charset=ISO-8859-4,escape}">
+	    post="TranFrom=${from}&amp;TranTo=${to}&amp;SrcTxt=${text:escape}">
 	<pre-marker text="id=&quot;DstTxt&quot;"/>
 	<pre-marker text="&gt;"/>
 	<post-marker text="&lt;/textarea&gt;"/>
@@ -127,7 +128,7 @@
       <language to="" tag="fr" service-tag="Fra"/>
       <text-translation 
     	    url="http://pereklad.online.ua/"
-	    post="TranFrom=${from}&amp;TranTo=${to}&amp;SrcTxt=${text:charset=ISO-8859-4,escape}"
+	    post="TranFrom=${from}&amp;TranTo=${to}&amp;SrcTxt=${text:escape}"
 	    response-charset="ISO-8859-1">
 	<pre-marker text="id=&quot;DstTxt&quot;"/>
 	<pre-marker text="&gt;"/>
@@ -140,7 +141,7 @@
       <language to="lv" tag="uk" service-tag="Ukr"/>
       <text-translation 
     	    url="http://pereklad.online.ua/"
-	    post="TranFrom=${from}&amp;TranTo=${to}&amp;SrcTxt=${text:charset=CP1251,escape}"
+	    post="TranFrom=${from}&amp;TranTo=${to}&amp;SrcTxt=${text:escape}"
 	    response-charset="ISO-8859-4">
 	<pre-marker text="id=&quot;DstTxt&quot;"/>
 	<pre-marker text="&gt;"/>
@@ -154,7 +155,7 @@
       <language to="lv" tag="fr" service-tag="Fra"/>
       <text-translation 
     	    url="http://pereklad.online.ua/"
-	    post="TranFrom=${from}&amp;TranTo=${to}&amp;SrcTxt=${text:charset=ISO-8859-1,escape}"
+	    post="TranFrom=${from}&amp;TranTo=${to}&amp;SrcTxt=${text:escape}"
 	    response-charset="ISO-8859-4">
 	<pre-marker text="id=&quot;DstTxt&quot;"/>
 	<pre-marker text="&gt;"/>
@@ -165,7 +166,7 @@
 
   <service nick="Promt" name="promt">
     <group>
-      <language to="" tag="ru" service-tag="r"/>
+      <language to="*" tag="ru" service-tag="r"/>
       <language to="ru,de,fr,es" tag="en" service-tag="e"/>
       <language to="ru,en,fr,es" tag="de" service-tag="g"/>
       <language to="ru,en,de,es" tag="fr" service-tag="f"/>
@@ -173,23 +174,12 @@
       <language to="ru,en,de,fr" tag="es" service-tag="s"/>
       <language to="en" tag="pt" service-tag="p"/>
       <text-translation 
-    	    url="http://www.translate.ru/text.asp"
-    	    post="lang=en&amp;transliterate=ON&amp;direction=${from}${to}&amp;source=${text:charset=ISO8859-1,entities,escape}&amp;status=translate">
-	<pre-marker text="id=&quot;r_text&quot;"/>
+    	    url="http://www.translate.ru/Default.aspx/Text"
+    	    post="__EVENTTARGET=&amp;__EVENTTARGUMENT=&amp;ctl00$SiteContent$MA_trasnlform$bTranslate=Translate&amp;ctl00$SiteContent$MA_trasnlform$DropDownList2=&amp;ctl00$SiteContent$trasnlform$sLang=${from}&amp;ctl00$SiteContent$MA_trasnlform$rLang=${to}&amp;ctl00$SiteContent$MA_trasnlform$sourceText=${text:escape}&amp;ctl00$SiteContent$MA_trasnlform$rblTemplates=General">
+	<pre-marker text="ctl00$SiteContent$MA_trasnlform$tbPismo"/>
 	<pre-marker text="&gt;"/>
-	<post-marker text="&lt;/span&gt;"/>
-      </text-translation>
-    </group>
-    <group>
-      <language to="*" tag="ru" service-tag="r"/>
-      <language to="" tag="de" service-tag="g"/>
-      <language to="" tag="fr" service-tag="f"/>
-      <language to="" tag="it" service-tag="i"/>
-      <language to="" tag="es" service-tag="s"/>
-      <text-translation url="http://www.translate.ru/text.asp?lang=ru&amp;transliterate=ON&amp;direction=r${to}&amp;source=${text:charset=CP1251,escape}&amp;status=translate">
-	<pre-marker text="id=&quot;r_text&quot;"/>
-	<pre-marker text="&gt;"/>
-	<post-marker text="&lt;/span&gt;"/>
+	<post-marker text="&lt;/textarea"/>
+
       </text-translation>
     </group>
   </service>
@@ -211,12 +201,12 @@
       <language to="en,fr" tag="es"/>
       <language to="en" tag="sv"/>
       <http-header value="http://www.systransoft.com/" name="Referer"/>
-      <text-translation url="http://www.systranbox.com/systran/box?systran_charset=utf-8&amp;ttype=text&amp;systran_text=${text:escape}&amp;systran_lp=${from}_${to}">
-	<pre-marker text="&lt;textarea name=&quot;translation&quot;"/>
-	<pre-marker text="&gt;"/>
-	<post-marker text="&lt;/textarea&gt;"/>
+      <text-translation 
+        url="http://www.systranet.com/tt?lp=${from}_${to}&amp;service=translate"
+        post=". ${text}.">
+	    <pre-marker text=". "/>
+	    <post-marker text="."/>
       </text-translation>
-      <web-page-translation url="http://www.systranbox.com/systran/box?systran_id=SystranSoft-en&amp;systran_url=${url:escape}&amp;systran_lp=${from}_${to}&amp;systran_f=${time}"/>
     </group>
   </service>
 
@@ -235,15 +225,21 @@
       <language to="en,fr" tag="pt"/>
       <language to="en" tag="ru"/>
       <language to="en,fr" tag="es"/>
-      <text-translation url="http://babelfish.altavista.com/babelfish/tr?urltext=${text:escape}&amp;lp=${from}_${to}&amp;enc=utf8">
-	<pre-marker text="&lt;form action=&quot;http://www.altavista.com/web/results"/>
-	<pre-marker text="px;&gt;"/>
-	<post-marker text="&lt;/div&gt;"/>
+      <text-translation 
+        url="http://babelfish.yahoo.com/translate_txt"
+        post="trtext=${text:escape}&amp;lp=${from}_${to}&amp;ei=UTF-8">
+	    <pre-marker text="id=&quot;result&quot;"/>
+	    <pre-marker text="&lt;div"/>
+	    <pre-marker text="&gt;"/>
+	    <post-marker text="&lt;/div"/>
       </text-translation>
+<!--
       <web-page-translation url="http://babelfish.altavista.com/babelfish/trurl_load?url=${url:escape}&amp;lp=${from}_${to}&amp;enc=utf8"/>
+!-->
     </group>
   </service>
 
+<!--
   <service nick="Kataku" name="kataku">
     <group>
       <language to="*" tag="en"/>
@@ -257,4 +253,6 @@
       <web-page-translation url="http://www.toggletext.com/kataku_webpage_translate.php?input=${url:escape}&amp;langset=${from}_${to}"/>
     </group>
   </service>
+-->
+
 </services>

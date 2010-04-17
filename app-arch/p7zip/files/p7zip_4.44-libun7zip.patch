@@ -1,0 +1,599 @@
+diff -dPNur p7zip_4.44/CPP/7zip/Bundles/Un7Zip/makefile p7zip_4.44-new/CPP/7zip/Bundles/Un7Zip/makefile
+--- p7zip_4.44/CPP/7zip/Bundles/Un7Zip/makefile	1970-01-01 01:00:00.000000000 +0100
++++ p7zip_4.44-new/CPP/7zip/Bundles/Un7Zip/makefile	2007-03-29 13:01:21.000000000 +0200
+@@ -0,0 +1,84 @@
++PROG=libun7zip.so
++
++LOCAL_FLAGS= -I../../../Common/ -I../../../myWindows/ -I../../../ -I../../../include_windows/ \
++-DCOMPRESS_BCJ2 -DEXTRACT_ONLY -DEXCLUDE_COM -DNO_REGISTRY -DFORMAT_7Z \
++-DCOMPRESS_LZMA -DCOMPRESS_BCJ_X86 -DCOMPRESS_COPY -DCOMPRESS_PPMD -D_SFX $(RPM_OPT_FLAGS)
++
++include ../../../../makefile.machine
++
++LOCAL_SHARED=$(LINK_SHARED)
++LIBS=$(LOCAL_LIBS_DLL)
++
++MY_WINDOWS= \
++	$(MY_HOME)/myGetTickCount.o \
++	$(MY_HOME)/wine_date_and_time.o \
++	
++OBJS=\
++CoderMixer2.o\
++CoderMixer2MT.o\
++CoderMixer2ST.o\
++CrossThreadProgress.o\
++FilterCoder.o\
++ItemNameUtils.o\
++OutStreamWithCRC.o\
++ConsoleClose.o\
++ExtractCallbackConsole.o\
++ExtractCallbackNULL.o\
++List.o\
++OpenCallbackConsole.o\
++UserInputUtils.o\
++7zDecode.o\
++7zExtract.o\
++7zFolderOutStream.o\
++7zHandler.o\
++7zHeader.o\
++7zIn.o\
++7zMethodID.o\
++LZMADecoder.o\
++BranchCoder.o\
++x86.o\
++x86_2.o\
++PPMDDecoder.o\
++LZOutWindow.o\
++CopyCoder.o\
++Error.o\
++FileDir.o\
++FileFind.o\
++FileIO.o\
++FileName.o\
++PropVariant.o\
++PropVariantConversions.o\
++Synchronization.o\
++../../../Common/MyWindows.o\
++../../../Common/Alloc.o\
++../../../Common/StdInStream.o\
++../../../Common/StdOutStream.o\
++../../../Common/StringConvert.o\
++../../../Common/String.o\
++../../../Common/CRC.o\
++../../../Common/Vector.o\
++../../../Common/Wildcard.o\
++../../../Common/IntToString.o\
++FilePathAutoRename.o\
++FileStreams.o\
++InBuffer.o\
++LimitedStreams.o\
++LockedStream.o\
++OffsetStream.o\
++OutBuffer.o\
++ProgressUtils.o\
++StreamBinder.o\
++StreamObjects.o\
++StreamUtils.o\
++ArchiveExtractCallback.o\
++ArchiveOpenCallback.o\
++ArchiverInfo.o\
++DefaultName.o\
++Extract.o\
++ExtractingFilePath.o\
++OpenArchive.o\
++PropIDUtils.o\
++Un7Zip.o
++
++include ../../../../makefile.glb
++
+diff -dPNur p7zip_4.44/CPP/7zip/Bundles/Un7Zip/makefile.depend p7zip_4.44-new/CPP/7zip/Bundles/Un7Zip/makefile.depend
+--- p7zip_4.44/CPP/7zip/Bundles/Un7Zip/makefile.depend	1970-01-01 01:00:00.000000000 +0100
++++ p7zip_4.44-new/CPP/7zip/Bundles/Un7Zip/makefile.depend	2007-03-29 13:01:21.000000000 +0200
+@@ -0,0 +1 @@
++ 
+\ No newline at end of file
+diff -dPNur p7zip_4.44/CPP/7zip/Bundles/Un7Zip/makefile.list p7zip_4.44-new/CPP/7zip/Bundles/Un7Zip/makefile.list
+--- p7zip_4.44/CPP/7zip/Bundles/Un7Zip/makefile.list	1970-01-01 01:00:00.000000000 +0100
++++ p7zip_4.44-new/CPP/7zip/Bundles/Un7Zip/makefile.list	2007-03-29 13:01:21.000000000 +0200
+@@ -0,0 +1,128 @@
++CoderMixer2.o : ../../Archive/Common/CoderMixer2.cpp
++	$(CXX) $(CFLAGS) ../../Archive/Common/CoderMixer2.cpp
++CoderMixer2MT.o : ../../Archive/Common/CoderMixer2MT.cpp
++	$(CXX) $(CFLAGS) ../../Archive/Common/CoderMixer2MT.cpp
++CoderMixer2ST.o : ../../Archive/Common/CoderMixer2ST.cpp
++	$(CXX) $(CFLAGS) ../../Archive/Common/CoderMixer2ST.cpp
++CrossThreadProgress.o : ../../Archive/Common/CrossThreadProgress.cpp
++	$(CXX) $(CFLAGS) ../../Archive/Common/CrossThreadProgress.cpp
++FilterCoder.o : ../../Archive/Common/FilterCoder.cpp
++	$(CXX) $(CFLAGS) ../../Archive/Common/FilterCoder.cpp
++ItemNameUtils.o : ../../Archive/Common/ItemNameUtils.cpp
++	$(CXX) $(CFLAGS) ../../Archive/Common/ItemNameUtils.cpp
++OutStreamWithCRC.o : ../../Archive/Common/OutStreamWithCRC.cpp
++	$(CXX) $(CFLAGS) ../../Archive/Common/OutStreamWithCRC.cpp
++ConsoleClose.o : ../../UI/Console/ConsoleClose.cpp
++	$(CXX) $(CFLAGS) ../../UI/Console/ConsoleClose.cpp
++ExtractCallbackConsole.o : ../../UI/Console/ExtractCallbackConsole.cpp
++	$(CXX) $(CFLAGS) ../../UI/Console/ExtractCallbackConsole.cpp
++ExtractCallbackNULL.o : ../../UI/Console/ExtractCallbackNULL.cpp
++	$(CXX) $(CFLAGS) ../../UI/Console/ExtractCallbackNULL.cpp
++List.o : ../../UI/Console/List.cpp
++	$(CXX) $(CFLAGS) ../../UI/Console/List.cpp
++OpenCallbackConsole.o : ../../UI/Console/OpenCallbackConsole.cpp
++	$(CXX) $(CFLAGS) ../../UI/Console/OpenCallbackConsole.cpp
++UserInputUtils.o : ../../UI/Console/UserInputUtils.cpp
++	$(CXX) $(CFLAGS) ../../UI/Console/UserInputUtils.cpp
++7zDecode.o : ../../Archive/7z/7zDecode.cpp
++	$(CXX) $(CFLAGS) ../../Archive/7z/7zDecode.cpp
++7zExtract.o : ../../Archive/7z/7zExtract.cpp
++	$(CXX) $(CFLAGS) ../../Archive/7z/7zExtract.cpp
++7zFolderOutStream.o : ../../Archive/7z/7zFolderOutStream.cpp
++	$(CXX) $(CFLAGS) ../../Archive/7z/7zFolderOutStream.cpp
++7zHandler.o : ../../Archive/7z/7zHandler.cpp
++	$(CXX) $(CFLAGS) ../../Archive/7z/7zHandler.cpp
++7zHeader.o : ../../Archive/7z/7zHeader.cpp
++	$(CXX) $(CFLAGS) ../../Archive/7z/7zHeader.cpp
++7zIn.o : ../../Archive/7z/7zIn.cpp
++	$(CXX) $(CFLAGS) ../../Archive/7z/7zIn.cpp
++7zMethodID.o : ../../Archive/7z/7zMethodID.cpp
++	$(CXX) $(CFLAGS) ../../Archive/7z/7zMethodID.cpp
++LZMADecoder.o : ../../Compress/LZMA/LZMADecoder.cpp
++	$(CXX) $(CFLAGS) ../../Compress/LZMA/LZMADecoder.cpp
++BranchCoder.o : ../../Compress/Branch/BranchCoder.cpp
++	$(CXX) $(CFLAGS) ../../Compress/Branch/BranchCoder.cpp
++x86.o : ../../Compress/Branch/x86.cpp
++	$(CXX) $(CFLAGS) ../../Compress/Branch/x86.cpp
++x86_2.o : ../../Compress/Branch/x86_2.cpp
++	$(CXX) $(CFLAGS) ../../Compress/Branch/x86_2.cpp
++PPMDDecoder.o : ../../Compress/PPMD/PPMDDecoder.cpp
++	$(CXX) $(CFLAGS) ../../Compress/PPMD/PPMDDecoder.cpp
++LZOutWindow.o : ../../Compress/LZ/LZOutWindow.cpp
++	$(CXX) $(CFLAGS) ../../Compress/LZ/LZOutWindow.cpp
++CopyCoder.o : ../../Compress/Copy/CopyCoder.cpp
++	$(CXX) $(CFLAGS) ../../Compress/Copy/CopyCoder.cpp
++Error.o : ../../../Windows/Error.cpp
++	$(CXX) $(CFLAGS) ../../../Windows/Error.cpp
++FileDir.o : ../../../Windows/FileDir.cpp
++	$(CXX) $(CFLAGS) ../../../Windows/FileDir.cpp
++FileFind.o : ../../../Windows/FileFind.cpp
++	$(CXX) $(CFLAGS) ../../../Windows/FileFind.cpp
++FileIO.o : ../../../Windows/FileIO.cpp
++	$(CXX) $(CFLAGS) ../../../Windows/FileIO.cpp
++FileName.o : ../../../Windows/FileName.cpp
++	$(CXX) $(CFLAGS) ../../../Windows/FileName.cpp
++PropVariant.o : ../../../Windows/PropVariant.cpp
++	$(CXX) $(CFLAGS) ../../../Windows/PropVariant.cpp
++PropVariantConversions.o : ../../../Windows/PropVariantConversions.cpp
++	$(CXX) $(CFLAGS) ../../../Windows/PropVariantConversions.cpp
++Synchronization.o : ../../../Windows/Synchronization.cpp
++	$(CXX) $(CFLAGS) ../../../Windows/Synchronization.cpp
++Alloc.o : ../../../Common/Alloc.cpp
++	$(CXX) $(CFLAGS) ../../../Common/Alloc.cpp
++CRC.o : ../../../Common/CRC.cpp
++	$(CXX) $(CFLAGS) ../../../Common/CRC.cpp
++IntToString.o : ../../../Common/IntToString.cpp
++	$(CXX) $(CFLAGS) ../../../Common/IntToString.cpp
++StdInStream.o : ../../../Common/StdInStream.cpp
++	$(CXX) $(CFLAGS) ../../../Common/StdInStream.cpp
++StdOutStream.o : ../../../Common/StdOutStream.cpp
++	$(CXX) $(CFLAGS) ../../../Common/StdOutStream.cpp
++String.o : ../../../Common/String.cpp
++	$(CXX) $(CFLAGS) ../../../Common/String.cpp
++StringConvert.o : ../../../Common/StringConvert.cpp
++	$(CXX) $(CFLAGS) ../../../Common/StringConvert.cpp
++Vector.o : ../../../Common/Vector.cpp
++	$(CXX) $(CFLAGS) ../../../Common/Vector.cpp
++Wildcard.o : ../../../Common/Wildcard.cpp
++	$(CXX) $(CFLAGS) ../../../Common/Wildcard.cpp
++FilePathAutoRename.o : ../../Common/FilePathAutoRename.cpp
++	$(CXX) $(CFLAGS) ../../Common/FilePathAutoRename.cpp
++FileStreams.o : ../../Common/FileStreams.cpp
++	$(CXX) $(CFLAGS) ../../Common/FileStreams.cpp
++InBuffer.o : ../../Common/InBuffer.cpp
++	$(CXX) $(CFLAGS) ../../Common/InBuffer.cpp
++LimitedStreams.o : ../../Common/LimitedStreams.cpp
++	$(CXX) $(CFLAGS) ../../Common/LimitedStreams.cpp
++LockedStream.o : ../../Common/LockedStream.cpp
++	$(CXX) $(CFLAGS) ../../Common/LockedStream.cpp
++OffsetStream.o : ../../Common/OffsetStream.cpp
++	$(CXX) $(CFLAGS) ../../Common/OffsetStream.cpp
++OutBuffer.o : ../../Common/OutBuffer.cpp
++	$(CXX) $(CFLAGS) ../../Common/OutBuffer.cpp
++ProgressUtils.o : ../../Common/ProgressUtils.cpp
++	$(CXX) $(CFLAGS) ../../Common/ProgressUtils.cpp
++StreamUtils.o : ../../Common/StreamUtils.cpp
++	$(CXX) $(CFLAGS) ../../Common/StreamUtils.cpp
++StreamBinder.o : ../../Common/StreamBinder.cpp
++	$(CXX) $(CFLAGS) ../../Common/StreamBinder.cpp
++StreamObjects.o : ../../Common/StreamObjects.cpp
++	$(CXX) $(CFLAGS) ../../Common/StreamObjects.cpp
++ArchiveExtractCallback.o : ../../UI/Common/ArchiveExtractCallback.cpp
++	$(CXX) $(CFLAGS) ../../UI/Common/ArchiveExtractCallback.cpp
++ArchiveOpenCallback.o : ../../UI/Common/ArchiveOpenCallback.cpp
++	$(CXX) $(CFLAGS) ../../UI/Common/ArchiveOpenCallback.cpp
++ArchiverInfo.o : ../../UI/Common/ArchiverInfo.cpp
++	$(CXX) $(CFLAGS) ../../UI/Common/ArchiverInfo.cpp
++DefaultName.o : ../../UI/Common/DefaultName.cpp
++	$(CXX) $(CFLAGS) ../../UI/Common/DefaultName.cpp
++Extract.o : ../../UI/Common/Extract.cpp
++	$(CXX) $(CFLAGS) ../../UI/Common/Extract.cpp
++ExtractingFilePath.o : ../../UI/Common/ExtractingFilePath.cpp
++	$(CXX) $(CFLAGS) ../../UI/Common/ExtractingFilePath.cpp
++OpenArchive.o : ../../UI/Common/OpenArchive.cpp
++	$(CXX) $(CFLAGS) ../../UI/Common/OpenArchive.cpp
++PropIDUtils.o : ../../UI/Common/PropIDUtils.cpp
++	$(CXX) $(CFLAGS) ../../UI/Common/PropIDUtils.cpp
++Un7Zip.o : ./Un7Zip.cpp
++	$(CXX) $(CFLAGS) ./Un7Zip.cpp
+diff -dPNur p7zip_4.44/CPP/7zip/Bundles/Un7Zip/testlib.c p7zip_4.44-new/CPP/7zip/Bundles/Un7Zip/testlib.c
+--- p7zip_4.44/CPP/7zip/Bundles/Un7Zip/testlib.c	1970-01-01 01:00:00.000000000 +0100
++++ p7zip_4.44-new/CPP/7zip/Bundles/Un7Zip/testlib.c	2007-03-29 13:01:21.000000000 +0200
+@@ -0,0 +1,7 @@
++
++#include "u7zip.h"
++
++int main(int argc, char *argv[])
++{
++    return un7zip(argv[1], "/tmp", 0);
++}
+diff -dPNur p7zip_4.44/CPP/7zip/Bundles/Un7Zip/u7zip.h p7zip_4.44-new/CPP/7zip/Bundles/Un7Zip/u7zip.h
+--- p7zip_4.44/CPP/7zip/Bundles/Un7Zip/u7zip.h	1970-01-01 01:00:00.000000000 +0100
++++ p7zip_4.44-new/CPP/7zip/Bundles/Un7Zip/u7zip.h	2007-03-29 13:01:21.000000000 +0200
+@@ -0,0 +1,19 @@
++#ifndef __UN7ZIP_H
++#define __UN7ZIP_H
++
++#define LIST_7Z    0
++#define TEST_7Z    1
++#define EXTRACT_7Z 2
++
++#define S_OK          0x00000000L
++#define S_FALSE       0x00000001L
++#define E_NOTIMPL     0x80004001L
++#define E_NOINTERFACE 0x80004002L
++#define E_ABORT       0x80004004L
++#define E_FAIL        0x80004005L
++#define E_OUTOFMEMORY 0x8007000EL
++#define E_INVALIDARG  0x80070057L
++
++int un7zip(char *name, char *dir, int command);
++
++#endif
+diff -dPNur p7zip_4.44/CPP/7zip/Bundles/Un7Zip/Un7Zip.cpp p7zip_4.44-new/CPP/7zip/Bundles/Un7Zip/Un7Zip.cpp
+--- p7zip_4.44/CPP/7zip/Bundles/Un7Zip/Un7Zip.cpp	1970-01-01 01:00:00.000000000 +0100
++++ p7zip_4.44-new/CPP/7zip/Bundles/Un7Zip/Un7Zip.cpp	2007-03-29 12:50:00.000000000 +0200
+@@ -0,0 +1,130 @@
++// Un7Zip.cpp
++
++#include "StdAfx.h"
++
++#include "Common/MyInitGuid.h"
++
++#include "Common/StdOutStream.h"
++#include "Common/Wildcard.h"
++#include "Common/StringConvert.h"
++#include "Common/MyCom.h"
++#include "Common/Exception.h"
++
++#include "Windows/FileDir.h"
++#include "Windows/FileName.h"
++#include "Windows/Defs.h"
++
++#include "../../IPassword.h"
++#include "../../ICoder.h"
++
++#include "../../UI/Common/OpenArchive.h"
++#include "../../UI/Common/DefaultName.h"
++#include "../../UI/Common/ExitCode.h"
++#include "../../UI/Common/Extract.h"
++
++#include "../../UI/Console/List.h"
++#include "../../UI/Console/OpenCallbackConsole.h"
++#include "../../UI/Console/ExtractCallbackNULL.h"
++
++
++static int Un7Zip(char *name, char *dir, int command);
++
++extern "C" {
++
++int un7zip(char *name, char *dir, int command)
++{
++    return Un7Zip(name, dir, command);
++}
++
++}
++
++using namespace NWindows;
++using namespace NFile;
++
++static const wchar_t *kUniversalWildcard = L"*";
++static bool AddNameToCensor(NWildcard::CCensor &wildcardCensor)
++{
++  wildcardCensor.AddItem(true, kUniversalWildcard, false);
++  return true;
++}
++
++static int Un7Zip(char *name, char *dir, int commands)
++{
++  
++  CStdOutStream *g_StdStream = &g_StdOut;
++
++  NWildcard::CCensor wildcardCensor;
++  AddNameToCensor(wildcardCensor);
++  bool passwordEnabled = 1;
++  UString password = L"null";
++  
++  UString outputDir= MultiByteToUnicodeString(dir);
++  UString archiveName = MultiByteToUnicodeString(name);
++
++  NFind::CFileInfoW archiveFileInfo;
++
++  if (!NFind::FindFile(archiveName, archiveFileInfo))
++        return S_FALSE;
++  if (archiveFileInfo.IsDirectory())
++        return S_FALSE;
++
++  {
++
++    UStringVector v1, v2;
++    v1.Add(archiveName);
++    v2.Add(archiveName);
++
++    const NWildcard::CCensorNode &wildcardCensorHead = 
++      wildcardCensor.Pairs.Front().Head;
++
++    if(commands > 0)
++    {
++      CExtractCallbackNULL *ecs = new CExtractCallbackNULL;
++      CMyComPtr<IFolderArchiveExtractCallback> extractCallback = ecs;
++      ecs->OutStream = g_StdStream;
++      ecs->PasswordIsDefined = passwordEnabled;
++      ecs->Password = password;
++      ecs->Init();
++
++      COpenCallbackConsole openCallback;
++      openCallback.OutStream = g_StdStream;
++      openCallback.PasswordIsDefined = passwordEnabled;
++      openCallback.Password = password;
++
++      CExtractOptions eo;
++      eo.StdOutMode = false;
++      eo.PathMode = NExtract::NPathMode::kFullPathnames;
++      if(commands == 1)
++        eo.TestMode = 1;
++      else
++        eo.TestMode = 0;
++      eo.OverwriteMode = NExtract::NOverwriteMode::kWithoutPrompt;
++      eo.OutputDir = outputDir;
++      eo.YesToAll = 1;
++
++      UString errorMessage;
++      HRESULT result = DecompressArchives(
++          v1, v2,
++          wildcardCensorHead, 
++          eo, &openCallback, ecs, errorMessage);
++
++      if (ecs->NumArchiveErrors != 0 || ecs->NumFileErrors != 0)
++        return S_FALSE;
++      if (result != S_OK)
++        return S_FALSE;
++    }
++    else
++    {
++      HRESULT result = ListArchives(
++          v1, v2,
++          wildcardCensorHead, 
++          true, 
++	  false,
++          passwordEnabled, 
++          password);
++      if (result != S_OK)
++          return S_FALSE;;
++    }
++  }
++  return S_OK;
++}
+diff -dPNur p7zip_4.44/CPP/7zip/UI/Console/ExtractCallbackNULL.cpp p7zip_4.44-new/CPP/7zip/UI/Console/ExtractCallbackNULL.cpp
+--- p7zip_4.44/CPP/7zip/UI/Console/ExtractCallbackNULL.cpp	1970-01-01 01:00:00.000000000 +0100
++++ p7zip_4.44-new/CPP/7zip/UI/Console/ExtractCallbackNULL.cpp	2007-03-29 12:55:02.000000000 +0200
+@@ -0,0 +1,132 @@
++// ExtractCallbackNULL.cpp
++
++#include "StdAfx.h"
++
++#include "ExtractCallbackNULL.h"
++#include "UserInputUtils.h"
++#include "ConsoleClose.h"
++
++#include "Common/Wildcard.h"
++
++#include "Windows/FileDir.h"
++#include "Windows/FileFind.h"
++#include "Windows/Time.h"
++#include "Windows/Defs.h"
++#include "Windows/PropVariant.h"
++#include "Windows/Error.h"
++#include "Windows/PropVariantConversions.h"
++
++#include "../../Common/FilePathAutoRename.h"
++
++#include "../Common/ExtractingFilePath.h"
++
++using namespace NWindows;
++using namespace NFile;
++using namespace NDirectory;
++
++STDMETHODIMP CExtractCallbackNULL::SetTotal(UInt64 size)
++{
++  if (NConsoleClose::TestBreakSignal())
++    return E_ABORT;
++  return S_OK;
++}
++
++STDMETHODIMP CExtractCallbackNULL::SetCompleted(const UInt64 *completeValue)
++{
++  if (NConsoleClose::TestBreakSignal())
++    return E_ABORT;
++  return S_OK;
++}
++
++STDMETHODIMP CExtractCallbackNULL::AskOverwrite(
++    const wchar_t *existName, const FILETIME *existTime, const UInt64 *existSize,
++    const wchar_t *newName, const FILETIME *newTime, const UInt64 *newSize,
++    Int32 *answer)
++{
++  
++  NUserAnswerMode::EEnum overwriteAnswer = ScanUserYesNoAllQuit(OutStream);
++  
++  switch(overwriteAnswer)
++  {
++    case NUserAnswerMode::kQuit:
++      return E_ABORT;
++    case NUserAnswerMode::kNo:
++      *answer = NOverwriteAnswer::kNo;
++      break;
++    case NUserAnswerMode::kNoAll:
++      *answer = NOverwriteAnswer::kNoToAll;
++      break;
++    case NUserAnswerMode::kYesAll:
++      *answer = NOverwriteAnswer::kYesToAll;
++      break;
++    case NUserAnswerMode::kYes:
++      *answer = NOverwriteAnswer::kYes;
++      break;
++    case NUserAnswerMode::kAutoRename:
++      *answer = NOverwriteAnswer::kAutoRename;
++      break;
++    default:
++      return E_FAIL;
++  }
++  return S_OK;
++}
++
++STDMETHODIMP CExtractCallbackNULL::PrepareOperation(const wchar_t *name, Int32 askExtractMode, const UInt64 *position)
++{
++  return S_OK;
++}
++
++STDMETHODIMP CExtractCallbackNULL::MessageError(const wchar_t *message)
++{
++  return S_OK;
++}
++
++STDMETHODIMP CExtractCallbackNULL::SetOperationResult(Int32 operationResult, bool encrypted)
++{
++  return S_OK;
++}
++
++STDMETHODIMP CExtractCallbackNULL::CryptoGetTextPassword(BSTR *password)
++{
++  if (!PasswordIsDefined)
++  {
++    Password = GetPassword(OutStream); 
++    PasswordIsDefined = true;
++  }
++  CMyComBSTR tempName(Password);
++  *password = tempName.Detach();
++  return S_OK;
++}
++
++HRESULT CExtractCallbackNULL::BeforeOpen(const wchar_t *name)
++{
++  return S_OK;
++}
++
++HRESULT CExtractCallbackNULL::OpenResult(const wchar_t *name, HRESULT result, bool encrypted)
++{
++  return S_OK;
++}
++  
++HRESULT CExtractCallbackNULL::ThereAreNoFiles()
++{
++  return S_OK;
++}
++
++HRESULT CExtractCallbackNULL::ExtractResult(HRESULT result)
++{
++  if (result == S_OK)
++    return result;
++  if (result == E_ABORT)
++    return result;
++  if (result == E_OUTOFMEMORY)
++    return result;
++  return S_OK;
++}
++
++HRESULT CExtractCallbackNULL::SetPassword(const UString &password)
++{
++  PasswordIsDefined = true;
++  Password = password;
++  return S_OK;
++}
+diff -dPNur p7zip_4.44/CPP/7zip/UI/Console/ExtractCallbackNULL.h p7zip_4.44-new/CPP/7zip/UI/Console/ExtractCallbackNULL.h
+--- p7zip_4.44/CPP/7zip/UI/Console/ExtractCallbackNULL.h	1970-01-01 01:00:00.000000000 +0100
++++ p7zip_4.44-new/CPP/7zip/UI/Console/ExtractCallbackNULL.h	2007-03-29 12:55:12.000000000 +0200
+@@ -0,0 +1,65 @@
++// ExtractCallbackNULL.h
++
++#ifndef __EXTRACTCALLBACKCONSOLE_H
++#define __EXTRACTCALLBACKCONSOLE_H
++
++#include "Common/String.h"
++#include "Common/StdOutStream.h"
++#include "../../Common/FileStreams.h"
++#include "../../IPassword.h"
++#include "../../Archive/IArchive.h"
++#include "../Common/ArchiveExtractCallback.h"
++
++class CExtractCallbackNULL: 
++  public IExtractCallbackUI,
++  public ICryptoGetTextPassword,
++  public CMyUnknownImp
++{
++public:
++  MY_UNKNOWN_IMP2(IFolderArchiveExtractCallback, ICryptoGetTextPassword)
++
++  STDMETHOD(SetTotal)(UInt64 total);
++  STDMETHOD(SetCompleted)(const UInt64 *completeValue);
++
++  // IFolderArchiveExtractCallback
++  STDMETHOD(AskOverwrite)(
++      const wchar_t *existName, const FILETIME *existTime, const UInt64 *existSize,
++      const wchar_t *newName, const FILETIME *newTime, const UInt64 *newSize,
++      Int32 *answer);
++  STDMETHOD (PrepareOperation)(const wchar_t *name, Int32 askExtractMode, const UInt64 *position);
++
++  STDMETHOD(MessageError)(const wchar_t *message);
++  STDMETHOD(SetOperationResult)(Int32 operationResult, bool encrypted);
++
++  // ICryptoGetTextPassword
++  STDMETHOD(CryptoGetTextPassword)(BSTR *password);
++
++  HRESULT BeforeOpen(const wchar_t *name);
++  HRESULT OpenResult(const wchar_t *name, HRESULT result, bool encrypted);
++  HRESULT ThereAreNoFiles();
++  HRESULT ExtractResult(HRESULT result);
++
++  HRESULT SetPassword(const UString &password);
++
++public:
++  bool PasswordIsDefined;
++  UString Password;
++  
++  UInt64 NumArchives;
++  UInt64 NumArchiveErrors;
++  UInt64 NumFileErrors;
++  UInt64 NumFileErrorsInCurrentArchive;
++
++  CStdOutStream *OutStream;
++
++  void Init()
++  {
++    NumArchives = 0;
++    NumArchiveErrors = 0;
++    NumFileErrors = 0;
++    NumFileErrorsInCurrentArchive = 0;
++  }
++
++};
++
++#endif

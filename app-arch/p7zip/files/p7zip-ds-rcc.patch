@@ -1,0 +1,314 @@
+diff -dPNur p7zip_4.44-old/C/rccrecode.c p7zip_4.44/C/rccrecode.c
+--- p7zip_4.44-old/C/rccrecode.c	1970-01-01 01:00:00.000000000 +0100
++++ p7zip_4.44/C/rccrecode.c	2007-04-14 19:47:03.000000000 +0200
+@@ -0,0 +1,69 @@
++#include <pthread.h>
++#include <librcc.h>
++
++static rcc_class_default_charset default_oem[] = {
++    { "ru", "IBM866" },
++    { NULL, NULL }
++};
++
++static rcc_class_default_charset default_iso[] = {
++    { "ru", "CP1251" },
++    { NULL, NULL }
++};
++
++#define ARC_CLASS 0
++#define OUT_CLASS 1
++#define ARCOUT_CLASS 0
++static rcc_class classes[] = {
++    { "oem", RCC_CLASS_STANDARD, NULL, default_oem, "OEM Encoding", 0 },
++    { "out", RCC_CLASS_STANDARD, "LC_CTYPE", NULL, "Output", 0 },
++    { NULL }
++};
++
++static int initialized = 0;
++static pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
++
++void *rcc_init() {
++    rcc_context ctx;
++    
++    pthread_mutex_lock(&mutex);
++    if (!initialized) {
++	rccInit();
++	rccInitDefaultContext(NULL, 0, 0, classes, 0);
++	rccInitDb4(NULL, NULL, 0);
++    }
++    initialized++;
++    pthread_mutex_unlock(&mutex);
++    
++    ctx = rccCreateContext(NULL, 0, 0, classes, 0);
++    if (ctx) rccInitDb4(ctx, NULL, 0);
++
++    return ctx;
++}
++
++
++void rcc_free(void *ctx) {
++    if (ctx) rccFreeContext((rcc_context)ctx);
++    
++    pthread_mutex_lock(&mutex);
++    if (initialized == 1) rccFree();
++    initialized--;
++    pthread_mutex_unlock(&mutex);
++}
++
++
++char *rcc_read(void *ctx, const char *string, size_t size) {
++    if (!initialized) {
++	rcc_init();
++	if (!initialized) return NULL;
++    }
++    return rccSizedRecode((rcc_context)ctx, ARC_CLASS, OUT_CLASS, string, size, NULL);
++}
++
++char *rcc_write(rcc_context ctx, const char *string, size_t size) {
++    if (!initialized) {
++	rcc_init();
++	if (!initialized) return NULL;
++    }
++    return rccSizedRecode((rcc_context)ctx, OUT_CLASS, ARCOUT_CLASS, string, size, NULL);
++}
+diff -dPNur p7zip_4.44-old/C/rccrecode.h p7zip_4.44/C/rccrecode.h
+--- p7zip_4.44-old/C/rccrecode.h	1970-01-01 01:00:00.000000000 +0100
++++ p7zip_4.44/C/rccrecode.h	2007-04-14 19:34:20.000000000 +0200
+@@ -0,0 +1,17 @@
++#ifndef _RCC_RECODE_H
++#define _RCC_RECODE_H
++
++# ifdef __cplusplus 
++extern "C" { 
++# endif
++
++    void *rcc_init();
++    void rcc_free(void *ctx);
++    char *rcc_read(void *ctx, const char *string, size_t size);
++    char *rcc_write(void *ctx, const char *string, size_t size);
++
++# ifdef __cplusplus 
++}
++# endif
++
++#endif /* _RCC_RECODE_H */
+diff -dPNur p7zip_4.44-old/CPP/7zip/Archive/Zip/makefile p7zip_4.44/CPP/7zip/Archive/Zip/makefile
+--- p7zip_4.44-old/CPP/7zip/Archive/Zip/makefile	2007-01-23 21:29:41.000000000 +0100
++++ p7zip_4.44/CPP/7zip/Archive/Zip/makefile	2007-04-14 18:36:44.000000000 +0200
+@@ -13,6 +13,7 @@
+ LIBS=$(LOCAL_LIBS_DLL)
+ 
+ OBJS = \
++../../../../C/rccrecode.o \
+ ../../../Common/MyWindows.o \
+ ../../../Common/Vector.o\
+ ../../../Common/Alloc.o\
+diff -dPNur p7zip_4.44-old/CPP/7zip/Archive/Zip/ZipIn.cpp p7zip_4.44/CPP/7zip/Archive/Zip/ZipIn.cpp
+--- p7zip_4.44-old/CPP/7zip/Archive/Zip/ZipIn.cpp	2007-01-20 18:06:58.000000000 +0100
++++ p7zip_4.44/CPP/7zip/Archive/Zip/ZipIn.cpp	2007-04-14 19:34:59.000000000 +0200
+@@ -9,11 +9,22 @@
+ #include "../../Common/LimitedStreams.h"
+ #include "../../Common/StreamUtils.h"
+ 
++#include "../../../../C/rccrecode.h"
++
+ namespace NArchive {
+ namespace NZip {
++
++CInArchive::CInArchive() {
++    rccctx = rcc_init();
++}
++
++CInArchive::~CInArchive() {
++    rcc_free(rccctx);
++}
++
+  
+ // static const char kEndOfString = '\0';
+-  
++ 
+ bool CInArchive::Open(IInStream *inStream, const UInt64 *searchHeaderSizeLimit)
+ {
+   m_Stream = inStream;
+@@ -179,10 +190,18 @@
+ 
+ AString CInArchive::ReadFileName(UInt32 nameSize)
+ {
++  char *rccrec;
+   if (nameSize == 0)
+     return AString();
+   SafeReadBytes(m_NameBuffer.GetBuffer(nameSize), nameSize);
+   m_NameBuffer.ReleaseBuffer(nameSize);
++
++  rccrec = rcc_read(rccctx, (LPCSTR)m_NameBuffer, 0);
++  if (rccrec) {
++	m_NameBuffer = rccrec;
++	free(rccrec);
++  }
++  
+   return m_NameBuffer;
+ }
+ 
+diff -dPNur p7zip_4.44-old/CPP/7zip/Archive/Zip/ZipIn.h p7zip_4.44/CPP/7zip/Archive/Zip/ZipIn.h
+--- p7zip_4.44-old/CPP/7zip/Archive/Zip/ZipIn.h	2007-01-20 18:06:28.000000000 +0100
++++ p7zip_4.44/CPP/7zip/Archive/Zip/ZipIn.h	2007-04-14 19:05:31.000000000 +0200
+@@ -104,6 +104,10 @@
+   bool SeekInArchive(UInt64 position);
+   ISequentialInStream *CreateLimitedStream(UInt64 position, UInt64 size);
+   IInStream* CreateStream();
++
++  void *rccctx;
++  CInArchive();
++  ~CInArchive();
+ };
+   
+ }}
+diff -dPNur p7zip_4.44-old/CPP/7zip/Archive/Zip/ZipOut.cpp p7zip_4.44/CPP/7zip/Archive/Zip/ZipOut.cpp
+--- p7zip_4.44-old/CPP/7zip/Archive/Zip/ZipOut.cpp	2007-01-20 18:06:57.000000000 +0100
++++ p7zip_4.44/CPP/7zip/Archive/Zip/ZipOut.cpp	2007-04-14 19:44:44.000000000 +0200
+@@ -8,9 +8,19 @@
+ #include "../../Common/OffsetStream.h"
+ #include "../../Common/StreamUtils.h"
+ 
++#include "../../../../C/rccrecode.h"
++
+ namespace NArchive {
+ namespace NZip {
+ 
++COutArchive::COutArchive() {
++    rccctx = rcc_init();
++}
++
++COutArchive::~COutArchive() {
++    rcc_free(rccctx);
++}
++
+ void COutArchive::Create(IOutStream *outStream)
+ {
+   m_Stream = outStream;
+@@ -104,6 +114,8 @@
+ 
+ HRESULT COutArchive::WriteLocalHeader(const CLocalItem &item)
+ {
++  char *rccrec;
++  
+   m_Stream->Seek(m_BasePosition, STREAM_SEEK_SET, NULL);
+   
+   bool isZip64 = m_IsZip64 || item.PackSize >= 0xFFFFFFFF || item.UnPackSize >= 0xFFFFFFFF;
+@@ -124,6 +136,12 @@
+       return E_FAIL;
+   }
+   WriteUInt16((UInt16)m_ExtraSize); // test it;
++  rccrec = rcc_write(rccctx, (const char *)item.Name, item.Name.Length());
++  if (rccrec) {
++    printf("%u, %s.\n", item.Name.Length(), rccrec);
++    WriteBytes(rccrec, strlen(rccrec));
++    free(rccrec);
++  } else
+   WriteBytes((const char *)item.Name, item.Name.Length());
+ 
+   UInt32 extraPos = 0;
+@@ -147,6 +165,8 @@
+ 
+ void COutArchive::WriteCentralHeader(const CItem &item)
+ {
++  char *rccrec;
++  
+   m_Stream->Seek(m_BasePosition, STREAM_SEEK_SET, NULL);
+ 
+   bool isUnPack64 = item.UnPackSize >= 0xFFFFFFFF;
+@@ -175,6 +195,13 @@
+   WriteUInt16(item.InternalAttributes);
+   WriteUInt32(item.ExternalAttributes);
+   WriteUInt32(isPosition64 ? 0xFFFFFFFF: (UInt32)item.LocalHeaderPosition);
++
++  rccrec = rcc_write(rccctx, (const char *)item.Name, item.Name.Length());
++  if (rccrec) {
++    printf("C: %u, %s.\n", item.Name.Length(), rccrec);
++    WriteBytes(rccrec, strlen(rccrec));
++    free(rccrec);
++  } else
+   WriteBytes((const char *)item.Name, item.Name.Length());
+   if (isZip64)
+   {
+diff -dPNur p7zip_4.44-old/CPP/7zip/Archive/Zip/ZipOut.h p7zip_4.44/CPP/7zip/Archive/Zip/ZipOut.h
+--- p7zip_4.44-old/CPP/7zip/Archive/Zip/ZipOut.h	2007-01-20 18:06:29.000000000 +0100
++++ p7zip_4.44/CPP/7zip/Archive/Zip/ZipOut.h	2007-04-14 19:10:12.000000000 +0200
+@@ -44,6 +44,11 @@
+   void CreateStreamForCompressing(IOutStream **outStream);
+   void CreateStreamForCopying(ISequentialOutStream **outStream);
+   void SeekToPackedDataPosition();
++
++  void *rccctx;
++  COutArchive();
++  ~COutArchive();
++
+ };
+ 
+ }}
+diff -dPNur p7zip_4.44-old/CPP/7zip/Bundles/Alone/makefile p7zip_4.44/CPP/7zip/Bundles/Alone/makefile
+--- p7zip_4.44-old/CPP/7zip/Bundles/Alone/makefile	2007-01-23 21:29:43.000000000 +0100
++++ p7zip_4.44/CPP/7zip/Bundles/Alone/makefile	2007-04-14 18:52:31.000000000 +0200
+@@ -41,6 +41,7 @@
+ 	$(MY_HOME)/mySplitCommandLine.o
+ 
+ OBJS=\
++../../../../C/rccrecode.o \
+ ../../../Common/MyWindows.o \
+ 7zAES.o \
+ 7zCompressionMode.o \
+diff -dPNur p7zip_4.44-old/makefile.linux_amd64 p7zip_4.44/makefile.linux_amd64
+--- p7zip_4.44-old/makefile.linux_amd64	2007-04-14 15:37:39.000000000 +0200
++++ p7zip_4.44/makefile.linux_amd64	2007-04-14 18:50:13.000000000 +0200
+@@ -11,6 +11,6 @@
+ CC=x86_64-pc-linux-gnu-gcc $(ALLFLAGS)
+ LINK_SHARED=-shared
+ 
+-LOCAL_LIBS=-lpthread
++LOCAL_LIBS=-lpthread -lrcc
+ LOCAL_LIBS_DLL=$(LOCAL_LIBS) -ldl
+ 
+diff -dPNur p7zip_4.44-old/makefile.linux_gcc_2.95_no_need_for_libstdc p7zip_4.44/makefile.linux_gcc_2.95_no_need_for_libstdc
+--- p7zip_4.44-old/makefile.linux_gcc_2.95_no_need_for_libstdc	2007-04-14 15:37:39.000000000 +0200
++++ p7zip_4.44/makefile.linux_gcc_2.95_no_need_for_libstdc	2007-04-14 18:51:02.000000000 +0200
+@@ -10,6 +10,6 @@
+ CC=x86_64-pc-linux-gnu-gcc $(ALLFLAGS)
+ LINK_SHARED=-shared
+ 
+-LOCAL_LIBS=-lpthread
++LOCAL_LIBS=-lpthread -lrcc
+ LOCAL_LIBS_DLL=$(LOCAL_LIBS) -ldl
+ 
+diff -dPNur p7zip_4.44-old/makefile.linux_x86_ppc_alpha p7zip_4.44/makefile.linux_x86_ppc_alpha
+--- p7zip_4.44-old/makefile.linux_x86_ppc_alpha	2007-04-14 15:37:39.000000000 +0200
++++ p7zip_4.44/makefile.linux_x86_ppc_alpha	2007-04-14 18:51:15.000000000 +0200
+@@ -14,6 +14,6 @@
+ CC=x86_64-pc-linux-gnu-gcc $(ALLFLAGS)
+ LINK_SHARED=-shared
+ 
+-LOCAL_LIBS=-lpthread
++LOCAL_LIBS=-lpthread -lrcc
+ LOCAL_LIBS_DLL=$(LOCAL_LIBS) -ldl
+ 
+diff -dPNur p7zip_4.44-old/makefile.linux_x86_ppc_alpha__gcc_4.X p7zip_4.44/makefile.linux_x86_ppc_alpha__gcc_4.X
+--- p7zip_4.44-old/makefile.linux_x86_ppc_alpha__gcc_4.X	2007-04-14 15:37:39.000000000 +0200
++++ p7zip_4.44/makefile.linux_x86_ppc_alpha__gcc_4.X	2007-04-14 18:51:19.000000000 +0200
+@@ -14,6 +14,6 @@
+ CC=x86_64-pc-linux-gnu-gcc $(ALLFLAGS)
+ LINK_SHARED=-shared
+ 
+-LOCAL_LIBS=-lpthread
++LOCAL_LIBS=-lpthread -lrcc
+ LOCAL_LIBS_DLL=$(LOCAL_LIBS) -ldl
+ 
+diff -dPNur p7zip_4.44-old/makefile.machine p7zip_4.44/makefile.machine
+--- p7zip_4.44-old/makefile.machine	2007-04-14 15:37:39.000000000 +0200
++++ p7zip_4.44/makefile.machine	2007-04-14 18:49:24.000000000 +0200
+@@ -11,6 +11,6 @@
+ CC=x86_64-pc-linux-gnu-gcc $(ALLFLAGS)
+ LINK_SHARED=-shared
+ 
+-LOCAL_LIBS=-lpthread
++LOCAL_LIBS=-lpthread -lrcc
+ LOCAL_LIBS_DLL=$(LOCAL_LIBS) -ldl
+ 

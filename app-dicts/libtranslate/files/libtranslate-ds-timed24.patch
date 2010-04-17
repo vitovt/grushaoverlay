@@ -1,0 +1,360 @@
+diff -dPNur libtranslate-0.99/src/modules/translate-generic-service.c libtranslate-0.99-new/src/modules/translate-generic-service.c
+--- libtranslate-0.99/src/modules/translate-generic-service.c	2005-01-17 17:46:38.000000000 +0100
++++ libtranslate-0.99-new/src/modules/translate-generic-service.c	2005-07-27 22:13:33.000000000 +0200
+@@ -131,6 +131,7 @@
+ 					    const char *post_content_type,
+ 					    const GSList *headers,
+ 					    TransferFlags flags,
++					    GTimeVal *deadline,
+ 					    TranslateProgressFunc progress_func,
+ 					    gpointer user_data,
+ 					    GError **err);
+@@ -181,6 +182,15 @@
+ 						       gpointer user_data,
+ 						       GError **err);
+ 
++static char *translate_generic_service_timed_translate_text (TranslateService *service,
++						       const char *text,
++						       const char *from,
++						       const char *to,
++						       GTimeVal *deadline,
++						       TranslateProgressFunc progress_func,
++						       gpointer user_data,
++						       GError **err);
++
+ char *translate_generic_service_expand (const char *warning_prefix,
+ 					const char *str,
+ 					...);
+@@ -248,6 +258,7 @@
+ 
+   service_class->get_pairs = translate_generic_service_get_pairs;
+   service_class->translate_text = translate_generic_service_translate_text;
++  service_class->timed_translate_text = translate_generic_service_timed_translate_text;
+   service_class->translate_web_page = translate_generic_service_translate_web_page;
+ 
+   g_object_class_install_property(object_class,
+@@ -387,12 +398,22 @@
+     return TRUE;		/* continue */
+ }
+ 
++#ifdef HAVE_LIBSOUP22
++static void send_message_cb(SoupMessage *req, gpointer user_data) {
++#else
++static void send_message_cb(SoupSession *session, SoupMessage *req, gpointer user_data) {
++#endif
++    g_object_ref(req);
++    *(gboolean*)user_data = TRUE;
++}
++
+ static char *
+ translate_generic_service_get (const char *uri,
+ 			       const char *post,
+ 			       const char *post_content_type,
+ 			       const GSList *headers,
+ 			       TransferFlags flags,
++			       GTimeVal *deadline,
+ 			       TranslateProgressFunc progress_func,
+ 			       gpointer user_data,
+ 			       GError **err)
+@@ -400,6 +417,8 @@
+   TransferInfo info;
+   SoupMessage *message;
+   const GSList *l;
++  GTimeVal tv;
++  gboolean completed = 0, canceled = 0;
+   char *response = NULL;
+ 
+   g_return_val_if_fail(uri != NULL, FALSE);
+@@ -479,9 +498,31 @@
+   if (translate_generic_debug_flags & TRANSLATE_GENERIC_DEBUG_LOG_TRANSFERS)
+     translate_generic_service_log_connect(message);
+ 
++  if (deadline) {
++     soup_session_queue_message(info.session, message, send_message_cb, &completed);
++
++     do {
++	g_main_iteration (FALSE);
++	if (completed) break;
++
++        g_get_current_time(&tv);
++     } while ((tv.tv_sec < deadline->tv_sec)||((tv.tv_sec == deadline->tv_sec)&&(tv.tv_usec < deadline->tv_usec)));
++
++     if (!completed) {
++#ifdef HAVE_LIBSOUP22
++        soup_session_cancel_message(info.session, message);
++#else
++        soup_session_cancel_message(info.session, message, SOUP_STATUS_CANCELLED);
++#endif
++	canceled = 1;
++     }
++  } else
+   soup_session_send_message(info.session, message);
+   g_object_unref(info.session);
+ 
++  if (canceled) 
++	g_set_error(err, TRANSLATE_ERROR, TRANSLATE_ERROR_CANCELLED, _("Timeout"));
++  else
+   if (SOUP_STATUS_IS_SUCCESSFUL(message->status_code))
+     {
+       const char *charset = NULL;
+@@ -833,10 +870,11 @@
+ }
+ 
+ static char *
+-translate_generic_service_translate_text (TranslateService *service,
++translate_generic_service_timed_translate_text (TranslateService *service,
+ 					  const char *text,
+ 					  const char *from,
+ 					  const char *to,
++					  GTimeVal *deadline,
+ 					  TranslateProgressFunc progress_func,
+ 					  gpointer user_data,
+ 					  GError **err)
+@@ -882,16 +920,16 @@
+   
+   headers = g_slist_copy(group->http_headers);
+   headers = g_slist_concat(headers, g_slist_copy(group->text_location->http_headers));
+-    
++
+   response = translate_generic_service_get(url,
+ 					   post,
+ 					   group->text_location->content_type,
+ 					   headers,
+ 					   TRANSFER_FOLLOW_REFRESH | TRANSFER_CONVERT,
++					   deadline,
+ 					   progress_func,
+ 					   user_data,
+ 					   err);
+-
+   g_free(url);
+   g_free(post);
+   g_slist_free(headers);
+@@ -991,6 +1029,18 @@
+   return answer ? g_string_free(answer, FALSE) : NULL;
+ }
+ 
++static char *
++translate_generic_service_translate_text (TranslateService *service,
++					  const char *text,
++					  const char *from,
++					  const char *to,
++					  TranslateProgressFunc progress_func,
++					  gpointer user_data,
++					  GError **err)
++{
++    return translate_generic_service_timed_translate_text(service, text, from, to, NULL, progress_func, user_data, err);
++}
++
+ char *
+ translate_generic_service_expand (const char *warning_prefix,
+ 				  const char *str,
+@@ -1252,6 +1302,7 @@
+ 					   group->web_page_location->content_type,
+ 					   headers,
+ 					   0,
++					   NULL,
+ 					   progress_func,
+ 					   user_data,
+ 					   err);
+@@ -1311,7 +1362,7 @@
+       g_free(proxy_text_uri);
+     }
+ 
+-  session = soup_session_sync_new_with_options(SOUP_SESSION_PROXY_URI, proxy_uri, NULL);
++  session = soup_session_async_new_with_options(SOUP_SESSION_PROXY_URI, proxy_uri, NULL);
+ 
+   if (proxy_uri)
+     soup_uri_free(proxy_uri);
+diff -dPNur libtranslate-0.99/src/translate-service.c libtranslate-0.99-new/src/translate-service.c
+--- libtranslate-0.99/src/translate-service.c	2005-01-17 17:45:23.000000000 +0100
++++ libtranslate-0.99-new/src/translate-service.c	2005-07-27 17:18:07.000000000 +0200
+@@ -372,6 +372,28 @@
+ }
+ 
+ char *
++translate_service_timed_translate_text (TranslateService *service,
++				  const char *text,
++				  const char *from,
++				  const char *to,
++				  GTimeVal *deadline,
++				  TranslateProgressFunc progress_func,
++				  gpointer user_data,
++				  GError **err)
++{
++  g_return_val_if_fail(TRANSLATE_IS_SERVICE(service), NULL);
++  g_return_val_if_fail(TRANSLATE_SERVICE_GET_CLASS(service)->translate_text != NULL, NULL);
++  g_return_val_if_fail(text != NULL, NULL);
++  g_return_val_if_fail(from != NULL, NULL);
++  g_return_val_if_fail(to != NULL, NULL);
++
++  if (TRANSLATE_SERVICE_GET_CLASS(service)->timed_translate_text)
++     return TRANSLATE_SERVICE_GET_CLASS(service)->timed_translate_text(service, text, from, to, deadline, progress_func, user_data, err);
++  
++  return TRANSLATE_SERVICE_GET_CLASS(service)->translate_text(service, text, from, to, progress_func, user_data, err);
++}
++
++char *
+ translate_service_translate_web_page (TranslateService *service,
+ 				      const char *url,
+ 				      const char *from,
+diff -dPNur libtranslate-0.99/src/translate-service.h libtranslate-0.99-new/src/translate-service.h
+--- libtranslate-0.99/src/translate-service.h	2005-01-17 17:45:29.000000000 +0100
++++ libtranslate-0.99-new/src/translate-service.h	2005-07-27 16:54:46.000000000 +0200
+@@ -73,6 +73,14 @@
+ 					 TranslateProgressFunc	  progress_func,
+ 					 gpointer		  user_data,
+ 					 GError			**err);
++  char		*(*timed_translate_text)(TranslateService	 *service,
++					 const char		 *text,
++					 const char		 *from,
++					 const char		 *to,
++					 GTimeVal		 *deadline,
++					 TranslateProgressFunc	  progress_func,
++					 gpointer		  user_data,
++					 GError			**err);
+   char		*(*translate_web_page)	(TranslateService	 *service,
+ 					 const char		 *url,
+ 					 const char		 *from,
+diff -dPNur libtranslate-0.99/src/translate-service-private.h libtranslate-0.99-new/src/translate-service-private.h
+--- libtranslate-0.99/src/translate-service-private.h	2005-01-17 17:45:17.000000000 +0100
++++ libtranslate-0.99-new/src/translate-service-private.h	2005-07-27 17:30:00.000000000 +0200
+@@ -41,6 +41,14 @@
+ 					TranslateProgressFunc progress_func,
+ 					gpointer user_data,
+ 					GError **err);
++char *translate_service_timed_translate_text (TranslateService *service,
++					const char *text,
++					const char *from,
++					const char *to,
++					GTimeVal *deadline,
++					TranslateProgressFunc progress_func,
++					gpointer user_data,
++					GError **err);
+ char *translate_service_translate_web_page (TranslateService *service,
+ 					    const char *url,
+ 					    const char *from,
+diff -dPNur libtranslate-0.99/src/translate-session.c libtranslate-0.99-new/src/translate-session.c
+--- libtranslate-0.99/src/translate-session.c	2005-01-17 17:45:35.000000000 +0100
++++ libtranslate-0.99-new/src/translate-session.c	2005-07-27 16:52:46.000000000 +0200
+@@ -62,6 +62,8 @@
+ {
+   GMutex			*mutex;
+   GCond				*progress_cond;
++  
++  GTimeVal			*deadline;
+ 
+   TranslateSession		*session;
+   GSList			*services;
+@@ -487,6 +489,7 @@
+  * @text: a nul-terminated string.
+  * @from: a RFC 3066 language tag.
+  * @to: a RFC 3066 language tag.
++ * @timeout: timeout in microseconds.
+  * @progress_func: a function to call when progressing, or %NULL.
+  * @user_data: data to pass to @progress_func, or %NULL.
+  * @err: a location to report errors, or %NULL. Any of the errors in
+@@ -505,10 +508,11 @@
+  * when no longer needed.
+  **/
+ char *
+-translate_session_translate_text (TranslateSession *session,
++translate_session_timed_translate_text (TranslateSession *session,
+ 				  const char *text,
+ 				  const char *from,
+ 				  const char *to,
++				  gulong timeout,
+ 				  TranslateProgressFunc progress_func,
+ 				  gpointer user_data,
+ 				  GError **err)
+@@ -519,6 +523,7 @@
+   unsigned int max_threads;
+   GThreadPool *pool;
+   GSList *l;
++  GTimeVal deadline;
+   unsigned int max_chunk_len = 0;
+   char *translated = NULL;
+   
+@@ -527,6 +532,11 @@
+   g_return_val_if_fail(from != NULL, NULL);
+   g_return_val_if_fail(to != NULL, NULL);
+ 
++  if (timeout) {
++    g_get_current_time(&deadline);
++    g_time_val_add(&deadline, timeout);
++  }
++
+   LOCK(session);
+   info.services = translate_session_get_services_for_translation(session,
+ 								 TRANSLATE_PAIR_TEXT,
+@@ -560,7 +570,8 @@
+   chunks = translate_session_split(text, max_chunk_len);
+ 
+   info.mutex = g_mutex_new();
+-  info.progress_cond = progress_func ? g_cond_new() : NULL;
++  info.progress_cond = (progress_func||timeout) ? g_cond_new() : NULL;
++  info.deadline = timeout ? &deadline : NULL;
+   info.session = session;
+   info.chunks = NULL;
+   info.from = from;
+@@ -614,6 +625,11 @@
+ 	  GSList *l;
+ 	  int n_chunks;
+ 
++	  if (timeout) {
++	    if (!g_cond_timed_wait(info.progress_cond, info.mutex, info.deadline))
++		info.err = g_error_new(TRANSLATE_ERROR,TRANSLATE_ERROR_CANCELLED,_("timeout"));
++		break;
++	  } else
+ 	  g_cond_wait(info.progress_cond, info.mutex);
+ 
+ 	  if (info.err)
+@@ -680,6 +696,18 @@
+   return translated;
+ }
+ 
++char *
++translate_session_translate_text (TranslateSession *session,
++				  const char *text,
++				  const char *from,
++				  const char *to,
++				  TranslateProgressFunc progress_func,
++				  gpointer user_data,
++				  GError **err)
++{
++    return translate_session_timed_translate_text(session, text, from, to, 0, progress_func, user_data, err);
++}
++
+ static void
+ translate_session_translate_thread (gpointer data, gpointer user_data)
+ {
+@@ -709,10 +737,11 @@
+ 	  if (ret)
+ 	    return;
+ 	      
+-	  chunk_info->translated = translate_service_translate_text(service,
++	  chunk_info->translated = translate_service_timed_translate_text(service,
+ 								    chunk_info->chunk,
+ 								    info->from,
+ 								    info->to,
++								    info->deadline,
+ 								    info->progress_cond ? translate_session_translate_progress_cb : NULL,
+ 								    info->progress_cond ? chunk_info : NULL,
+ 								    &tmp_err);
+diff -dPNur libtranslate-0.99/src/translate-session.h libtranslate-0.99-new/src/translate-session.h
+--- libtranslate-0.99/src/translate-session.h	2005-01-17 17:45:40.000000000 +0100
++++ libtranslate-0.99-new/src/translate-session.h	2005-07-27 14:41:05.000000000 +0200
+@@ -93,6 +93,14 @@
+ unsigned int	  translate_session_get_max_threads	(TranslateSession	 *session);
+ int		  translate_session_get_max_retries	(TranslateSession	 *session);
+ 
++char		*translate_session_timed_translate_text (TranslateSession *session,
++							const char *text,
++							const char *from,
++							const char *to,
++							gulong timeout,
++							TranslateProgressFunc progress_func,
++							gpointer user_data,
++							GError **err);
+ char		 *translate_session_translate_text	(TranslateSession	 *session,
+ 							 const char		 *text,
+ 							 const char		 *from,

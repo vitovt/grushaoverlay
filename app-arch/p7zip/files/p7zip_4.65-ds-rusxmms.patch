@@ -1,0 +1,305 @@
+diff -dPNur p7zip_4.65/C/rccrecode.c p7zip_4.65-new/C/rccrecode.c
+--- p7zip_4.65/C/rccrecode.c	1970-01-01 01:00:00.000000000 +0100
++++ p7zip_4.65-new/C/rccrecode.c	2009-06-14 02:44:19.000000000 +0200
+@@ -0,0 +1,71 @@
++#include <pthread.h>
++#include <librcc.h>
++
++static rcc_class_default_charset default_oem[] = {
++    { "ru", "IBM866" },
++    { NULL, NULL }
++};
++
++static rcc_class_default_charset default_iso[] = {
++    { "ru", "CP1251" },
++    { NULL, NULL }
++};
++
++#define ARC_CLASS 0
++#define OUT_CLASS 1
++#define ARCOUT_CLASS 0
++static rcc_class classes[] = {
++    { "oem", RCC_CLASS_STANDARD, NULL, default_oem, "OEM Encoding", 0 },
++    { "out", RCC_CLASS_STANDARD, "LC_CTYPE", NULL, "Output", 0 },
++    { NULL, RCC_CLASS_STANDARD, NULL, NULL, NULL, 0 }
++};
++
++static int initialized = 0;
++static pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
++
++void *rcc_init() {
++    rcc_context ctx;
++    
++    pthread_mutex_lock(&mutex);
++    if (!initialized) {
++	rccInit();
++	rccInitDefaultContext(NULL, 0, 0, classes, 0);
++	rccLoad(NULL, "zip");
++	rccInitDb4(NULL, NULL, 0);
++    }
++    initialized++;
++    pthread_mutex_unlock(&mutex);
++    
++    ctx = rccCreateContext(NULL, 0, 0, classes, 0);
++    if (ctx) rccInitDb4(ctx, NULL, 0);
++    if (ctx) rccLoad(ctx, "zip");
++
++    return ctx;
++}
++
++
++void rcc_free(void *ctx) {
++    if (ctx) rccFreeContext((rcc_context)ctx);
++    
++    pthread_mutex_lock(&mutex);
++    if (initialized == 1) rccFree();
++    initialized--;
++    pthread_mutex_unlock(&mutex);
++}
++
++
++char *rcc_read(void *ctx, const char *string, size_t size) {
++    if (!initialized) {
++	rcc_init();
++	if (!initialized) return NULL;
++    }
++    return rccSizedRecode((rcc_context)ctx, ARC_CLASS, OUT_CLASS, string, size, NULL);
++}
++
++char *rcc_write(rcc_context ctx, const char *string, size_t size) {
++    if (!initialized) {
++	rcc_init();
++	if (!initialized) return NULL;
++    }
++    return rccSizedRecode((rcc_context)ctx, OUT_CLASS, ARCOUT_CLASS, string, size, NULL);
++}
+diff -dPNur p7zip_4.65/C/rccrecode.h p7zip_4.65-new/C/rccrecode.h
+--- p7zip_4.65/C/rccrecode.h	1970-01-01 01:00:00.000000000 +0100
++++ p7zip_4.65-new/C/rccrecode.h	2009-06-14 02:44:19.000000000 +0200
+@@ -0,0 +1,17 @@
++#ifndef _RCC_RECODE_H
++#define _RCC_RECODE_H
++
++# ifdef __cplusplus 
++extern "C" { 
++# endif
++
++    void *rcc_init();
++    void rcc_free(void *ctx);
++    char *rcc_read(void *ctx, const char *string, size_t size);
++    char *rcc_write(void *ctx, const char *string, size_t size);
++
++# ifdef __cplusplus 
++}
++# endif
++
++#endif /* _RCC_RECODE_H */
+diff -dPNur p7zip_4.65/CPP/7zip/Archive/Zip/ZipIn.cpp p7zip_4.65-new/CPP/7zip/Archive/Zip/ZipIn.cpp
+--- p7zip_4.65/CPP/7zip/Archive/Zip/ZipIn.cpp	2008-11-28 23:03:44.000000000 +0100
++++ p7zip_4.65-new/CPP/7zip/Archive/Zip/ZipIn.cpp	2009-06-14 02:47:28.000000000 +0200
+@@ -9,6 +9,8 @@
+ #include "../../Common/LimitedStreams.h"
+ #include "../../Common/StreamUtils.h"
+ 
++#include "../../../../C/rccrecode.h"
++
+ extern "C"
+ {
+   #include "../../../../C/CpuArch.h"
+@@ -23,6 +25,14 @@
+  
+ // static const char kEndOfString = '\0';
+ 
++CInArchive::CInArchive() {
++    rccctx = rcc_init();
++}
++
++CInArchive::~CInArchive() {
++    rcc_free(rccctx);
++}
++
+ HRESULT CInArchive::Open(IInStream *stream, const UInt64 *searchHeaderSizeLimit)
+ {
+   Close();
+@@ -198,12 +208,21 @@
+ 
+ AString CInArchive::ReadFileName(UInt32 nameSize)
+ {
++  char *rccrec;
++
+   if (nameSize == 0)
+     return AString();
+   char *p = m_NameBuffer.GetBuffer(nameSize);
+   SafeReadBytes(p, nameSize);
+   p[nameSize] = 0;
+   m_NameBuffer.ReleaseBuffer();
++
++  rccrec = rcc_read(rccctx, (LPCSTR)m_NameBuffer, 0);
++  if (rccrec) {
++	m_NameBuffer = rccrec;
++	free(rccrec);
++  }
++
+   return m_NameBuffer;
+ }
+ 
+diff -dPNur p7zip_4.65/CPP/7zip/Archive/Zip/ZipIn.h p7zip_4.65-new/CPP/7zip/Archive/Zip/ZipIn.h
+--- p7zip_4.65/CPP/7zip/Archive/Zip/ZipIn.h	2008-08-14 11:11:13.000000000 +0200
++++ p7zip_4.65-new/CPP/7zip/Archive/Zip/ZipIn.h	2009-06-14 02:48:32.000000000 +0200
+@@ -108,6 +108,10 @@
+   ISequentialInStream *CreateLimitedStream(UInt64 position, UInt64 size);
+   IInStream* CreateStream();
+ 
++  void *rccctx;
++  CInArchive();
++  ~CInArchive();
++
+   bool IsOpen() const { return m_Stream != NULL; }
+ };
+   
+diff -dPNur p7zip_4.65/CPP/7zip/Archive/Zip/ZipOut.cpp p7zip_4.65-new/CPP/7zip/Archive/Zip/ZipOut.cpp
+--- p7zip_4.65/CPP/7zip/Archive/Zip/ZipOut.cpp	2008-08-14 11:11:26.000000000 +0200
++++ p7zip_4.65-new/CPP/7zip/Archive/Zip/ZipOut.cpp	2009-06-14 02:44:19.000000000 +0200
+@@ -7,9 +7,19 @@
+ #include "../../Common/OffsetStream.h"
+ #include "../../Common/StreamUtils.h"
+ 
++#include "../../../../C/rccrecode.h"
++
+ namespace NArchive {
+ namespace NZip {
+ 
++COutArchive::COutArchive() {
++    rccctx = rcc_init();
++}
++
++COutArchive::~COutArchive() {
++    rcc_free(rccctx);
++}
++
+ void COutArchive::Create(IOutStream *outStream)
+ {
+   if (!m_OutBuffer.Create(1 << 16))
+@@ -112,6 +122,7 @@
+ {
+   SeekTo(m_BasePosition);
+   
++  char *rccrec;
+   bool isZip64 = m_IsZip64 || item.PackSize >= 0xFFFFFFFF || item.UnPackSize >= 0xFFFFFFFF;
+   
+   WriteUInt32(NSignature::kLocalFileHeader);
+@@ -130,6 +141,12 @@
+       throw CSystemException(E_FAIL);
+   }
+   WriteUInt16((UInt16)m_ExtraSize); // test it;
++  rccrec = rcc_write(rccctx, (const char *)item.Name, item.Name.Length());
++  if (rccrec) {
++    printf("%u, %s.\n", item.Name.Length(), rccrec);
++    WriteBytes(rccrec, strlen(rccrec));
++    free(rccrec);
++  } else
+   WriteBytes((const char *)item.Name, item.Name.Length());
+ 
+   UInt32 extraPos = 0;
+@@ -154,6 +171,7 @@
+ 
+ void COutArchive::WriteCentralHeader(const CItem &item)
+ {
++  char *rccrec;
+   bool isUnPack64 = item.UnPackSize >= 0xFFFFFFFF;
+   bool isPack64 = item.PackSize >= 0xFFFFFFFF;
+   bool isPosition64 = item.LocalHeaderPosition >= 0xFFFFFFFF;
+@@ -181,6 +199,13 @@
+   WriteUInt16(item.InternalAttributes);
+   WriteUInt32(item.ExternalAttributes);
+   WriteUInt32(isPosition64 ? 0xFFFFFFFF: (UInt32)item.LocalHeaderPosition);
++
++  rccrec = rcc_write(rccctx, (const char *)item.Name, item.Name.Length());
++  if (rccrec) {
++    printf("C: %u, %s.\n", item.Name.Length(), rccrec);
++    WriteBytes(rccrec, strlen(rccrec));
++    free(rccrec);
++  } else
+   WriteBytes((const char *)item.Name, item.Name.Length());
+   if (isZip64)
+   {
+diff -dPNur p7zip_4.65/CPP/7zip/Archive/Zip/ZipOut.h p7zip_4.65-new/CPP/7zip/Archive/Zip/ZipOut.h
+--- p7zip_4.65/CPP/7zip/Archive/Zip/ZipOut.h	2008-08-14 11:11:13.000000000 +0200
++++ p7zip_4.65-new/CPP/7zip/Archive/Zip/ZipOut.h	2009-06-14 02:44:19.000000000 +0200
+@@ -49,6 +49,11 @@
+   void CreateStreamForCompressing(IOutStream **outStream);
+   void CreateStreamForCopying(ISequentialOutStream **outStream);
+   void SeekToPackedDataPosition();
++
++  void *rccctx;
++  COutArchive();
++  ~COutArchive();
++
+ };
+ 
+ }}
+diff -dPNur p7zip_4.65/CPP/7zip/Bundles/Alone/makefile p7zip_4.65-new/CPP/7zip/Bundles/Alone/makefile
+--- p7zip_4.65/CPP/7zip/Bundles/Alone/makefile	2009-02-07 19:39:04.000000000 +0100
++++ p7zip_4.65-new/CPP/7zip/Bundles/Alone/makefile	2009-06-14 02:44:19.000000000 +0200
+@@ -250,6 +250,7 @@
+   Sha256.o
+ 
+ OBJS=\
++rccrecode.o \
+ myGetTickCount.o \
+ wine_date_and_time.o \
+ myAddExeFlag.o \
+diff -dPNur p7zip_4.65/CPP/7zip/Bundles/Alone/makefile.list p7zip_4.65-new/CPP/7zip/Bundles/Alone/makefile.list
+--- p7zip_4.65/CPP/7zip/Bundles/Alone/makefile.list	2009-02-09 21:04:57.000000000 +0100
++++ p7zip_4.65-new/CPP/7zip/Bundles/Alone/makefile.list	2009-06-14 02:51:45.000000000 +0200
+@@ -204,6 +204,7 @@
+  ../../Crypto/ZipStrong.cpp
+ 
+ SRCS_C=\
++ ../../../../C/rccrecode.c \
+  ../../../../C/Bra.c \
+  ../../../../C/Bra86.c \
+  ../../../../C/BraIA64.c \
+diff -dPNur p7zip_4.65/CPP/7zip/Bundles/Format7zFree/makefile p7zip_4.65-new/CPP/7zip/Bundles/Format7zFree/makefile
+--- p7zip_4.65/CPP/7zip/Bundles/Format7zFree/makefile	2009-02-09 21:47:24.000000000 +0100
++++ p7zip_4.65-new/CPP/7zip/Bundles/Format7zFree/makefile	2009-06-14 03:00:06.000000000 +0200
+@@ -296,6 +296,7 @@
+   Sha256.o \
+ 
+ OBJS = \
++  rccrecode.o \
+   wine_date_and_time.o \
+   myGetTickCount.o \
+   $(COMMON_OBJS) \
+diff -dPNur p7zip_4.65/CPP/7zip/Bundles/Format7zFree/makefile.list p7zip_4.65-new/CPP/7zip/Bundles/Format7zFree/makefile.list
+--- p7zip_4.65/CPP/7zip/Bundles/Format7zFree/makefile.list	2009-02-09 21:04:32.000000000 +0100
++++ p7zip_4.65-new/CPP/7zip/Bundles/Format7zFree/makefile.list	2009-06-14 03:00:39.000000000 +0200
+@@ -235,6 +235,7 @@
+  ../../Crypto/ZipStrong.cpp
+ 
+ SRCS_C=\
++ ../../../../C/rccrecode.c \
+  ../../../../C/Bra.c \
+  ../../../../C/Bra86.c \
+  ../../../../C/BraIA64.c \
+diff -dPNur p7zip_4.65/makefile.machine p7zip_4.65-new/makefile.machine
+--- p7zip_4.65/makefile.machine	2009-02-14 18:19:09.000000000 +0100
++++ p7zip_4.65-new/makefile.machine	2009-06-14 02:44:19.000000000 +0200
+@@ -14,7 +14,7 @@
+ CC_SHARED=-fPIC
+ LINK_SHARED=-fPIC -shared
+ 
+-LOCAL_LIBS=-lpthread
++LOCAL_LIBS=-lpthread -lrcc
+ LOCAL_LIBS_DLL=$(LOCAL_LIBS) -ldl
+ 
+ OBJ_CRC32=$(OBJ_CRC32_C)
+diff -dPNur p7zip_4.65/makefile.rules p7zip_4.65-new/makefile.rules
+--- p7zip_4.65/makefile.rules	2009-02-09 21:03:16.000000000 +0100
++++ p7zip_4.65-new/makefile.rules	2009-06-14 02:52:48.000000000 +0200
+@@ -558,3 +558,5 @@
+ 7zCrcT8.o : ../../../../C/7zCrcT8.c
+ 	$(CC) $(CFLAGS) ../../../../C/7zCrcT8.c
+ 
++rccrecode.o : ../../../../C/rccrecode.c
++	$(CC) $(CFLAGS) ../../../../C/rccrecode.c
