@@ -1,0 +1,13 @@
+diff -dPNur w3af/plugins/grep/passwordProfilingPlugins/pdf.py w3af-ds/plugins/grep/passwordProfilingPlugins/pdf.py
+--- w3af/plugins/grep/passwordProfilingPlugins/pdf.py	2009-03-02 21:43:03.000000000 +0100
++++ w3af-ds/plugins/grep/passwordProfilingPlugins/pdf.py	2010-02-12 08:22:34.000000000 +0100
+@@ -21,7 +21,8 @@
+ '''
+ 
+ from plugins.grep.passwordProfilingPlugins.basePpPlugin import basePpPlugin
+-import extlib.pyPdf.pyPdf as pyPdf
++#import extlib.pyPdf.pyPdf as pyPdf
++import pyPdf
+ import StringIO
+ from core.data.getResponseType import isPDF
+ 
