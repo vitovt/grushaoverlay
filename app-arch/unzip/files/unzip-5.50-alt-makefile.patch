@@ -1,0 +1,20 @@
+--- unzip-5.50/unix/Makefile.orig	2002-02-16 20:00:38 +0300
++++ unzip-5.50/unix/Makefile	2002-09-30 02:03:32 +0400
+@@ -764,7 +764,7 @@
+ linux:		unix_make
+ 	@echo 'NOTE:  use linux_noasm target for non-Intel Linux compiles.'
+ 	$(MAKE) unzips CC=gcc LD=gcc AS=gcc\
+-	 CF="-O3 -Wall -I. -DASM_CRC $(LOC)"\
++	 CF="$(RPM_OPT_FLAGS) -D_GNU_SOURCE -DUSE_UNSHRINK -I. -DASM_CRC $(LOC)"\
+ 	 AF="-Di386 $(AF)" CRC32=crc_gcc
+ # GRR:  this echo is pointless; if user gets this far, no difference to install
+ #	@echo 'Be sure to use the install_asm target rather than the install target'
+@@ -774,7 +774,7 @@
+ # Linux (Posix, approximately SysV):  virtually any version since before 0.96,
+ # for any platform.  Change "-O" to "-O3" or whatever, as desired...
+ linux_noasm:	unix_make
+-	$(MAKE) unzips CC=gcc LD=gcc CF="-O -Wall -I. $(LOC)"
++	$(MAKE) unzips CC=gcc LD=gcc CF="$(RPM_OPT_FLAGS) -D_GNU_SOURCE -DUSE_UNSHRINK -I. $(LOC)"
+ 
+ # Linux with lcc compiler:  __inline__ (stat.h) not recognized, and must edit
+ # /usr/include/gnu/types.h to get rid of "long long" if __LCC__ defined.  -O3

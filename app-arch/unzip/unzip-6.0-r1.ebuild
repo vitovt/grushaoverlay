@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/unzip/unzip-6.0-r1.ebuild,v 1.10 2010/01/10 00:28:54 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-arch/unzip/unzip-6.0-r1.ebuild,v 1.11 2010/03/23 04:01:42 vapier Exp $
 
 inherit eutils toolchain-funcs flag-o-matic
 
@@ -13,51 +13,39 @@ SRC_URI="mirror://sourceforge/infozip/${MY_P}.tar.gz"
 LICENSE="Info-ZIP"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm hppa ~ia64 m68k ~ppc ppc64 s390 sh ~sparc x86"
-#SDS
-IUSE="bzip2 unicode rcc"
-#To overcome circular dependencies
-PDEPEND="rcc? ( app-i18n/librcc )"
-#EDS
+IUSE="bzip2 unicode"
 
-DEPEND="bzip2? ( app-arch/bzip2 )"
+DEPEND="bzip2? ( app-arch/bzip2 )
+		dev-libs/libnatspec"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 
-
 src_unpack() {
 	unpack ${A}
+
 	cd "${S}"
+    #enable Altlinux natspec patch
+	epatch "${FILESDIR}"/unzip-6.0-alt-natspec.patch
+	ewarn "Enabling AltLinux natspec patch"
+
 	epatch "${FILESDIR}"/${P}-no-exec-stack.patch
-
-
-#SDS
-	use rcc && ( 
-	    epatch ${FILESDIR}/${PN}-5.52-ds-rusxmms2.patch || die 
-	    epatch ${FILESDIR}/${PN}-ds-unixenc.patch || die 
-	    if [ ! -a /usr/include/librcc.h ]; then
-		cp "${FILESDIR}"/librcc-0.2.7.h librcc.h || die
-	    fi
-	)
-
-	ld_opts=""
-	use rcc && ld_opts="-ldl"
-#EDS
-
 	sed -i \
 		-e '/^CFLAGS/d' \
 		-e '/CFLAGS/s:-O[0-9]\?:$(CFLAGS) $(CPPFLAGS):' \
 		-e '/^STRIP/s:=.*:=true:' \
-		-e "s:CC=gcc :CC=$(tc-getCC) :" \
-		-e "s:LD=gcc :LD=$(tc-getCC) :" \
-		-e "s:AS=gcc :AS=$(tc-getCC) :" \
-		-e "s:LF2 = -s:LF2 = ${ld_opts} :" \
+		-e "s:\<CC=gcc\>:CC=$(tc-getCC):" \
+		-e "s:\<LD=gcc\>:LD=$(tc-getCC):" \
+		-e "s:\<AS=gcc\>:AS=$(tc-getCC):" \
+		-e 's:LF2 = -s:LF2 = :' \
 		-e 's:LF = :LF = $(LDFLAGS) :' \
 		-e 's:SL = :SL = $(LDFLAGS) :' \
 		-e 's:FL = :FL = $(LDFLAGS) :' \
 		-e "/^#L_BZ2/s:^$(use bzip2 && echo .)::" \
 		unix/Makefile \
 		|| die "sed unix/Makefile failed"
+
+
 }
 
 src_compile() {
@@ -75,10 +63,7 @@ src_compile() {
 	[[ ${CHOST} == *linux* ]] && append-cppflags -DNO_LCHMOD
 	use bzip2 && append-cppflags -DUSE_BZIP2
 	use unicode && append-cppflags -DUNICODE_SUPPORT -DUNICODE_WCHAR -DUTF8_MAYBE_NATIVE
-	append-cppflags -DLARGE_FILE_SUPPORT #281473
-#SDS
-	use rcc && append-cppflags -DRCC_LAZY=1
-#EDS
+	append-cppflags -DLARGE_FILE_SUPPORT -DNO_WORKING_ISPRINT -DDATE_FORMAT=DF_YMD #281473
 
 	emake \
 		-f unix/Makefile \

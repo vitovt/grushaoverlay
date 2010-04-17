@@ -1,0 +1,45 @@
+--- unzip-5.50/unix/unix.c.vns	2002-01-22 01:54:42 +0300
++++ unzip-5.50/unix/unix.c	2003-07-02 13:32:02 +0400
+@@ -473,7 +473,9 @@
+             switch (workch) {
+             case '/':             /* can assume -j flag not given */
+                 *pp = '\0';
+-                if (((error = checkdir(__G__ pathcomp, APPEND_DIR)) & MPN_MASK)
++		if(!uO.ddotflag && strcmp(pathcomp, "..") == 0)
++			killed_ddot = TRUE;
++		else if (((error = checkdir(__G__ pathcomp, APPEND_DIR)) & MPN_MASK)
+                      > MPN_INF_TRUNC)
+                     return error;
+                 pp = pathcomp;    /* reset conversion buffer for next piece */
+@@ -485,11 +487,6 @@
+                     if (*cp == '/') {   /* don't bother appending "./" to */
+                         ++cp;           /*  the path: skip behind the '/' */
+                         break;
+-                    } else if (!uO.ddotflag && *cp == '.' && cp[1] == '/') {
+-                        /* "../" dir traversal detected */
+-                        cp += 2;        /*  skip over behind the '/' */
+-                        killed_ddot = TRUE; /*  set "show message" flag */
+-                        break;
+                     }
+                 }
+                 *pp++ = '.';
+@@ -508,7 +505,8 @@
+ #endif
+ 
+             case '\026':          /* control-V quote for special chars */
+-                quote = TRUE;     /* set flag for next character */
++		if(*cp != '/')
++                    quote = TRUE;     /* set flag for next character */
+                 break;
+ 
+ #ifdef MTS
+@@ -570,6 +568,9 @@
+             *lastsemi = '\0';
+     }
+ 
++    if(!uO.ddotflag && strcmp(pathcomp, "..") == 0)
++	    *pathcomp = '\0';
++
+ #ifdef ACORN_FTYPE_NFS
+     /* translate Acorn filetype information if asked to do so */
+     if (uO.acorn_nfs_ext &&

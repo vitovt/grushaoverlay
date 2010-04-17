@@ -1,0 +1,67 @@
+Submitted By: Oliver Brakmann <obrakmann at gmx.net>
+Date: 2006-02-26
+Initial Package Version: Unzip 5.52
+Upstream Status: Unknown
+Origin: Ubuntu patch to unzip <http://archive.ubuntu.com/ubuntu/pool/main/u/unzip/unzip_5.52-3ubuntu2.2.diff.gz>
+Description: Fixes CVE-2005-2475 and CVE-2005-4667
+
+--- unzip-5.52.orig/unix/unix.c
++++ unzip-5.52/unix/unix.c
+@@ -1042,6 +1042,16 @@
+     ush z_uidgid[2];
+     int have_uidgid_flg;
+
++/*---------------------------------------------------------------------------
++    Change the file permissions from default ones to those stored in the
++    zipfile.
++  ---------------------------------------------------------------------------*/
++        
++#ifndef NO_CHMOD
++    if (fchmod(fileno(G.outfile), 0xffff & G.pInfo->file_attr))
++        perror("chmod (file attributes) error");
++#endif
++
+     fclose(G.outfile);
+
+ /*---------------------------------------------------------------------------
+@@ -1151,16 +1161,6 @@
+ #endif /* ?AOS_VS */
+     }
+
+-/*---------------------------------------------------------------------------
+-    Change the file permissions from default ones to those stored in the
+-    zipfile.
+-  ---------------------------------------------------------------------------*/
+-
+-#ifndef NO_CHMOD
+-    if (chmod(G.filename, filtattr(__G__ G.pInfo->file_attr)))
+-        perror("chmod (file attributes) error");
+-#endif
+-
+ } /* end function close_outfile() */
+
+ #endif /* !MTS */
+--- unzip-5.52.orig/unzpriv.h
++++ unzip-5.52/unzpriv.h
+@@ -2271,17 +2274,18 @@
+  *               (char *)(sprintf sprf_arg, (buf))) == EOF)
+  */
+ #ifndef Info   /* may already have been defined for redirection */
++#  define wsizesnprintf(buf, ...) snprintf (buf, WSIZE-1, __VA_ARGS__)
+ #  ifdef FUNZIP
+ #    define Info(buf,flag,sprf_arg) \
+-     fprintf((flag)&1? stderr : stdout, (char *)(sprintf sprf_arg, (buf)))
++     fputs((char *)(wsizesnprintf sprf_arg, (buf)), (flag)&1? stderr : stdout)
+ #  else
+ #    ifdef INT_SPRINTF  /* optimized version for "int sprintf()" flavour */
+ #      define Info(buf,flag,sprf_arg) \
+-       (*G.message)((zvoid *)&G, (uch *)(buf), (ulg)sprintf sprf_arg, (flag))
++       (*G.message)((zvoid *)&G, (uch *)(buf), (ulg)wsizesnprintf sprf_arg, (flag))
+ #    else          /* generic version, does not use sprintf() return value */
+ #      define Info(buf,flag,sprf_arg) \
+        (*G.message)((zvoid *)&G, (uch *)(buf), \
+-                     (ulg)(sprintf sprf_arg, strlen((char *)(buf))), (flag))
++                     (ulg)(wsizesnprintf sprf_arg, strlen((char *)(buf))), (flag))
+ #    endif
+ #  endif
+ #endif /* !Info */
