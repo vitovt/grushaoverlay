@@ -1,3 +1,6 @@
+#Vitovt <vitov@grusha.org.ua>
+-Speakers are muted by default
+
 # Fabio Erculiani <lxnay@sabayonlinux.org>
 - Gentoo ebuild has media-sound/alsa-utils as dependency,
   which causes more harm than good on reverse dependencies

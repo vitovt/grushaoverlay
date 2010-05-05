@@ -1,0 +1,10 @@
+--- trunk/KDE/kdebase/workspace/kwin/kcmkwin/kwintabbox/previewhandlerimpl.h	2010/03/19 10:09:52	1105143
++++ trunk/KDE/kdebase/workspace/kwin/kcmkwin/kwintabbox/previewhandlerimpl.h	2010/03/19 10:15:56	1105144
+@@ -65,6 +65,7 @@
+         virtual KWin::TabBox::TabBoxClient* nextClientFocusChain(KWin::TabBox::TabBoxClient* client) const;
+         virtual KWin::TabBox::TabBoxClient* activeClient() const;
+         virtual int activeScreen() const;
++        virtual TabBoxClient* desktopClient() const;
+ 
+     private:
+         TabBoxClientList m_stackingOrder;
