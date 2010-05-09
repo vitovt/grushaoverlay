@@ -23,6 +23,7 @@ MY_D="myspell-dict"
 # Recommended using ${PN}??
 SRC_URI="http://downloads.sourceforge.net/kompozer/${MY_P}-src.tar.bz2"
 REL_URI="http://kompozer.sourceforge.net/l10n/langpacks/kompozer-0.8b3"
+#DICT_URI="http://kompozer.sourceforge.net/l10n/langpacks/kompozer-0.8b3"
 DICT_URI="http://kompozer.sourceforge.net/l10n/myspell"
 
 RESTRICT="nomirror"
