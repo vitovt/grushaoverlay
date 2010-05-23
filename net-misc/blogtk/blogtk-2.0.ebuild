@@ -7,7 +7,7 @@ inherit eutils fdo-mime python
 DESCRIPTION="GTK Blog - post entries to your blog"
 HOMEPAGE="blogtk.jayreding.com"
 SRC_URI="http://launchpad.net/blogtk/${PV}/${PV}/+download/blogtk-${PV}.tar.gz"
-S="${WORKDIR}/BloGTK-${PV}"
+S="${WORKDIR}/blogtk-${PV}"
 
 LICENSE="BSD"
 SLOT="0"
@@ -18,7 +18,11 @@ RDEPEND=">=dev-python/pygtk-2.0.0
 	>=gnome-base/gconf-2.2.0
 	>=dev-python/gnome-python-2
 	dev-python/gnome-python-extras
-	amd64? ( >=dev-python/gnome-python-2.6.1 )"
+	dev-python/pywebkitgtk
+	dev-python/feedparser
+	dev-python/gdata
+	dev-python/gtkspell-python"
+
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig
 	sys-devel/gettext"
@@ -28,14 +32,7 @@ DOCS="AUTHORS ChangeLog COPYING README INSTALL NEWS TODO"
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
-
 	epatch "${FILESDIR}/${P}-destdir.patch"
-
-	# Fix parallel make issues, bug #239777
-	epatch "${FILESDIR}/${P}-makefile.patch"
-
-	# Respect multilib
-	sed -i "s:lib/blogtk:$(get_libdir)/blogtk:g" Makefile || die "sed failed"
 }
 
 src_compile() {
@@ -43,7 +40,8 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "Unable to compile blogtk"
+	#emake DESTDIR="${D}" install || die "Unable to compile blogtk"
+        emake DESTDIR="${D}" install || die "Unable to compile blogtk"
 }
 
 pkg_postinst() {
