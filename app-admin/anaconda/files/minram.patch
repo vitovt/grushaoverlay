@@ -1,0 +1,17 @@
+--- isys/isys.h.old	2010-05-24 00:50:30.000000000 +0300
++++ isys/isys.h	2010-05-24 00:52:12.000000000 +0300
+@@ -18,12 +18,12 @@
+  */
+ 
+ #ifndef H_ISYS
+ #define H_ISYS
+ 
+-#define MIN_RAM			131072
+-#define MIN_GUI_RAM		393216
++#define MIN_RAM			98304
++#define MIN_GUI_RAM		131072
+ #define EARLY_SWAP_RAM		524288
+ 
+ #define OUTPUT_TERMINAL "/dev/tty5"
+ 
+ int insmod(char * modName, char * path, char ** args);

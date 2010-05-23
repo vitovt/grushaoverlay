@@ -5,9 +5,8 @@
 inherit eutils fdo-mime python
 
 DESCRIPTION="GTK Blog - post entries to your blog"
-HOMEPAGE="http://blogtk.sourceforge.net"
-SRC_URI="mirror://sourceforge/${PN}/BloGTK-${PV}.tar.bz2"
-RESTRICT="mirror"
+HOMEPAGE="blogtk.jayreding.com"
+SRC_URI="http://launchpad.net/blogtk/${PV}/${PV}/+download/blogtk-${PV}.tar.gz"
 S="${WORKDIR}/BloGTK-${PV}"
 
 LICENSE="BSD"
