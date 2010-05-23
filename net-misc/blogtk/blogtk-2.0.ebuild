@@ -21,7 +21,8 @@ RDEPEND=">=dev-python/pygtk-2.0.0
 	dev-python/pywebkitgtk
 	dev-python/feedparser
 	dev-python/gdata
-	dev-python/gtkspell-python"
+	dev-python/gtkspell-python
+	dev-python/pygtksourceview"
 
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig
