@@ -32,3 +32,4 @@ RAMZSWAP_OPTS_0="--disksize_kb=128000"
 #RAMZSWAP_OPTS_0="--backing_swap=/path/to/swap.file --memlimit_kb=10240 --disksize_kb=10240"
 #RAMZSWAP_OPTS_1="--disksize_kb=20480"
 
+#RAMZSWAP_OPTS_0="--disksize_kb=`let MEM=$(grep -i memtotal  /proc/meminfo | awk '{ print $2 }')/2; echo $MEM`"
