@@ -1,0 +1,6 @@
+
+  * compcache-0.6.2-r1.ebuild
+  Removed driver compilation because it is included into kernel
+
+  * compcache-0.6.2.ebuild
+  Utils and modules
