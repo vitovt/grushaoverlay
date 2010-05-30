@@ -41,8 +41,12 @@ src_prepare() {
 src_configure() {
 	econf $(use_enable ipv6) $(use_enable selinux) \
 		$(use_enable nfs) || die "configure failed"
+	ewarn "Applying Grusha patches"
 	epatch "${FILESDIR}"/minram.patch
 	epatch "${FILESDIR}"/grusha-install-stat.patch
+	cp "${FILESDIR}"/anaconda_header.png  ${S}/pixmaps/
+	cp "${FILESDIR}"/splash.png  ${S}/pixmaps/
+	cp "${FILESDIR}"/splash-small.png  ${S}/pixmaps/
 }
 
 src_install() {
