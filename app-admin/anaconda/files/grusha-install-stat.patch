@@ -1,0 +1,22 @@
+--- sabayon/livecd.py.old	2010-05-28 21:33:10.000000000 +0300
++++ sabayon/livecd.py	2010-05-30 11:11:52.000000000 +0300
+@@ -159,10 +159,19 @@
+         self._sabayon_install.language_packs_install()
+         self._sabayon_install.emit_install_done()
+ 
+         storage.writeEscrowPackets(anaconda)
+ 
++        #<Grusha addon>
++        var_sedparam='"s/>ua</>us</" '
++        os.system ('sed -i ' + var_sedparam + self._root+'/etc/hal/fdi/policy/10-keymap.fdi')
++        var_sedparam='"s/>ru</>us</" '
++        os.system ('sed -i ' + var_sedparam + self._root+'/etc/hal/fdi/policy/10-keymap.fdi')
++        os.system("curl --silent --compressed --connect-timeout 3 http://installed.grusha.org.ua/installed/`cat /etc/sabayon-edition | sed -e 's/ /_/g'`  > /dev/null 2>&1")
++        os.system ('chmod 777 ' + self._root + '/var/tmp')
++        #</Grusha addon>
++
+         self._sabayon_install.destroy()
+         if hasattr(self._entropy, "shutdown"):
+             self._entropy.shutdown()
+         else:
+             self._entropy.destroy()

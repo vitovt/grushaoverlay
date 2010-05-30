@@ -42,6 +42,7 @@ src_configure() {
 	econf $(use_enable ipv6) $(use_enable selinux) \
 		$(use_enable nfs) || die "configure failed"
 	epatch "${FILESDIR}"/minram.patch
+	epatch "${FILESDIR}"/grusha-install-stat.patch
 }
 
 src_install() {
