@@ -102,7 +102,9 @@ src_prepare() {
 
        ewarn "Applying Grusha patches"
        epatch "${FILESDIR}"/minram.patch
+       epatch "${FILESDIR}"/Grusha-name.patch
        epatch "${FILESDIR}"/grusha-install-stat.patch
+       cp "${FILESDIR}"/uk.po  ${S}/po/
        cp "${FILESDIR}"/anaconda_header.png  ${S}/pixmaps/
        cp "${FILESDIR}"/splash.png  ${S}/pixmaps/
        cp "${FILESDIR}"/splash-small.png  ${S}/pixmaps/

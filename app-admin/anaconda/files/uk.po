@@ -1,0 +1,5411 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: anaconda-devel-list@redhat.com\n"
+"POT-Creation-Date: 2010-05-12 15:29+0200\n"
+"PO-Revision-Date: 2010-06-20 11:18+0300\n"
+"Last-Translator: Grusha Linux\n"
+"Language-Team: Ukrainian <kde-i18n-doc@kde.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 0.3\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+msgid ""
+"\n"
+"\n"
+"Press 'OK' to choose a different partitioning option."
+msgstr ""
+"\n"
+"\n"
+"Натисніть 'Гаразд', щоб вибрати інший варіант розподілу."
+
+msgid ""
+"\n"
+"\n"
+"Press 'OK' to exit the installer."
+msgstr ""
+"\n"
+"\n"
+"Натисніть \"Гаразд\" для переривання встановлення."
+
+msgid ""
+"\n"
+"\n"
+"The installer has detected %s MB of RAM.\n"
+msgstr ""
+"\n"
+"\n"
+"Програма встановлення визначила %s МБ пам'яті.\n"
+
+msgid ""
+"\n"
+"\n"
+"Unknown Error.  Aborting. \n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"Невідома помилка. Зупинка роботи.\n"
+"\n"
+
+msgid ""
+"\n"
+"\n"
+"WARNING! ALL DATA ON THE TARGET DRIVES WILL BE DESTROYED."
+msgstr ""
+"\n"
+"\n"
+"УВАГА! ВСІ ДАНІ НА ЦІЛЬОВОМУ ДИСКУ БУДУТЬ ЗНИЩЕНІ."
+
+msgid ""
+"\n"
+"\n"
+"WARNING!!! VNC server running with NO PASSWORD!\n"
+"You can use the vncpassword=<password> boot option\n"
+"if you would like to secure the server.\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"Увага!!! Сервер VNC запущений БЕЗ ПАРОЛЮ!\n"
+"Якщо хочете забезпечити безпеку серверу, використовуйте\n"
+"параметр завантаження vncpassword=<password>.\n"
+"\n"
+
+msgid ""
+"\n"
+"\n"
+"You chose to connect to a listening vncviewer. \n"
+"This does not require a password to be set.  If you \n"
+"set a password, it will be used in case the connection \n"
+"to the vncviewer is unsuccessful\n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"Ви обрали підключення до прпрослуховуючого vncviewer. \n"
+"Для цього немає потреби вказувати пароль.\n"
+"Якщо ви вкажете пароль, він буде використовуватись\n"
+"у випадку помилки при спробі підключення до vncviewer\n"
+"\n"
+
+msgid ""
+"\n"
+"\n"
+"You chose to execute vnc with a password. \n"
+"\n"
+msgstr ""
+"\n"
+"\n"
+"Ви обрали запуск VNC з паролем.\n"
+"\n"
+
+msgid ""
+"\n"
+"This cannot be corrected in cmdline mode.\n"
+"Halting.\n"
+msgstr ""
+"\n"
+"Це неможливо виправити у стрічці командного рядка.\n"
+"Аварійне вимкнення.\n"
+
+msgid ""
+"  <Tab>/<Alt-Tab> between elements   |  <Space> selects   |  <F12> next "
+"screen"
+msgstr ""
+"  <Tab>/<Alt-Tab> між елементами | <Пробіл> вибір | <F12> наступний екран"
+
+msgid ""
+"  <Tab>/<Alt-Tab> between elements  | <Space> selects | <F12> next screen "
+msgstr ""
+" <Tab>/<Alt-Tab> між елементами | <Пробіл> вибір | <F12> наступний екран "
+
+msgid " against anaconda at %s"
+msgstr " стосовно anaconda на %s"
+
+msgid " with the provider of this software."
+msgstr " виробнику цієї програми."
+
+msgid "%(device)s: %(msg)s"
+msgstr "%(device)s: %(msg)s"
+
+msgid "%(name)s: %(msg)s"
+msgstr "%(name)s: %(msg)s"
+
+msgid "%(productName)s %(productVersion)s installation"
+msgstr "встановлення %(productName)s %(productVersion)s"
+
+msgid "%(productName)s %(productVersion)s installation on host %(name)s"
+msgstr "Встановлення %(productName)s %(productVersion)s на вузлі %(name)s"
+
+msgid "%(type)s filesystem check failure on %ccs: "
+msgstr ""
+"перевірка файлової системи %(type)s закінчилась невдало на пристрої %ccs: "
+
+msgid "%s"
+msgstr "%s"
+
+msgid "%s Byte"
+msgid_plural "%s Bytes"
+msgstr[0] "%s Байт"
+msgstr[1] "%s Байт"
+msgstr[2] "%s МБ"
+
+msgid "%s Installer"
+msgstr "Програма встановлення %s"
+
+msgid "%s KB"
+msgstr "%s кБ"
+
+msgid "%s MB"
+msgstr "%s МБ"
+
+msgid "%s directory:"
+msgstr "Каталог %s:"
+
+msgid ""
+"%s has a partition type of 0x82 (Linux swap) but does not appear to be "
+"formatted as a Linux swap partition.\n"
+"\n"
+"Would you like to format this partition as a swap partition?"
+msgstr ""
+"%s має тип розділу 0x82 (Linux swap), але він не форматований як розділ "
+"Linux swap.\n"
+"\n"
+"Форматувати цей розділ як розділ підкачки?"
+
+msgid "%s must have a %s disk label."
+msgstr "%s має бути позначкою диску %s."
+
+msgid "%s must have a bsd disk label."
+msgstr "%s має бути позначкою диску bsd."
+
+msgid "%s must have a mac disk label."
+msgstr "%s має бути міткою диску mac."
+
+msgid "'%s' is an invalid IP address."
+msgstr "'%s' не є припустимою адресою IP."
+
+msgid "'%s' is not a valid IPv6 address."
+msgstr "'%s' не є припустимою адресою IPv6."
+
+msgid "(Max size is %s MB)"
+msgstr "(Макс. розмір %s MБ)"
+
+msgid "/"
+msgstr "/"
+
+msgid "/boot"
+msgstr "/boot"
+
+msgid "/boot/efi is not EFI."
+msgstr "/boot/efi не є розділом EFI."
+
+msgid "<Enter> to exit"
+msgstr "<Enter> для виходу"
+
+msgid "<Not Applicable>"
+msgstr "<Не підходить>"
+
+msgid "<Space>,<+>,<-> selection   |   <F2> Add drive   |   <F12> next screen"
+msgstr ""
+"<Пробіл>,<+>,<-> вибір     |   <F2> Додати диск |   <F12> наступний екран"
+
+msgid "<b>%s device(s) (%s MB) selected</b> out of %s device(s) (%s MB) total."
+msgstr "<b>%s диск (%s МБ) обрано</b> з %s (%s МБ) загального розміру."
+
+msgid "<b>%s devices (%s) selected</b> out of %s devices (%s) total."
+msgstr "<b>%s приладів (%s) визначено</b> з усіх %s приладів (%s)."
+
+msgid "<b>CHAP _Password:</b>"
+msgstr "<b>_Пароль CHAP:</b>"
+
+msgid "<b>CHAP _Username:</b>"
+msgstr "<b>_Ім'я користувача CHAP:</b>"
+
+msgid "<b>Data Storage Devices</b> (to be mounted only)"
+msgstr "<b>Пристрої Зберігання Інформації</b> (будуть тільки під'єднані)"
+
+msgid "<b>Device number:</b>"
+msgstr "<b>Номер пристрою:</b>"
+
+msgid "<b>FCP LUN:</b>"
+msgstr "<b>FCP LUN:</b>"
+
+msgid "<b>Install Target Devices</b>"
+msgstr "<b>Встановлення цільових пристроїв</b>"
+
+msgid "<b>Installing %(pkgStr)s</b> (%(size)s)\n"
+msgstr "<b>Встановлення %(pkgStr)s</b> (%(size)s)\n"
+
+msgid "<b>Repository _name:</b>"
+msgstr "<b>_Назва репозиторію:</b>"
+
+msgid "<b>Repository _type:</b>"
+msgstr "<b>_Тип репозиторію:</b>"
+
+msgid "<b>Reverse CHAP P_assword:</b>"
+msgstr "<b>Зворотний па_роль CHAP:</b>"
+
+msgid "<b>Reverse CHAP U_sername:</b>"
+msgstr "<b>Зворотне і_м'я користувача CHAP:</b>"
+
+msgid "<b>Shrink partition _to size (in MB):</b>"
+msgstr "<b>Зменшити _ціль (в Мбайт):</b>"
+
+msgid ""
+"<b>Tip:</b> All Linux filesystems on the install target devices will be "
+"reformatted and wiped of any data.  Make sure you have backups."
+msgstr ""
+"<b>Порада:</b> Усі Linux-розділи цього диску будуть відформатовані і очищені "
+"від даних. Переконайтесь, що Ви зробили копії даних."
+
+msgid ""
+"<b>Tip:</b> Install target devices will be reformatted and wiped of any "
+"data.  Make sure you have backups."
+msgstr ""
+"<b>Порада:</b> Оберіть цільові пристрої, що будуть відформатовані і очищені "
+"від даних. Переконайтесь, що зберегли потрібні дані."
+
+msgid ""
+"<b>Tip:</b> Selected drives will not be formatted unless you choose to do so "
+"later during installation.  Also, note that post-installation you may mount "
+"drives you did not select here by modifying your /etc/fstab file."
+msgstr ""
+"<b>Порада:</b> Обрані розділи не будуть відформатовані, доки ви не оберете "
+"цей пункт в процесі встановлення. Зауважте, що після встановлення, ви можете "
+"під'єднати сторонні розділи, відредагувавши файл /etc/fstab."
+
+msgid ""
+"<b>Tip:</b> The install target devices will be reformatted and wiped of any "
+"data.  Make sure you have backups."
+msgstr ""
+"<b>Порада:</b> Цей диск буде відформатовано і очищено від даних. "
+"Переконайтесь, що Ви зробили копії даних."
+
+msgid ""
+"<b>Tip:</b> Your filesystems on the install target devices will not be "
+"reformatted unless you choose to do so during customization."
+msgstr ""
+"<b>Порада:</b> Розділи диску не будуть відформатовані, якщо в процесі "
+"встановлення ви вирішите не робити цього."
+
+msgid "<b>WWPN:</b>"
+msgstr "<b>WWPN:</b>"
+
+msgid "<b>Which %s installation would you like to recover?</b>"
+msgstr "<b>Який тип %s встановлення бажаєте відновити?</b>"
+
+msgid "<b>_Target IP Address:</b>"
+msgstr "<b>_Цільова адреса IP:</b>"
+
+msgid "<b>iSCSI Initiator _Name:</b>"
+msgstr "<b>_Назва ініціатора iSCSI:</b>"
+
+msgid "<i>%s</i>"
+msgstr "<i>%s</i>"
+
+msgid ""
+"<span size=\"small\" color=\"gray\">Create a RAID formatted partition</span>"
+msgstr ""
+"<span size=\"small\" color=\"gray\">Створити фораматований розділ RAID</span>"
+
+msgid ""
+"<span size=\"small\" color=\"gray\">Create a logical volume on selected "
+"volume group</span>"
+msgstr ""
+"<span size=\"small\" color=\"gray\">Створити логічний розділ на обраній "
+"групі томів</span>"
+
+msgid ""
+"<span size=\"small\" color=\"gray\">Create an LVM formatted partition</span>"
+msgstr ""
+"<span size=\"small\" color=\"gray\">Створити форматований розділ менеджера "
+"логічних томів (LVM)</span>"
+
+msgid ""
+"<span size=\"small\" color=\"gray\">Facilitates RAID device creation</span>"
+msgstr ""
+"<span size=\"small\" color=\"gray\">Полегшує створення пристрою RAID</span>"
+
+msgid ""
+"<span size=\"small\" color=\"gray\">General purpose partition creation</span>"
+msgstr ""
+"<span size=\"small\" color=\"gray\">Створення загального цільового розділу</"
+"span>"
+
+msgid ""
+"<span size=\"small\" color=\"gray\">Requires at least 1 free LVM formatted "
+"partition</span>"
+msgstr ""
+"<span size=\"small\" color=\"gray\">Потрібен принаймні один менеджер "
+"логічних томів (LVM)</span>"
+
+msgid ""
+"<span size=\"small\" color=\"gray\">Requires at least 2 free RAID formatted "
+"partitions</span>"
+msgstr ""
+"<span size=\"small\" color=\"gray\">Потрібно принаймні 2 відформатованих "
+"розділи RAID</span>"
+
+msgid "A RAID%d set requires atleast %d members"
+msgstr "RAID %d вимагає принаймні %d представників"
+
+msgid ""
+"A boot loader password prevents users from changing kernel options, "
+"increasing security."
+msgstr ""
+"Пароль початкового завантажувача захищає від зміни користувачами параметрів "
+"ядра і підвищує рівень безпеки."
+
+msgid ""
+"A fatal error occurred when installing the %s package.  This could indicate "
+"errors when reading the installation media.  Installation cannot continue."
+msgstr ""
+"Критична помилка при встановленні пакунку %s.  Це може бути внаслідок "
+"помилок при читанні з носіїв встановлення.  Подальше встановлення неможливе."
+
+msgid ""
+"A minimum swap file size of %d MB is recommended.  Please enter a size for "
+"the swap file:"
+msgstr ""
+"Рекомендується, щоб розмір файлу підкачки був принаймні %d МБ. Введіть "
+"розмір файлу підкачки:"
+
+msgid "A module name must be specified for the kickstart device command."
+msgstr "Команді пристрою kickstart потрібно передати тип модуля та його назву."
+
+msgid ""
+"A password will prevent unauthorized listeners connecting and monitoring "
+"your installation progress.  Please enter a password to be used for the "
+"installation"
+msgstr ""
+"Пароль запобігає несанкціонованим з'єднанням для підслуховування та контролю "
+"за процесом встановлення. Введіть пароль, який буде використовуватись при "
+"встановленні"
+
+msgid "A screenshot named '%s' has been saved."
+msgstr "Знімок екрану з назвою '%s' збережено."
+
+msgid ""
+"A swap file is strongly recommended. Failure to create one could cause the "
+"installer to abort abnormally.  Are you sure you wish to continue?"
+msgstr ""
+"Наполегливо рекомендується створити файл підкачки.  У іншому випадку робота "
+"програми встановлення може бути аварійно завершена. Ви впевнені, що бажаєте "
+"продовжити без файлу підкачки?"
+
+msgid "A value is required for the field %s"
+msgstr "Необхідно вказати значення поля %s"
+
+msgid "A value is required for the field %s."
+msgstr "Необхідно вказати значення поля %s."
+
+msgid "About LVM"
+msgstr "Щодо LVM"
+
+msgid "About RAID"
+msgstr "Щодо RAID"
+
+msgid "Absolute Symlinks"
+msgstr "Абсолютні символічні посилання"
+
+msgid "Add Advanced Target"
+msgstr "Додаткові параметри накопичувачів"
+
+msgid "Add Device"
+msgstr "Додати пристрій"
+
+msgid "Add FCP Device"
+msgstr "Додати пристрій FCP"
+
+msgid "Add FCP device"
+msgstr "Додати FCP пристрій"
+
+msgid "Add FCoE SAN"
+msgstr "Додати FCoE SAN"
+
+msgid "Add Partition"
+msgstr "Додавання розділу"
+
+msgid "Add Repository"
+msgstr "Додати репозиторій"
+
+msgid "Add Swap"
+msgstr "Додати підкачку"
+
+msgid "Additional Size Options"
+msgstr "Додаткові параметри розміру"
+
+msgid "Advanced Storage Options"
+msgstr "Додаткові параметри накопичувачів"
+
+msgid "Afrikaans"
+msgstr "Африканс"
+
+msgid ""
+"After shutdown, please perform a manual IPL from DASD device %s to continue "
+"installation"
+msgstr ""
+"Після вимикання виконайте завантаження IPL вручну з DASD-пристрою %s для "
+"продовження установки"
+
+msgid ""
+"After shutdown, please perform a manual IPL from FCP %(device)s with WWPN %"
+"(wwpn)s and LUN %(lun)s to continue installation"
+msgstr ""
+"Після вимикання виконайте завантаження IPL вручну з FCP %(device)s з WWPN %"
+"(wwpn)s та LUN %(lun)s для продовження встановлення "
+
+msgid ""
+"After shutdown, please perform a manual IPL from the device now containing /"
+"boot to continue installation"
+msgstr ""
+"Після вимикання виконайте завантаження IPL вручну з пристрою, який тепер "
+"містить /boot, для продовження встановлення"
+
+msgid "Allowable _Drives:"
+msgstr "Доступні _пристрої:"
+
+msgid "Also add this passphrase to all existing encrypted devices"
+msgstr "Використовуйте цей пароль для усіх існуючих шифрованих пристроїв"
+
+msgid ""
+"Also add this passphrase to all existing encrypted devices to streamline the "
+"boot process"
+msgstr ""
+"Використовуйте цей пароль для всіх зашифрованих пристроїв, щоб полегшити "
+"процес завантаження"
+
+msgid ""
+"An error has occurred - no valid devices were found on which to create new "
+"file systems. Please check your hardware for the cause of this problem."
+msgstr ""
+"Помилка - не знайдено придатних пристроїв для створення нових файлових "
+"систем. Перевірте обладнання, щоб встановити причину."
+
+msgid ""
+"An error occured finding the installation image on your hard drive.  Please "
+"check your images and try again."
+msgstr ""
+"Не знайдено образ встановлення на жорсткому диску. Перевірте образи та "
+"спробуйте ще раз."
+
+msgid ""
+"An error occurred converting the value entered for \"%(field)s\":\n"
+"%(errmsg)s"
+msgstr ""
+"Помилка при перетворенні значення для \"%(field)s\":\n"
+"%(errmsg)s"
+
+msgid ""
+"An error occurred mounting device %(path)s as %(mountpoint)s.  You may "
+"continue installation, but there may be problems."
+msgstr ""
+"Помилка при підключенні пристрою %(path)s як %(mountpoint)s.  Можна "
+"продовжити встановлення, але можуть виникати проблеми."
+
+msgid ""
+"An error occurred mounting device %(path)s as %(mountpoint)s: %(msg)s. This "
+"is a fatal error and the install cannot continue.\n"
+"\n"
+"Press <Enter> to exit the installer."
+msgstr ""
+"Помилка при спробі підключення пристрою %(path)s як %(mountpoint)s: %(msg)s."
+"Це серйозна проблема, тому продовження процесу встановлення неможливе.\n"
+"\n"
+"Натисніть <Enter> для переривання встановлення."
+
+msgid ""
+"An error occurred mounting the source device %s.  This may happen if your "
+"ISO images are located on an advanced storage device like LVM or RAID, or if "
+"there was a problem mounting a partition.  Click exit to abort the "
+"installation."
+msgstr ""
+"Помилка при підключенні пристрою %s. Це могло статися через те, що ваші ISO "
+"образи знаходяться на пристроях LVM або RAID або через проблеми з "
+"підключенням розділу. Натисніть кнопку перезавантаження, щоб перервати "
+"встановлення."
+
+msgid "An error occurred saving screenshots to disk."
+msgstr "Помилка при збереженні знімків екрану."
+
+msgid ""
+"An error occurred transferring the install image to your hard drive.  This "
+"is often cause by damaged or low quality media."
+msgstr ""
+"Помилка при перенесенні образу встановлення на жорсткий диск комп'ютера. "
+"Ймовірно через зіпсований носій."
+
+msgid ""
+"An error occurred transferring the install image to your hard drive. You are "
+"probably out of disk space."
+msgstr ""
+"Помилка при перенесенні образу встановлення на жорсткий диск комп'ютера. "
+"Можливо не вистачає дискового простору."
+
+msgid "An error occurred trying to bring up the %s network interface."
+msgstr "Помилка при вмиканні мережного інтерфейсу %s."
+
+msgid ""
+"An error occurred trying to mount some or all of your system. Some of it may "
+"be mounted under %s.\n"
+"\n"
+"Press <return> to get a shell. The system will reboot automatically when you "
+"exit from the shell."
+msgstr ""
+"Помилка при підключенні вашої системи або її частини. Її частину було "
+"підключено у %s.\n"
+"\n"
+"Натисніть <Enter>, щоб попасти в оболонку. При виході з оболонки система "
+"перезавантажиться автоматично."
+
+msgid ""
+"An error occurred unmounting the disc.  Please make sure you're not "
+"accessing %s from the shell on tty2 and then click OK to retry."
+msgstr ""
+"Помилка відключення CD. Переконайтесь, що ви не займаєте %s з оболонки на "
+"tty2, та натисніть Гаразд, щоб повторити спробу."
+
+msgid ""
+"An error occurred when attempting to load an installer interface component.\n"
+"\n"
+"className = %s"
+msgstr ""
+"Помилка при спробі завантаження компоненту інтерфейсу програми "
+"встановлення.\n"
+"\n"
+"className = %s"
+
+msgid ""
+"An error occurred when trying to create %(mountpoint)s: %(msg)s.  This is a "
+"fatal error and the install cannot continue.\n"
+"\n"
+"Press <Enter> to exit the installer."
+msgstr ""
+"Помилка при спробі створити %(mountpoint)s: %(msg)s. Це серйознапроблема,"
+"тому продовження процесу встановлення неможливе.\n"
+"\n"
+"Натисніть <Enter> для переривання встановлення."
+
+msgid ""
+"An error occurred when trying to create %s.  Some element of this path is "
+"not a directory. This is a fatal error and the install cannot continue.\n"
+"\n"
+"Press <Enter> to exit the installer."
+msgstr ""
+"Помилка при спробі створення %s. Певний елемент шляху не є каталогом. Це "
+"серйозна проблема, тому продовження процесу встановлення неможливе.\n"
+"\n"
+"Натисніть <Enter> для переривання встановлення."
+
+msgid ""
+"An error occurred while saving the screenshot.  If this occurred during "
+"package installation, you may need to try several times for it to succeed."
+msgstr ""
+"При збереженні знімку екрану виникла помилка. Якщо ще сталося при "
+"встановленні пакунків, необхідно зробити ще декілька спроб отримання знімку."
+
+msgid "An error was encountered while migrating filesystem on device %s."
+msgstr "Помилка при міграції файлової системи на пристрої %s."
+
+msgid "An issue occured while installing"
+msgstr "В процесі встановлення виникла проблема"
+
+msgid ""
+"An unhandled exception has occurred.  This is most likely a bug.  Please "
+"save a copy of the detailed exception and file a bug report"
+msgstr ""
+"Виникла необроблена виключна ситуація.  Можливо, це помилка в програмі. Будь "
+"ласка, збережіть повний текст цього виключення та складіть докладний звіт "
+"про помилку"
+
+msgid "Apple Bootstrap"
+msgstr "Apple Bootstrap"
+
+msgid "Arabic"
+msgstr "Арабська"
+
+msgid "Are you sure you want to delete the logical volume \"%s\"?"
+msgstr "Ви справді бажаєте видалити логічний том \"%s\"?"
+
+msgid ""
+"Are you sure you want to reset the partition table to its original state?"
+msgstr "Ви впевнені, що хочете відновити початковий стан таблиці розділів?"
+
+msgid ""
+"Are you sure you want to skip entering a passphrase for device %s?\n"
+"\n"
+"If you skip this step the device's contents will not be available during "
+"installation."
+msgstr ""
+"Дійсно пропустити ввід паролю для пристрою %s?\n"
+"\n"
+"Якщо ви пропустите цей крок, зміст пристрою буде недоступний при "
+"встановленні."
+
+msgid "Are you sure you wish to exit the installer?"
+msgstr "Дійсно бажаєте перервати встановлення?"
+
+msgid "Assamese"
+msgstr "Ассамська"
+
+msgid ""
+"At least one existing installation has been detected on your system.  What "
+"would you like to do?"
+msgstr ""
+"Не було завантажено жодного драйвера пристроїв. Бажаєте зараз завантажити "
+"якийсь драйвер?"
+
+msgid ""
+"At least one unused physical volume partition is needed to create an LVM "
+"Volume Group.\n"
+"\n"
+"Create a partition or RAID array of type \"physical volume (LVM)\" and then "
+"select the \"LVM\" option again."
+msgstr ""
+"Для створення групи томів LVM потрібен принаймні один невикористаний розділ "
+"фізичного тому.\n"
+"\n"
+"Створіть розділ або масив RAID типу \"фізичний том (LVM)\", після чого знову "
+"оберіть параметр \"LVM\"."
+
+msgid ""
+"At least two unused software RAID partitions are needed to create a RAID "
+"device.\n"
+"\n"
+"First create at least two partitions of type \"software RAID\", and then "
+"select the \"RAID\" option again."
+msgstr ""
+"Для створення пристрою RAID необхідно принаймні два невикористаних розділи "
+"RAID.\n"
+"Створіть принаймні два розділи типу \"програмний RAID\" та оберіть параметр "
+"\"RAID\" знову."
+
+msgid "Attempting to connect to vnc client on host %s..."
+msgstr "Спроба з'єднатись з vnc клієнтом на вузлі %s..."
+
+msgid "Automatic Partitioning Errors"
+msgstr "Помилки автоматичного розподілу"
+
+msgid "BIOS Drive Order"
+msgstr "Порядок дисків BIOS"
+
+msgid "Back"
+msgstr "Назад"
+
+msgid "Bad argument to HD kickstart method command: %s"
+msgstr "Неприпустимий аргумент команди kickstart HD-методу: %s"
+
+msgid "Bad argument to NFS kickstart method command: %s"
+msgstr "Неправильний аргумент команди kickstart методу NFS: %s"
+
+msgid "Bad argument to URL kickstart method command: %s"
+msgstr "Неправильний аргумент команди kickstart методу URL: %s"
+
+msgid "Bad argument to device kickstart method command: %s"
+msgstr "Неправильний аргумент для команди kickstart-методу встановлення: %s"
+
+msgid "Bad argument to kickstart network command: %s"
+msgstr "Неприпустимий аргумент мережної команди kickstart: %s"
+
+msgid "Bad argument to shutdown kickstart method command: %s"
+msgstr "Неприпустимий аргумент команди kickstart для вимкнення: %s"
+
+msgid "Bad bootproto %s specified in network command"
+msgstr "В мережній команді неправильно вказано bootproto %s"
+
+msgid "Basic Devices"
+msgstr "Пристрої"
+
+msgid "Basic Storage Devices"
+msgstr "Загальні пристрої збереження"
+
+msgid ""
+"Below are the storage devices you've selected to be a part of this "
+"installation.  Please indicate using the arrows below which devices you'd "
+"like to use as data drives (these will not be formatted, only mounted) and "
+"which devices you'd like to use as system drives (these may be formatted)."
+msgstr ""
+"Нижче наведені пристрої зберігання інформації, що Ви обрали длявстановлення. "
+"Будь ласка, вкажіть стрілкою на пристрої, що бажаєте використовувати для "
+"збереження даних (вони не будуть відформатовані, а тільки під'єднані), а "
+"також на пристрої, на яких буде встановлено систему (їх можна буде "
+"відформатувати). "
+
+msgid "Bengali"
+msgstr "Бенгальська"
+
+msgid "Bengali(India)"
+msgstr "Бенгальська(Індія)"
+
+msgid "Boot"
+msgstr "Завантаження"
+
+msgid "Boot Loader Configuration"
+msgstr "Параметри завантажувача"
+
+msgid "Boot label contains illegal characters"
+msgstr "Позначка завантаження містить неприпустимі символи"
+
+msgid "Boot loader device"
+msgstr "Завантажувач"
+
+msgid "Boot loader operating system list"
+msgstr "Список операційних систем завантажувача"
+
+msgid "Bootable RAID1 set members must be partitions."
+msgstr ""
+"Завантажувальний масив RAID1 містить складові, що повинні бути розділами."
+
+msgid "Bootable partitions can only be on RAID1 devices."
+msgstr "Завантажувальні розділи можливі лише на RAID1 пристроях."
+
+msgid "Bootable partitions cannot be on a RAID device."
+msgstr "Завантажувальні розділи не можуть розташовуватись на пристроях RAID."
+
+msgid "Bootable partitions cannot be on a logical volume."
+msgstr "Завантажувальні розділи на логічних томах не допускаються."
+
+msgid "Bootable partitions cannot be on an %s filesystem."
+msgstr "Завантажувальні розділи не можуть знаходитись у файловій системі %s."
+
+msgid "Bootable partitions cannot be on an encrypted block device"
+msgstr ""
+"Завантажувальні розділи не можуть знаходитися на зашифрованих блочних "
+"пристроях"
+
+msgid "Bootloader"
+msgstr "Завантажувач"
+
+msgid "Bootloader Recovery"
+msgstr "Відновлення Завантажувача"
+
+msgid "Bulgarian"
+msgstr "Болгарська"
+
+msgid "CHAP password"
+msgstr "Пароль CHAP"
+
+msgid "CHAP username"
+msgstr "Ім'я користувача CHAP"
+
+msgid "C_ontinue"
+msgstr "_Продовжити"
+
+msgid "Can't have a question in command line mode!"
+msgstr "У режимі командного рядка питання не підтримуються!"
+
+msgid "Cancel"
+msgstr "Скасувати"
+
+msgid "Cancelled"
+msgstr "Скасовано"
+
+msgid "Cannot Delete"
+msgstr "Неможливо видалити"
+
+msgid "Cannot download language packs right now, no big deal"
+msgstr "Не можу завантижити мовні пакунки просто зараз, але то не страшно..."
+
+msgid "Cannot find hard drive for BIOS disk %s"
+msgstr "Не вдається знайти жорсткий диск відповідний BIOS диску %s"
+
+msgid "Cannot find kickstart file on CDROM."
+msgstr "Не вдається знайти kickstart файл на CDROM."
+
+msgid "Cannot find kickstart file on hard drive."
+msgstr "Не вдається знайти файл на жорсткому диску."
+
+msgid "Cannot find ks.cfg on removable media."
+msgstr "Не вдається знайти ks.cfg на зйомному носії."
+
+msgid "Cannot perform any creation action"
+msgstr "Неможливо виконати жодну дію створення"
+
+msgid "Capacity"
+msgstr "Ємність"
+
+msgid "Caps Lock is on."
+msgstr "Увімкнено Caps Lock."
+
+msgid "Catalan"
+msgstr "Каталонська"
+
+msgid "Chandev Parameters"
+msgstr "Параметри Chandev"
+
+msgid "Chandev line "
+msgstr "Рядок Chandev"
+
+msgid "Change Disc"
+msgstr "Змінити диск"
+
+msgid "Change _password"
+msgstr "Змінити _пароль"
+
+msgid "Checking"
+msgstr "Перевірка"
+
+msgid "Checking \"%s\"."
+msgstr "Перевіряється \"%s\"."
+
+msgid "Checking dependencies in packages selected for installation"
+msgstr "Перевірка залежностей вибраних для встановлення пакунків"
+
+msgid "Checking filesystem on %s"
+msgstr "Перевірка файлової системи на %s"
+
+msgid "Checking media."
+msgstr "Перевіряється носій."
+
+msgid "Checksum Test"
+msgstr "Перевірка контрольної суми"
+
+msgid "Chinese(Simplified)"
+msgstr "Китайська(Спрощена)"
+
+msgid "Chinese(Traditional)"
+msgstr "Китайська(традиційна)"
+
+msgid ""
+"Choose \"%s\" to test the disc currently in the drive, or \"%s\" to eject "
+"the disc and insert another for testing."
+msgstr ""
+"Натисніть  \"%s\" для перевірки диску в пристрої, або \"%s\", щоб витягти "
+"диск та вставити інший диск для перевірки."
+
+msgid "Choose a Language"
+msgstr "Оберіть мову"
+
+msgid ""
+"Choose a passphrase for the encrypted devices. You will be prompted for this "
+"passphrase during system boot."
+msgstr ""
+"Оберіть пароль для зашифрованих пристроїв. Пароль буде запитуватись при "
+"кожному завантаженні системи."
+
+msgid ""
+"Choose a passphrase for this encrypted partition. You will be prompted for "
+"the passphrase during system boot."
+msgstr ""
+"Вкажіть пароль для зашифрованого розділу. Пароль буде запитуватись щоразу "
+"при завантаженні системи."
+
+msgid ""
+"Choose this option if you would like to recover your existing %s system "
+"bootloader. This option will preserve the existing data on your storage "
+"device(s)."
+msgstr ""
+"Оберіть цей пункт, якщо бажаєте оновити існуючу систему %s.   Дані на ваших "
+"дисках будуть збережені."
+
+msgid ""
+"Choose this option to install a fresh copy of %s on your system.  Existing "
+"software and data may be overwritten depending on your configuration choices."
+msgstr ""
+"Оберіть цей параметр для встановлення чистої системи %s. В залежності від "
+"вибраних параметрів можуть бути перезаписані існуюче ПЗ та дані."
+
+msgid "Cleaning package"
+msgstr "Очищення пакунку"
+
+msgid "Cleaning packages"
+msgstr "Очищення пакунків"
+
+msgid "Clear Disks Selector"
+msgstr "Очистити вибір дисків"
+
+msgid "Clone Drive Tool"
+msgstr "Клонування дисків"
+
+msgid "Clone Drives"
+msgstr "Клонування дисків"
+
+msgid ""
+"Command line mode requires all choices to be specified in a kickstart "
+"configuration file."
+msgstr ""
+"При встановленні у режимі командного рядка всі відповіді на питання програми "
+"встановлення треба вказувати у файлі конфігурації кікстарту."
+
+msgid "Complete"
+msgstr "Завершено"
+
+msgid "Completed"
+msgstr "Завершено"
+
+msgid "Con_firm:"
+msgstr "_Підтвердження:"
+
+msgid "Configure FCoE Parameters"
+msgstr "Налаштовування параметрів FCoE"
+
+msgid "Configure Network"
+msgstr "Налаштовування мережі"
+
+msgid "Configure TCP/IP"
+msgstr "Налаштовування TCP/IP"
+
+msgid "Configure _proxy"
+msgstr "Налаштовування _проксі"
+
+msgid "Configure iSCSI Parameters"
+msgstr "Налаштовування параметрів iSCSI"
+
+msgid "Configuring Network Interfaces"
+msgstr "Налаштовування мережних інтерфейсів"
+
+msgid "Configuring Sabayon"
+msgstr "Налаштовування Груші"
+
+msgid "Configuring System Services"
+msgstr "Налаштування системних служб"
+
+msgid "Confirm"
+msgstr "Підтвердження"
+
+msgid "Confirm Delete"
+msgstr "Підтвердження видалення"
+
+msgid "Confirm Physical Extent Change"
+msgstr "Підтвердіть зміну фізичного екстенту"
+
+msgid "Confirm Reset"
+msgstr "Підтвердження відновлення"
+
+msgid "Confirm passphrase:"
+msgstr "Підтвердить пароль:"
+
+msgid "Confirm:"
+msgstr "Підтвердження:"
+
+msgid "Congratulations"
+msgstr "Вітаємо"
+
+msgid ""
+"Congratulations, your %s installation is complete.\n"
+"\n"
+msgstr ""
+"Вітаємо, встановлення %s завершено.\n"
+"\n"
+
+msgid ""
+"Congratulations, your %s installation is complete.\n"
+"\n"
+"Please reboot to use the installed system.  Note that updates may be "
+"available to ensure the proper functioning of your system and installation "
+"of these updates is recommended after the reboot."
+msgstr ""
+"Вітаємо, встановлення %s завершено.\n"
+"\n"
+"Перезавантажте систему, щоб почати її використовувати. Зверніть увагу, що "
+"вже можуть бути доступні оновлення, які потрібні для коректної роботи Вашої "
+"системи. Рекомендується встановити ці оновлення після перезавантаження."
+
+msgid "Connected!"
+msgstr "З'єднання встановлено!"
+
+msgid "Connecting to FCoE SAN"
+msgstr "Під'єднуюсь до FCoE SAN..."
+
+msgid "Continue"
+msgstr "Продовжити"
+
+msgid "Copying File"
+msgstr "Копіювання файлу"
+
+msgid "Copying live image to hard drive."
+msgstr "Перенесення образу live встановлення на жорсткий диск."
+
+msgid ""
+"Could not add LUN %(fcplun)s to WWPN %(wwpn)s on zFCP device %(devnum)s (%(e)"
+"s)."
+msgstr ""
+"Не вдається додати LUN %(fcplun)s до WWPN %(wwpn)s на пристрої zFCP%(devnum)"
+"s (%(e)s)."
+
+msgid "Could not add WWPN %(wwpn)s to zFCP device %(devnum)s (%(e)s)."
+msgstr "Не вдається додати WWPN %(wwpn)s до пристрою zFCP %(devnum)s (%(e)s)."
+
+msgid ""
+"Could not allocate requested partitions: \n"
+"\n"
+"%(msg)s.%(extra)s"
+msgstr ""
+"Не вдається розмістити запитані розділи: \n"
+"\n"
+"%(msg)s.%(extra)s"
+
+msgid "Could not allocate requested partitions: %s."
+msgstr "Не вдається розподілити запитані розділи: %s."
+
+msgid ""
+"Could not correctly delete SCSI device of zFCP %(devnum)s %(wwpn)s %(fcplun)"
+"s (%(e)s)."
+msgstr ""
+"Не вдається коректно видалити SCSI-пристрій zFCP %(devnum)s %(wwpn)s%(fcplun)"
+"s (%(e)s)."
+
+msgid ""
+"Could not find enough free space for automatic partitioning, please use "
+"another partitioning method."
+msgstr ""
+"Недостатньо вільного місця для автоматичного розподілу. Оберіть інший спосіб "
+"розподілу диску."
+
+msgid ""
+"Could not find enough free space for automatic partitioning.  Press 'OK' to "
+"exit the installer."
+msgstr ""
+"Недостатньо вільного місця для автоматичного розподілу. Натисніть 'Гаразд' "
+"для завершення встановлення."
+
+msgid "Could not free zFCP device %(devnum)s from device ignore list (%(e)s)."
+msgstr ""
+"Не вдається звільнити пристрій zFCP %(devnum)s зі списку "
+"ігнорованихпристроїв (%(e)s)."
+
+msgid "Could not log in to any of the discovered nodes"
+msgstr "Не вдається зареєструватися на жодному з виявлених вузлів"
+
+msgid ""
+"Could not read failed attribute of LUN %(fcplun)s at WWPN %(wwpn)s on zFCP "
+"device %(devnum)s (%(e)s)."
+msgstr ""
+"Не вдається прочитати атрибут, що зазнав помилки, з LUN %(fcplun)s на WWPN%"
+"(wwpn)s на пристрої zFCP %(devnum)s (%(e)s)."
+
+msgid ""
+"Could not remove LUN %(fcplun)s at WWPN %(wwpn)s on zFCP device %(devnum)s (%"
+"(e)s)."
+msgstr ""
+"Не вдається видалити LUN %(fcplun)s на WWPN %(wwpn)s на пристрої zFCP%"
+"(devnum)s (%(e)s)."
+
+msgid "Could not remove WWPN %(wwpn)s on zFCP device %(devnum)s (%(e)s)."
+msgstr ""
+"Не вдається видалити WWPN %(wwpn)s на пристрої zFCP %(devnum)s (%(e)s)."
+
+msgid "Could not set zFCP device %(devnum)s offline (%(e)s)."
+msgstr ""
+"Не вдається встановити пристрій zFCP %(devnum)s у автономний режим (%(e)s)."
+
+msgid "Could not set zFCP device %(devnum)s online (%(e)s)."
+msgstr "Не вдається перевести пристрій zFCP %(devnum)s у онлайн (%(e)s)."
+
+msgid "Couldn't Create Drive Clone Editor"
+msgstr "Не вдається створити редактор клонування дисків"
+
+msgid "Couldn't Mount ISO Source"
+msgstr "Неможливо підключити образ ISO"
+
+msgid "Create"
+msgstr "Вільно"
+
+msgid "Create Custom Layout"
+msgstr "Створити власну схему розмітки"
+
+msgid "Create LVM"
+msgstr "Створити менеджер логічних розділів (LVM)"
+
+msgid "Create Partition"
+msgstr "Створити розділ"
+
+msgid "Create Software RAID"
+msgstr "Створити програмний RAID"
+
+msgid "Create Storage"
+msgstr "Створити Сховище"
+
+msgid "Create new boot loader configuration"
+msgstr "Створити нову конфігурацію завантажувача"
+
+msgid "Creating"
+msgstr "Створення"
+
+msgid "Creating %s filesystem on %s"
+msgstr "Створення файлової системи %s на %s"
+
+msgid "Creating %s on %s"
+msgstr "Створення файлової системи %s на %s"
+
+msgid "Creating device %s"
+msgstr "Створити диск %s"
+
+msgid "Creating file %s"
+msgstr "Створення файлу на %s"
+
+msgid "Croatian"
+msgstr "Хорватська"
+
+msgid "Czech"
+msgstr "Чеська"
+
+msgid "DISPLAY variable not set. Starting text mode."
+msgstr "Змінна DISPLAY не встановлена. Запускається текстовий режим."
+
+msgid "Danish"
+msgstr "Данська"
+
+msgid "Default"
+msgstr "Типово"
+
+msgid "Default Boot _Target"
+msgstr "Типовий образ _завантаження"
+
+msgid "Dependency Check"
+msgstr "Перевірка залежностей"
+
+msgid "Device"
+msgstr "Пристрій"
+
+msgid "Device %s does not appear to contain an installation image."
+msgstr "Пристрій %s не містить образи встановлення."
+
+msgid ""
+"Device %s is encrypted. In order to access the device's contents during "
+"installation you must enter the device's passphrase below."
+msgstr ""
+"Пристрій %s зашифровано. Щоб отримати доступ до змісту пристрою у процесі "
+"встановлення, треба ввести пароль."
+
+msgid "Device Filter"
+msgstr "Фільтр пристрою"
+
+msgid "Devices"
+msgstr "Пристрої"
+
+msgid "Directory holding image:"
+msgstr "Каталог, що містить образи:"
+
+msgid "Dirty File Systems"
+msgstr "\"Брудні\" файлові системи"
+
+msgid "Disc Found"
+msgstr "Знайдено диск"
+
+msgid "Disc Not Found"
+msgstr "Диск не знайдено"
+
+msgid ""
+"Disk %s contains BIOS RAID metadata, but is not part of any recognized BIOS "
+"RAID sets. Ignoring disk %s."
+msgid_plural ""
+"Disks %s contain BIOS RAID metadata, but are not part of any recognized BIOS "
+"RAID sets. Ignoring disks %s."
+msgstr[0] ""
+"Хоча диск %s містить дані контролера BIOS RAID, його немає серед розпізнаних "
+"масивів. Диск %s буде проігноровано."
+msgstr[1] ""
+"Хоча диски %s містять дані контролера BIOS RAID, їх немає серед розпізнаних "
+"масивів. Диски %s буде проігноровано."
+msgstr[2] ""
+"Хоча диски %s містять дані контролера BIOS RAID, їх немає серед розпізнаних "
+"масивів. Диски %s буде проігноровано."
+
+msgid "Do _Not Format"
+msgstr "_Не форматувати"
+
+msgid "Do you have a driver disk?"
+msgstr "У вас є диск з драйвером?"
+
+msgid "Do you want to start the network interfaces on this system?"
+msgstr "Активувати мережні інтерфейси цієї системи?"
+
+msgid "Do you wish to load any more driver disks?"
+msgstr "Завантажити додаткові диски драйверів?"
+
+msgid "Done"
+msgstr "Готово"
+
+msgid "Downloading package"
+msgstr "Завантаження пакунки"
+
+msgid "Drive %(drive)s (%(size)-0.f MB) (Model: %(model)s)"
+msgstr "Пристрій %(drive)s (%(size)-0.f Мб) (Модель: %(model)s)"
+
+msgid "Driver Disk Source"
+msgstr "Джерело диску драйверів"
+
+msgid "Driver disk"
+msgstr "Диск драйверів"
+
+msgid "Driver disk is invalid for this release of %s."
+msgstr "Диск з драйверам є некоректним для цього випуску %s."
+
+msgid "Drivers installation issue"
+msgstr "Запуск процесу встановлення"
+
+msgid "Drives"
+msgstr "Пристрої"
+
+msgid ""
+"Due to system changes, your boot loader configuration can not be "
+"automatically updated."
+msgstr ""
+"Через зміни у системі, конфігурацію вашого завантажувача неможливо "
+"автоматично оновити."
+
+msgid "Duplicate Device"
+msgstr "Пристрій використовується"
+
+msgid "Duplicate Label"
+msgstr "Однакові позначки"
+
+msgid "Dutch"
+msgstr "Голландська"
+
+msgid "Dynamic IP Address"
+msgstr "Динамічний IP"
+
+msgid "EFI System Partition"
+msgstr "Системний розділ EFI"
+
+msgid "E_xit Installer"
+msgstr "Пе_рервати встановлення"
+
+msgid "Edit"
+msgstr "Правка"
+
+msgid "Edit LVM Volume Group"
+msgstr "Правка групи томів LVM"
+
+msgid "Edit LVM Volume Group: %s"
+msgstr "Правка групи томів LVM: %s"
+
+msgid "Edit Logical Volume: %s"
+msgstr "Правка логічного тому: %s"
+
+msgid "Edit Partition: %s"
+msgstr "Правка розділу: %s"
+
+msgid "Edit RAID Device"
+msgstr "Правка пристрою RAID"
+
+msgid "Edit RAID Device: %s"
+msgstr "Правка пристрою RAID: %s"
+
+msgid "Edit Repository"
+msgstr "Змінити репозиторій"
+
+msgid "Eject Disc"
+msgstr "Витягти диск"
+
+msgid "Enable HTTP proxy"
+msgstr "Задіяти проксі "
+
+msgid "Enable IPv4 support"
+msgstr "Включити підтримку IPv4"
+
+msgid "Enable IPv6 support"
+msgstr "Включити підтримку IPv6"
+
+msgid "Enable network interface"
+msgstr "Увімкнути _мережний інтерфейс"
+
+msgid "Encrypt device?"
+msgstr "Зашифрувати пристрій?"
+
+msgid "Encrypted"
+msgstr "Зашифровано"
+
+msgid "Encrypting %s"
+msgstr "Шифрування %s"
+
+msgid ""
+"Encryption key escrow requires networking, but there was an error enabling "
+"the network on your system."
+msgstr ""
+"Арбітр ключів шифрування вимагає наявності підключення до мережі, але "
+"виникла помилка при її налаштуванні для вашої системи."
+
+msgid "English"
+msgstr "Англійська"
+
+msgid "Enter Boot Loader Password"
+msgstr "Введіть пароль завантажувача"
+
+msgid "Enter Module Parameters"
+msgstr "Введіть параметри модуля"
+
+msgid ""
+"Enter a boot loader password and then confirm it.  (Note that your BIOS "
+"keymap may be different than the actual keymap you are used to.)"
+msgstr ""
+"Введіть пароль завантажувача та введіть підтвердження. (Зауважте, що "
+"розкладка клавіатури BIOS може відрізнятись від тієї, що використовується "
+"зараз.)"
+
+msgid ""
+"Enter a label for the boot loader menu to display. The device (or hard drive "
+"and partition number) is the device from which it boots."
+msgstr ""
+"Введіть позначку, яку буде показано в меню початкового завантажувача. "
+"Пристрій (жорсткий диск або номер розділу) - це пристрій, з якого буде "
+"завантажуватись система."
+
+msgid "Enter passphrase for encrypted partition"
+msgstr "Введіть пароль для зашифрованого розділу"
+
+msgid "Enter passphrase:"
+msgstr "Введіть пароль:"
+
+msgid ""
+"Enter the IPv4 and/or the IPv6 address and prefix (address / prefix).  For "
+"IPv4, the dotted-quad netmask or the CIDR-style prefix are acceptable. The "
+"gateway and name server fields must be valid IPv4 or IPv6 addresses."
+msgstr ""
+"Введіть адресу IPv4 та/або IPv6 та префікс (адресу / префікс). Для IPv4 "
+"можна використовувати маску з точками у якості розділювачів та префікс у "
+"стилі CIDR. Поля для шлюзу та сервера імен повинні містити коректні адреси "
+"IPv4 та IPv6."
+
+msgid "Error"
+msgstr "Помилка"
+
+msgid "Error - the logical volume name %s is not valid."
+msgstr "Помилка - назва логічного тому %s неправильна."
+
+msgid ""
+"Error - the logical volume name contains illegal characters or spaces.  "
+"Acceptable characters are letters, digits, '.' or '_'."
+msgstr ""
+"Помилка - назва логічного тому містить неприпустимі символи або пробіли. "
+"Дозволяються літери, цифри, '.' або '_'."
+
+msgid "Error - the volume group name %s is not valid."
+msgstr "Помилка - назва групи томів %s неправильна."
+
+msgid ""
+"Error - the volume group name contains illegal characters or spaces.  "
+"Acceptable characters are letters, digits, '.' or '_'."
+msgstr ""
+"Помилка - назва групи томів містить неприпустимі символи або пробіли. "
+"Дозволяються літери, цифри, '.' або '_'."
+
+msgid "Error Configuring Network"
+msgstr "Помилка при налаштовуванні мережі"
+
+msgid "Error Installing Package"
+msgstr "Помилка при встановленні пакунку"
+
+msgid "Error Parsing Kickstart Config"
+msgstr "Помилка аналізу конфігураційного файлу Kickstart"
+
+msgid "Error Partitioning"
+msgstr "Помилка розподілу"
+
+msgid "Error Running Transaction"
+msgstr "Помилка при виконанні транзакції"
+
+msgid "Error Saving Screenshot"
+msgstr "Помилка при збереженні знімку екрану"
+
+msgid "Error Setting Up Repository"
+msgstr "Помилка при налаштовуванні репозиторію"
+
+msgid "Error With Data"
+msgstr "Помилка у даних"
+
+msgid "Error configuring network device"
+msgstr "Помилка при налаштовуванні мережного інтерфейсу"
+
+msgid "Error configuring network device %s"
+msgstr "Помилка при налаштовуванні мережного інтерфейсу %s"
+
+msgid "Error configuring network device:"
+msgstr "Помилка при налаштовуванні мережного інтерфейсу:"
+
+msgid "Error determining boot device's disk name"
+msgstr "Помилка при визначенні типу точки монтування"
+
+msgid "Error downloading kickstart file"
+msgstr "Помилка відкривання файлу kickstart"
+
+msgid "Error downloading updates image"
+msgstr "Помилка при завантаженні образу оновлень"
+
+msgid ""
+"Error enabling swap device %(name)s: %(msg)s\n"
+"\n"
+"The /etc/fstab on your upgrade partition does not reference a valid swap "
+"device.\n"
+"\n"
+"Press OK to exit the installer"
+msgstr ""
+"Помилка при підключенні пристрою підкачки %(name)s: %(msg)s\n"
+"\n"
+"Файл /etc/fstab у розділі, що оновлюється, не містить опису робочого "
+"пристрою підкачки.\n"
+"\n"
+"Натисніть \"Гаразд\" переривання встановлення"
+
+msgid ""
+"Error enabling swap device %(name)s: %(msg)s\n"
+"\n"
+"This most likely means this swap device has not been initialized.\n"
+"\n"
+"Press OK to exit the installer."
+msgstr ""
+"Помилка при підключенні пристрою підкачки %(name)s: %(msg)s\n"
+"\n"
+"Найбільш ймовірна причина - розділ не було ініціалізовано.\n"
+"\n"
+"Натисніть \"Гаразд\" для переривання встановлення."
+
+msgid "Error in %s on line %d of kickstart file %s."
+msgstr "Помилка в %s в рядку %d файлу kickstart %s."
+
+msgid "Error opening kickstart file %s: %m"
+msgstr "Помилка при відкриванні файлу kickstart: %s: %m"
+
+msgid "Error processing %%ksappend lines: %s"
+msgstr "Помилка обробки рядкі %%ksappend: %s"
+
+msgid ""
+"Error processing LVM.\n"
+"There is inconsistent LVM data on %(msg)s.  You can reinitialize all related "
+"PVs (%(pvs)s) which will erase the LVM metadata, or ignore which will "
+"preserve the contents.  This action may also be applied to all other PVs "
+"with inconsistent metadata."
+msgstr ""
+"Помилка при обробці LVM.\n"
+"Дані LVM на %(msg)s не узгоджені. Ви можете повторно ініціалізувати всі "
+"відповідні фізичні томи (%(pvs)s), таким чином видаляючи метадані LVM, чбо "
+"пропустити цей крок  і зберегти старий зміст."
+
+msgid ""
+"Error processing drive:\n"
+"\n"
+"%(path)s\n"
+"%(size)-0.fMB\n"
+"%(description)s\n"
+"\n"
+"This device may need to be reinitialized.\n"
+"\n"
+"REINITIALIZING WILL CAUSE ALL DATA TO BE LOST!\n"
+"\n"
+"This action may also be applied to all other disks needing reinitialization.%"
+"(details)s"
+msgstr ""
+"Помилка при обробці пристрою:\n"
+"\n"
+"%(path)s\n"
+"%(size)-0.fMB\n"
+"%(description)s\n"
+"\n"
+"Ймовірно його треба ініціалізувати.\n"
+"ПРИ ІНІЦІАЛІЗАЦІЇ БУДУТЬ ВТРАЧЕНІ ВСІ ДАНІ НА НЬОМУ!%(details)s"
+
+msgid "Error reading contents of kickstart file %s: %m"
+msgstr "Помилка при читанні вмісту файлу kickstart %s: %m"
+
+msgid "Error storing an encryption key: %s\n"
+msgstr "Помилка при збереженні ключа шифрування: %s\n"
+
+msgid "Error with Data"
+msgstr "Помилка у даних"
+
+msgid "Error with Hostname"
+msgstr "Помилка у назву вузла"
+
+msgid "Error with Partitioning"
+msgstr "Помилка розподілу"
+
+msgid "Error with Password"
+msgstr "Помилка пароля"
+
+msgid "Error with passphrase"
+msgstr "Помилка пароля"
+
+msgid "Error with username"
+msgstr "Помилка у назві вузла"
+
+msgid "Error!"
+msgstr "Помилка!"
+
+msgid "Error: Could not reset loadparm (%s)"
+msgstr "Помилка: Не вдається скинути loadparm (%s)"
+
+msgid "Error: Could not set %(device)s as reIPL device (%(e)s)"
+msgstr "Помилка: Не вдається задати %(device)s у якості пристрою reIPL (%(e)s)"
+
+msgid ""
+"Error: On close, cannot set reIPL method to %(reipl_type)s (%(filename)s: %"
+"(e)s)"
+msgstr ""
+"Помилка: При операції закриття не вдається визначити метод reIPL як%"
+"(reipl_type)s (%(filename)s: %(e)s)"
+
+msgid ""
+"Error: On open, cannot set reIPL method to %(reipl_type)s (%(filename)s: %(e)"
+"s)"
+msgstr ""
+"Помилка: При операції відкриття не вдається визначити метод reIPL як%"
+"(reipl_type)s (%(filename)s: %(e)s)"
+
+msgid ""
+"Error: On write, cannot set reIPL method to %(reipl_type)s (%(filename)s: %"
+"(e)s)"
+msgstr ""
+"Помилка: При операції запису не вдається визначити метод reIPL як%"
+"(reipl_type)s (%(filename)s: %(e)s)"
+
+msgid "Error: reading FCP property %(syspath_property)s for reIPL (%(e)s)"
+msgstr ""
+"Помилка: Читання властивостей FCP %(syspath_property)s для reIPL (%(e)s)"
+
+msgid "Error: writing FCP property %(reipl_property)s for reIPL (%(e)s)"
+msgstr "Помилка: Запис властивостей FCP %(reipl_property)s для reIPL (%(e)s)"
+
+msgid ""
+"Error: writing default FCP property %(reipl_property)s for reIPL (%(e)s)"
+msgstr ""
+"Помилка: Запис стандартної властивості FCP %(reipl_property)s для reIPL (%(e)"
+"s)"
+
+msgid ""
+"Errors like this usually mean there is a problem with the filesystem that "
+"will require user interaction to repair.  Before restarting installation, "
+"reboot to rescue mode or another system that allows you to repair the "
+"filesystem interactively.  Restart installation after you have corrected the "
+"problems on the filesystem."
+msgstr ""
+"Помилки, схожі на цю, визначають проблему з файловою системою, що потребує "
+"втручання користувача. Перш ніж повторити встановлення, завантажтесь у "
+"безпечному режимі, або з іншої системи, що дозволить вам виправити файлову "
+"систему. Повторіть спробу встановлення лише після виправлення помилок "
+"файлової системи."
+
+msgid "Estonian"
+msgstr "Естонська"
+
+msgid "Exit"
+msgstr "Вийти"
+
+msgid "Exit installer"
+msgstr "Перервати встановлення"
+
+msgid "Exiting"
+msgstr "Вихід"
+
+msgid "Extended"
+msgstr "Розширений"
+
+msgid "FCoE not available"
+msgstr "FCoE не доступний"
+
+msgid ""
+"Failed LUN %(fcplun)s at WWPN %(wwpn)s on zFCP device %(devnum)s removed "
+"again."
+msgstr ""
+"Помилковий LUN %(fcplun)s на WWPN %(wwpn)s на пристрої zFCP %(devnum)"
+"sвидалено знову."
+
+msgid "Failed to load driver disk from file."
+msgstr "Помилка завантаження диску драйверів з файлу."
+
+msgid "Failed to mount driver disk."
+msgstr "Помилка підключення диску драйверів."
+
+msgid "Failed to mount partition."
+msgstr "Помилка підключення розділу."
+
+msgid "Failed to mount updates disk"
+msgstr "Помилка підключення диску оновлень"
+
+msgid "Failed to read directory %s: %m"
+msgstr "Не вдається прочитати каталог %s: %m"
+
+msgid "File System _Type:"
+msgstr "_Тип ФС:"
+
+msgid "File system errors left uncorrected."
+msgstr "Помилки файлової системи залишились невиправленими."
+
+msgid ""
+"Filesystems have already been activated.  You cannot go back past this "
+"point.\n"
+"\n"
+"Would you like to continue with the installation?"
+msgstr ""
+"Вибрані вами параметри розподілу вже активовані. Ви не зможете повернутися "
+"назад. Продовжити процес встановлення?"
+
+msgid "Fill all space _up to (MB):"
+msgstr "Заповнити весь простір д_о (МБ):"
+
+msgid "Fill to maximum _allowable size"
+msgstr "Заповнити весь _наявний простір"
+
+msgid "Filter By:"
+msgstr "Фільтрувати за:"
+
+msgid "Final Warning"
+msgstr "Останнє попередження"
+
+msgid "Finding Devices"
+msgstr "Пошук пристроїв"
+
+msgid "Finding storage devices"
+msgstr "Пошук пристроїв збереження"
+
+msgid "Finishing upgrade"
+msgstr "Завершення процесу оновлення"
+
+msgid "Finishing upgrade process.  This may take a little while."
+msgstr "Запускається процес оновлення. Це може зайняти декілька хвилин."
+
+msgid "Finnish"
+msgstr "Фінська"
+
+msgid "Firmware RAID"
+msgstr "програмний RAID"
+
+msgid "First BIOS drive:"
+msgstr "Перший пристрій BIOS:"
+
+msgid "First sector of boot partition"
+msgstr "Перший сектор завантажувального розділу"
+
+msgid "Flashing %s port lights for %d seconds."
+msgstr "Світлові індикатори порту %s блимають протягом %d секунд."
+
+msgid ""
+"Following warnings occurred during automatic partitioning:\n"
+"\n"
+"%s"
+msgstr ""
+"При автоматичному розподілі були наступні попередження:\n"
+"\n"
+"%s"
+
+msgid "Force to be a _primary partition"
+msgstr "Зробити _первинним розділом"
+
+msgid "Format"
+msgstr "Формат"
+
+msgid "Format Warning"
+msgstr "Попередження форматування"
+
+msgid "Format Warnings"
+msgstr "Попередження при форматуванні"
+
+msgid "Format as Swap?"
+msgstr "Форматувати як swap?"
+
+msgid ""
+"Format uninitialized DASD device?\n"
+"\n"
+"There is %d uninitialized DASD device on this system.  To continue "
+"installation, the device must be formatted.  Formatting will remove any data "
+"on this device."
+msgid_plural ""
+"Format uninitialized DASD devices?\n"
+"\n"
+"There are %d uninitialized DASD devices on this system.  To continue "
+"installation, the devices must be formatted.  Formatting will remove any "
+"data on these devices."
+msgstr[0] ""
+"Відформатувати невідомий пристрій DASD?\n"
+"\n"
+"Знайдено %d невідомий пристрій DASD. Для продовження встановлення пристрій "
+"необхідно відформатувати, що знищить усі дані на ньому."
+msgstr[1] ""
+"Відформатувати невідомі пристрої DASD?\n"
+"\n"
+"Знайдено %d невідомі пристрої DASD. Для продовження встановлення пристрої "
+"необхідно відформатувати, що знищить усі дані на них."
+msgstr[2] ""
+"Відформатувати невідомі пристрої DASD?\n"
+"\n"
+"Знайдено %d невідомі пристрої DASD. Для продовження встановлення пристрої "
+"необхідно відформатувати, що знищить усі дані на них."
+
+msgid "Format?"
+msgstr "Форматувати?"
+
+msgid "Formatting"
+msgstr "Форматування"
+
+msgid "Formatting DASD Device"
+msgid_plural "Formatting DASD Devices"
+msgstr[0] "Форматування пристрою DASD"
+msgstr[1] "Форматування пристрою DASD"
+msgstr[2] "Форматування пристрою DASD"
+
+msgid "Found local installation media"
+msgstr "Знайдено локальний носій встановлення"
+
+msgid "Fourth BIOS drive:"
+msgstr "Четвертий пристрій BIOS:"
+
+msgid "Free"
+msgstr "Вільно"
+
+msgid "Free Space"
+msgstr "Вільний простір"
+
+msgid "Free Space (MB)"
+msgstr "Вільний простір (МБ)"
+
+msgid "Free Space:"
+msgstr "Вільний простір:"
+
+msgid "French"
+msgstr "Французька"
+
+msgid "Fresh Installation"
+msgstr "Налаштовування перед встановленням"
+
+msgid "Full name:"
+msgstr "Повне ім'я:"
+
+msgid "Gateway"
+msgstr "Шлюз"
+
+msgid "Gateway:"
+msgstr "Шлюз:"
+
+msgid "Generating list of files to copy"
+msgstr "Створення переліку файлів до копіювання"
+
+msgid "German"
+msgstr "Німецька"
+
+msgid "Giving up attempting to connect after %d try!\n"
+msgid_plural "Giving up attempting to connect after %d tries!\n"
+msgstr[0] "Спроба з'єднання після %d спроби!\n"
+msgstr[1] "Спроба з'єднання після %d спроб!\n"
+msgstr[2] "Спроба з'єднання після %d спроб!\n"
+
+msgid "Go _back"
+msgstr "_Повернутися"
+
+msgid "Graphical installation is not available. Starting text mode."
+msgstr "Графічне встановлення неможливе. Запускається текстовий режим."
+
+msgid "Greek"
+msgstr "Грецька"
+
+msgid "Gujarati"
+msgstr "Гуджараті"
+
+msgid ""
+"HTTP/FTP\n"
+"CD/DVD\n"
+"NFS\n"
+"Hard Drive"
+msgstr ""
+"HTTP/FTP\n"
+"CD/DVD\n"
+"NFS\n"
+"Жорсткий диск"
+
+msgid "Hard Drives"
+msgstr "Жорсткі диски"
+
+msgid "Hard drive"
+msgstr "Жорсткий диск"
+
+msgid "Hebrew"
+msgstr "Іврит"
+
+msgid "Hindi"
+msgstr "Хінді"
+
+msgid "Hostname must be 255 or fewer characters in length."
+msgstr "Довжина назви комп'ютера не повинна перевищувати 255 символів."
+
+msgid ""
+"Hostname must start with a valid character in the ranges 'a-z', 'A-Z', or '0-"
+"9'"
+msgstr ""
+"Назва комп'ютера повинна починатись з символів в діапазоні 'a-z', 'A-Z' або "
+"0-9 "
+
+msgid "Hostname:"
+msgstr "Назва вузла:"
+
+msgid ""
+"Hostnames can only contain the characters 'a-z', 'A-Z', '0-9', '-', or '.'"
+msgstr ""
+"Назва комп'ютера повинна містити символи в діапазоні a-z, 0-9, A-Z, дефіс "
+"або точку"
+
+msgid "How would you like to modify your drive configuration?"
+msgstr "Як слід виконати зміну конфігурації диску?"
+
+msgid "Hungarian"
+msgstr "Угорська"
+
+msgid "I _don't want to create a swap file"
+msgstr "Я _не бажаю створювати файл підкачки"
+
+msgid "I _want to create a swap file"
+msgstr "_Створити файл підкачки"
+
+msgid "I can't go to the previous step from here. You will have to try again."
+msgstr ""
+"Повернутися до попереднього етапу неможливо. Потрібно повторити спробу."
+
+msgid "IP Address"
+msgstr "Адреса IP"
+
+msgid "IP address is missing."
+msgstr "Не вказано адресу IP."
+
+msgid "IPv4 Address:"
+msgstr "Адреса IPv4:"
+
+msgid "IPv4 CIDR prefix must be between 0 and 32."
+msgstr "Префікс IPv4 CIDR повинен бути у межах від 0 до 32."
+
+msgid "IPv4 Needed for NFS"
+msgstr "Для NFS вимагається IPv4 "
+
+msgid "IPv4 Network Mask"
+msgstr "Маска мережі IPv4"
+
+msgid "IPv4 Network Mask "
+msgstr "Маска мережі IPv4"
+
+msgid "IPv4 address:"
+msgstr "Адреса IPv4:"
+
+msgid ""
+"IPv4 addresses must contain four numbers between 0 and 255, separated by "
+"periods."
+msgstr "Адреса IP повинна містити чотири числа від 0 до 255, розділені точкою."
+
+msgid "IPv6 address:"
+msgstr "Адреса IPv6:"
+
+msgid "Icelandic"
+msgstr "Ісландська"
+
+msgid "Identifier"
+msgstr "Визначальник"
+
+msgid "Identifier:"
+msgstr "Визначальник"
+
+msgid "Identify"
+msgstr "Ідентифікація"
+
+msgid "Identify NIC"
+msgstr "Визначення NIC"
+
+msgid ""
+"If you would like to test additional media, insert the next disc and press "
+"\"%s\". Testing each disc is not strictly required, however it is highly "
+"recommended.  Minimally, the discs should be tested prior to using them for "
+"the first time. After they have been successfully tested, it is not required "
+"to retest each disc prior to using it again."
+msgstr ""
+"Якщо у вас є для перевірки додаткові носії, вставте наступний диск та "
+"натисніть  \"%s\". Тестування кожного диска не вимагається, проте "
+"наполегливо рекомендується. Бажано перевірити кожен диск перед першим "
+"використанням. Після успішного тестування, не треба тестувати диск перед "
+"кожним використанням."
+
+msgid "Ignore _all"
+msgstr "_Ігнорувати все"
+
+msgid "Illegal Logical Volume Name"
+msgstr "Неприпустима назва логічного тому"
+
+msgid "Illegal logical volume name"
+msgstr "Неприпустима назва логічного тому"
+
+msgid "Illegal size"
+msgstr "Неприпустимий розмір"
+
+msgid "Iloko"
+msgstr "Ілоко"
+
+msgid "Image"
+msgstr "Образ"
+
+msgid "In progress"
+msgstr "Триває обробка"
+
+msgid "In which time zone are you located?"
+msgstr "У якому часовому поясі ви знаходитесь?"
+
+msgid "Indonesian"
+msgstr "Індонезійська"
+
+msgid "Info"
+msgstr "Інфо"
+
+msgid "Initializing iSCSI initiator"
+msgstr "Ініціалізується ініціатор iSCSI"
+
+msgid "Insert Driver Disk"
+msgstr "Вставте диск драйверів"
+
+msgid "Insert your driver disk into /dev/%s and press \"OK\" to continue."
+msgstr ""
+"Вставте диск драйверів у /dev/%s та натисніть \"Гаразд\" для продовження."
+
+msgid "Insert your updates disk into %s and press \"OK\" to continue."
+msgstr "Вставте диск оновлень у %s та натисніть \"Гаразд\" для продовження."
+
+msgid "Install"
+msgstr "Встановити"
+
+msgid "Install Window"
+msgstr "Вікно встановлення"
+
+msgid "Install on System"
+msgstr "Встановлення системи"
+
+msgid "Install the live CD to your hard disk"
+msgstr "Встановити live CD на жорсткий диск"
+
+msgid "Install to Hard Drive"
+msgstr "Встановити на жорсткий диск"
+
+msgid "Installation Key"
+msgstr "Ключ встановлення"
+
+msgid "Installation Method"
+msgstr "Метод встановлення"
+
+msgid "Installation Progress"
+msgstr "Процес встановлення"
+
+msgid "Installation Starting"
+msgstr "Запуск встановлення"
+
+msgid "Installation cannot continue."
+msgstr "Продовження встановлення неможливе."
+
+msgid "Installation complete"
+msgstr "Встановлення завершено"
+
+msgid ""
+"Installation requires partitioning of your hard drive.  The default layout "
+"is suitable for most users.  Select what space to use and which drives to "
+"use as the install target."
+msgstr ""
+"Для встановлення потрібні розділи на жорсткому диску. Типовий розподіл є "
+"оптимальним для більшості користувачів. Вкажіть, простір на яких дисках "
+"використовувати для встановлення.вручну."
+
+msgid "Installing %s\n"
+msgstr "Встановлення %s\n"
+
+msgid "Installing Sabayon onto hard drive."
+msgstr "Завантаження Груші на жорсткий диск."
+
+msgid "Installing bootloader."
+msgstr "Встановлення завантажувача."
+
+msgid ""
+"Installing on a FireWire device.  This may or may not produce a working "
+"system."
+msgstr ""
+"Встановлення на пристрій FireWire.  Існує можливість отримання "
+"непрацездатної системи."
+
+msgid ""
+"Installing on a USB device.  This may or may not produce a working system."
+msgstr ""
+"Встановлення на пристрій USB.  Існує можливість отримання непрацездатної "
+"системи."
+
+msgid "Installing package"
+msgstr "Встановлення пакунків"
+
+msgid ""
+"Installs or upgrades to devices such as Storage Area Networks (SANs) or "
+"mainframe attached disks (DASD), usually in an enterprise environment"
+msgstr ""
+"Встановити або оновити носії, такі як Мережа Зберігання Даних (МДБ) чи "
+"Додаткові диски Універсальної ЕОМ, що зазвичай використовуються на "
+"підприємствах"
+
+msgid ""
+"Installs or upgrades to typical types of storage devices.  If you're not "
+"sure which option is right for you, this is probably it."
+msgstr ""
+"Встановити або оновити типові значення носіїв. Якщо сумніваєтесь, яку опцію "
+"обрати, то краще обирайте цю."
+
+msgid "Interconnect"
+msgstr "З'єднання"
+
+msgid ""
+"Interconnect\n"
+"Vendor\n"
+"Identifier"
+msgstr ""
+"З'єднання\n"
+"Розробник\n"
+"Визначальник"
+
+msgid "Invalid Directories"
+msgstr "Неправильні каталоги"
+
+msgid "Invalid Duration"
+msgstr "Неприпустиме значення тривалості"
+
+msgid "Invalid Initiator Name"
+msgstr "Неправильна назва ініціатора"
+
+msgid "Invalid Prefix"
+msgstr "Некоректний префікс"
+
+msgid "Invalid Proxy URL"
+msgstr "Неправильний URL-проксі"
+
+msgid "Invalid Repository Name"
+msgstr "Неправильна назва репозиторію"
+
+msgid "Invalid Repository URL"
+msgstr "Неправильний URL сховища"
+
+msgid "Invalid Volume Group Name"
+msgstr "Неприпустима назва групи томів"
+
+msgid "Invalid mount point"
+msgstr "Некоректна точка монтування"
+
+msgid "Italian"
+msgstr "Італійська"
+
+msgid "Japanese"
+msgstr "Японська"
+
+msgid "Kannada"
+msgstr "Каннада"
+
+msgid "Kernel Parameters"
+msgstr "Параметри ядра"
+
+msgid "Keyboard Selection"
+msgstr "Тип клавіатури"
+
+msgid "Keyboard Type"
+msgstr "Тип клавіатури"
+
+msgid "Kickstart Error"
+msgstr "Помилка kickstart"
+
+msgid "Korean"
+msgstr "Корейська"
+
+msgid "LUN"
+msgstr "Адреса диску"
+
+msgid ""
+"LUN %(fcplun)s at WWPN %(wwpn)s on zFCP device %(devnum)s already configured."
+msgstr ""
+"LUN %(fcplun)s на WWPN %(wwpn)s на пристрої zFCP %(devnum)s вже налаштовано."
+
+msgid "LUN:"
+msgstr "Адреса диску (LUN):"
+
+msgid "LVM Logical Volume"
+msgstr "Логічний том LVM"
+
+msgid "LVM Physical Volume"
+msgstr "Фізичний том LVM"
+
+msgid "LVM Volume Group"
+msgstr "Групи томів LVM"
+
+msgid "LVM Volume Group %s (%-0.f MB)"
+msgstr "Групи томів LVM %s (%-0.f MB)"
+
+msgid "LVM Volume Groups"
+msgstr "Групи томів LVM"
+
+msgid "Label"
+msgstr "Позначка"
+
+msgid "Language Selection"
+msgstr "Вибір мови"
+
+msgid "Language packs"
+msgstr "Встановлення пакунків"
+
+msgid "Language packs download"
+msgstr "Завантаження мовних пакунків"
+
+msgid "Language packs installation"
+msgstr "Встановлення мовних пакунків"
+
+msgid "Load another disk"
+msgstr "Завантажити інший диск"
+
+msgid "Load driver disk"
+msgstr "Завантаження диску драйверів"
+
+msgid "Loading"
+msgstr "Завантаження"
+
+msgid "Loading %s driver"
+msgstr "Завантажується драйвер %s"
+
+msgid "Loading SCSI driver"
+msgstr "Завантаження SCSI драйвера"
+
+msgid "Local CD/DVD"
+msgstr "Локальний CD/DVD"
+
+msgid "Logging in to iSCSI nodes"
+msgstr "Реєстрація на вузлі iSCSI"
+
+msgid ""
+"Logical Volume Manager (LVM) is a 3 level construct. The first level is made "
+"up of disks or partitions formatted with LVM metadata called Physical "
+"Volumes (PV).  A Volume Group (VG) sits on top of one or more PVs. The VG, "
+"in turn, is the base to create one or more Logical Volumes (LV).  Note that "
+"a VG can be an aggregate of PVs from multiple physical disks.  For more "
+"information on using LVM please consult the %s documentation\n"
+msgstr ""
+"Менеджер логічних томів (LVM) складається з трьох рівнів. Перший рівень "
+"складається з дисків або розділів, відформатованих з метаданими LVM, і "
+"називаються Фізичними Розділами (PV). Група томів (VG) очолює один або "
+"кілька фізичних розділів. Група Томів, у свою чергу, є базою для створення "
+"одного або декількох Логічних Томів (LV). Зверніть увагу, що Група Томів "
+"може бути сукупністю Фізичних Розділів з декількох фізичних дисків. Для "
+"отримання додаткової інформації про використання LVM, зверніться до %"
+"sдокументації\n"
+
+msgid "Logical Volume Name"
+msgstr "Назва логічного тому"
+
+msgid "Logical Volume Name:"
+msgstr "Назва логічного тому:"
+
+msgid "Logical Volume Names must be less than 128 characters"
+msgstr "Довжина назви логічного тому не повинна перевищувати 128 символів"
+
+msgid "Looking for installation images on CD device %s"
+msgstr "Виконується пошук образів встановлення на пристрої %s"
+
+msgid "Looking for installation images on CD device %s\n"
+msgstr "Виконується пошук образів встановлення на пристрої %s\n"
+
+msgid "MBR"
+msgstr "MBR"
+
+msgid "MD RAID ARRAY %s (%-0.f MB)"
+msgstr "Масив MD RAID %s (%-0.f MB)"
+
+msgid "Macedonian"
+msgstr "Македонська"
+
+msgid "Maithili"
+msgstr "Маітілі"
+
+msgid "Make LVM Volume Group"
+msgstr "Створення групи томів LVM"
+
+msgid "Make Logical Volume"
+msgstr "Створення логічного тому"
+
+msgid "Make RAID Device"
+msgstr "Створення пристрою RAID"
+
+msgid "Malay"
+msgstr "Малайська"
+
+msgid "Malayalam"
+msgstr "Малаялам"
+
+msgid "Manual TCP/IP Configuration"
+msgstr "Ручне налаштовування TCP/IP"
+
+msgid "Manually choose"
+msgstr "Вибрати вручну"
+
+msgid ""
+"Manually create your own custom layout on the selected device(s) using our "
+"partitioning tool."
+msgstr ""
+"Власноруч створити систему розподілу цього диску, використовуючи знаряддя "
+"розподілу дисків."
+
+msgid "Marathi"
+msgstr "Мараті"
+
+msgid "Master Boot Record (MBR)"
+msgstr "Головний завантажувальний сектор (MBR)"
+
+msgid "Media Check"
+msgstr "Перевірка носія"
+
+msgid "Media Detected"
+msgstr "Знайдено носій"
+
+msgid "Meh."
+msgstr "Мех."
+
+msgid "Mi_grate filesystem to:"
+msgstr "_Перетворити файлову систему на:"
+
+msgid "Migrate File Systems"
+msgstr "Перетворення файлових систем"
+
+msgid "Migration Failed"
+msgstr "Помилка при міграції"
+
+msgid "Missing Device"
+msgstr "Відсутній пристрій"
+
+msgid "Missing Group"
+msgstr "Відсутня група"
+
+msgid "Missing ISO 9660 Image"
+msgstr "Відсутній образ ISO 9660"
+
+msgid "Missing Information"
+msgstr "Недостатньо інформації"
+
+msgid "Missing Package"
+msgstr "Відсутній пакунок"
+
+msgid "Missing Protocol"
+msgstr "Відсутній протокол"
+
+msgid "Missing options on line %d of kickstart file %s."
+msgstr "Помилка в рядку %d файлу kickstart %s."
+
+msgid "Model"
+msgstr "Модель"
+
+msgid "More Driver Disks?"
+msgstr "Є ще якісь диски?"
+
+msgid "Mount Point"
+msgstr "Точка монтування"
+
+msgid ""
+"Mount Point/\n"
+"RAID/Volume"
+msgstr ""
+"Точка монт./\n"
+"RAID/Том"
+
+msgid "Mount failed"
+msgstr "Помилка підключення"
+
+msgid "Mount point in use"
+msgstr "Точка монтування використовується"
+
+msgid "Multipath Devices"
+msgstr "Багатоцільовий пристрій"
+
+msgid "Must supply a --url argument to Url kickstart method."
+msgstr "Для методу URL команди kickstart необхідно передати параметр --url."
+
+msgid "NFS Setup"
+msgstr "Налаштовування NFS"
+
+msgid "NFS directory"
+msgstr "Каталог NFS"
+
+msgid "NFS installation method requires IPv4 support."
+msgstr "Метод встановлення NFS вимагає увімкнення підтримки IPv4."
+
+msgid "NFS mount options (optional):"
+msgstr "точка монтування NFS (додатково):"
+
+msgid "NFS server name:"
+msgstr "Назва сервера NFS:"
+
+msgid "NIC:"
+msgstr "Мережна карта"
+
+msgid "Name Server:"
+msgstr "Сервер назв:"
+
+msgid "Name in use"
+msgstr "Назва вже використовується"
+
+msgid "Nameserver"
+msgstr "DNS сервер"
+
+msgid "Nameserver:"
+msgstr "DNS сервер:"
+
+msgid "Nepali"
+msgstr "Непальська"
+
+msgid "Network Error"
+msgstr "Помилка мережі"
+
+msgid "Network Install Required"
+msgstr "Потрібне встановлення з мережі"
+
+msgid "Networking Device"
+msgstr "Пристрій мережі"
+
+msgid "No"
+msgstr "Ні"
+
+msgid "No Drives Found"
+msgstr "Диски не знайдено"
+
+msgid "No Media Found"
+msgstr "Носії не знайдено"
+
+msgid "No Network Available"
+msgstr "Мережа недоступна"
+
+msgid "No Software Repos Enabled"
+msgstr "Не додано репозиторії програмного забезпечення"
+
+msgid ""
+"No device drivers have been loaded for your system.  Would you like to load "
+"any now?"
+msgstr ""
+"Не було завантажено жодного драйвера пристроїв. Бажаєте зараз завантажити "
+"якийсь драйвер?"
+
+msgid ""
+"No devices of the appropriate type were found on this driver disk.  Would "
+"you like to manually select the driver, continue anyway, or load another "
+"driver disk?"
+msgstr ""
+"На диску драйверів не було знайдено пристроїв даного типу.  Бажаєте вибрати "
+"драйвер вручну, продовжити у будь-якому разі чи завантажити інший диск "
+"драйверів?"
+
+msgid "No driver found"
+msgstr "Драйвер не знайдено"
+
+msgid "No drivers found"
+msgstr "Драйвери не знайдено"
+
+msgid ""
+"No drivers were found to manually insert.  Would you like to use a driver "
+"disk?"
+msgstr ""
+"Драйвери для завантаження вручну не знайдено. Використовувати диск драйверів?"
+
+msgid "No free slots"
+msgstr "Немає вільних слотів"
+
+msgid "No free space"
+msgstr "Недостатньо вільного простору"
+
+msgid "No iSCSI nodes discovered"
+msgstr "Не виявлено вузлів iSCSI"
+
+msgid "No initiator name set"
+msgstr "Не вказано назву ініціатора iSCSI"
+
+msgid ""
+"No installation media was found. Please insert a disc into your drive and "
+"try again."
+msgstr "Не знайдено носій встановлення. Вставте диск та повторіть спробу."
+
+msgid ""
+"No kernel packages were installed on the system.  Bootloader configuration "
+"will not be changed."
+msgstr ""
+"У вашій системі не встановлено жодного пакунку з ядром. Конфігурацію "
+"завантажувача не буде змінено."
+
+msgid "No language packs are available for download, sorry!"
+msgstr "Даруйте, немає мовних пакунків, що можна завантажити!"
+
+msgid "No language packs are available for install, sorry!"
+msgstr "Даруйте, немає мовних пакунків, що можна встановити!"
+
+msgid "No network cards present."
+msgstr "Не знайдено мережевої карти."
+
+msgid "No new iSCSI nodes discovered"
+msgstr "Не виявлено нових вузлів iSCSI"
+
+msgid ""
+"No partitions are available to resize.  Only physical partitions with "
+"specific filesystems can be resized."
+msgstr ""
+"Немає розділів, розмір яких можна змінити. Лише фізичні розділи з деякими "
+"типами файлових систем можуть бути змінені."
+
+msgid "No password"
+msgstr "Без паролю"
+
+msgid "No repositories specified in"
+msgstr "Немає потрібних сховищ"
+
+msgid "Northern Sotho"
+msgstr "Пічнічне сото"
+
+msgid "Norwegian(Bokmål)"
+msgstr "Норвезька(Бокмал)"
+
+msgid "Not enough RAM"
+msgstr "Недостатньо оперативної пам'яті"
+
+msgid "Not enough physical volumes"
+msgstr "Недостатньо фізичних томів"
+
+msgid "Not enough space"
+msgstr "Недостатньо місця"
+
+msgid ""
+"Note that the creation action requires one of the following:\n"
+"\n"
+"* Free space in one of the Hard Drives.\n"
+"* At least two free Software RAID partitions.\n"
+"* At least one free physical volume (LVM) partition.\n"
+"* At least one Volume Group with free space."
+msgstr ""
+"Зауважте, що дія створення вимагає:\n"
+"\n"
+"* Свобідне місце на одному з дисків.\n"
+"* Принаймні два вільних програмних RAID-масиви.\n"
+"* Принаймні один вільний фізичний розділ.\n"
+"* Принаймні один вільний логічний розділ."
+
+msgid ""
+"Note that updates may be available to ensure the proper functioning of your "
+"system and installation of these updates is recommended after the reboot."
+msgstr ""
+"Зверніть увагу, що вже можуть бути доступні оновлення, які потрібні для "
+"коректної роботи Вашої системи. Рекомендується встановити ці оновлення після "
+"перезавантаження."
+
+msgid "Notice"
+msgstr "Примітка"
+
+msgid "Number of _spares:"
+msgstr "Кількість р_езервних:"
+
+msgid "OK"
+msgstr "Гаразд"
+
+msgid "Operational error."
+msgstr "Помилка виконання."
+
+msgid "Optional packages selected: %(inst)d of %(cnt)d"
+msgstr "Вибрані додаткові пакунки: %(inst)d з %(cnt)d"
+
+msgid "Original File System Label:"
+msgstr "Поточна позначка файлової системи:"
+
+msgid "Original File System Type:"
+msgstr "Поточний тип файлової системи:"
+
+msgid "Oriya"
+msgstr "Орія"
+
+msgid "Other SAN Devices"
+msgstr "Інші пристрої SAN"
+
+msgid "PPC PReP Boot"
+msgstr "PPC PReP Boot"
+
+msgid "Package Installation"
+msgstr "Установка пакунків"
+
+msgid "Packages completed: %(donepkgs)d of %(numpkgs)d"
+msgid_plural "Packages completed: %(donepkgs)d of %(numpkgs)d"
+msgstr[0] "Завершено: %(donepkgs)d з %(numpkgs)d"
+msgstr[1] "Завершено: %(donepkgs)d з %(numpkgs)d"
+msgstr[2] "Завершено: %(donepkgs)d з %(numpkgs)d"
+
+msgid "Packages in %s"
+msgstr "пакунки у %s"
+
+msgid "Partition"
+msgstr "Розділ"
+
+msgid "Partitioning"
+msgstr "Розподіл"
+
+msgid "Partitioning Errors"
+msgstr "Помилки розподілу"
+
+msgid "Partitioning Type"
+msgstr "Тип розподілу"
+
+msgid "Partitioning Warning"
+msgstr "Попередження розподілу"
+
+msgid "Partitioning Warnings"
+msgstr "Попередження при розподілі"
+
+msgid ""
+"Partitions of type '%s' must be constrained to a single drive.  To do this, "
+"select the drive in the 'Allowable Drives' checklist."
+msgstr ""
+"Розділи типу '%s' повинні бути об'єднані в один диск. Це робиться шляхом "
+"вибору диску зі списку 'Наявні диски'."
+
+msgid "Passphrase"
+msgstr "Пароль"
+
+msgid "Passphrase for encrypted device"
+msgstr "Пароль для зашифрованого пристрою"
+
+msgid "Password"
+msgstr "Пароль:"
+
+msgid "Password (confirm):"
+msgstr "Пароль (підтвердження):"
+
+msgid "Password Length"
+msgstr "Довжина паролю"
+
+msgid "Password Mismatch"
+msgstr "Паролі не збігаються"
+
+msgid "Password:"
+msgstr "Пароль:"
+
+msgid "Passwords do not match"
+msgstr "Паролі не збігаються"
+
+msgid "Passwords don't match"
+msgstr "Паролі не збігаються"
+
+msgid "Paths"
+msgstr "Шляхи"
+
+msgid "Performing post-installation configuration"
+msgstr "Виконується налаштовування після встановлення"
+
+msgid ""
+"Performing post-installation filesystem changes.  This may take several "
+"minutes."
+msgstr ""
+"Виконання завершальних операцій з файловою системою. Це може зайняти "
+"декілька хвилин."
+
+msgid "Performing post-upgrade configuration"
+msgstr "Виконується налаштовування після оновлення"
+
+msgid "Persian"
+msgstr "Перська"
+
+msgid "Physical Volumes to _Use:"
+msgstr "Фізичні _томи:"
+
+msgid ""
+"Pick a root password. You must type it twice to ensure you know it and do "
+"not make a typing mistake. "
+msgstr ""
+"Оберіть пароль користувача root. Ви маєте ввести його двічі, щоб виключити "
+"помилку при вводі."
+
+msgid "Please Select A Device"
+msgstr "Будь ласка, вкажіть диск"
+
+msgid "Please enter a logical volume name."
+msgstr "Введіть назву логічного тому."
+
+msgid "Please enter a volume group name."
+msgstr "Введіть назву групи томів."
+
+msgid "Please enter an NFS server and path."
+msgstr "Вкажіть сервер NFS та шлях."
+
+msgid ""
+"Please enter any parameters which you wish to pass to the %s module "
+"separated by spaces.  If you don't know what parameters to supply, skip this "
+"screen by pressing the \"OK\" button."
+msgstr ""
+"Вкажіть перелік розділених пробілами параметрів, які ви хочете передати "
+"модулю %s. Якщо ви не знаєте які параметри передавати модулю, пропустіть цей "
+"екран, натиснувши клавішу \"Гаразд\". Перелік доступних параметрів можна "
+"отримати натиснувши на клавішу F1."
+
+msgid ""
+"Please enter the URL containing the %s installation image on your server."
+msgstr "Введіть URL образу встановлення %s на сервері."
+
+msgid ""
+"Please enter the server and path to your %s installation image and "
+"optionally additional NFS mount options."
+msgstr "Введіть ім'я сервера та шлях до образу встановлення %s."
+
+msgid "Please insert %(productName)s disc %(discnum)d to continue."
+msgstr "Вставте %(productName)s диск %(discnum)d для продовження."
+
+msgid "Please manually connect your vnc client to %s to begin the install."
+msgstr "Щоб розпочати встановлення підключіть вручну ваш vnc-клієнт до %s."
+
+msgid "Please manually connect your vnc client to begin the install."
+msgstr "Щоб розпочати встановлення підключіть вручну ваш vnc-клієнт."
+
+msgid ""
+"Please name this computer.  The hostname identifies the computer on a "
+"network."
+msgstr ""
+"Вкажіть для цього комп'ютера назву вузла, яка буде використовуватись для "
+"його ідентіфикації у мережі."
+
+msgid ""
+"Please provide the configuration information for this software repository."
+msgstr "Вкажіть параметри для цього репозиторію з програмами."
+
+msgid "Please reboot to use the installed system.\n"
+msgstr "Щоб почати використовувати встановлену систему, перезавантажтесь.\n"
+
+msgid "Please select a source drive."
+msgstr "Вкажіть вихідний диск."
+
+msgid ""
+"Please select any additional repositories that you want to use for software "
+"installation."
+msgstr ""
+"Оберіть додаткові репозиторії, які слід використовувати при встановленні."
+
+msgid ""
+"Please select the driver below which you wish to load.  If it does not "
+"appear and you have a driver disk, press F2."
+msgstr ""
+"Оберіть з переліку драйвер, який потрібно завантажити. Якщо драйвер "
+"відсутній у переліку та у вас є диск драйверів, натисніть F2."
+
+msgid ""
+"Please select the drives you'd like to install the operating system on, as "
+"well as any drives you'd like to automatically mount on your system:"
+msgstr ""
+"Будь ласка, оберіть розділи, на які бажаєте встановити операційну систему, а "
+"також розділи, які будуть автоматично під'єднуватись до системи:"
+
+msgid ""
+"Please select the network interface which is connected to\n"
+"your FCoE switch."
+msgstr ""
+"Оберіть мережний інтерфейс, який приєднаний \n"
+"до маршрутизатора FCoE."
+
+msgid "Please select the target drives for the clone operation."
+msgstr "Вкажіть цільові пристрої для операції клонування."
+
+msgid "Please shutdown to use the installed system.\n"
+msgstr ""
+"Щоб почати використання встановленої системи, вимкніть її.\n"
+"\n"
+
+msgid "Please specify a mount point for this partition."
+msgstr "Вкажіть точку монтування для цього розділу."
+
+msgid "Polish"
+msgstr "Полька"
+
+msgid "Port"
+msgstr "Порт"
+
+msgid ""
+"Port / Target / LUN\n"
+"Target Identifier"
+msgstr ""
+"Порт/Ціль/Адреса диску (LUN)\n"
+"Визначальники цілі"
+
+msgid "Port:"
+msgstr "Порт:"
+
+msgid "Portuguese"
+msgstr "Португальська"
+
+msgid "Portuguese(Brazilian)"
+msgstr "Португальська(Бразильська)"
+
+msgid "Post Installation"
+msgstr "Налаштовування після встановлення"
+
+msgid "Post Upgrade"
+msgstr "Після оновлення"
+
+msgid "Post-Installation"
+msgstr "Налаштовування після встановлення"
+
+msgid "Pre-Installation"
+msgstr "Налаштовування перед встановленням"
+
+msgid ""
+"Prefix must be between 1 and 32 for IPv4 networks or between 1 and 128 for "
+"IPv6 networks"
+msgstr ""
+"Значення префіксу має бути у межах від 1 до 32 для мереж IPv4 чи від 1 до "
+"128 для мереж IPv6"
+
+msgid "Preparing %d DASD device for use with Linux..."
+msgid_plural "Preparing %d DASD devices for use with Linux..."
+msgstr[0] "Йде підготовка для використання пристрою DASD %d під Лінукс..."
+msgstr[1] "Йде підготовка для використання пристроїв DASD %d під Лінукс..."
+msgstr[2] "Йде підготовка для використання пристроїв DASD %d під Лінукс..."
+
+msgid "Preparing to install"
+msgstr "Підготовка до встановлення"
+
+msgid "Preparing transaction from installation source"
+msgstr "Підготовка транзакції з джерела встановлення"
+
+msgid "Press <enter> for a shell"
+msgstr "Натисніть <enter> для переходу у командну оболонку"
+
+msgid "Proceed with upgrade?"
+msgstr "Продовжити оновлення?"
+
+msgid "Proxy URL"
+msgstr "Неправильний URL-проксі"
+
+msgid "Proxy U_RL (host:port)"
+msgstr "_Адреса проксі (вузол:порт)"
+
+msgid "Proxy pass_word"
+msgstr "_Пароль проксі"
+
+msgid "Proxy u_sername"
+msgstr "_Назва сервера проксі"
+
+msgid "Punjabi"
+msgstr "Пенджабі"
+
+msgid "RAID Clone"
+msgstr "Копія розділу RAID"
+
+msgid "RAID Device"
+msgstr "пристрій RAID"
+
+msgid "RAID Devices"
+msgstr "Пристрої RAID"
+
+msgid "RAID Partition"
+msgstr "Розділ RAID"
+
+msgid "RAID _Device:"
+msgstr "RAID _пристрій:"
+
+msgid "RAID _Level:"
+msgstr "_Рівень RAID:"
+
+msgid "RAM detected (MB):"
+msgstr "Знайдено пам'яті (Мб):"
+
+msgid "Re-ini_tialize all"
+msgstr "П_ереініціалізувати все"
+
+msgid "Re_boot"
+msgstr "_Перезавантаження"
+
+msgid "Re_set"
+msgstr "С_кинути зміни"
+
+msgid "Read-Only"
+msgstr "Лише для читання"
+
+msgid "Reading anaconda updates"
+msgstr "Зчитування оновлень anaconda"
+
+msgid "Reading driver disk"
+msgstr "Зчитується диск з драйверами"
+
+msgid "Reboo_t"
+msgstr "_Перезавантаження"
+
+msgid "Reboot?"
+msgstr "Перезавантажити?"
+
+msgid ""
+"Recent kernels (2.4 or newer) need significantly more swap than older "
+"kernels, up to twice the amount of RAM on the system.  You currently have %"
+"dMB of swap configured, but you may create additional swap space on one of "
+"your file systems now."
+msgstr ""
+"Останні ядра ( 2.4 та новіші) вимагають значно більшого простору підкачки "
+"ніж попередні версії, принаймні вдвічі більше ніж обсяг оперативної пам'яті "
+"вашого комп'ютера. Зараз у вас виділено %d МБ для підкачки, але зараз ви "
+"можете додати додатковий простір підкачки на одній з ваших файлових систем."
+
+msgid ""
+"Recoverable errors have been detected or dosfsck has discovered an internal "
+"inconsistency."
+msgstr ""
+"Знайдено помилки, що можна виправити, або служба dosfsck знайшла внутрішню "
+"суперечність."
+
+msgid "Recovering Sabayon."
+msgstr "Відновлення Груші."
+
+msgid "Reinstall System"
+msgstr "Перевстановлення системи"
+
+msgid ""
+"Removes all Linux partitions on the selected device(s). This does not remove "
+"other partitions you may have on your storage device(s) (such as VFAT or "
+"FAT32).\n"
+"\n"
+"<b>Tip:</b> This option will remove data from the selected device(s).  Make "
+"sure you have backups."
+msgstr ""
+"Видалити всі Linux-розділи на обраному диску, не чіпаючи сторонніх розділів "
+"(типу VFAT або FAT32).\n"
+"\n"
+"<b>Порада:</b> Це знищить усі дані в обраних розділах. Переконайтесь, що Ви "
+"зробили копії даних."
+
+msgid ""
+"Removes all partitions on the selected device(s).  This includes partitions "
+"created by other operating systems.\n"
+"\n"
+"<b>Tip:</b> This option will remove data from the selected device(s).  Make "
+"sure you have backups."
+msgstr ""
+"Видалити всі розділи на обраному диску, включно з розділами, створеними "
+"іншими операційними системами.\n"
+"\n"
+"<b>Порада:</b> Це знищить усі дані в обраних розділах. Переконайтесь, що Ви "
+"зробили копії даних."
+
+msgid "Replace Existing Linux System(s)"
+msgstr "Замінити існуючу систему Linux"
+
+msgid "Replace existing Linux system"
+msgstr "Замінити існуючу систему Linux"
+
+msgid "Repositories update"
+msgstr "Сховища оновлені"
+
+msgid "Repository %r is missing name in configuration, using id"
+msgstr ""
+"У конфігурації відсутня назва репозиторію %r. Замість імені буде "
+"використовуватися ідентифікатор"
+
+msgid "Repository _URL"
+msgstr "_URL репозиторію"
+
+msgid "Repository editing is not available in text mode."
+msgstr "Зміна репозиторію неможлива у текстовому режимі."
+
+msgid ""
+"Requested password contains non-ASCII characters, which are not allowed."
+msgstr ""
+"Запитаний пароль містить символи, які не є символами ASCII. В паролях такі "
+"символи не допускаються."
+
+msgid ""
+"Requested username contains non-ASCII characters or spaces, which are not "
+"allowed."
+msgstr ""
+"Запитаний пароль містить символи, які не є символами ASCII. В паролях такі "
+"символи не допускаються."
+
+msgid "Required Install Media"
+msgstr "Потрібний носій встановлення"
+
+msgid "Rescue"
+msgstr "Відновлення"
+
+msgid "Rescue Method"
+msgstr "Метод відновлення"
+
+msgid "Rescue Mode"
+msgstr "Режим відновлення"
+
+msgid "Resize Device Error"
+msgstr "Помилка при зміні розміру пристрою"
+
+msgid "Resize FileSystem Error"
+msgstr "Помилка при зміні розміру ФС"
+
+msgid "Resizing"
+msgstr "Зміна розміру"
+
+msgid "Resizing Failed"
+msgstr "Помилка при зміні розміру"
+
+msgid "Resizing filesystem on %s"
+msgstr "Зміна розміру файлової системи на %s"
+
+msgid ""
+"Retains your current data and partitions and uses only the unpartitioned "
+"space on the selected device(s), assuming you have enough free space "
+"available."
+msgstr ""
+"Залишити без змін розділи і дані, і використовувати тільки вільний дисковий "
+"простір, якщо є достатньо вільного місця."
+
+msgid "Retrieving"
+msgstr "Отримання"
+
+msgid "Retrieving installation information for %s."
+msgstr "Отримання інформації встановлення для %s."
+
+msgid "Retrieving installation information."
+msgstr "Отримання інформації встановлення."
+
+msgid "Retry"
+msgstr "Повторити"
+
+msgid "Retrying"
+msgstr "Повторна спроба"
+
+msgid "Retrying download."
+msgstr "Повторна спроба завантаження."
+
+msgid "Reverse CHAP password"
+msgstr "Зворотний пароль CHAP"
+
+msgid "Reverse CHAP username"
+msgstr "Зворотне ім'я користувача CHAP"
+
+msgid "Romanian"
+msgstr "Румунська"
+
+msgid "Root Password"
+msgstr "Пароль користувача root"
+
+msgid "Root Password:"
+msgstr "Пароль root:"
+
+msgid "Root _Password:"
+msgstr "_Пароль суперкористувача root:"
+
+msgid "Running anaconda %s, the %s rescue mode - please wait.\n"
+msgstr ""
+"Запускається anaconda %s, режим відновлення %s - зачекайте, будь ласка.\n"
+
+msgid "Running anaconda %s, the %s system installer - please wait.\n"
+msgstr ""
+"Запускається anaconda %s, програма встановлення %s - зачекайте, будь ласка.\n"
+
+msgid "Running anaconda via telnet."
+msgstr "anaconda запускається через telnet."
+
+msgid "Running post-installation scripts"
+msgstr "Запуск сценаріїв після встановлення"
+
+msgid "Running pre-installation scripts"
+msgstr "Запуск сценаріїв перед встановленням"
+
+msgid "Running..."
+msgstr "Запущено..."
+
+msgid "Russian"
+msgstr "Російська"
+
+msgid "Sabayon Core CD"
+msgstr "Диск Груші"
+
+msgid "Sabayon Fluxbox"
+msgstr "Sabayon Fluxbox"
+
+msgid "Sabayon GNOME Desktop"
+msgstr "Стільничне середовище Груша GNOME"
+
+msgid "Sabayon KDE"
+msgstr "Стільничне середовище Груша KDE"
+
+msgid "Sabayon configuration complete"
+msgstr "Налаштування Груші завершено"
+
+msgid "Saving Screenshot"
+msgstr "Збереження знімку екрану"
+
+msgid "Scanning"
+msgstr "Виконується перевірка"
+
+msgid "Scanning iSCSI nodes"
+msgstr "Сканування вузлів SCSI"
+
+msgid "Screenshots Copied"
+msgstr "Знімки екрану скопійовані"
+
+msgid "Scriptlet Failure"
+msgstr "Помилка виконання сценарію"
+
+msgid "Search"
+msgstr "Пошук"
+
+msgid "Search By:"
+msgstr "Пошук за:"
+
+msgid "Search Results:"
+msgstr "Результати пошуку:"
+
+msgid "Second BIOS drive:"
+msgstr "Другий пристрій BIOS:"
+
+msgid "Seconds:"
+msgstr "Секунди:"
+
+msgid ""
+"Select 'Yes' to continue and format these partitions, or 'No' to go back and "
+"change these settings."
+msgstr ""
+"Оберіть 'Так' для продовження та форматування цих розділів. Натискання "
+"кнопки 'Ні' дозволить повернутись та змінити параметри."
+
+msgid "Select A Directory"
+msgstr "Оберіть каталог"
+
+msgid "Select Device Driver to Load"
+msgstr "Оберіть драйвер пристрою"
+
+msgid "Select Partition"
+msgstr "Вибір розділу"
+
+msgid "Select driver"
+msgstr "Оберіть драйвер"
+
+msgid "Select driver disk image"
+msgstr "Оберіть образ диску драйверів"
+
+msgid "Select the _partition to put the swap file on:"
+msgstr "Оберіть _розділ, на якому розмістити файл підкачки:"
+
+msgid "Select the file which is your driver disk image."
+msgstr "Оберіть файл, який є вашим образом диску драйверів."
+
+msgid ""
+"Select this installation type for a default installation with the Fluxbox "
+"geeky minimal environment. After this installation process you will be able "
+"to install additional packages."
+msgstr ""
+"Оберіть цей пункт для  встановлення  мінімалістичного середовища для "
+"\"технарів\" Fluxbox. Після встановлення можна буде довантажити додаткові "
+"пакунки."
+
+msgid ""
+"Select this installation type for a default installation with the GNOME "
+"desktop environment. After this installation process you will be able to "
+"install additional packages."
+msgstr ""
+"Оберіть цей пункт для  встановлення  стільничного середовища GNOME. Після "
+"встановлення можна буде довантажити додаткові пакунки."
+
+msgid ""
+"Select this installation type for a default installation with the KDE "
+"desktop environment. After this installation process you will be able to "
+"install additional packages."
+msgstr ""
+"Оберіть цей пункт для  встановлення  стільничного середовища KDE. Після "
+"встановлення можна буде довантажити додаткові пакунки."
+
+msgid ""
+"Select this installation type to just install a Core System without "
+"graphical applications. This is the best choice for Server-oriented "
+"deployments."
+msgstr ""
+"Оберіть цей тип встановлення, щоб встановити лише Ядро Системи, без "
+"графічних додатків. Це кращий вибір для серверно-орієнтованих об'єктів."
+
+msgid "Select which NIC is connected to the FCoE SAN."
+msgstr "Оберіть мережеву карту, що під'єднана до FCoE SAN."
+
+msgid "Sending request for IP address information for %s"
+msgstr "Надсилається запит IP-адреси для %s"
+
+msgid "Serbian"
+msgstr "Сербська"
+
+msgid "Serbian(Latin)"
+msgstr "Сербська(Латиниця"
+
+msgid "Serial Number"
+msgstr "Серійний номер"
+
+msgid "Setup Networking"
+msgstr "Налаштовування мережі"
+
+msgid "Setup a username for regular (non-administrative) use."
+msgstr ""
+"Введіть ім'я користувача для щоденного  (не адміністративного) користування."
+
+msgid "Shared library error."
+msgstr "Загальна помилка бібліотеки."
+
+msgid "Show Identifiers that Include:"
+msgstr "Відобразити визначальники, що включають:"
+
+msgid "Show Only Devices From:"
+msgstr "Відобразити лише пристрої з:"
+
+msgid "Show Only Devices Using:"
+msgstr "Відобразити лише пристрої, що використовують:"
+
+msgid "Shrink Current System"
+msgstr "Стиснути існуючу систему"
+
+msgid ""
+"Shrinks existing partitions to create free space for the default layout."
+msgstr ""
+"Стиснути існуючі розділи, щоб звільнити простір і встановити систему "
+"розподілу по замовчуванню."
+
+msgid "Shutdown"
+msgstr "Вимикання"
+
+msgid "Sinhala"
+msgstr "Сінхала"
+
+msgid ""
+"Size\n"
+"(MB)"
+msgstr ""
+"Розмір\n"
+"(МБ)"
+
+msgid "Size (MB)"
+msgstr "Розмір (Мб)"
+
+msgid "Size (MB):"
+msgstr "Розмір (МБ):"
+
+msgid "Skip"
+msgstr "Пропустити"
+
+msgid "Skip boot loader updating"
+msgstr "Пропустити оновлення завантажувача"
+
+msgid "Slovak"
+msgstr "Словацька"
+
+msgid "Slovenian"
+msgstr "Словенська"
+
+msgid ""
+"Software RAID allows you to combine several disks into a larger RAID "
+"device.  A RAID device can be configured to provide additional speed and "
+"reliability compared to using an individual drive.  For more information on "
+"using RAID devices please consult the %s documentation.\n"
+msgstr ""
+"Програмний RAID дозволяє об'єднувати декілька дисків у один великий пристрій "
+"RAID. Пристрій RAID може мати більшу швидкодію та надійність у порівнянні з "
+"окремим диском. Додаткову інформацію про пристрої RAID дивіться у "
+"документації з %s.\n"
+
+msgid ""
+"Some of the packages you have selected for install are missing "
+"dependencies.  You can exit the installation, go back and change your "
+"package selections, or continue installing these packages without their "
+"dependencies.  If you continue, these packages may not work correctly due to "
+"missing components."
+msgstr ""
+"Деякі з пакунків, обраних до встановлення, містять втрачені залежності. Ви "
+"можете перервати встановлення, повернутись до вибору пакунків, та продовжити "
+"встановлення без них. Якщо продовжите, - ці пакунки можуть працювати "
+"некоректно, через втрачені складові."
+
+msgid ""
+"Some of your software repositories require networking, but there was an "
+"error enabling the network on your system."
+msgstr ""
+"Деякі репозиторії вимагають наявності підключення до мережі, але виникла "
+"помилка при її налаштуванні для Вашої системи."
+
+msgid ""
+"Some packages associated with this group are not required to be installed "
+"but may provide additional functionality.  Please choose the packages which "
+"you would like to have installed."
+msgstr ""
+"Встановлення усіх пакунків, що пов'язані з цією групою, не є обов'язковим. "
+"Проте, вони можуть забезпечити додаткову функціональність. Оберіть пакунки, "
+"які хочете встановити."
+
+msgid "Source Drive Error"
+msgstr "Помилка вихідного диску"
+
+msgid "Source Drive:"
+msgstr "Диск-джерело:"
+
+msgid "Spanish"
+msgstr "Іспанська"
+
+msgid "Specialized Storage Devices"
+msgstr "Спеціалізовані пристрої збереження"
+
+msgid "Specify optional module arguments"
+msgstr "Вказати додаткові параметри модулів"
+
+msgid "Standard Partition"
+msgstr "Стандартний розділ"
+
+msgid "Start VNC"
+msgstr "Запускати VNC"
+
+msgid "Starting Install to Hard Drive"
+msgstr "Почати встановлення на жорсткий диск"
+
+msgid "Starting VNC..."
+msgstr "Запуск VNC..."
+
+msgid "Starting graphical installation."
+msgstr "Запускається графічне встановлення."
+
+msgid "Starting installation process"
+msgstr "Запуск процесу встановлення"
+
+msgid "Starting text mode."
+msgstr "Використовувати текстовий режим."
+
+msgid "Storing encryption keys"
+msgstr "Збереження ключів шифрування"
+
+msgid "Success"
+msgstr "Успішно"
+
+msgid "Suggested size (MB):"
+msgstr "Запропонований розмір (Мб):"
+
+msgid "Swap file _size (MB):"
+msgstr "Р_озмір файла підкачки (МБ):"
+
+msgid "Swap file size (MB):"
+msgstr "Розмір файлу підкачки (Мб):"
+
+msgid "Swedish"
+msgstr "Шведська"
+
+msgid "System Health Status Warning"
+msgstr "Попередження служби життєздатності системи"
+
+msgid "System Installation"
+msgstr "Встановлення системи"
+
+msgid "System clock uses UTC"
+msgstr "Системний годинник використовує UTC"
+
+msgid "System to Rescue"
+msgstr "Система відновлення"
+
+msgid "System to Upgrade"
+msgstr "Система для оновлення"
+
+msgid "Tajik"
+msgstr "Таджицька"
+
+msgid "Tamil"
+msgstr "Тамільська"
+
+msgid "Target"
+msgstr "Перевірити"
+
+msgid "Target Drive Error"
+msgstr "Помилка цільового дику"
+
+msgid "Target Drive(s):"
+msgstr "Цільовий диск(и):"
+
+msgid "Target IP Address"
+msgstr "Цільова адреса IP"
+
+msgid "Target:"
+msgstr "Цільовий диск(и):"
+
+msgid "Telnet"
+msgstr "Telnet"
+
+msgid "Telugu"
+msgstr "Телугу"
+
+msgid "Test"
+msgstr "Перевірити"
+
+msgid ""
+"Text mode provides a limited set of installation options.  It does not allow "
+"you to specify your own partitioning layout or package selections.  Would "
+"you like to use VNC mode instead?"
+msgstr ""
+"Текстовий режим надає обмежений набір можливостей. Він не дозволяє "
+"створювати власну розмітку диску або зробити вибір набору пакунків. "
+"Використовувати режим VNC натомість?"
+
+msgid ""
+"Thank you for downloading this pre-release of %(productName)s.\n"
+"\n"
+"This is not a final release and is not intended for use on production "
+"systems.  The purpose of this release is to collect feedback from testers, "
+"and it is not suitable for day to day usage.\n"
+"\n"
+"To report feedback, please visit:\n"
+"\n"
+"   %(bugzillaUrl)s\n"
+"\n"
+"and file a report against '%(fileagainst)s'.\n"
+msgstr ""
+"Дякуємо за завантаження попереднього випуску %(productName)s.\n"
+"\n"
+"Цей випуск не є остаточним та не призначений для повсякденного та "
+"промислового використання. Мета цього випуску - збір звітів від "
+"випробувачів.\n"
+"\n"
+"Щоб сповістити про виявлені проблеми, відвідайте:\n"
+"\n"
+"   %(bugzillaUrl)s \n"
+"\n"
+"та заповніть звіт відносно '%(fileagainst)s'.\n"
+
+msgid "That directory could not be mounted from the server."
+msgstr "Цей каталог не може бути підключений з сервера."
+
+msgid "That directory does not seem to contain a %s installation image."
+msgstr "Цей каталог не містить образ встановлення %s."
+
+msgid "That's not the correct %s disc."
+msgstr "Цей диск не є коректним диском %s."
+
+msgid ""
+"The %s disc was not found in any of your CDROM drives. Please insert the %s "
+"disc and press %s to retry."
+msgstr ""
+"Диск %s не знайдено у пристроях. Вставте диск %s та натисніть %s для "
+"продовження."
+
+msgid ""
+"The %s disc was not found in any of your drives. Please insert the %s disc "
+"and press %s to retry."
+msgstr ""
+"Диск %s не знайдено у пристроях. Вставте диск %s та натисніть %s для "
+"продовження."
+
+msgid ""
+"The ISO image %s has a size which is not a multiple of 2048 bytes.  This may "
+"mean it was corrupted on transfer to this computer.\n"
+"\n"
+"It is recommended that you exit and abort your installation, but you can "
+"choose to continue if you think this is in error."
+msgstr ""
+"Розмір ISO образу %s не кратний 2048 байтам. Це може означати, що він був "
+"пошкоджений при копіюванні на цю машину.\n"
+"\n"
+"Рекомендується перезавантажити комп'ютер та перервати встановлення, але ви "
+"можете продовжити встановлення, якщо вважаєте, що це не помилка."
+
+msgid "The VNC server is now running."
+msgstr "Службу VNC запущено."
+
+msgid ""
+"The arch of the release of %(productName)s you are upgrading to appears to "
+"be %(myarch)s which does not match your previously installed arch of %(arch)"
+"s.  This is likely to not succeed.  Are you sure you wish to continue the "
+"upgrade process?"
+msgstr ""
+"Ви оновлюєте систему до версії %(productName)s для архітектури %(myarch)s, "
+"яка не відповідає встановленій архітектурі %(arch)s. Ви справді хочете "
+"продовжити оновлення?"
+
+msgid "The boot partition must be within the first 4MB of the disk."
+msgstr ""
+"Завантажувальний розділ має розташовуватися у межах перших 4 Мбайт диску."
+
+msgid ""
+"The current requested size (%(size)10.2f MB) is larger than the maximum "
+"logical volume size (%(maxlv)10.2f MB). To increase this limit you can "
+"create more Physical Volumes from unpartitioned disk space and add them to "
+"this Volume Group."
+msgstr ""
+"Запитаний розмір (%(size)10.2f MB) перевищує максимальний розмір "
+"логічноготому (%(maxlv)10.2f MB). Щоб збільшити це обмеження можна "
+"створитидодаткові фізичні томи на вільному дисковому просторі та додати їх "
+"до групитомів."
+
+msgid "The disk %s requires at least 1MB of free space at the beginning."
+msgstr "Початково потрібно принаймні 1 Мб вільного простору на диску %s."
+
+msgid ""
+"The drive %s will now be cloned to the following drives:\n"
+"\n"
+msgstr ""
+"Диск %s буде клонований на наступні пристрої:\n"
+"\n"
+
+msgid "The drive clone editor could not be created for some reason."
+msgstr "Редактор клонування дисків не може запуститись з певних причин."
+
+msgid ""
+"The file %s cannot be opened.  This is due to a missing file, a corrupt "
+"package or corrupt media.  Please verify your installation source.\n"
+"\n"
+"If you exit, your system will be left in an inconsistent state that will "
+"likely require reinstallation.\n"
+"\n"
+msgstr ""
+"Не вдається відкрити файл %s. Можлива причина - відсутній файл або "
+"пошкоджений пакунок. Перевірте, що дерево встановлення містить усі необхідні "
+"пакунки. \n"
+"\n"
+"При перезавантаженні система залишиться у нестабільному стані, та ймовірно "
+"знадобиться перевстановлення.\n"
+"\n"
+
+msgid ""
+"The file systems of the Linux installation you have chosen to upgrade have "
+"already been mounted. You cannot go back past this point. \n"
+"\n"
+msgstr ""
+"Файлові системи поточної установки Linux, що вибрана для оновлення, вже "
+"підключені. Ви не можете повернутися назад з цієї точки.\n"
+
+msgid ""
+"The following are directories which should instead be symbolic links, which "
+"will cause problems with the upgrade.  Please return them to their original "
+"state as symbolic links and restart the upgrade.\n"
+"\n"
+msgstr ""
+"Перелічені каталоги, які повинні бути символічними посиланнями, можуть "
+"викликати проблеми під час оновлення. Перетворіть їх знову на символічні "
+"посилання та перезапустіть оновлення.\n"
+"\n"
+
+msgid ""
+"The following critical errors exist with your requested partitioning scheme. "
+"These errors must be corrected prior to continuing with your install of %"
+"(productName)s.\n"
+"\n"
+"%(errorstr)s"
+msgstr ""
+"Вибрана вами схема розподілу викликала наступні критичні помилки. Ці помилки "
+"необхідно виправити перед продовженням встановлення %(productName)s.\n"
+"\n"
+"%(errorstr)s"
+
+msgid "The following devices have been found on your system."
+msgstr "У вашій системі виявлено наступні пристрої."
+
+msgid ""
+"The following error occurred when mounting the file systems listed in /etc/"
+"fstab.  Please fix this problem and try to upgrade again.\n"
+"%s"
+msgstr ""
+"Одна чи більше файлова система, з перелічених у файлі /etc/fstab вашої "
+"системи Linux, не може бути підключена. Усуньте цю проблему та повторіть "
+"спробу оновлення.\n"
+"%s"
+
+msgid ""
+"The following error occurred while setting up the installation repository:\n"
+"\n"
+"%(e)s\n"
+"\n"
+"Please provide the correct information for installing %(productName)s."
+msgstr ""
+"Помилка при налаштовуванні репозиторію встановлення:\n"
+"\n"
+"%(e)s\n"
+"\n"
+"Вкажіть коректну інформацію для встановлення %(productName)s."
+
+msgid ""
+"The following error occurred while setting up the repository:\n"
+"\n"
+"%s"
+msgstr ""
+"При налаштовуванні репозиторію виявлено наступну помилку:\n"
+"\n"
+"%s"
+
+msgid ""
+"The following error was encountered while downloading the escrow "
+"certificate:\n"
+"\n"
+"%s"
+msgstr ""
+"При аналізі конфігурації kickstart-файлу виявлено наступну помилку:\n"
+"\n"
+"%s"
+
+msgid ""
+"The following error was found while parsing the kickstart configuration "
+"file:\n"
+"\n"
+"%s"
+msgstr ""
+"При аналізі конфігурації kickstart-файлу виявлено наступну помилку:\n"
+"\n"
+"%s"
+
+msgid ""
+"The following errors occurred with your partitioning:\n"
+"\n"
+"%(errortxt)s\n"
+"\n"
+"This can happen if there is not enough space on your hard drive(s) for the "
+"installation. %(extra)s"
+msgstr ""
+"Обраний розподіл призвів до виникнення наступних помилок:\n"
+"\n"
+"%(errortxt)s\n"
+"\n"
+"Можлива причина помилки - недостатньо простору на жорстких дисках для "
+"встановлення.%(extra)s"
+
+msgid ""
+"The following file systems for your Linux system were not unmounted "
+"cleanly.  Please boot your Linux installation, let the file systems be "
+"checked and shut down cleanly to upgrade.\n"
+"%s"
+msgstr ""
+"Не всі файлові системи у вашій системі було правильно відключено. Завантажте "
+"систему Linux, дозвольте їй перевірити файлові системи та коректно завершіть "
+"роботу, після чого повторіть спробу оновлення.\n"
+"%s"
+
+msgid ""
+"The following file systems for your Linux system were not unmounted "
+"cleanly.  Would you like to mount them anyway?\n"
+"%s"
+msgstr ""
+"Не всі файлові системи у вашій системі було правильно відключено. Підключити "
+"їх попри все?\n"
+"%s"
+
+msgid ""
+"The following files are absolute symbolic links, which we do not support "
+"during an upgrade. Please change them to relative symbolic links and restart "
+"the upgrade.\n"
+"\n"
+msgstr ""
+"Наступні файли є абсолютними символічними посиланнями, які не підтримуються "
+"під час оновлення. Змініть їх на відносні символічні посилання та "
+"перезапустити оновлення.\n"
+"\n"
+
+msgid ""
+"The following invalid argument was specified for the kickstart driver disk "
+"command: %s"
+msgstr "Вказано неправильний аргумент для команди драйвера диску kickstart: %s"
+
+msgid ""
+"The following language packs are available for download (you need Internet), "
+"would you like to install them?"
+msgstr ""
+"Наступні мовні пакунки є доступними до завантаження (потрібне інтернет-"
+"з'єднання), бажаєте встановити їх?"
+
+msgid ""
+"The following partitions were not deleted because they are in use:\n"
+"\n"
+"%s"
+msgstr ""
+"Наступні розділи не були видалені, тому що вони використовуються:\n"
+"\n"
+"%s"
+
+msgid ""
+"The following pre-existing devices have been selected to be formatted, "
+"destroying all data."
+msgstr ""
+"Наступні, існуючі до цього, розділи вибрані для форматування зі знищенням "
+"усіх даних."
+
+msgid ""
+"The following pre-existing partitions have been selected to be formatted, "
+"destroying all data."
+msgstr ""
+"Наступні, існуючі до цього, розділи вибрані для форматування зі знищенням "
+"усіх даних."
+
+msgid ""
+"The following warnings exist with your requested partition scheme.\n"
+"\n"
+"%s\n"
+"\n"
+"Would you like to continue with your requested partitioning scheme?"
+msgstr ""
+"Вибрана вами схема розподілу викликала наступні критичні помилки.\n"
+"\n"
+"%s\n"
+"\n"
+"Бажаєте продовжити з вибраною схемою розподілу?"
+
+msgid ""
+"The given location [%s] isn't a valid %s live CD to use as an installation "
+"source."
+msgstr "Вказаний шлях [%s] не є коректним %s live CD для встановлення."
+
+msgid ""
+"The given location isn't a valid %s live CD to use as an installation source."
+msgstr "Вказаний шлях путь не є коректним %s live CD для встановлення."
+
+msgid ""
+"The hostname \"%(hostname)s\" is not valid for the following reason:\n"
+"\n"
+"%(herrors)s"
+msgstr ""
+"Назва комп'ютера \"%(hostname)s\" не є правильною з наступних причин:\n"
+"\n"
+"%(herrors)s"
+
+msgid ""
+"The image which was just tested has errors. This could be due to a corrupt "
+"download or a bad disc.  If applicable, please clean the disc and try "
+"again.  If this test continues to fail you should not continue the install."
+msgstr ""
+"Щойно перевірений образ містить помилки. Можлива причина - збій при "
+"завантаженні або пошкоджений диск. Якщо це можливо, протріть диск та "
+"спробуйте ще раз. Якщо помилка повторюється, встановлення не слід "
+"продовжувати."
+
+msgid ""
+"The image which was just tested was successfully verified.  It should be OK "
+"to install from this media.  Note that not all media/drive errors can be "
+"detected by the media check."
+msgstr ""
+"Перевірку образу завершено успішно. Цей образ можна використовувати для "
+"встановлення. Проте, варто зауважити, що всі можливі помилки можуть бути "
+"виявлені цією версією."
+
+msgid ""
+"The installation source given by device %s could not be found.  Please check "
+"your parameters and try again."
+msgstr ""
+"Вказане пристроєм %s джерело встановлення не знайдено. Перевірте параметри "
+"та спробуйте знову."
+
+msgid ""
+"The installer has detected the %(type)s boot loader currently installed on %"
+"(bootDev)s."
+msgstr ""
+"Програма встановлення визначила завантажувач %(type)s,встановлений на %"
+"(bootDev)s."
+
+msgid ""
+"The installer has tried to mount image #%s, but cannot find it on the hard "
+"drive.\n"
+"\n"
+"Please copy this image to the drive and click Retry.  Click Exit to abort "
+"the installation."
+msgstr ""
+"Програма встановлення намагалась підключити образ #%s, але його не знайдено "
+"на жорсткому диску.\n"
+"\n"
+"Скопіюйте цей образ на накопичувач та натисніть \"Повторити\". Щобперервати "
+"встановлення, натисніть \"Перервати встановлення\"."
+
+msgid ""
+"The installer is unable to detect the boot loader currently in use on your "
+"system."
+msgstr ""
+"Програма встановлення не в змозі визначити встановлений у вашій системі "
+"завантажувач."
+
+msgid "The installer will now exit."
+msgstr "Програма встановлення завершує роботу."
+
+msgid ""
+"The kickstart configuration file is missing required information that "
+"anaconda cannot prompt for.  Please add the following sections and try "
+"again:\n"
+"%s"
+msgstr ""
+"У файлі конфігурації kickstart відсутня потрібна інформація, яку Anaconda не "
+"може запитати інтерактивно. Додайте у файл наступні секції та повторіть "
+"спробу:\n"
+"%s"
+
+msgid "The logical volume name \"%s\" is already in use. Please pick another."
+msgstr "Назва логічного тому \"%s\" вже використовується. Оберіть іншу назву."
+
+msgid ""
+"The logical volumes you have configured require %(size)d MB, but the volume "
+"group only has %(tempvgsize)d MB.  Please either make the volume group "
+"larger or make the logical volume(s) smaller."
+msgstr ""
+"Логічним томам, які ви налаштували, потрібно %(size)d Мбайт простору, але "
+"угрупі томів доступно всього %(tempvgsize)d Мбайт. Або збільште розмір "
+"групитомів, або зменште розмір окремих логічних томів."
+
+msgid "The mount point \"%s\" is in use. Please pick another."
+msgstr "Точка монтування \"%s\" вже використовується, оберіть іншу."
+
+msgid ""
+"The mount point %s is invalid.  Mount points must start with '/' and cannot "
+"end with '/', and must contain printable characters and no spaces."
+msgstr ""
+"Некоректна точка монтування %s. Точка монтування повинна починатися з '/' та "
+"не може закінчуватися на \"/\", та має містити лише друковані символи, без "
+"пробілів."
+
+msgid "The mount point %s must be on a linux file system."
+msgstr "Точка монтування %s має розташовуватись у файловій системі Linux. "
+
+msgid "The mount point /boot or / is on a disk that we are not familiar with"
+msgstr ""
+"Точку монтування /boot або / розташовано на диску, з яким немає можливості "
+"працювати"
+
+msgid ""
+"The partitioning options you have selected will now be written to disk.  Any "
+"data on deleted or reformatted partitions will be lost."
+msgstr ""
+"Обрані параметри розподілу на розділи будуть записані на диск. Всі дані у "
+"видалених та переформатованих розділах буде втрачено."
+
+msgid ""
+"The partitioning scheme you requested caused the following critical errors."
+msgstr "Обрана схема розподілу диску викликає наступні критичні помилки."
+
+msgid "The partitioning scheme you requested generated the following warnings."
+msgstr "Обрана схема розподілу викликала наступні попередження."
+
+msgid "The passphrase must be at least %d character long."
+msgid_plural "The passphrase must be at least %d characters long."
+msgstr[0] "Пароль має складатися принаймні з %d символа."
+msgstr[1] "Пароль має складатися принаймні з %d символів."
+msgstr[2] "Пароль має складатися принаймні з %d символів."
+
+msgid "The passphrase must be at least eight characters long."
+msgstr "Пароль має складатися принаймні з 8 символів."
+
+msgid "The passphrases you entered were different.  Please try again."
+msgstr "Введені паролі не збігаються. Спробуйте знову."
+
+msgid "The password must be at least six characters long."
+msgstr "Пароль має складатися принаймні з 6 символів."
+
+msgid "The passwords you entered were different.  Please try again."
+msgstr "Введені паролі не збігаються. Спробуйте знову."
+
+msgid "The passwords you entered were different. Please try again."
+msgstr "Введені Вами паролі не збігаються. Повторіть спробу."
+
+msgid ""
+"The physical extent size cannot be changed because otherwise the space "
+"required by the currently defined logical volumes will be increased to more "
+"than the available space."
+msgstr ""
+"Розмір фізичного екстенту не можна змінити, тому що у іншому випадку "
+"простір, виділений логічним томам, перевищив би доступний вільний простір."
+
+msgid ""
+"The physical extent size cannot be changed because the resulting maximum "
+"logical volume size (%10.2f MB) is smaller than one or more of the currently "
+"defined logical volumes."
+msgstr ""
+"Розмір фізичного екстенту не можна змінити, тому що отриманий максимальний "
+"розмір логічного тому (%10.2f MB) буде менший за розмір одного чи декількох "
+"визначених логічних томів."
+
+msgid ""
+"The physical extent size cannot be changed because the value selected (%"
+"(curpe)10.2f MB) is larger than the smallest physical volume (%(maxpvsize)"
+"10.2f MB) in the volume group."
+msgstr ""
+"розмір фізичного екстенту не може бути змінений, тому що вибрана величина (%"
+"(curpe)10.2f MB) перевищує розмір найменшого фізичного тому (%(maxpvsize)"
+"10.2f MB) в групі томів."
+
+msgid ""
+"The physical extent size cannot be changed because the value selected (%"
+"(curpe)10.2f MB) is too large compared to the size of the smallest physical "
+"volume (%(maxpvsize)10.2f MB) in the volume group."
+msgstr ""
+"розмір фізичного екстенту не може бути змінений, тому що вибрана величина (%"
+"(curpe)10.2f MB) занадто велика у порівнянні з розміром найменшого фізичного "
+"тому (%(maxpvsize)10.2f MB) в групі томів."
+
+msgid ""
+"The repository %s has already been added.  Please choose a different "
+"repository name and URL."
+msgstr "Репозиторій \"%s\" вже доданий, вкажіть іншу назву репозиторію та URL."
+
+msgid "The requested size as entered is not a valid number greater than 0."
+msgstr "Введений розмір не є дійсним числом більшим ніж 0."
+
+msgid ""
+"The rescue environment will now attempt to find your Linux installation and "
+"mount it under the directory %s.  You can then make any changes required to "
+"your system.  If you want to proceed with this step choose 'Continue'.  You "
+"can also choose to mount your file systems read-only instead of read-write "
+"by choosing 'Read-Only'.\n"
+"\n"
+"If for some reason this process fails you can choose 'Skip' and this step "
+"will be skipped and you will go directly to a command shell.\n"
+"\n"
+msgstr ""
+"Оболонка рятування спробує знайти ваше встановлення Linux та підключити її у "
+"каталозі %s.  Після чого ви зможете зробити будь-які необхідні зміни у вашій "
+"системі.  Натисніть клавішу 'Продовжити'. Також ви можете підключити ваші "
+"файлові системи в режимі \"лише читання\" замість\"читання-запис\", "
+"натиснувши кнопку \"Лише для читання\".\n"
+"\n"
+"Якщо з певної причини це не вдається, ви можете натиснути \"Пропустити\", і "
+"тоді ви попадете безпосередньо у командну оболонку.\n"
+"\n"
+
+msgid ""
+"The root account is used for administering the system.  Enter a password for "
+"the root user."
+msgstr ""
+"Обліковий рахунок користувача root використовується для адміністрування "
+"системи. Введіть пароль користувача root."
+
+msgid ""
+"The root filesystem you created is not large enough for this live image "
+"(%.2f MB required)."
+msgstr ""
+"Створена коренева файлова система надто мала для розміщення Live-образу "
+"(потрібно %.2f Мбайт)."
+
+msgid "The root for the previously installed system was not found."
+msgstr "Корінь попередньо встановленої системи не знайдено."
+
+msgid ""
+"The root for the previously installed system was not found.  You can exit "
+"installer or backtrack to choose installation instead of upgrade."
+msgstr ""
+"Кореневий каталог від попереднього встановлення системи не виявлено. Ви "
+"можете вийти з програми встановлення або повернуться назад та вибрати "
+"встановлення замість оновлення."
+
+msgid "The root password must be at least 6 characters long."
+msgstr "Пароль користувача root має складатися принаймні з 6 символів."
+
+msgid "The root password must be at least six characters long."
+msgstr "Пароль користувача root повинен містити принаймні 6 символів."
+
+msgid ""
+"The screenshots have been saved in the directory:\n"
+"\n"
+"\t/root/anaconda-screenshots/\n"
+"\n"
+"You can access these when you reboot and login as root."
+msgstr ""
+"Знімки екрану були скопійовані в каталог:\n"
+"\n"
+"\t/root/anaconda-screenshots/\n"
+"\n"
+"Ви можете переглянути їх після перезавантаження системи."
+
+msgid ""
+"The software you have selected to install will require the following %"
+"(productName)s %(productVersion)s discs:\n"
+"\n"
+"%(reqcdstr)s\n"
+"Please have these ready before proceeding with the installation.  If you "
+"need to abort the installation and exit please select \"Reboot\"."
+msgstr ""
+"Для встановлення обраних пакунків потрібні наступні диски %(productName)s %"
+"(productVersion)s :\n"
+"\n"
+"%(reqcdstr)s\n"
+"Перед продовженням встановлення переконайтесь, що у вас є всі перелічені "
+"диски. Якщо необхідно перервати встановлення, натисніть кнопку "
+"\"Перезавантаження\"."
+
+msgid "The source drive %s cannot be selected as a target drive as well."
+msgstr "Диск-джерело %s не можна вибирати у якості цільового диску."
+
+msgid ""
+"The source drive has no partitions to be cloned.  You must first define "
+"partitions of type 'software RAID' on this drive before it can be cloned."
+msgstr ""
+"Диск-джерело не має розділів, які можна клонувати.  Для клонування диску "
+"необхідно визначити розділи типу \"програмний RAID\"."
+
+msgid ""
+"The source drive you selected has partitions which are not constrained to "
+"the drive %s.\n"
+"\n"
+"You must remove these partitions or restrict them to this drive before this "
+"drive can be cloned. "
+msgstr ""
+"Диск-джерело має розділи, які не об'єднані у пристрій /dev/%s.\n"
+"\n"
+"Перед клонуванням диску, ці розділи необхідно видалити або обмежити на цей "
+"пристрій."
+
+msgid ""
+"The source drive you selected has partitions which are not of type 'software "
+"RAID'.\n"
+"\n"
+"You must remove these partitions before this drive can be cloned. "
+msgstr ""
+"Диск-джерело має розділи, які не є розділами типу 'програмний RAID'.\n"
+"\n"
+"Перед клонуванням, ці розділи необхідно видалити. "
+
+msgid ""
+"The source drive you selected has software RAID partition(s) which are "
+"members of an active software RAID device.\n"
+"\n"
+"You must remove these partitions before this drive can be cloned."
+msgstr ""
+"Диск-джерело містить розділи програмного RAID, які є учасниками активного "
+"пристрою RAID.\n"
+"\n"
+"Перед клонуванням диску, ці розділи необхідно видалити."
+
+msgid ""
+"The storage configuration you have chosen has already been activated. You "
+"can no longer return to the disk editing screen. Would you like to continue "
+"with the installation process?"
+msgstr ""
+"Вибрану конфігурацію сховища вже активовано. Ви не зможете повернутися до "
+"екрану редагування диску. Продовжити процес встановлення?"
+
+msgid ""
+"The swap device:\n"
+"\n"
+"     %s\n"
+"\n"
+"does not contain a supported swap volume.  In order to continue "
+"installation, you will need to format the device or skip it."
+msgstr ""
+"Пристрій підкачки:\n"
+"\n"
+"     %s\n"
+"\n"
+"не містить розділу підкачки.  Для продовження встановлення, слід "
+"відформатувати пристрій або пропустити його."
+
+msgid ""
+"The swap device:\n"
+"\n"
+"     %s\n"
+"\n"
+"in your /etc/fstab file is currently in use as a software suspend device, "
+"which means your system is hibernating. If you are performing a new install, "
+"make sure the installer is set to format all swap devices."
+msgstr ""
+"Пристрій підкачки:\n"
+"\n"
+"     %s\n"
+"\n"
+"з файлу /etc/fstab наразі використовується як розділ для призупинення "
+"системи, це означає, що ваша система знаходиться у \"режимі сну\". Якщо ви "
+"виконуєте нове встановлення, обов'язково вкажіть переформатування усіх "
+"розділів підкачки."
+
+msgid ""
+"The swap device:\n"
+"\n"
+"     %s\n"
+"\n"
+"in your /etc/fstab file is currently in use as a software suspend device, "
+"which means your system is hibernating. To perform an upgrade, please shut "
+"down your system rather than hibernating it."
+msgstr ""
+"Пристрій підкачки:\n"
+"\n"
+"     %s\n"
+"\n"
+"з файлу /etc/fstab наразі використовується як розділ для призупинення роботи "
+"системи, це означає, що ваша система знаходиться у \"режим сну\". Щоб "
+"виконати оновлення повністю вимкніть вашу систему замість переведення її у "
+"\"режим сну\"."
+
+msgid ""
+"The swap device:\n"
+"\n"
+"     %s\n"
+"\n"
+"is an old-style Linux swap partition.  If you want to use this device for "
+"swap space, you must reformat as a new-style Linux swap partition."
+msgstr ""
+"Пристрій підкачки:\n"
+"\n"
+"     %s\n"
+"\n"
+"є розділом підкачки Linux старого типу.  Якщо ви хочете використовувати цей "
+"пристрій для підкачкитреба переформатувати його у розділ підкачки Linux "
+"нового типу."
+
+msgid "The swap file must be between 1 and 2000 MB in size."
+msgstr "Розмір фалу підкачки повинен бути між 1 і 2000 МБ."
+
+msgid "The system will be rebooted now."
+msgstr "Зараз систему буде перезавантажено."
+
+msgid "The system will now reboot."
+msgstr "Зараз систему буде перезавантажено."
+
+msgid ""
+"The target drive %(path)s has a partition which cannot be removed for the "
+"following reason:\n"
+"\n"
+"\"%(rc)s\"\n"
+"\n"
+"You must remove this partition before this drive can be a target."
+msgstr ""
+"Цільовий диск %(path)s містить розділ, який не можна видалити через наступні "
+"причини:\n"
+"\n"
+"\"%(rc)s\"\n"
+"\n"
+"Цей розділ необхідно видалити заздалегідь."
+
+msgid "The value you entered is not a valid number."
+msgstr "Вказаний вами розмір повинен бути числом."
+
+msgid "The volume group name \"%s\" is already in use. Please pick another."
+msgstr "Назва групи томів \"%s\" вже використовується, вкажіть іншу назву."
+
+msgid ""
+"The z/IPL Boot Loader will be installed on your system after installation is "
+"complete. You can now enter any additional kernel and chandev parameters "
+"which your machine or your setup require."
+msgstr ""
+"Після завершення встановлення системи буде встановлено завантажувач z/IPL. "
+"Зараз ви можете ввести будь-які додаткові необхідні параметри для ядра та "
+"chandev."
+
+msgid ""
+"The z/IPL Boot Loader will now be installed on your system.\n"
+"\n"
+"The root partition will be the one you selected previously in the partition "
+"setup.\n"
+"\n"
+"The kernel used to start the machine will be the one to be installed by "
+"default.\n"
+"\n"
+"If you wish to make changes later after the installation feel free to change "
+"the /etc/zipl.conf configuration file.\n"
+"\n"
+"You can now enter any additional kernel parameters which your machine or "
+"your setup may require."
+msgstr ""
+"Завантажувач z/IPL буде встановлений у вашій системі.\n"
+"\n"
+"Кореневим розділом буде один з раніше вибраних при настроюванні розділів.\n"
+"\n"
+"Ядром для запуску машини буде вибрано типове встановлене ядро.\n"
+"\n"
+"Якщо ви бажаєте зробити зміни після встановлення, внесіть їх у "
+"конфігураційний файл  /etc/zipl.conf\n"
+"\n"
+"Тепер ви можете ввести будь-які необхідні додаткові параметри ядра."
+
+msgid "The z/IPL boot loader will be installed on your system."
+msgstr "У вашій системі буде встановлено завантажувач z/IPL."
+
+msgid ""
+"There are multiple partitions on this device which could contain the driver "
+"disk image.  Which would you like to use?"
+msgstr ""
+"На цьому пристрої є декілька розділів, які можуть містити диск драйверів. "
+"Який розділ використовувати?"
+
+msgid ""
+"There are multiple partitions on this device which could contain the update "
+"disk image.  Which would you like to use?"
+msgstr ""
+"На цьому пристрої є декілька розділів, які можуть містити диск драйверів. "
+"Який розділ використовувати?"
+
+msgid ""
+"There is no room left in the volume group to create new logical volumes. To "
+"add a logical volume you must reduce the size of one or more of the "
+"currently existing logical volumes"
+msgstr ""
+"В групі томів не вистачає місця для створення нових логічних томів. Щоб "
+"додати логічний том, треба зменшити розмір одного чи декількох існуючих "
+"логічних томів"
+
+msgid ""
+"There is not enough space on the device you selected for the swap partition."
+msgstr "На пристрої, який ви вибрали для розділу підкачки, невистачає місця."
+
+msgid ""
+"There seem to be one or more existing Linux installations on your system.\n"
+"\n"
+"Please choose one to rescue, or select 'Reinstall System' to freshly install "
+"your system."
+msgstr ""
+"У вашій системі знайдено одну або декілька встановлених систем Linux.\n"
+"\n"
+"Оберіть одну з них для оновлення, або оберіть 'Перевстановлення системи' для "
+"встановлення нової системи."
+
+msgid "There was an error clearing the target drives.  Cloning failed."
+msgstr "Помилка клонування: помилка при очищенні цільових дисків."
+
+msgid "There was an error configuring your network interface."
+msgstr "Помилка при налаштовуванні мережного інтерфейсу."
+
+msgid "There was an error encountered while resizing the device %s."
+msgstr "Помилка при зміні розміру пристрою %s."
+
+msgid ""
+"There was an error installing the bootloader.  The system may not be "
+"bootable."
+msgstr ""
+"Помилка при встановленні завантажувача. Можливо, виникнуть проблеми при "
+"завантаженні системи."
+
+msgid ""
+"There was an error installing the live image to your hard drive.  This could "
+"be due to bad media.  Please verify your installation media.\n"
+"\n"
+"If you exit, your system will be left in an inconsistent state that will "
+"require reinstallation."
+msgstr ""
+"Помилка при встановленні Live-образу на жорсткий диск. Можлива причина - "
+"пошкоджений носій. Перевірте цілісність носія встановлення.\n"
+"\n"
+"При перезавантаженні система залишиться у нестабільному стані, та ймовірно "
+"знадобиться перевстановлення."
+
+msgid ""
+"There was an error running the kickstart script at line %(lineno)s.  You may "
+"examine the output in %(msgs)s.  This is a fatal error and installation will "
+"be aborted.  Press the OK button to exit the installer."
+msgstr ""
+"Помилка при виконанні сценарію kickstart у рядку %(lineno)s. Можете "
+"переглянути вивід у рядку %(msgs)s. Це серйозна проблема, тому продовження "
+"процесу встановлення неможливе. Натисніть <Гаразд> дляпереривання "
+"встановлення."
+
+msgid ""
+"There was an error running your transaction for the following reason(s): %"
+"s.\n"
+msgstr "При виконанні транзакції виникла помилка з наступних причин: %s.\n"
+
+msgid ""
+"There was an error running your transaction for the following reason: %s\n"
+msgstr ""
+"При виконанні вашої транзакції виникла помилка з наступних причин: %s\n"
+
+msgid ""
+"There were file conflicts when checking the packages to be installed:\n"
+"%s\n"
+msgstr ""
+"При перевірці пакунків для встановлення виявлено конфлікти файлів:\n"
+"%s\n"
+
+msgid "Third BIOS drive:"
+msgstr "Третій пристрій BIOS:"
+
+msgid ""
+"This boot target cannot be deleted because it is for the %s system you are "
+"about to install."
+msgstr ""
+"Цю ціль завантаження видалити не можна, тому вона - система %s яку ви "
+"встановлюєте."
+
+msgid ""
+"This change in the value of the physical extent will require the sizes of "
+"the current logical volume requests to be rounded up in size to an integer "
+"multiple of the physical extent.\n"
+"\n"
+"This change will take effect immediately."
+msgstr ""
+"Ця зміна розміру фізичного екстенту вимагає, щоб розміри поточних логічних "
+"томів були округлені до значення, кратного фізичному екстенту.\n"
+"\n"
+"Ця зміна набере сили негайно."
+
+msgid ""
+"This change in the value of the physical extent will waste substantial space "
+"on one or more of the physical volumes in the volume group."
+msgstr ""
+"Ця зміна фізичного екстенту призведе до втрати суттєвої частини простору не "
+"одному або декількох фізичних томах у групі томів."
+
+msgid "This device is already being used for another boot entry."
+msgstr "Цей пристрій вже використовується для іншого елементу."
+
+msgid ""
+"This device is an extended partition which contains logical partitions that "
+"cannot be deleted:\n"
+"\n"
+msgstr ""
+"Цей розділ є розширенням та містить логічні розділи, які неможливо "
+"видалити:\n"
+"\n"
+
+msgid "This device is part of a LVM volume group."
+msgstr "Цей пристрій є частиною групи томів LVM."
+
+msgid "This device is part of a RAID device."
+msgstr "Цей пристрій є частиною пристрою RAID."
+
+msgid "This device is part of the LVM volume group '%s'."
+msgstr "Цей пристрій є частиною групи томів LVM '%s'."
+
+msgid "This device is part of the RAID device %s."
+msgstr "Цей пристрій є частиною пристрою RAID %s."
+
+msgid "This is a global passphrase"
+msgstr "Це глобальний пароль"
+
+msgid "This is the recommended option."
+msgstr "Це рекомендований вибір."
+
+msgid "This label is already in use for another boot entry."
+msgstr "Ця позначка використовується для іншого елементу."
+
+msgid ""
+"This medium contains many extra languages, would you like to keep them "
+"installed?"
+msgstr "Бажаєте використовувати під час встановлення обрану раніше мову?"
+
+msgid ""
+"This mount point is invalid.  The %s directory must be on the / file system."
+msgstr ""
+"Неправильна точка монтування. Каталог %s має розташовуватись у файловій "
+"системі /."
+
+msgid ""
+"This option creates a new boot loader configuration.  If you wish to switch "
+"boot loaders, you should choose this."
+msgstr ""
+"Це дозволить створити нову конфігурацію завантажувача. Якщо ви бажаєте "
+"змінити завантажувач, також слід вибрати цей варіант."
+
+msgid ""
+"This option makes no changes to boot loader configuration.  If you are using "
+"a third party boot loader, you should choose this."
+msgstr ""
+"Це дозволить не змінювати конфігурацію завантажувача. Оберіть цей варіант, "
+"якщо ви використовуєте завантажувач, який не входить у склад дистрибутиву."
+
+msgid "This partition is holding the data for the hard drive install."
+msgstr "Цей розділ містить дані для встановлення з жорсткого диску."
+
+msgid "This partition is part of an inconsistent LVM Volume Group."
+msgstr "Цей розділ є частиною неузгодженої групи томів LVM."
+
+msgid ""
+"This release of %(productName)s supports an updated file system, which has "
+"several benefits over the file system traditionally shipped in %(productName)"
+"s.  This installation program can migrate formatted partitions without data "
+"loss.\n"
+"\n"
+"Which of these partitions would you like to migrate?"
+msgstr ""
+"Ця версія %(productName)s підтримує оновлену файлову систему, яка "
+"маєдекілька переваг над файловою системою, яка була традиційною у "
+"попередніхверсіях %(productName)s. Є можливість перетворити існуючі розділи "
+"безвтрати даних.\n"
+"\n"
+"Які з цих розділів ви бажаєте перетворити?"
+
+msgid ""
+"This requires that you have an active network connection during the "
+"installation process.  Please configure a network interface."
+msgstr ""
+"Для цього треба активне мережне з'єднання протягом процесу встановлення. "
+"Налаштуйте мережний інтерфейс."
+
+msgid ""
+"This tool clones the layout from a partitioned source onto other similar "
+"sized drives. The source must have partitions which are restricted to that "
+"drive and must ONLY contain unused software RAID partitions.  EVERYTHING on "
+"the target drive(s) will be destroyed.\n"
+msgstr ""
+"Цей інструмент клонує розташування джерела на інші диски, аналогічні за "
+"розміром. Джерело повинно мати розділи, які обмежуються на цьому диску і "
+"повинне містити лише невикористані програмні RAID розділи. ВСЕ на цільовому "
+"диску буде знищено.\n"
+
+msgid "This will update your current boot loader."
+msgstr "Поточний завантажувач буде оновлений."
+
+msgid "Time Zone Selection"
+msgstr "Вибір часового поясу"
+
+msgid ""
+"To begin testing the media before installation press %s.\n"
+"\n"
+"Choose %s to skip the media test and start the installation."
+msgstr ""
+"Щоб почати перевірку носіїв перед встановленням натисніть %s.\n"
+"\n"
+"Натисніть %s, щоб пропустити перевірку носія та запустити встановлення."
+
+msgid ""
+"To create a PV you need a partition with free space.  To create a VG you "
+"need a PV that is not part of any existing VG.  To create an LV you need a "
+"VG with free space.\n"
+"\n"
+msgstr ""
+"Для створення Фізичного Розділу, вам потрібен розділ з вільним простором. "
+"Щоб створити Групу Томів, вам потрібен Фізичний Розділ, що не є частиною "
+"існуючої Групи Томів. Для створення Логічного Тому, потрібна Група Томів з "
+"вільним простором.\n"
+"\n"
+
+msgid ""
+"To use RAID you must first create at least two partitions of type 'software "
+"RAID'.  Then you can create a RAID device that can be formatted and "
+"mounted.\n"
+"\n"
+msgstr ""
+"Для використання програмного RAID необхідно створити принаймні два розділи "
+"типу 'програмний RAID'. Після чого ви зможете створити та підключити "
+"пристрій RAID.\n"
+"\n"
+
+msgid ""
+"To use iSCSI disks, you must provide the address of your iSCSI target and "
+"the iSCSI initiator name you've configured for your host."
+msgstr ""
+"Щоб використовувати диски iSCSI, ви маєте надати адресу пристрою iSCSI та "
+"назву ініціатора iSCSI, які були встановлені у вашому вузлі."
+
+msgid "Too small"
+msgstr "Надто мало місця"
+
+msgid "Total Space:"
+msgstr "Загальний розмір: "
+
+msgid "Transferring install image to hard drive"
+msgstr "Перенесення образу встановлення на жорсткий диск"
+
+msgid ""
+"Try the text mode installer by running:\n"
+"\n"
+"'/usr/bin/liveinst -T'\n"
+"\n"
+" from a root terminal."
+msgstr ""
+"Спробуйте увімкнути текстовий інсталятор командою:\n"
+"\n"
+"'/usr/bin/liveinst -T'\n"
+"\n"
+"з терміналу суперкористувача root."
+
+msgid "Turkish"
+msgstr "Турецька"
+
+msgid "Type"
+msgstr "Тип"
+
+msgid "URL Setup"
+msgstr "Налаштовування URL"
+
+msgid "URL is a _mirror list"
+msgstr "URL містить список _дзеркал"
+
+msgid "URL must be either an ftp or http URL"
+msgstr "URL-посилання має містить адресу FTP чи HTTP"
+
+msgid "Ukrainian"
+msgstr "Українська"
+
+msgid "Unable To Delete"
+msgstr "Не вдається видалити"
+
+msgid "Unable To Edit"
+msgstr "Зміна неможлива"
+
+msgid "Unable to Start X"
+msgstr "Не вдається запустити систему X"
+
+msgid "Unable to access the disc."
+msgstr "Не вдається отримати доступ до диску."
+
+msgid ""
+"Unable to activate a networking device.  Networking will not be available in "
+"rescue mode."
+msgstr ""
+"Неможливо активувати мережні пристрої. Мережне оточення не буде доступне у "
+"режимі відновлення."
+
+msgid ""
+"Unable to download the kickstart file.  Please modify the kickstart "
+"parameter below or press Cancel to proceed as an interactive installation."
+msgstr ""
+"Неможливо завантажити файл kickstart. Змініть параметр kickstart чи "
+"натисніть Скасувати для продовження в інтерактивному режимі."
+
+msgid ""
+"Unable to download the updates image.  Please modify the updates location "
+"below or press Cancel to proceed without updates.."
+msgstr ""
+"Неможливо завантажити образ з оновленнями. Вкажіть інше розташування "
+"оновлень або натисніть «Скасувати» для продовження без встановлення оновлень."
+
+msgid "Unable to find /bin/sh to execute!  Not starting shell"
+msgstr "Не вдається знайти /bin/sh для запуску! Оболонку не буде запущено"
+
+msgid ""
+"Unable to find any devices of the type needed for this installation type.  "
+"Would you like to manually select your driver or use a driver disk?"
+msgstr ""
+"Не вдається знайти жоден пристрій, необхідний для цього типу встановлення.  "
+"Бажаєте вибрати драйвер вручну чи використати диск драйверів?"
+
+msgid "Unable to find image"
+msgstr "Не вдається знайти образ"
+
+msgid "Unable to find install image %s"
+msgstr "Не вдається знайти образ встановлення %s"
+
+msgid ""
+"Unable to find the checksum in the image.  This probably means the disc was "
+"created without adding the checksum."
+msgstr ""
+"Не вдається прочитати контрольну суму диска з первинного дескриптора тому.  "
+"Швидше за все це означає, що диск створений без додавання контрольної суми."
+
+msgid "Unable to load title bar"
+msgstr "Не вдається завантажити заголовок"
+
+msgid "Unable to mount filesystem"
+msgstr "Не вдається підключити файлову систему"
+
+msgid "Unable to open the image."
+msgstr "Не вдається знайти образ."
+
+msgid ""
+"Unable to read group information from repositories.  This is a problem with "
+"the generation of your install tree."
+msgstr ""
+"Неможливо прочитати інформацію про групи з репозиторіїв. Це проблема "
+"стосується генерування дерева встановлення."
+
+msgid ""
+"Unable to read package metadata from repository.  This may be due to a "
+"missing repodata directory.  Please ensure that your repository has been "
+"correctly generated.\n"
+"\n"
+"%s"
+msgstr ""
+"Не вдається прочитати метадані пакунку. Можлива причина - відсутність "
+"каталогу repodata. Переконайтесь, що ваше дерево встановлення сформовано "
+"правильно.generated.\n"
+"\n"
+"%s"
+
+msgid ""
+"Unable to read package metadata. This may be due to a missing repodata "
+"directory.  Please ensure that your install tree has been correctly "
+"generated.\n"
+"\n"
+"%s"
+msgstr ""
+"Не вдається прочитати метадані пакунку. Можлива причина - відсутність "
+"каталогу repodata. Переконайтесь, що ваше дерево встановлення сформовано "
+"правильно.\n"
+"\n"
+"%s"
+
+msgid "Unable to retrieve %s."
+msgstr "Не вдається отримати %s."
+
+msgid "Unable to retrieve the install image."
+msgstr "Не вдається отримати образ встановлення."
+
+msgid "Uncategorized"
+msgstr "Поза категоріями"
+
+msgid "Unformatted DASD Device Found"
+msgid_plural "Unformatted DASD Devices Found"
+msgstr[0] "Знайдено невідформатований пристрій DASD"
+msgstr[1] "Знайдено невідформатовані пристрої DASD"
+msgstr[2] "Знайдено невідформатовані пристрої DASD"
+
+msgid "Unhandled exception"
+msgstr "Несподіваний виняток"
+
+msgid "Unknown Device"
+msgstr "Невідомий пристрій"
+
+msgid "Unknown Linux system"
+msgstr "Невідома система Linux"
+
+msgid "Unknown Url method %s"
+msgstr "Невідомий метод URL: %s"
+
+msgid "Unknown driver disk kickstart source: %s"
+msgstr "Невідоме джерело драйвера диска kickstart: %s"
+
+msgid "Unknown error processing %%ksappend lines: %s"
+msgstr "Невідома помилка при обробці рядків %%ksappend: %s"
+
+msgid "Unknown return code: %d."
+msgstr "Невідомий метод URL: %d."
+
+msgid "Unrecoverable Error"
+msgstr "Критична помилка"
+
+msgid "Update Disk Source"
+msgstr "Диск з оновленням"
+
+msgid "Update boot loader configuration"
+msgstr "Оновити параметри завантажувача"
+
+msgid "Updates"
+msgstr "Оновлення"
+
+msgid "Updates Disk"
+msgstr "Диск з оновленнями"
+
+msgid "Upgrade Boot Loader Configuration"
+msgstr "Оновлення конфігурації завантажувача"
+
+msgid "Upgrade Examine"
+msgstr "Перевірка можливості оновлення"
+
+msgid "Upgrade Swap Partition"
+msgstr "Оновлення розділу підкачки"
+
+msgid "Upgrade root not found"
+msgstr "Не виявлено кореневий каталог для початку оновлення"
+
+msgid "Upgrading %s\n"
+msgstr "Оновлення %s\n"
+
+msgid "Usage error."
+msgstr "Помилка цільового диску."
+
+msgid "Usage or syntax error."
+msgstr "У використанні, або синтаксична помилка."
+
+msgid "Use All Space"
+msgstr "Використати весь простір"
+
+msgid "Use Anyway"
+msgstr "Використовувати попри все"
+
+msgid "Use DCB"
+msgstr "Використовуйте DCB"
+
+msgid "Use Free Space"
+msgstr "Використовувати вільний простір"
+
+msgid "Use a driver disk"
+msgstr "Використовувати диск драйверів"
+
+msgid "Use dynamic IP configuration (DHCP)"
+msgstr "Динамічне налаштовування IP (DHCP)"
+
+msgid "Use entire drive"
+msgstr "Використовувати весь диск"
+
+msgid "Use free space"
+msgstr "Використовувати вільний простір"
+
+msgid "Use text mode"
+msgstr "Використовувати текстовий режим"
+
+msgid "Used Space:"
+msgstr "Використано:"
+
+msgid "User configuration"
+msgstr "Налаштовування користувача"
+
+msgid "User password must be at least 6 characters long."
+msgstr "Пароль користувача root має складатися принаймні з 6 символів."
+
+msgid "Username"
+msgstr "Ім'я користувача"
+
+msgid "Username too short"
+msgstr "Ім'я користувача надто коротке"
+
+msgid "Username:"
+msgstr "Ім'я користувача:"
+
+msgid "VNC Configuration"
+msgstr "Налаштовування VNC"
+
+msgid "Vendor"
+msgstr "Розробник"
+
+msgid "Vietnamese"
+msgstr "В'єтнамська'"
+
+msgid "Volume Group Name:"
+msgstr "Назва групи томів:"
+
+msgid "Volume Group Names must be less than 128 characters"
+msgstr "Довжина назви групи томів не повинна перевищувати 128 символів"
+
+msgid "Volume to Shrink"
+msgstr "Зменшити том"
+
+msgid "WWPN %(wwpn)s not found at zFCP device %(devnum)s."
+msgstr "WWPN %(wwpn)s не знайдено у пристрої zFCP %(devnum)s."
+
+msgid "Waiting for NetworkManager"
+msgstr "Очікується NetworkManager"
+
+msgid "Waiting for NetworkManager to configure %s.\n"
+msgstr "Очікується налаштовування %s за допомогою NetworkManager.\n"
+
+msgid "Waiting for telnet connection."
+msgstr "Очікується з'єднання telnet."
+
+msgid "Warning"
+msgstr "Увага"
+
+msgid "Warning! This is pre-release software!"
+msgstr "Увага! Це попередній випуск!"
+
+msgid "Warning: %s."
+msgstr "Увага: %s."
+
+msgid "Warning: Could not reset parm (%s)"
+msgstr "Увага: Не вдається скинути parm (%s)"
+
+msgid "Warnings During Automatic Partitioning"
+msgstr "Попередження при автоматичному розподілі"
+
+msgid "Weak Password"
+msgstr "Слабкий пароль"
+
+msgid "Welcome to %(productName)s for %(productArch)s"
+msgstr "Ласкаво просимо до %(productName)s для %(productArch)s"
+
+msgid "Welcome to %s"
+msgstr "Ласкаво просимо до %s"
+
+msgid "Welcome to %s for %s"
+msgstr "Ласкаво просимо до %s для %s"
+
+msgid "Welcome to %s for %s - Rescue Mode"
+msgstr "Ласкаво просимо до %s для %s - режим відновлення"
+
+msgid ""
+"Welcome to %s!\n"
+"\n"
+msgstr ""
+"Ласкаво просимо до %s!\n"
+"\n"
+
+msgid "Welsh"
+msgstr "Уельська"
+
+msgid "What language would you like to use during the installation process?"
+msgstr "Яку мову ви хотіли б використовувати під час встановлення?"
+
+msgid ""
+"What partition and directory on that partition holds the installation image "
+"for %s?  If you don't see the disk drive you're using listed here, press F2 "
+"to configure additional devices."
+msgstr ""
+"Вкажіть розділ та каталог на цьому розділі, які містять образи встановлення "
+"для %s. Якщо необхідний диск відсутній у списку, натисніть F2 для "
+"налаштовування додаткових пристроїв."
+
+msgid "What type of devices will your installation involve?"
+msgstr "Який носій містить образ відновлення?"
+
+msgid "What type of keyboard do you have?"
+msgstr "Вкажіть тип клавіатури"
+
+msgid "What type of media contains the installation image?"
+msgstr "Який носій містить образ відновлення?"
+
+msgid "What type of media contains the rescue image?"
+msgstr "Який носій містить образ відновлення?"
+
+msgid "What would you like to do?"
+msgstr "Що б ви хотіли зробити?"
+
+msgid "When finished please exit from the shell and your system will reboot."
+msgstr ""
+"Після завершення вийдіть (exit) з командної оболонки і вашу систему буде "
+"перевантажено."
+
+msgid "Where would you like to install the boot loader for your system?"
+msgstr "Куди ви бажаєте встановити завантажувач?"
+
+msgid "Which device holds the root partition of your installation?"
+msgstr "Вкажіть пристрій, на якому міститься коренева файлова система"
+
+msgid "Which drive(s) do you want to use for this installation?"
+msgstr "Які пристрої ви хочете використати для цього встановлення?"
+
+msgid "Which model keyboard is attached to this computer?"
+msgstr "Вкажіть модель клавіатури, підключеної до цього комп'ютера"
+
+msgid ""
+"Which partition would you like to shrink to make room for your installation?"
+msgstr ""
+"Вкажіть розділ, розмір якого хочете зменшити, щоб звільнити місце для "
+"встановлення."
+
+msgid "Which type of installation would you like?"
+msgstr "Який тип встановлення бажаєте?"
+
+msgid "Will try to connect again in 15 seconds..."
+msgstr "Спроба повторного з'єднання через 15 секунд..."
+
+msgid "Would you like to continue with the upgrade?"
+msgstr "Продовжити оновлення?"
+
+msgid "Would you like to continue with your requested partitioning scheme?"
+msgstr "Продовжити з поточною схемою розподілу?"
+
+msgid ""
+"Would you like to perform a checksum test of the ISO image:\n"
+"\n"
+"   %s?"
+msgstr ""
+"Ви бажаєте перевірити контрольну суму образа ISO:\n"
+"\n"
+"   %s?"
+
+msgid "Would you like to use VNC?"
+msgstr "Хочете використати VNC?"
+
+msgid "Writing storage configuration to disk"
+msgstr "Виконується запис інформації про сховище на диск"
+
+msgid "Wrong Disc"
+msgstr "Неправильний диск"
+
+msgid ""
+"X was unable to start on your machine.  Would you like to start VNC to "
+"connect to this computer from another computer and perform a graphical "
+"install or continue with a text mode install?"
+msgstr ""
+"Графічна система X не може запуститись на цьому комп'ютері. Бажаєте "
+"запустити VNC, щоб підключитись до цього комп'ютера з іншого комп'ютера та "
+"продовжити графічне встановлення, або ж продовжити встановлення у текстовому "
+"режимі?"
+
+msgid "Yes"
+msgstr "Так"
+
+msgid ""
+"You appear to be upgrading from a system which is too old to upgrade to this "
+"version of %s.  Are you sure you wish to continue the upgrade process?"
+msgstr ""
+"Схоже, ви оновлюєте систему, яка занадто застара для того, щоб бути "
+"оновленою до цієї версії %s. Ви дійсно бажаєте продовжити оновлення?"
+
+msgid "You are about to delete a RAID device."
+msgstr "Ви збираєтесь видалити пристрій RAID."
+
+msgid "You are about to delete all partitions on the device '%s'."
+msgstr "Ви збираєтесь видалити всі розділи на пристрої '%s'."
+
+msgid "You are about to delete the %(type)s %(name)s"
+msgstr "Ви збираєтесь видалити розділ %(type)s %(name)s"
+
+msgid "You are about to delete the %s partition."
+msgstr "Ви збираєтесь видалити розділ %s."
+
+msgid "You are about to delete the logical volume \"%s\"."
+msgstr "Ви збираєтесь видалити логічний том \"%s\"."
+
+msgid ""
+"You are about to delete the volume group \"%s\".\n"
+"\n"
+"ALL logical volumes in this volume group will be lost!"
+msgstr ""
+"Ви намагаєтесь видалити групу томів \"%s\"\n"
+"\n"
+"ВСІ логічні томи у цій групі будуть втрачені!"
+
+msgid "You can identify the physical port for"
+msgstr "Можна ідентифікувати фізичний порт для "
+
+msgid "You cannot create more than %d logical volume per volume group."
+msgid_plural "You cannot create more than %d logical volumes per volume group."
+msgstr[0] "Ви не можете створити більш ніж %d логічний розділ на диску."
+msgstr[1] "Ви не можете створити більш ніж %d логічних розділи на диску."
+msgstr[2] "Ви не можете створити більш ніж %d логічних розділів на диску."
+
+msgid "You cannot delete a partition of a LDL formatted DASD."
+msgstr "Неможливо видалити DASD, відформатований як LDL."
+
+msgid ""
+"You cannot edit this device:\n"
+"\n"
+"%s"
+msgstr ""
+"Не вдається змінити цей пристрій:\n"
+"\n"
+"%s"
+
+msgid ""
+"You cannot remove this physical volume because otherwise the volume group "
+"will be too small to hold the currently defined logical volumes."
+msgstr ""
+"Не можна видаляти цей фізичний том, тому що розмір групи томів був би надто "
+"малий для розміщення визначених логічних томів."
+
+msgid "You currently have %d available PV free to use.\n"
+msgid_plural "You currently have %d available PVs free to use.\n"
+msgstr[0] "У вас є %d Фізичний Розділ, придатний до користування.\n"
+msgstr[1] "У вас є %d Фізичних Розділи, придатних до користування.\n"
+msgstr[2] "У вас є %d Фізичних Розділів, придатних до користування.\n"
+
+msgid "You currently have %d software RAID partition free to use."
+msgid_plural "You currently have %d software RAID partitions free to use."
+msgstr[0] "У Вас вже є %d розділ RAID, придатний до використання."
+msgstr[1] "У Вас вже є %d розділи RAID, придатні до використання."
+msgstr[2] "У Вас вже є %d розділів RAID, придатних до використання."
+
+msgid "You currently have free space to create PVs."
+msgstr "У вас є свобідний простір для створення Фізичного Розділу."
+
+msgid "You do not have enough RAM to install %s on this machine."
+msgstr "Недостатньо оперативної пам'яті для встановлення %s на цій машині."
+
+msgid "You do not have enough RAM to use the graphical installer."
+msgstr ""
+"Недостатньо оперативної пам'яті для графічної програми встановлення. "
+"Встановлення продовжуватиметься у текстовому режимі."
+
+msgid "You don't have any Linux partitions.  Rebooting.\n"
+msgstr "У системі немає розділів Linux. Буде виконано перезавантаження.\n"
+
+msgid ""
+"You don't have any Linux partitions. Press return to get a shell. The system "
+"will reboot automatically when you exit from the shell."
+msgstr ""
+"Ви не маєте жодного розділу Linux. Натисніть <Enter>, щоб перейти у "
+"оболонку. Систему буде автоматично перезавантажено після виходу з оболонки."
+
+msgid ""
+"You don't seem to have any hard drives on your system! Would you like to "
+"configure additional devices?"
+msgstr ""
+"У вашій системі не виявлено жодного жорсткого диску! Бажаєте  настроїти "
+"додаткові пристрої?"
+
+msgid ""
+"You have chosen to use a pre-existing partition for this installation "
+"without formatting it. We recommend that you format this partition to make "
+"sure files from a previous operating system installation do not cause "
+"problems with this installation of Linux. However, if this partition "
+"contains files that you need to keep, such as home directories, then "
+"continue without formatting this partition."
+msgstr ""
+"Ви вирішили для цього встановлення використовувати раніше створений розділ "
+"без його форматування. Ми рекомендуємо відформатувати цей розділ, щоб файли "
+"з попереднього встановлення не викликали проблем з цим встановленням Linux. "
+"Проте, якщо розділ містить файли, які необхідно зберегти, наприклад домашні "
+"каталоги користувачів, ви можете продовжити без форматування цього розділу."
+
+msgid ""
+"You have multiple devices which could serve as sources for a driver disk.  "
+"Which would you like to use?"
+msgstr ""
+"В вашій системі є декілька пристроїв, в які може бути вставлений диск "
+"драйверів. Який пристрій використовувати?"
+
+msgid ""
+"You have multiple devices which could serve as sources for an update disk.  "
+"Which would you like to use?"
+msgstr ""
+"В вашій системі є декілька пристроїв, кожен з яких може служити джерелом "
+"диску оновлень. Який пристрій використовувати?"
+
+msgid ""
+"You have multiple network devices on this system. Which would you like to "
+"install through?"
+msgstr ""
+"В цій системі є декілька мережних адаптерів. Який з них повинен "
+"використовуватись для встановлення?"
+
+msgid "You have not created a /boot/efi partition."
+msgstr "Ви не створити розділ /boot/efi."
+
+msgid "You have not created a bootable partition."
+msgstr "Необхідно створити завантажувальний розділ."
+
+msgid ""
+"You have not defined a root partition (/), which is required for "
+"installation of %s to continue."
+msgstr ""
+"Ви не вказали кореневий розділ (/), який вимагається для продовження "
+"встановлення %s."
+
+msgid "You have not specified a FCP LUN or the number is invalid."
+msgstr "Ви не вказали FCP LUN, або номер - неправильний."
+
+msgid "You have not specified a device number or the number is invalid"
+msgstr "Ви не вказали номер пристрою, або номер пристрою - неправильний"
+
+msgid ""
+"You have not specified a swap partition.  Although not strictly required in "
+"all cases, it will significantly improve performance for most installations."
+msgstr ""
+"Ви не вказали розділ підкачки.  Хоча він не є обов'язковим для роботи, він "
+"може суттєво поліпшити швидкодію системи."
+
+msgid ""
+"You have not specified a swap partition.  Due to the amount of memory "
+"present, a swap partition is required to complete installation"
+msgstr ""
+"Ви не вказали розділ підкачки. З урахуванням доступної у системі пам'яті, "
+"розділ «swap» є необхідним для завершення встановлення"
+
+msgid "You have not specified a worldwide port name or the name is invalid."
+msgstr "Ви не вказали worldwide назву порту, або назва - неправильна."
+
+msgid "You have provided a weak password: %s"
+msgstr "Вказано слабкий пароль: %s"
+
+msgid ""
+"You have provided a weak password: %s\n"
+"\n"
+"Would you like to continue with this password?"
+msgstr ""
+"Вказано слабкий пароль: %s\n"
+"\n"
+"Продовжити роботу з цим паролем?"
+
+msgid ""
+"You have specified that the group '%s' should be installed. This group does "
+"not exist. Would you like to continue or abort this installation?"
+msgstr ""
+"Ви вказали, що має бути встановлена група '%s'.  Ця група не існує. "
+"Продовжити чи перервати встановлення?"
+
+msgid ""
+"You have specified that the package '%s' should be installed.  This package "
+"does not exist. Would you like to continue or abort this installation?"
+msgstr ""
+"Ви вказали, що пакунок '%s' має бути встановлений. Цей пакунок не існує. "
+"Продовжити чи перервати встановлення?"
+
+msgid ""
+"You must correct these errors before you continue your installation of %s."
+msgstr "Ці помилки повинні бути виправлені перед продовженням встановлення %s."
+
+msgid "You must enter a URL."
+msgstr "Потрібно вказати URL."
+
+msgid "You must enter a valid hostname for this computer."
+msgstr "Треба вказати коректну назву вузла для цього комп'ютера."
+
+msgid ""
+"You must enter both a valid IPv4 address and a network mask or CIDR prefix."
+msgstr "Необхідно ввести правильну IP-адресу та маску мережі або префікс CIDR."
+
+msgid "You must enter both a valid IPv6 address and a CIDR prefix."
+msgstr "Необхідно ввести правильну адресу IPv6 та префікс CIDR."
+
+msgid "You must enter the number of seconds as an integer between 1 and 30."
+msgstr "Час треба вказати у діапазоні від 1 до 30 секунд."
+
+msgid ""
+"You must enter your root password and confirm it by typing it a second time "
+"to continue."
+msgstr ""
+"Необхідно ввести пароль користувача root та підтвердити його, набравши "
+"другий раз."
+
+msgid "You must first select a partition to delete."
+msgstr "Необхідно вказати розділ для видалення."
+
+msgid ""
+"You must have at least one software repository enabled to continue "
+"installation."
+msgstr ""
+"Для продовження встановлення треба, щоб був активний принаймні один "
+"репозиторій."
+
+msgid "You must provide a repository name."
+msgstr "Потрібно вказати назву репозиторію."
+
+msgid "You must provide an HTTP, HTTPS, or FTP URL to a proxy."
+msgstr "Слід вказати HTTP, HTTPS чи FTP URL цього проксі."
+
+msgid "You must provide an HTTP, HTTPS, or FTP URL to a repository."
+msgstr "Слід вказати HTTP, HTTPS чи FTP URL цього репозиторію."
+
+msgid "You must provide an initiator name."
+msgstr "Треба вказати ім'я ініціатора."
+
+msgid "You must select a NIC to use."
+msgstr "Необхідно вказати розділ для зміни."
+
+msgid "You must select a network device"
+msgstr "Необхідно вказати мережний пристрій"
+
+msgid "You must select at least one drive to be used for installation."
+msgstr "Необхідно вибрати хоча б один жорсткий диск для встановлення."
+
+msgid "You must select at least one protocol (IPv4 or IPv6)."
+msgstr "Необхідно вибрати принаймні один протокол (IPv4 чи IPv6)."
+
+msgid "You must select one drive to boot from."
+msgstr "Необхідно вказати завантажувальний розділ."
+
+msgid "You must specify a label for the entry"
+msgstr "Необхідно вказати позначку елементу"
+
+msgid "You need more space on the following file systems:\n"
+msgstr "Потрібно більше місця на наступних файлових системах:\n"
+
+msgid "You need to select at least one hard drive to install %s."
+msgstr "Необхідно вибрати хоча б один жорсткий диск для встановлення %s."
+
+msgid ""
+"You specified block device encryption should be enabled, but you have not "
+"supplied a passphrase. If you do not go back and provide a passphrase, block "
+"device encryption will be disabled."
+msgstr ""
+"Ви увімкнули шифрування блочного пристрою, але не вказали пароль. "
+"Поверніться до попереднього етапу та вкажіть пароль, у іншому випадку "
+"шифрування буде вимкнено."
+
+msgid ""
+"Your %(mount)s partition is less than %(size)s megabytes which is lower than "
+"recommended for a normal %(productName)s install."
+msgstr ""
+"Розмір розділу %(mount)s менший ніж %(size)s мегабайтів, що менше "
+"ніжрекомендовано для нормального встановлення %(productName)s."
+
+msgid ""
+"Your / partition does not match the the live image you are installing from.  "
+"It must be formatted as %s."
+msgstr ""
+"Розділ / не відповідає образу, з якого здійснюється встановлення. Його треба "
+"відформатувати як %s."
+
+msgid ""
+"Your / partition is less than %(min)s MB which is lower than recommended for "
+"a normal %(productName)s install."
+msgstr ""
+"Розмір розділу / менший ніж %(min)s мегабайтів, що менше ніж рекомендовано "
+"для нормального встановлення %(productName)s."
+
+msgid ""
+"Your boot loader password is shorter than six characters.  We recommend a "
+"longer boot loader password.\n"
+"\n"
+"Would you like to continue with this password?"
+msgstr ""
+"Пароль завантажувача містить менше ніж шість символів. Рекомендується "
+"вживати довший пароль.\n"
+"\n"
+"Залишити поточний пароль?"
+
+msgid ""
+"Your installation source is set to a network location, but no netork devices "
+"were found on your system.  To avoid a network installation, boot with the "
+"full DVD, full CD set, or do not pass a repo= parameter that specifies a "
+"network source."
+msgstr ""
+"Джерело встановлення вказує на мережний ресурс, але у системі не виявлено "
+"жодної мережної карти. Щоб скасувати встановлення з мережі, завантажте "
+"систему з DVD, повного набору CD-дисків або не вказуйте параметр repo=, що "
+"вказує на мережний ресурс."
+
+msgid ""
+"Your root partition is less than 250 megabytes which is usually too small to "
+"install %s."
+msgstr ""
+"Ваш кореневий розділ менше ніж 250 мегабайтів, чого, зазвичай, дуже мало для "
+"встановлення %s."
+
+msgid ""
+"Your selected packages require %d MB of free space for installation, but you "
+"do not have enough available.  You can change your selections or exit the "
+"installer."
+msgstr ""
+"Відібранні вами пакунки вимагають для встановлення %d Мб вільного місця, але "
+"у вас недостатньо об'єму. Ви можете змінити ваш вибір або перезавантажити "
+"систему."
+
+msgid ""
+"Your system had dirty file systems which you chose not to mount.  Press "
+"return to get a shell from which you can fsck and mount your partitions.  "
+"The system will reboot automatically when you exit from the shell."
+msgstr ""
+"У вашій системі є \"брудні\" файлові системи, які не були вибрані для "
+"підключення. Натисніть \"Enter\", щоб перейти у оболонку, у якій можна "
+"виконати fsck та підключити ці розділи. Після виходу з оболонки систему буде "
+"автоматично перезавантажено."
+
+msgid ""
+"Your system has been mounted under %(rootPath)s.\n"
+"\n"
+"Press <return> to get a shell. If you would like to make your system the "
+"root environment, run the command:\n"
+"\n"
+"\tchroot %(rootPath)s\n"
+"\n"
+"The system will reboot automatically when you exit from the shell."
+msgstr ""
+"Вашу систему було підключено у %(rootPath)s.\n"
+"\n"
+"Натисніть <Enter>, щоб перейти у оболонку. Якщо ви хочете зробити вашу "
+"систему кореневим оточенням, виконайте команду:\n"
+"\n"
+"\tchroot %(rootPath)s\n"
+"\n"
+"Систему буде автоматично перезавантажено після виходу з оболонки."
+
+msgid "Your system is mounted under the %s directory."
+msgstr "Систему підключено у каталог %s."
+
+msgid "Your system will now be rebooted..."
+msgstr "Ваша система зараз буде перезавантажена..."
+
+msgid "Zulu"
+msgstr "Зулу"
+
+msgid "_Abort"
+msgstr "_Перервати"
+
+msgid "_Add"
+msgstr "_Додати"
+
+msgid "_Add FCoE Disk(s)"
+msgstr "_Додати диски FCoE"
+
+msgid "_Add additional software repositories"
+msgstr "_Додати додаткові репозиторії"
+
+msgid "_Add drive"
+msgstr "_Додати диск"
+
+msgid "_Add target"
+msgstr "_Додати пристрій"
+
+msgid "_Back"
+msgstr "_Назад"
+
+msgid "_Change device"
+msgstr "_Змінити диск"
+
+msgid "_Confirm:"
+msgstr "Під_твердження:"
+
+msgid "_Continue"
+msgstr "П_родовжити"
+
+msgid "_Create"
+msgstr "_Створити"
+
+msgid "_Create new boot loader configuration"
+msgstr "_Створити нову конфігурацію завантажувача"
+
+msgid "_Debug"
+msgstr "_Налагодження"
+
+msgid "_Delete"
+msgstr "В_идалити"
+
+msgid "_Deselect"
+msgstr "_Скасувати вибір"
+
+msgid "_Deselect all optional packages"
+msgstr "_Скасувати вибір усіх додаткових пакунків"
+
+msgid "_Details"
+msgstr "_Подробиці"
+
+msgid "_Device"
+msgstr "_Пристрій"
+
+msgid "_Directory"
+msgstr "_Каталог"
+
+msgid "_Edit"
+msgstr "_Правка"
+
+msgid "_Eject"
+msgstr "Ви_тягнути носій"
+
+msgid "_Encrypt"
+msgstr "_Шифрування"
+
+msgid "_Encrypt system"
+msgstr "За_шифрувати систему"
+
+msgid "_Exit"
+msgstr "Ви_йти"
+
+msgid "_Exit installer"
+msgstr "_Перервати встановлення"
+
+msgid "_File Bug"
+msgstr "Надіслати _звіт про помилку"
+
+msgid "_File System Type:"
+msgstr "Тип _файлової системи:"
+
+msgid "_Fixed size"
+msgstr "_Незмінний розмір"
+
+msgid "_Format"
+msgstr "_Форматувати"
+
+msgid "_Format as:"
+msgstr "_Форматувати як:"
+
+msgid "_Format partition?"
+msgstr "_Форматувати розділ?"
+
+msgid "_Ignore"
+msgstr "_Ігнорувати"
+
+msgid "_Ignore All"
+msgstr "_Ігнорувати все"
+
+msgid "_Install anyway"
+msgstr "_Встановити все одно"
+
+msgid "_Install boot loader on /dev/%s."
+msgstr "_Встановити завантажувач у /dev/%s."
+
+msgid "_Label"
+msgstr "П_означка"
+
+msgid "_Logical Volume Name:"
+msgstr "_Назва логічного тому:"
+
+msgid "_Logical Volumes"
+msgstr "_Логічні томи"
+
+msgid "_Modify Partition"
+msgstr "_Змінити розділ"
+
+msgid "_Modify repository"
+msgstr "_Змінити репозиторій"
+
+msgid "_Mount Point:"
+msgstr "Точка _монтування:"
+
+msgid "_Next"
+msgstr "_Далі"
+
+msgid "_Optional packages"
+msgstr "_Додаткові пакунки"
+
+msgid "_Options"
+msgstr "_Параметри"
+
+msgid "_Partition"
+msgstr "_Розділ"
+
+msgid "_Password:"
+msgstr "_Пароль:"
+
+msgid "_Path"
+msgstr "_Шлях"
+
+msgid "_Physical Extent:"
+msgstr "_Фізичний екстент:"
+
+msgid "_RAID Members:"
+msgstr "_Члени RAID:"
+
+msgid "_Re-initialize"
+msgstr "_Переініціалізувати"
+
+msgid "_Reboot"
+msgstr "_Перезавантажити"
+
+msgid "_Resize"
+msgstr "_Змінити розмір"
+
+msgid "_Retry"
+msgstr "_Повторити"
+
+msgid "_Select"
+msgstr "Виді_лити"
+
+msgid "_Select all optional packages"
+msgstr "Виді_лити всі додаткові пакунки"
+
+msgid "_Server"
+msgstr "_Сервер"
+
+msgid "_Shrink"
+msgstr "З_меншити"
+
+msgid "_Size (MB):"
+msgstr "_Розмір (МБ):"
+
+msgid "_Skip boot loader updating"
+msgstr "_Пропустити оновлення завантажувача"
+
+msgid "_Update boot loader configuration"
+msgstr "_Оновити конфігурацію завантажувача"
+
+msgid "_Use a boot loader password"
+msgstr "_Встановити пароль завантажувача"
+
+msgid "_Volume Group Name:"
+msgstr "_Назва групи томів:"
+
+msgid "_Write changes to disk"
+msgstr "_Записати зміни на диск"
+
+msgid ""
+"by flashing the LED lights for a number of seconds.  Enter a number between "
+"1 and 30 to set the duration to flash the LED port lights."
+msgstr ""
+"за допомогою блимання світлового індикатора протягом вказаного проміжку "
+"часу. Введіть число у діапазоні 1-30, яку визначить інтервал у секундах."
+
+msgid "default:LTR"
+msgstr "типово:LTR"
+
+msgid "dialog1"
+msgstr "dialog1"
+
+msgid "e2fsck cancelled by user request."
+msgstr "e2fsck скасовано командою користувача."
+
+msgid "file conflicts"
+msgstr "конфлікти файлів"
+
+msgid "filesystem configuration missing a type"
+msgstr "у описі файлової системи відсутнє поле тип"
+
+msgid "iSCSI Initiator Name"
+msgstr "Назва ініціатора iSCSI"
+
+msgid "iSCSI not available"
+msgstr "iSCSI не доступний"
+
+msgid "insufficient disk inodes"
+msgstr "недостатня кількість inode на диску"
+
+msgid "insufficient disk space"
+msgstr "бракує місця на диску"
+
+msgid "loader has already been run.  Starting shell.\n"
+msgstr "Завантажувач вже виконується. Запускається оболонка.\n"
+
+msgid "lvs failed for %s"
+msgstr "помилка виклику lvs для %s"
+
+msgid "older package(s)"
+msgstr "старі пакунки"
+
+msgid "package already installed"
+msgstr "пакунок вже встановлено"
+
+msgid "package conflicts"
+msgstr "конфлікти пакунків"
+
+msgid "package for incorrect arch"
+msgstr "пакунок з неправильною архітектурою"
+
+msgid "package for incorrect os"
+msgstr "пакунок не для цієї операційної системи"
+
+msgid "required package"
+msgstr "вимагається пакунок"
+
+msgid "vginfo failed for %s"
+msgstr "помилка виклику vginfo для %s"
+
+msgid "z/IPL Boot Loader Configuration"
+msgstr "Налаштовування завантажувача z/IPL"
+
+msgid "z/IPL Configuration"
+msgstr "Налаштовування z/IPL"
+
+msgid "zFCP device %s not found, not even in device ignore list."
+msgstr ""
+"Пристрій zFCP не знайдено %s, навіть не знайдено у списку ігнорованих "
+"пристроїв."
+
+msgid ""
+"zSeries machines can access industry-standard SCSI devices via Fibre Channel "
+"(FCP). You need to provide a 16 bit device number, a 64 bit World Wide Port "
+"Name (WWPN), and a 64 bit FCP LUN for each device."
+msgstr ""
+"Машини zSeries можуть отримувати доступ до стандартних SCSI пристроїв через "
+"Fibre Channel (FCP). Для кожного пристрою необхідно вказати: 16-бітний номер "
+"пристрою, 64-бітний World Wide Port Number (WWPN) та 64-бітний FCP LUN."
