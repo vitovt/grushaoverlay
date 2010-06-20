@@ -47,6 +47,11 @@ src_configure() {
 	cp "${FILESDIR}"/anaconda_header.png  ${S}/pixmaps/
 	cp "${FILESDIR}"/splash.png  ${S}/pixmaps/
 	cp "${FILESDIR}"/splash-small.png  ${S}/pixmaps/
+       epatch "${FILESDIR}"/Grusha-name.patch
+       cp "${FILESDIR}"/uk.po  ${S}/po/
+
+
+
 }
 
 src_install() {
