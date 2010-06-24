@@ -64,17 +64,6 @@ src_unpack() {
 	else
 		base_src_unpack
 	fi
-       ewarn "Applying Grusha patches"
-       cd "${S}"
-       epatch "${FILESDIR}"/minram.patch
-       epatch "${FILESDIR}"/Grusha-name.patch
-       epatch "${FILESDIR}"/grusha-install-stat.patch
-       cp "${FILESDIR}"/uk.po  ${S}/po/
-       cp "${FILESDIR}"/anaconda_header.png  ${S}/pixmaps/
-       cp "${FILESDIR}"/splash.png  ${S}/pixmaps/
-       cp "${FILESDIR}"/splash-small.png  ${S}/pixmaps/
-
-
 }
 
 src_prepare() {

@@ -50,7 +50,7 @@ COMMON_DEPEND="app-admin/system-config-keyboard
 DEPEND="${COMMON_DEPEND} ${AUDIT_DEPEND} ${LSELINUX_DEPEND} sys-apps/sed"
 RDEPEND="${COMMON_DEPEND} ${AUDIT_RDEPEND}
 	${LSELINUX_RDEPEND} ${LSELINUX_CONFLICT}
-	>=app-misc/anaconda-runtime-1.1"
+	>=app-misc/anaconda-runtime-1"
 
 # FIXME:
 # for anaconda-gtk we would require also
@@ -64,24 +64,13 @@ src_unpack() {
 	else
 		base_src_unpack
 	fi
-       ewarn "Applying Grusha patches"
-       cd "${S}"
-       epatch "${FILESDIR}"/minram.patch
-       epatch "${FILESDIR}"/Grusha-name.patch
-       epatch "${FILESDIR}"/grusha-install-stat.patch
-       cp "${FILESDIR}"/uk.po  ${S}/po/
-       cp "${FILESDIR}"/anaconda_header.png  ${S}/pixmaps/
-       cp "${FILESDIR}"/splash.png  ${S}/pixmaps/
-       cp "${FILESDIR}"/splash-small.png  ${S}/pixmaps/
-
-
 }
 
 src_prepare() {
 
 	# Setup CFLAGS, LDFLAGS
 	append-cflags "-I${D}/usr/include/anaconda-runtime"
-	append-ldflags "-L${D}/usr/$(get_libdir)/anaconda-runtime"
+	append-ldflags "-L${D}/usr/$(get_libdir)/anaconda-runtime -rpath=/usr/$(get_libdir)/anaconda-runtime"
 
 	# Setup anaconda
 	cd "${S}"
@@ -132,14 +121,14 @@ src_configure() {
 
 	# compiling audit here, anaconda configure needs libaudit
 	einfo "compiling audit"
-	cd "${AUDIT_S}" || die "cannot cd into ${AUDIT_S}"
+	cd "${AUDIT_S}"
 	base_src_compile
 
 	# installing audit
-	einfo "installing audit libs into ${AUDIT_S}/fakeroot temporarily"
-	cd "${AUDIT_S}" || die "cannot cd into ${AUDIT_S}"
-	( rm -rf fakeroot && mkdir fakeroot ) || die "cannot mkdir"
-	emake DESTDIR="${AUDIT_S}/fakeroot" install || die "cannot install libaudit"
+	einfo "installing audit libs into /usr/$(get_libdir)/anaconda-runtime"
+	cd "${AUDIT_S}"
+	mkdir fakeroot
+	emake DESTDIR="${AUDIT_S}/fakeroot" install
 	copy_audit_data_over # for proper linking
 
 	# configure anaconda
@@ -150,6 +139,16 @@ src_configure() {
 		$(use_enable nfs) || die "configure failed"
 }
 
+_make_libselinux() {
+	emake \
+		PYLIBVER="python$(python_get_version)" \
+		PYTHONLIBDIR="${D}/usr/$(get_libdir)/python$(python_get_version)" \
+		LIBDIR="${D}/usr/$(get_libdir)/anaconda-runtime" \
+		SHLIBDIR="${D}/usr/$(get_libdir)/anaconda-runtime" \
+		INCLUDEDIR="${D}/usr/include/anaconda-runtime" \
+		${1} || die
+}
+
 src_compile() {
 
 	cd "${S}"
@@ -157,18 +156,15 @@ src_compile() {
 
 	# compiling libselinux
 	einfo "compiling libselinux"
-	cd "${LSELINUX_S}" || die "cannot cd into ${LSELINUX_S}"
-	LD_RUN_PATH="/usr/$(get_libdir)/anaconda-runtime" \
+	cd "${LSELINUX_S}"
 	emake \
-		LDFLAGS="-fPIC ${LDFLAGS}" \
 		PYLIBVER="python$(python_get_version)" \
 		PYTHONLIBDIR="${D}/usr/$(get_libdir)/python$(python_get_version)" \
 		SHLIBDIR="${D}/usr/$(get_libdir)/anaconda-runtime" \
 		INCLUDEDIR="${D}/usr/include/anaconda-runtime" \
 		all || die
-	LD_RUN_PATH="/usr/$(get_libdir)/anaconda-runtime" \
+	# LDFLAGS="-fPIC ${LDFLAGS}" \
 	emake \
-		LDFLAGS="-fPIC ${LDFLAGS}" \
 		PYLIBVER="python$(python_get_version)" \
 		PYTHONLIBDIR="${D}/usr/$(get_libdir)/python$(python_get_version)" \
 		SHLIBDIR="${D}/usr/$(get_libdir)/anaconda-runtime" \
@@ -185,7 +181,6 @@ src_install() {
 	# installing libselinux
 	cd "${LSELINUX_S}"
 	python_need_rebuild
-	LD_RUN_PATH="/usr/$(get_libdir)/anaconda-runtime" \
 	emake DESTDIR="${D}" \
 		PYLIBVER="python$(python_get_version)" \
 		PYTHONLIBDIR="${D}/usr/$(get_libdir)/python$(python_get_version)" \
@@ -196,8 +191,8 @@ src_install() {
 
 	# fix libselinux.so link
 	dosym libselinux.so.1 /usr/$(get_libdir)/anaconda-runtime/libselinux.so
-	# LD_RUN_PATH works with ld >=2.20, so /etc/env.d/99anaconda for now
-	# will be dropped in future
+	# XXX: libselinux build system broken, doesn't like -rpath=
+	# adding stuff to env.d
 	echo "LDPATH=\"/usr/$(get_libdir)/anaconda-runtime\"" > 99anaconda
 	doenvd 99anaconda
 
