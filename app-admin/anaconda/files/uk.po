@@ -4241,7 +4241,7 @@ msgstr "Ця позначка використовується для іншог
 msgid ""
 "This medium contains many extra languages, would you like to keep them "
 "installed?"
-msgstr "Бажаєте використовувати під час встановлення обрану раніше мову?"
+msgstr "Цей диск містить переклади на багато інших мов. Ви хочете їх залишити після встановлення?"
 
 msgid ""
 "This mount point is invalid.  The %s directory must be on the / file system."
@@ -4685,13 +4685,13 @@ msgstr ""
 "налаштовування додаткових пристроїв."
 
 msgid "What type of devices will your installation involve?"
-msgstr "Який носій містить образ відновлення?"
+msgstr "На які пристрої ви хочете встановити систему ?"
 
 msgid "What type of keyboard do you have?"
 msgstr "Вкажіть тип клавіатури"
 
 msgid "What type of media contains the installation image?"
-msgstr "Який носій містить образ відновлення?"
+msgstr "Який носій містить образ для встановлення?"
 
 msgid "What type of media contains the rescue image?"
 msgstr "Який носій містить образ відновлення?"
