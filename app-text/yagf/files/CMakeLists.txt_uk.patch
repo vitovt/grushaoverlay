@@ -1,0 +1,19 @@
+--- CMakeLists.txt.old	2010-07-04 13:15:05.000000000 +0300
++++ CMakeLists.txt	2010-07-04 13:50:36.000000000 +0300
+@@ -6,7 +6,7 @@
+ set(UIS src/mainform.ui)
+ set(MOC_HEADERS src/mainform.h src/FileChannel.h src/QSelectionLabel.h src/FileToolBar.h)
+ set (yagf_RCCS src/yagf.qrc)
+-set(QM_FILES yagf_ru.qm yagf_lt.qm)
++set(QM_FILES yagf_ru.qm yagf_lt.qm yagf_uk.qm)
+ set (LIB_PATH_SUFFIX )
+ add_definitions(-Wall -g)
+ find_package(Qt4 REQUIRED)
+@@ -20,6 +20,7 @@
+ add_library(xspreload SHARED ${INT_SOURCES})
+ target_link_libraries(yagf ${QT_LIBRARIES} ${ASPELL_LIBRARIES})
+ add_custom_target(translations DEPENDS ${QM_FILES})
++qt4_add_translation(yagf_ru.qm src/mainform.cpp ${MOC_SRCS} ${UI_HEADERS} src/yagf_uk.ts)
+ qt4_add_translation(yagf_ru.qm src/mainform.cpp ${MOC_SRCS} ${UI_HEADERS} src/yagf_ru.ts)
+ qt4_add_translation(yagf_lt.qm src/mainform.cpp ${MOC_SRCS} ${UI_HEADERS} src/yagf_lt.ts)
+ #QT4_CREATE_TRANSLATION(yagf_ru.qm src/mainform.cpp ${MOC_SRCS} ${UI_HEADERS} src/yagf_ru.ts)
