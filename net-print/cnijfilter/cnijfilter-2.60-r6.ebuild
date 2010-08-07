@@ -26,7 +26,8 @@ IUSE="amd64
 	ip4200
 	ip6600d
 	ip7500
-	mp500"
+	mp500
+	disablepstocanonij"
 DEPEND="virtual/ghostscript
 	>=net-print/cups-1.1.14
 	!amd64? ( sys-libs/glibc
@@ -160,9 +161,10 @@ src_install() {
 	cd libs || die
 	make DESTDIR=${D} install || die "Couldn't make install libs"
 
+if !use disablepstocanonij; then
 	cd ../pstocanonij || die
 	make DESTDIR=${D} install || die "Couldn't make install pstocanoncnij"
-
+fi
 	if use servicetools; then
 		cd ../cngpij || die
 		make DESTDIR=${D} install || die "Couldn't make install cngpij"

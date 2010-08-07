@@ -28,7 +28,8 @@ IUSE="amd64
 	ip2500
 	ip3300
 	ip4300
-	servicetools"
+	servicetools
+	disablepstocanonij"
 
 DEPEND="virtual/ghostscript
 	>=net-print/cups-1.1.14
@@ -169,8 +170,11 @@ src_install() {
 	cd libs || die
 	make DESTDIR=${D} install || die "Couldn't make install libs"
 
+
+if !use disablepstocanonij; then
 	cd ../pstocanonij || die
 	make DESTDIR=${D} install || die "Couldn't make install pstocanoncnij"
+fi
 
 	if use servicetools; then
 		cd ../cngpij || die
