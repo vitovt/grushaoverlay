@@ -39,7 +39,7 @@ DEPEND="virtual/ghostscript
 		app-emulation/emul-linux-x86-compat
 		app-emulation/emul-linux-x86-baselibs )
 	servicetools? ( !amd64? ( >=gnome-base/libglade-0.6
-			>=dev-libs/libxml2-1.8
+			>=dev-libs/libxml-1.8
 			=x11-libs/gtk+-1.2* )
 		amd64? ( >=app-emulation/emul-linux-x86-bjdeps-0.1
 			app-emulation/emul-linux-x86-gtklibs ) )"
