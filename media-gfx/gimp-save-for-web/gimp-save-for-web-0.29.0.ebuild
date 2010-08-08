@@ -14,12 +14,11 @@ IUSE=""
 RDEPEND=">=media-gfx/gimp-2.4"
 DEPEND="${RDEPEND}"
 
-S="$WORKDIR"
-
-src_prepare()
+src_compile()
 {
 	einfo "Configuring sources"
 	econf || die "unable to configure"
+        emake || die "emake failed"
 }
 
 src_install() {
