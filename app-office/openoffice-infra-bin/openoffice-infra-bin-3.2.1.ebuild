@@ -176,6 +176,26 @@ doins "${FILESDIR}/shortcuts/openoffice.org-startcenter.desktop"
 doins "${FILESDIR}/shortcuts/openoffice.org-template.desktop"
 doins "${FILESDIR}/shortcuts/openoffice.org-web.desktop"
 
+
+#Rename desktop files to preserver menu compatibility
+
+cd "${D}/usr/share/applications/"
+mv openoffice.org-base.desktop base.desktop
+mv openoffice.org-calc.desktop calc.desktop
+mv openoffice.org-draw.desktop draw.desktop
+mv openoffice.org-impress.desktop impress.desktop
+mv openoffice.org-math.desktop math.desktop
+mv openoffice.org-writer.desktop writer.desktop
+
+#leave
+#openoffice.org-printeradmin.desktop
+#openoffice.org-qstart.desktop
+
+#additional added
+#ooo-extension-manager.desktop
+mv openoffice.org-startcenter.desktop startcenter.desktop
+mv openoffice.org-template.desktop template.desktop
+mv openoffice.org-web.desktop web.desktop
 }
 
 pkg_postinst() {
