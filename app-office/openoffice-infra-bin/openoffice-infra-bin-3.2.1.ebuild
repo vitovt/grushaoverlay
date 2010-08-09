@@ -13,7 +13,7 @@ UREVER="1.6.1"
 MY_PV3="${PV}-${BUILDID}"
 BASIS="ooobasis3.2"
 MST="OOO320_m18"
-FILEPATH="http://ftp.chg.ru/pub/OpenOffice-RU/${PV}/ru"
+FILEPATH="http://ftp.chg.ru/pub/OpenOffice-RU/${PV}/"
 
 if [ "${ARCH}" = "amd64" ] ; then
 	OOARCH="x86_64"
@@ -23,10 +23,11 @@ fi
 
 S="${WORKDIR}/ru/RPMS"
 UP="ru/RPMS"
+UP2="uk/RPMS"
 DESCRIPTION="OpenOffice productivity suite. Russian Professional Edition"
 
-SRC_URI="amd64? ( ${FILEPATH}/OOo_${PV}_Linux_x86-64_install-rpm_ru_infra.tar.gz )
-	x86? ( ${FILEPATH}/OOo_${PV}_Linux_x86_install-rpm_ru_infra.tar.gz )"
+SRC_URI="amd64? ( ${FILEPATH}ru/OOo_${PV}_Linux_x86-64_install-rpm_ru_infra.tar.gz )
+	x86? ( ${FILEPATH}ru/OOo_${PV}_Linux_x86_install-rpm_ru_infra.tar.gz ${FILEPATH}uk/OOo_${PV}_Linux_x86_langpack-rpm_uk_infra.tar.gz )"
 
 HOMEPAGE="http://i-rs.ru/"
 
@@ -35,6 +36,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="!app-office/openoffice
+		 !app-office/openoffice-bin
 	x11-libs/libXaw
 	sys-libs/glibc
 	>=dev-lang/perl-5.0
@@ -63,12 +65,27 @@ QA_TEXTRELS="usr/$(get_libdir)/openoffice/ure/lib/*"
 RESTRICT="mirror"
 
 src_unpack() {
-
+	einfo "unpacking ${A}"
 	unpack ${A}
 
+#		einfo "UP ${UP}"
+#		einfo "BASIS ${BASIS}"
+#		einfo "i ${i}"
+#		einfo "MY_PV3 ${MY_PV3}"
+#		einfo "OOARCH ${OOARCH}"
+
 	for i in base binfilter calc core01 core02 core03 core04 core05 core06 core07 draw graphicfilter images impress math ooofonts ooolinguistic pyuno testtool writer xsltfilter ; do
+##		einfo "./${UP}/${BASIS}-${i}-${MY_PV3}.${OOARCH}.rpm"
 		rpm_unpack "./${UP}/${BASIS}-${i}-${MY_PV3}.${OOARCH}.rpm"
 	done
+
+	for i in base binfilter calc draw help impress math res writer ; do
+##		einfo "./${UP2}/${BASIS}-uk-${i}-${MY_PV3}.${OOARCH}.rpm"
+		rpm_unpack "./${UP2}/${BASIS}-uk-${i}-${MY_PV3}.${OOARCH}.rpm"
+	done
+	
+	rpm_unpack "./${UP2}/${BASIS}-uk-${MY_PV3}.${OOARCH}.rpm"
+	rpm_unpack "./${UP2}/openoffice.org3-uk-${MY_PV3}.${OOARCH}.rpm"
 
 	for j in base calc draw impress math writer; do
 		rpm_unpack "./${UP}/openoffice.org3-${j}-${MY_PV3}.${OOARCH}.rpm"
