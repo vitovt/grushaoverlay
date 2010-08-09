@@ -165,6 +165,17 @@ src_install () {
 	# prevent revdep-rebuild from attempting to rebuild all the time
 	insinto /etc/revdep-rebuild && doins "${FILESDIR}/50-openoffice-bin"
 
+	#additional shortcuts
+dobin "${FILESDIR}/shortcuts/oofromtemplate"
+dobin "${FILESDIR}/shortcuts/ooweb"
+dobin "${FILESDIR}/shortcuts/unopkg"
+
+	insinto /usr/share/applications
+doins "${FILESDIR}/shortcuts/ooo-extension-manager.desktop"
+doins "${FILESDIR}/shortcuts/openoffice.org-startcenter.desktop"
+doins "${FILESDIR}/shortcuts/openoffice.org-template.desktop"
+doins "${FILESDIR}/shortcuts/openoffice.org-web.desktop"
+
 }
 
 pkg_postinst() {
