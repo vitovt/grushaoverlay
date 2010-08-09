@@ -177,6 +177,12 @@ doins "${FILESDIR}/shortcuts/openoffice.org-template.desktop"
 doins "${FILESDIR}/shortcuts/openoffice.org-web.desktop"
 
 
+#Logo and branding
+	insinto /usr/lib/openoffice/program
+doins "${FILESDIR}/about.png"
+doins "${FILESDIR}/intro.png"
+
+
 #Rename desktop files to preserver menu compatibility
 
 cd "${D}/usr/share/applications/"
