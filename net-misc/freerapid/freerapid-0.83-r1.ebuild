@@ -33,7 +33,7 @@ src_install() {
 	domenu "${S}"/freerapid.desktop
 	doicon "${INSTALLDIR}"/frd.png
 
-	dosym "${INSTALLDIR}"/freerapid /usr/bin/freerapid
+	dosym "${INSTALLDIR}"/frd.sh /usr/bin/freerapid
 
 	fowners -R root:users "${INSTALLDIR}"/plugins
         fperms -R 775 "${INSTALLDIR}"
