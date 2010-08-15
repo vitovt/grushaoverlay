@@ -24,23 +24,17 @@ RDEPEND=">=dev-java/sun-jre-bin-1.6"
 S="${WORKDIR}/FreeRapid-${PV}u1"
 INSTALLDIR="/usr/share/freerapid"
 
-pkg_setup () {
-	# create the group for update plugins (och meens One Click Hosting)
-	enewgroup och
-}
-
 src_install() {
 	dodir "${INSTALLDIR}"
 	echo -e "[Desktop Entry]\nName=FreeRapid DownLoader\nType=Application\nComment=Software designed for automatic management of downloads and uploads at hosting sites like rapidshare or megaupload\nExec=/usr/share/freerapid/frd.sh\nTryExec=/usr/share/freerapid/frd.sh\nIcon=/usr/share/freerapid/frd.png\nCategories=Network;;" > "${S}"/freerapid.desktop
 	mv "${S}/lib" "${S}"/*.sh "${S}/lookandfeel" "${S}/plugins" "${S}"/*.jar "${S}"/*.png "${D}/${INSTALLDIR}/" || die "Cannot install core-files"
 
-	ln -s "${D}/${INSTALLDIR}"/frd.sh "${D}/${INSTALLDIR}"/freerapid
 	dodoc "${S}"/*.txt
 	domenu "${S}"/freerapid.desktop
 	doicon "${INSTALLDIR}"/frd.png
 
 	dosym "${INSTALLDIR}"/freerapid /usr/bin/freerapid
 
-	fowners -R root:och ${INSTALLDIR}/plugins
-	fperms -R 755 ${INSTALLDIR}/
+	fowners -R root:users "${INSTALLDIR}"/plugins
+        fperms -R 775 "${INSTALLDIR}"
 }
