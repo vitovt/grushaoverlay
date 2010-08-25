@@ -1,0 +1,36 @@
+# Copyright 1999-2010 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+EAPI="0"
+
+MY_PN=msu_ru_nsh_clunits
+
+DESCRIPTION="Russian voice for the Festival."
+HOMEPAGE="http://festlang.berlios.de/russian.html"
+SRC_URI="mirror://berlios/festlang/${MY_PN}-${PV}.tar.bz2"
+
+LICENSE="BSD"
+SLOT="0"
+KEYWORDS="~amd64 ~x86"
+IUSE=""
+
+RDEPEND=">=app-accessibility/festival-1.96_beta"
+DEPEND=""
+
+src_install() {
+	dodoc ${MY_PN}/README
+	rm ${MY_PN}/{README,COPYING}
+
+	insinto /usr/share/festival/voices/russian/
+	doins -r ${MY_PN}/
+}
+
+pkg_postinst() {
+	elog
+	elog "    To enable russian voices run festval and use command:"
+	elog "        (voice_msu_ru_nsh_clunits)"
+	elog
+	elog "    Please note that text input should have UTF-8 encoding."
+	elog
+}
