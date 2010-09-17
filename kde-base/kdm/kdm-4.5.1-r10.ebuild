@@ -8,7 +8,7 @@ KMNAME="kdebase-workspace"
 inherit kde4-meta flag-o-matic
 
 DESCRIPTION="KDE login manager, similar to xdm and gdm"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="consolekit debug +handbook kerberos pam"
 
 DEPEND="
@@ -25,11 +25,12 @@ DEPEND="
 		virtual/pam
 	)
 "
+# >5.4 needed due to theme name change to "sabayon"
 RDEPEND="${DEPEND}
 	$(add_kdebase_dep kdepasswd)
 	>=x11-apps/xinit-1.0.5-r2
 	x11-apps/xmessage
-	x11-themes/sabayon-artwork-kde
+	x11-themes/grusha-artwork-kde
 "
 
 KMEXTRACTONLY="
@@ -41,13 +42,17 @@ KMEXTRA="
 
 PATCHES=(
 	"${FILESDIR}/kdebase-4.0.2-pam-optional.patch"
-	"${FILESDIR}/${PN}-4.3.1-sabayon-theme.patch"
-	"${FILESDIR}/${PN}-4-sabayon-background.patch"
-	"${FILESDIR}/${PN}-4-sabayon-bootmanager.patch"
-	"${FILESDIR}/${PN}-4-sabayon-terminate-server.patch"
-	"${FILESDIR}/${PN}-4-sabayon-servertimeout.patch"
-	"${FILESDIR}/${PN}-4.3.1-xinitrc.d.patch"
+	"${FILESDIR}/${PN}-4-gentoo-xinitrc.d.patch"
 )
+
+pkg_setup() {
+	kde4-meta_pkg_setup
+
+	# Create kdm:kdm user
+	KDM_HOME=/var/lib/kdm-${SLOT}
+	enewgroup kdm
+	enewuser kdm -1 -1 "${KDM_HOME}" kdm
+}
 
 src_configure() {
 	# genkdmconf breaks with -O3
@@ -68,14 +73,29 @@ src_install() {
 
 	kde4-meta_src_install
 
-	# Customize the kdmrc configuration
-	sed -e "s:^.*SessionsDirs=.*$:#&\nSessionsDirs=${EPREFIX}/usr/share/xsessions:" \
-		-e "s:#ServerTimeout=15:ServerTimeout=30:" \
+	# Customize the kdmrc configuration:
+	# - SessionDirs set to /usr/share/xsessions
+	# - increase server timeout to 30s
+	# - TerminateServer=true to workaround X server regen bug, bug 278473
+	# - DataDir set to /var/lib/kdm-${SLOT}
+	# - FaceDir set to /var/lib/kdm-${SLOT}/faces
+	# - Set Sabayon theme
+	sed -e "s|^.*SessionsDirs=.*$|#&\nSessionsDirs=${EPREFIX}/usr/share/xsessions|" \
+		-e "/#ServerTimeout=/s/^.*$/ServerTimeout=30/" \
+		-e "/#TerminateServer=/s/^.*$/TerminateServer=true/" \
+		-e "s|^.*DataDir=.*$|#&\nDataDir=${EPREFIX}${KDM_HOME}|" \
+		-e "s|^.*FaceDir=.*$|#&\nFaceDir=${EPREFIX}${KDM_HOME}/faces|" \
+		-e "s|oxygen-air$|sabayon|" \
 		-i "${ED}"/${KDEDIR}/share/config/kdm/kdmrc \
 		|| die "Failed to set ServerTimeout and SessionsDirs correctly in kdmrc."
 
 	# Don't install empty dir
 	rmdir "${ED}${KDEDIR}"/share/config/kdm/sessions
+
+	# Set up permissions to kdm work directory
+	keepdir "${KDM_HOME}"
+	fowners root:kdm "${KDM_HOME}"
+	fperms 1770 "${KDM_HOME}"
 }
 
 pkg_postinst() {
@@ -83,15 +103,15 @@ pkg_postinst() {
 
 	# Set the default kdm face icon if it's not already set by the system admin
 	# because this is user-overrideable in that way, it's not in src_install
-	if [[ ! -e "${EROOT}${KDEDIR}/share/apps/kdm/faces/.default.face.icon" ]]; then
-		mkdir -p "${EROOT}${KDEDIR}/share/apps/kdm/faces"
+	if [[ ! -e "${EPREFIX}${KDM_HOME}/faces/.default.face.icon" ]]; then
+		mkdir -p "${EPREFIX}${KDM_HOME}/faces"
 		cp "${EROOT}${KDEDIR}/share/apps/kdm/pics/users/default1.png" \
-			"${EROOT}${KDEDIR}/share/apps/kdm/faces/.default.face.icon"
+			"${EPREFIX}${KDM_HOME}/faces/.default.face.icon"
 	fi
-	if [[ ! -e "${EROOT}${KDEDIR}/share/apps/kdm/faces/root.face.icon" ]]; then
-		mkdir -p "${EROOT}${KDEDIR}/share/apps/kdm/faces"
+	if [[ ! -e "${EPREFIX}${KDM_HOME}/faces/root.face.icon" ]]; then
+		mkdir -p "${EPREFIX}${KDM_HOME}/faces"
 		cp "${EROOT}${KDEDIR}/share/apps/kdm/pics/users/root1.png" \
-			"${EROOT}${KDEDIR}/share/apps/kdm/faces/root.face.icon"
+			"${EPREFIX}${KDM_HOME}/faces/root.face.icon"
 	fi
 
 	if use consolekit; then
