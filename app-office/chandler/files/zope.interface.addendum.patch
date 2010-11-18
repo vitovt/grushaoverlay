@@ -1,0 +1,15 @@
+--- chandler/Makefile.orig	2009-10-13 19:30:27.000000000 +0200
++++ chandler/Makefile	2009-10-13 19:30:46.000000000 +0200
+@@ -371,7 +371,11 @@
+ 
+ $(SOURCE_ARCHIVES):
+ 	mkdir -p $(CHANDLERARCHIVES)
+-	$(CURL) $@ $(URL)/$(notdir $@)
++	if [ "$(notdir $@)" == "zope.interface-3.5.2.tar.gz" ]; then \
++	    $(CURL) $@ "http://pypi.python.org/packages/source/z/zope.interface"/$(notdir $@);\
++	else \
++	    $(CURL) $@ $(URL)/$(notdir $@);\
++	fi
+ 
+ # if the archive name does not contain the string 'release' or 'debug' it's
+ # the same for both and needs to be installed in $(SNAP) explicitely

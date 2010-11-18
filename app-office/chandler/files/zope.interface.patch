@@ -1,0 +1,22 @@
+--- external/Makefile.orig	2009-10-12 23:16:02.000000000 +0200
++++ external/Makefile	2009-10-12 23:16:34.000000000 +0200
+@@ -46,7 +46,7 @@
+ 
+ zope.interface:
+ 	$(PYTHON) -c 'from pkg_resources import require; require("zope.interface>=3.3.0b2")' || \
+-	$(PYTHON) $(EASY_INSTALL_ARGS) -x --install '$(INSTALL_DIR)' http://builds.osafoundation.org/external/zope.interface-3.3.0b2-r71371.tar.bz2
++	$(PYTHON) $(EASY_INSTALL_ARGS) -x --install '$(INSTALL_DIR)' http://pypi.python.org/packages/source/z/zope.interface/zope.interface-3.5.2.tar.gz
+ 
+ BINARY_SYSTEMS = \
+         db \
+--- chandler/Makefile.orig	2009-10-13 19:30:27.000000000 +0200
++++ chandler/Makefile	2009-10-13 19:30:46.000000000 +0200
+@@ -81,7 +81,7 @@
+ M2CRYPTO   = $(CHANDLERARCHIVES)/m2crypto-$(SNAP)-0.18.2-$(BP)2.tar.gz
+ CONFIGOBJ  = $(CHANDLERARCHIVES)/configobj-4.5.3.tar.gz
+ DOCUTILS   = $(CHANDLERARCHIVES)/docutils-0.4.tar.gz
+-ZOPE       = $(CHANDLERARCHIVES)/zope.interface-3.3.0b2-r71371.tar.bz2
++ZOPE       = $(CHANDLERARCHIVES)/zope.interface-3.5.2.tar.gz
+ 
+ 
+ ifeq ($(OS),Linux)
