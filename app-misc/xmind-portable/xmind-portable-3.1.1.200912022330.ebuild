@@ -26,7 +26,7 @@ src_unpack() {
 src_configure() {
     case `arch` in
 	"x86_64")	XDIR="XMind_Linux_64bit";;
-	"*") 	XDIR="XMind_Linux";;
+	*) 	XDIR="XMind_Linux";;
     esac
     mv -v "$XDIR" xmind
 
