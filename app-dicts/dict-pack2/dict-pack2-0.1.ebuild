@@ -11,10 +11,8 @@ SLOT="0"
 KEYWORDS="~x86 ~amd64"
 IUSE=""
 RESTRICT="nomirror"
- 
- 
+  
 S="${WORKDIR}"
-
 
 src_install ()
 {
