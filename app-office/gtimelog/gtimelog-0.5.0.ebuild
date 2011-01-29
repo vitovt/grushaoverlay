@@ -1,0 +1,37 @@
+# Copyright 1999-2010 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pygtkhelpers/pygtkhelpers-0.4.2.ebuild,v 1.2 2010/10/29 20:00:08 arfrever Exp $
+
+EAPI="3"
+PYTHON_DEPEND="2:2.6"
+SUPPORT_PYTHON_ABIS="1"
+RESTRICT_PYTHON_ABIS="2.4 2.5 3.*"
+
+inherit distutils eutils
+
+DESCRIPTION="GTimeLog is a small Gtk+ app for keeping track of your time. It's main goal is to be as unintrusive as possible."
+HOMEPAGE="http://mg.pov.lt/gtimelog/"
+SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+LICENSE="LGPL-3"
+SLOT="0"
+KEYWORDS="~amd64 ~ppc64 ~x86"
+IUSE=""
+
+RDEPEND="dev-python/pygtk"
+DEPEND="${RDEPEND}
+	dev-python/setuptools"
+
+src_install() {
+	distutils_src_install
+
+	make_desktop_entry gtimelog "GTimeLog" gtimelog "Office"
+
+ewarn ""
+ewart "Info:"
+einfo "Simple and unintrusive time-tracking application."
+einfo "There are screenshots at http://mg.pov.lt/gtimelog."
+einfo "Mailing list: http://groups.google.com/group/gtimelog"
+einfo "Bugs: http://bugs.launchpad.net/gtimelog/"
+einfo "Source code: http://code.launchpad.net/gtimelog/"
+
+}
