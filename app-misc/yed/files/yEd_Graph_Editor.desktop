@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=yEd Graph Editor
+Exec=/bin/sh "/opt/yed/yed"
+Icon=/opt/yed/yEd.png
+Categories=Application;Office;
