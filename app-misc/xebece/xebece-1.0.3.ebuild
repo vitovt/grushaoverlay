@@ -8,7 +8,6 @@ inherit eutils
 
 DESCRIPTION="Xebece is a multipurpose tool for information visualization and organization"
 HOMEPAGE="http://xebece.sourceforge.net/"
-SRC_URI="http://dl.xmind.org/${P}.zip"
 SRC_URI="mirror://sourceforge/${PN}/${PN}-${PV}.tar.gz"
 
 LICENSE="GPL-2"
