@@ -1,8 +1,6 @@
---- sabayon/livecd.py.old	2010-05-28 21:33:10.000000000 +0300
-+++ sabayon/livecd.py	2010-05-30 11:11:52.000000000 +0300
-@@ -159,10 +159,19 @@
-         self._sabayon_install.language_packs_install()
-         self._sabayon_install.emit_install_done()
+--- sabayon/livecd.py.orig	2011-04-10 21:11:58.321979411 +0300
++++ sabayon/livecd.py	2011-04-10 21:12:50.449979394 +0300
+@@ -168,6 +168,16 @@
  
          storage.writeEscrowPackets(anaconda)
  
@@ -19,5 +17,3 @@
          self._sabayon_install.destroy()
          if hasattr(self._entropy, "shutdown"):
              self._entropy.shutdown()
-         else:
-             self._entropy.destroy()
