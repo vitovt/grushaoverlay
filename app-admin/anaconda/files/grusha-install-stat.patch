@@ -13,6 +13,7 @@
 +        os.system ('sed -i ' + var_sedparam + self._root+'/etc/hal/fdi/policy/10-keymap.fdi')
 +        os.system("curl --silent --compressed --connect-timeout 3 http://installed.grusha.org.ua/installed/`cat /etc/sabayon-edition | sed -e 's/ /_/g'`  > /dev/null 2>&1")
 +        os.system ('chmod 777 ' + self._root + '/var/tmp')
++        os.system ('cp ' + '/usr/share/grusha/00-keyboard.conf ' + self._root+'/etc/X11/xorg.conf.d/')
 +        #</Grusha addon>
 +
          self._sabayon_install.destroy()

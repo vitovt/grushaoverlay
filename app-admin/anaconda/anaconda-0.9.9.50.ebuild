@@ -209,6 +209,9 @@ src_install() {
 	doexe "${FILESDIR}"/liveinst
 	dosym /usr/bin/liveinst /usr/bin/installer
 
+	insinto /usr/share/grusha
+	doins "${FILESDIR}"/00-keyboard.conf
+
 	# drop .la files for God sake
 	find "${D}" -name "*.la" | xargs rm
 
