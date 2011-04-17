@@ -3842,6 +3842,7 @@ msgid ""
 msgstr ""
 "Обліковий рахунок користувача root використовується для адміністрування "
 "системи. Введіть пароль користувача root."
+"Для перемикання розкладки клавітури натисніть обидва Shift"
 
 msgid ""
 "The root filesystem you created is not large enough for this live image "
