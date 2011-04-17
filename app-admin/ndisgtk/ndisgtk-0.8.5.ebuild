@@ -7,7 +7,7 @@ inherit python autotools
 
 DESCRIPTION="Common modules of Red Hat's printer administration tool"
 HOMEPAGE="http://spohlenz.blogspot.com/"
-SRC_URI="http://launchpad.net/ndisgtk/0.8/0.8.4/+download/ndisgtk-0.8.4.tar.gz"
+SRC_URI="http://launchpad.net/ndisgtk/0.8/${PV}/+download/ndisgtk-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
@@ -20,7 +20,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 "
 
-S="${WORKDIR}/ndisgtk-0.8.4"
+S="${WORKDIR}/ndisgtk-${PV}"
 
 
 src_compile() {
