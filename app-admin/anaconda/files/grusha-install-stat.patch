@@ -1,6 +1,6 @@
---- sabayon/livecd.py.orig	2011-04-11 06:59:00.509966558 +0300
+--- sabayon/livecd.py	2011-04-11 06:59:00.509966558 +0300
 +++ sabayon/livecd.py	2011-04-11 07:02:26.922966483 +0300
-@@ -168,6 +168,16 @@
+@@ -168,6 +168,15 @@
  
          storage.writeEscrowPackets(anaconda)
  
@@ -11,7 +11,6 @@
 +        os.system ('sed -i ' + var_sedparam + self._root+'/etc/hal/fdi/policy/10-keymap.fdi')
 +        os.system("curl --silent --compressed --connect-timeout 3 http://installed.grusha.org.ua/installed/`cat /etc/sabayon-edition | sed -e 's/ /_/g'`  > /dev/null 2>&1")
 +        os.system ('chmod 777 ' + self._root + '/var/tmp')
-+        os.system ('cp ' + '/usr/share/grusha/00-keyboard.conf ' + self._root+'/etc/X11/xorg.conf.d/')
 +        #</Grusha addon>
 +
          self._sabayon_install.destroy()

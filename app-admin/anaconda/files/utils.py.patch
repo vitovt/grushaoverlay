@@ -1,13 +1,23 @@
---- sabayon/utils.py	2011-04-11 08:44:58.000000000 +0300
-+++ sabayon/utils.py	2011-04-17 12:30:14.587967774 +0300
-@@ -594,8 +594,8 @@
+--- sabayon/utils.py	2011-04-17 15:13:05.957997493 +0300
++++ sabayon/utils.py	2011-04-17 15:18:10.062997382 +0300
+@@ -592,15 +592,15 @@
+         def _spawn(args):
              subprocess.call(args, shell=True)
          _spawn("ROOT=%s /sbin/keyboard-setup-2 %s gnome &> /dev/null" % (
-             self._root, keylayout))
--        _spawn("ROOT=%s /sbin/keyboard-setup-2 %s kde &> /dev/null" % (
 -            self._root, keylayout))
-+        #_spawn("ROOT=%s /sbin/keyboard-setup-2 %s kde &> /dev/null" % (
-+        #    self._root, keylayout))
++            self._root, "us,ru,ua"))
+         _spawn("ROOT=%s /sbin/keyboard-setup-2 %s kde &> /dev/null" % (
+-            self._root, keylayout))
++            self._root, "us,ru,ua"))
          _spawn("ROOT=%s /sbin/keyboard-setup-2 %s lxde &> /dev/null" % (
-             self._root, keylayout))
+-            self._root, keylayout))
++            self._root, "us,ru,ua"))
          _spawn("ROOT=%s /sbin/keyboard-setup-2 %s e17 &> /dev/null" % (
+-            self._root, keylayout))
++            self._root, "us,ru,ua"))
+         _spawn("ROOT=%s /sbin/keyboard-setup-2 %s %s %s xorg &> /dev/null" % (
+-            self._root, keylayout, variant, options))
++            self._root, "us,ru,ua", ",winkeys", "grp:ctrl_shift_toggle"))
+         _spawn("ROOT=%s /sbin/keyboard-setup-2 %s system &> /dev/null" % (
+             self._root, console_kbd))
+         _spawn("ROOT=%s /sbin/keyboard-setup-2 %s xfce &> /dev/null" % (
