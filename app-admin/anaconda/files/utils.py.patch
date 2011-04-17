@@ -1,0 +1,13 @@
+--- sabayon/utils.py	2011-04-11 08:44:58.000000000 +0300
++++ sabayon/utils.py	2011-04-17 12:30:14.587967774 +0300
+@@ -594,8 +594,8 @@
+             subprocess.call(args, shell=True)
+         _spawn("ROOT=%s /sbin/keyboard-setup-2 %s gnome &> /dev/null" % (
+             self._root, keylayout))
+-        _spawn("ROOT=%s /sbin/keyboard-setup-2 %s kde &> /dev/null" % (
+-            self._root, keylayout))
++        #_spawn("ROOT=%s /sbin/keyboard-setup-2 %s kde &> /dev/null" % (
++        #    self._root, keylayout))
+         _spawn("ROOT=%s /sbin/keyboard-setup-2 %s lxde &> /dev/null" % (
+             self._root, keylayout))
+         _spawn("ROOT=%s /sbin/keyboard-setup-2 %s e17 &> /dev/null" % (

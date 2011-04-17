@@ -69,6 +69,7 @@ src_unpack() {
        epatch "${FILESDIR}"/minram.patch
        epatch "${FILESDIR}"/Grusha-name.patch
        epatch "${FILESDIR}"/grusha-install-stat.patch
+       epatch "${FILESDIR}"/utils.py.patch
        cp "${FILESDIR}"/uk.po  ${S}/po/
        cp "${FILESDIR}"/anaconda_header.png  ${S}/pixmaps/
        cp "${FILESDIR}"/splash.png  ${S}/pixmaps/
