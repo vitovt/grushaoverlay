@@ -1,5 +1,5 @@
---- sabayon/livecd.py.orig	2011-04-10 21:11:58.321979411 +0300
-+++ sabayon/livecd.py	2011-04-10 21:12:50.449979394 +0300
+--- sabayon/livecd.py.orig	2011-04-11 06:59:00.509966558 +0300
++++ sabayon/livecd.py	2011-04-11 07:02:26.922966483 +0300
 @@ -168,6 +168,16 @@
  
          storage.writeEscrowPackets(anaconda)

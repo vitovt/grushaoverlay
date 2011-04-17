@@ -1,0 +1,22 @@
+--- liveinst/liveinst	2011-04-11 08:35:55.369704317 +0300
++++ liveinst/liveinst	2011-04-11 09:09:40.129680252 +0300
+@@ -93,6 +93,8 @@
+     /usr/sbin/setenforce 0
+ fi
+ 
++echo "Prepare to start Grusha Installer"
++
+ ANACONDA="anaconda --liveinst --method=hd://://${ANACONDA_PRODUCTPATH}"
+ [[ -n "${DO_TEXT}" ]] && [[ -z "${TEXT_OPT_PASSED}" ]] && \
+     ANACONDA="${ANACONDA} --text"
+@@ -115,6 +117,10 @@
+     /usr/sbin/setenforce $current
+ fi
+ 
++cat $ANACONDA_CHROOTPATH/home/grusha/.kde4/share/config/kxkbrc
++cp /etc/skel/.kde4/share/config/kxkbrc $ANACONDA_CHROOTPATH/home/*/.kde4/share/config/kxkbrc
++chmod a+rw $ANACONDA_CHROOTPATH/home/*/.kde4/share/config/kxkbrc
++
+ kill_mounts
+ 
+ [[ -n "${DO_TEXT}" ]] && reset
