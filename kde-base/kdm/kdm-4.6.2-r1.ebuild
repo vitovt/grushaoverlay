@@ -30,7 +30,7 @@ RDEPEND="${DEPEND}
 	$(add_kdebase_dep kdepasswd)
 	>=x11-apps/xinit-1.0.5-r2
 	x11-apps/xmessage
-	x11-themes/grusha-artwork-kde
+	>=x11-themes/grusha-artwork-kde-3.3
 "
 
 add_blocker systemsettings '<4.5.80'
