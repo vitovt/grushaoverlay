@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="2"
+EAPI="3"
 
 EGIT_REPO_URI="git://git.kde.org/apper"
 
@@ -15,7 +15,7 @@ HOMEPAGE="http://www.kde-apps.org/content/show.php/show.php?content=84745"
 
 LICENSE="GPL-2"
 KEYWORDS="~x86 ~amd64"
-SLOT="4"
+SLOT="0"
 IUSE="debug"
 
 DEPEND=">=app-admin/packagekit-qt4-0.6.4"
