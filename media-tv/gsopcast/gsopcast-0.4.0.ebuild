@@ -14,7 +14,7 @@ HOMEPAGE="http://lianwei3.googlepages.com/home2"
 IUSE=""
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86"
+KEYWORDS="~x86 ~amd64"
 
 DEPEND="|| ( >=media-tv/sopcast-1.1.1 >=media-tv/sopcast-bin-3.0 )
     net-misc/curl
