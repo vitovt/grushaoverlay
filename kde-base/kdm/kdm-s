@@ -1,8 +1,8 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kdm/kdm-4.6.0.ebuild,v 1.1 2011/01/26 20:28:37 alexxy Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kdm/kdm-4.6.3.ebuild,v 1.1 2011/05/07 10:48:06 scarabeus Exp $
 
-EAPI="3"
+EAPI=4
 
 KDE_HANDBOOK="optional"
 KMNAME="kdebase-workspace"
@@ -13,6 +13,7 @@ KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 IUSE="+consolekit debug kerberos pam"
 
 DEPEND="
+	$(add_kdebase_dep libkworkspace)
 	x11-libs/libXau
 	x11-libs/libXdmcp
 	x11-libs/libXtst
@@ -30,7 +31,7 @@ RDEPEND="${DEPEND}
 	$(add_kdebase_dep kdepasswd)
 	>=x11-apps/xinit-1.0.5-r2
 	x11-apps/xmessage
-	>=x11-themes/grusha-artwork-kde-3.3
+	>=x11-themes/sabayon-artwork-kde-5.4_beta1
 "
 
 add_blocker systemsettings '<4.5.80'
@@ -42,15 +43,13 @@ KMEXTRA="
 PATCHES=(
 	"${FILESDIR}/kdebase-4.0.2-pam-optional.patch"
 	"${FILESDIR}/${PN}-4-gentoo-xinitrc.d.patch"
-	"${FILESDIR}/${PV}_fix_halt_p1.patch"
-	"${FILESDIR}/${PV}_fix_halt_p2.patch"
 )
 
 pkg_setup() {
 	kde4-meta_pkg_setup
 
 	# Create kdm:kdm user
-	KDM_HOME=/var/lib/kdm-${SLOT}
+	KDM_HOME=/var/lib/kdm
 	enewgroup kdm
 	enewuser kdm -1 -1 "${KDM_HOME}" kdm
 }
@@ -78,15 +77,15 @@ src_install() {
 	# - SessionDirs set to /usr/share/xsessions
 	# - increase server timeout to 30s
 	# - TerminateServer=true to workaround X server regen bug, bug 278473
-	# - DataDir set to /var/lib/kdm-${SLOT}
-	# - FaceDir set to /var/lib/kdm-${SLOT}/faces
-	# - Switch to Grusha theme by default
+	# - DataDir set to /var/lib/kdm
+	# - FaceDir set to /var/lib/kdm/faces
+	# - Switch to Sabayon theme by default
 	sed -e "s|^.*SessionsDirs=.*$|#&\nSessionsDirs=${EPREFIX}/usr/share/xsessions|" \
 		-e "/#ServerTimeout=/s/^.*$/ServerTimeout=30/" \
 		-e "/#TerminateServer=/s/^.*$/TerminateServer=true/" \
 		-e "s|^.*DataDir=.*$|#&\nDataDir=${EPREFIX}${KDM_HOME}|" \
 		-e "s|^.*FaceDir=.*$|#&\nFaceDir=${EPREFIX}${KDM_HOME}/faces|" \
-		-e "s|themes/horos$|themes/grusha|" \
+		-e "s|themes/horos$|themes/sabayon|" \
 		-i "${ED}"/${KDEDIR}/share/config/kdm/kdmrc \
 		|| die "Failed to set ServerTimeout and SessionsDirs correctly in kdmrc."
 
