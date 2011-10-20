@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="2"
+EAPI="3"
 
 
 KMNAME="playground/sysadmin"
@@ -14,7 +14,7 @@ SRC_URI="http://kde-apps.org/CONTENT/content-files/84745-kpackagekit-0.6.3.3.tar
 
 LICENSE="GPL-2"
 KEYWORDS="~x86 ~amd64"
-SLOT="4"
+SLOT="0"
 IUSE="debug"
 
 DEPEND=">=app-admin/packagekit-qt4-0.6.4"
