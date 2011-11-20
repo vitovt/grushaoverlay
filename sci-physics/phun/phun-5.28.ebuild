@@ -21,7 +21,7 @@ DEPEND=""
 RDEPEND="virtual/opengl
 	dev-libs/libzip
 	media-libs/sdl-image
-	=media-libs/glew-1.5*
+	media-libs/glew
 	dev-libs/boost"
 
 S="${WORKDIR}/Phun"
