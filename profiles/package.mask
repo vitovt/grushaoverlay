@@ -31,17 +31,6 @@ app-emulation/qemu-gui
 # Gentoo #260441
 ~x11-drivers/nvidia-drivers-180.35
 
-# Ian Whyman <ian.whyman@sabayonlinux.org
-# Modified by Mitch Harder <mitch.harder@sabayonlinux.org>
-# to unmask version 4.2 artwork.
-# Modified by Fabio Erculiani to unmask 5.0 artwork.
-#
-# Mask Devel Artwork packages
->=x11-themes/sabayon-artwork-5.1
->=x11-themes/sabayon-artwork-core-5.1
->=x11-themes/sabayon-artwork-gnome-5.1
->=x11-themes/sabayon-artwork-kde-5.1
-
 # Ian Whyman <ian.whyman@sabayonlinux.org>
 # Breaks many apps, see: #575
 =x11-libs/libxcb-1.1.93-r1
@@ -58,3 +47,18 @@ app-emulation/qemu-gui
 # Mask imlib2 version used on Branch 5
 # by E17 stuff
 =media-libs/imlib2-9999
+
+# Fabio Erculiani <lxnay@sabayon.org>
+# Testing, breaks libs, not yet needed
+dev-libs/libdbusmenu
+
+# Fabio Erculiani <lxnay@sabayon.org>
+# They work like shit
+~x11-drivers/ati-drivers-11.9
+~x11-drivers/ati-userspace-11.9
+~media-video/amdcccle-11.9
+
+##### unmask ####
+
+# example
+# -~sys-boot/grub-1.99
