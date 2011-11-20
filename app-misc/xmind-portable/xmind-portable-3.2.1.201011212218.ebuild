@@ -9,8 +9,8 @@ inherit eutils
 DESCRIPTION="XMind is the world's coolest brainstorming and mind mapping
 software and the best way to share your ideas."
 HOMEPAGE="www.xmind.net"
-SRC_URI="http://dl.xmind.org/${P}.zip"
-
+SRC_URI="http://dl2.xmind.net/xmind-downloads/${P}.zip"
+RESTRICT="nomirror"
 LICENSE="EPL-1.0 LGPL-3"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
