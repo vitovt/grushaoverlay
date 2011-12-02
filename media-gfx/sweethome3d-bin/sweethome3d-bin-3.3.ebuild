@@ -7,7 +7,6 @@ EAPI="2"
 inherit eutils
 
 MY_PN="SweetHome3D"
-INSTALL_PATH=/opt
 
 DESCRIPTION="Sweet Home 3D is a free interior design application."
 HOMEPAGE="http://sweethome3d.sourceforge.net/"
@@ -17,17 +16,18 @@ LICENSE="GPL-3"
 IUSE=""
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-DEPEND=">=virtual/jre-1.6"
-RDEPEND="${DEPEND}"
+
+DEPEND=""
+
+RDEPEND=""
 
 S="${WORKDIR}/${MY_PN}-${PV}"
 src_install() {
-	dodir ${INSTALL_PATH}/sweethome3d
-	dodir ${INSTALL_PATH}/sweethome3d/lib
-	cp -r ${S}/lib/* ${D}${INSTALL_PATH}/sweethome3d/lib/
-#	cp  ${S}/* ${D}${INSTALL_PATH}/sweethome3d/
-	cp ${FILESDIR}/SweetHome3D ${D}${INSTALL_PATH}/sweethome3d/
-	dosym ${INSTALL_PATH}/sweethome3d/${MY_PN} /usr/bin/${MY_PN}
+	dodir /usr/share/sweethome3d
+	cp -r ${S}/* ${D}/usr/share/sweethome3d/
+	#rm -r ${D}/usr/share/sweethome3d/jre*
+	#dosed 's@"$PROGRAM_DIR"/jre1.6.0_24/bin/@/usr/bin/@g' /usr/share/sweethome3d/SweetHome3D
+	dosym /usr/share/sweethome3d/${MY_PN} /usr/bin/${MY_PN}
 	make_desktop_entry ${MY_PN} "${MY_PN}"
 }
 
