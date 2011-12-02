@@ -28,6 +28,7 @@ COMMON_DEPEND="
 	dev-java/janino:0
 	dev-java/java3dsloader:0
 	dev-java/jmf-bin:0
+	dev-java/jnlp-api
 	dev-java/vecmath:0"
 
 DEPEND=">=virtual/jdk-1.5
@@ -35,11 +36,10 @@ DEPEND=">=virtual/jdk-1.5
 	${COMMON_DEPEND}"
 
 RDEPEND=">=virtual/jre-1.5
-	!media-gfx/sweethome3d-bin
 	${COMMON_DEPEND}"
 
 S="${WORKDIR}/${MY_PN}-${PV}-src"
-SUNFLOW_PATCH="sunflow-0.07.3f-src-diff"
+SUNFLOW_PATCH="sunflow-0.07.3g-src-diff"
 
 # sunflow variables
 JAVA_GENTOO_CLASSPATH="janino"
@@ -73,6 +73,7 @@ java_prepare() {
 	java-pkg_jar-from j3d-core
 	java-pkg_jar-from java3dsloader
 	java-pkg_jar-from jmf-bin
+	java-pkg_jar-from jnlp-api
 	java-pkg_jar-from vecmath
 	popd >/dev/null || die
 	pushd "${S}"/libtest >/dev/null || die
