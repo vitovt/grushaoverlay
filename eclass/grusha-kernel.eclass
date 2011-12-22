@@ -128,7 +128,7 @@ inherit eutils kernel-2 sabayon-artwork mount-boot linux-info
 detect_version
 detect_arch
 
-DESCRIPTION="Sabayon Linux kernel functions and phases"
+DESCRIPTION="Grusha Linux kernel functions and phases"
 
 
 K_LONGTERM_URL_STR=""
@@ -300,7 +300,7 @@ _update_depmod() {
 	fi
 }
 
-sabayon-kernel_pkg_setup() {
+grusha-kernel_pkg_setup() {
 	if [ -n "${K_FIRMWARE_PACKAGE}" ]; then
 		einfo "Preparing kernel firmwares"
 	else
@@ -308,7 +308,7 @@ sabayon-kernel_pkg_setup() {
 	fi
 }
 
-sabayon-kernel_src_unpack() {
+grusha-kernel_src_unpack() {
 	local okv="${OKV}"
 	if [ -n "${K_SABKERNEL_SELF_TARBALL_NAME}" ]; then
 		OKV="${PVR}+${K_SABKERNEL_SELF_TARBALL_NAME}"
@@ -327,7 +327,7 @@ sabayon-kernel_src_unpack() {
 	OKV="${okv}"
 }
 
-sabayon-kernel_src_compile() {
+grusha-kernel_src_compile() {
 	if [ -n "${K_FIRMWARE_PACKAGE}" ]; then
 		_firmwares_src_compile
 	elif [ -n "${K_ONLY_SOURCES}" ]; then
@@ -423,7 +423,7 @@ _kernel_src_compile() {
 	ARCH=${OLDARCH}
 }
 
-sabayon-kernel_src_install() {
+grusha-kernel_src_install() {
 	if [ -n "${K_FIRMWARE_PACKAGE}" ]; then
 		_firmwares_src_install
 	elif [ -n "${K_ONLY_SOURCES}" ]; then
@@ -532,12 +532,12 @@ _kernel_src_install() {
 	fi
 }
 
-sabayon-kernel_pkg_preinst() {
+grusha-kernel_pkg_preinst() {
 	if _is_kernel_binary; then
 		mount-boot_pkg_preinst
 	fi
 }
-sabayon-kernel_grub2_mkconfig() {
+grusha-kernel_grub2_mkconfig() {
 	if [ -x "${ROOT}sbin/grub-mkconfig" ]; then
 		"${ROOT}sbin/grub-mkdevicemap" --device-map="${ROOT}boot/grub/device.map"
 		"${ROOT}sbin/grub-mkconfig" -o "${ROOT}boot/grub/grub.cfg"
@@ -565,7 +565,7 @@ _get_release_level() {
 	fi
 }
 
-sabayon-kernel_pkg_postinst() {
+grusha-kernel_pkg_postinst() {
 	if _is_kernel_binary; then
 		fstab_file="${ROOT}etc/fstab"
 		einfo "Removing extents option for ext4 drives from ${fstab_file}"
@@ -575,7 +575,7 @@ sabayon-kernel_pkg_postinst() {
 		fi
 
 		# Update kernel initramfs to match user customizations
-		update_sabayon_kernel_initramfs_splash
+		update_grusha_kernel_initramfs_splash
 
 		# Add kernel to grub.conf
 		if use grub; then
@@ -591,7 +591,7 @@ sabayon-kernel_pkg_postinst() {
 					"/boot/initramfs-genkernel-${kern_arch}-${KV_FULL}"
 			fi
 
-			sabayon-kernel_grub2_mkconfig
+			grusha-kernel_grub2_mkconfig
 		fi
 
 		kernel-2_pkg_postinst
@@ -599,11 +599,11 @@ sabayon-kernel_pkg_postinst() {
 		_update_depmod "${depmod_r}"
 
 		elog "Please report kernel bugs at:"
-		elog "http://bugs.sabayon.org"
+		elog "http://bugs.grusha.org"
 
 		elog "The source code of this kernel is located at"
 		elog "=${K_KERNEL_SOURCES_PKG}."
-		elog "Sabayon Linux recommends that portage users install"
+		elog "grusha Linux recommends that portage users install"
 		elog "${K_KERNEL_SOURCES_PKG} if you want"
 		elog "to build any packages that install kernel modules"
 		elog "(such as ati-drivers, nvidia-drivers, virtualbox, etc...)."
@@ -612,13 +612,13 @@ sabayon-kernel_pkg_postinst() {
 	fi
 }
 
-sabayon-kernel_pkg_prerm() {
+grusha-kernel_pkg_prerm() {
 	if _is_kernel_binary; then
 		mount-boot_pkg_prerm
 	fi
 }
 
-sabayon-kernel_pkg_postrm() {
+grusha-kernel_pkg_postrm() {
 	if _is_kernel_binary; then
 		# Remove kernel from grub.conf
 		if use grub; then
@@ -633,7 +633,7 @@ sabayon-kernel_pkg_postrm() {
 					"/boot/initramfs-genkernel-${kern_arch}-${KV_FULL}"
 			fi
 
-			sabayon-kernel_grub2_mkconfig
+			grusha-kernel_grub2_mkconfig
 		fi
 	fi
 }
