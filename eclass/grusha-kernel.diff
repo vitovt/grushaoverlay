@@ -1,0 +1,194 @@
+--- sabayon-kernel.eclass	2011-12-22 12:07:45.400003003 +0000
++++ grusha-kernel.eclass	2011-12-22 12:07:45.400003003 +0000
+@@ -124,15 +124,15 @@
+ 
+ inherit eutils kernel-2 sabayon-artwork mount-boot linux-info
+ 
+ # from kernel-2 eclass
+ detect_version
+ detect_arch
+ 
+-DESCRIPTION="Sabayon Linux kernel functions and phases"
++DESCRIPTION="Grusha Linux kernel functions and phases"
+ 
+ 
+ K_LONGTERM_URL_STR=""
+ if [ -n "${K_SABKERNEL_LONGTERM}" ]; then
+ 	K_LONGTERM_URL_STR="/longterm/v${KV_MAJOR}.${KV_MINOR}.${KV_PATCH}"
+ fi
+ 
+@@ -296,23 +296,23 @@
+ 		ewarn "${KV_OUT_DIR}/System.map not found."
+ 		ewarn "You must manually update the kernel module dependencies using depmod."
+ 		eend 1
+ 		ewarn
+ 	fi
+ }
+ 
+-sabayon-kernel_pkg_setup() {
++grusha-kernel_pkg_setup() {
+ 	if [ -n "${K_FIRMWARE_PACKAGE}" ]; then
+ 		einfo "Preparing kernel firmwares"
+ 	else
+ 		einfo "Preparing kernel and its modules"
+ 	fi
+ }
+ 
+-sabayon-kernel_src_unpack() {
++grusha-kernel_src_unpack() {
+ 	local okv="${OKV}"
+ 	if [ -n "${K_SABKERNEL_SELF_TARBALL_NAME}" ]; then
+ 		OKV="${PVR}+${K_SABKERNEL_SELF_TARBALL_NAME}"
+ 	fi
+ 	kernel-2_src_unpack
+ 	if [ -n "${K_SABKERNEL_FORCE_SUBLEVEL}" ]; then
+ 		# patch out Makefile with proper sublevel
+@@ -323,15 +323,15 @@
+ 		sed -i "s:^EXTRAVERSION =.*:EXTRAVERSION = :" "${S}/Makefile" || die
+ 		# some sources could have multiple append-based EXTRAVERSIONs
+ 		sed -i "s/^EXTRAVERSION :=.*//" "${S}/Makefile" || die
+ 	fi
+ 	OKV="${okv}"
+ }
+ 
+-sabayon-kernel_src_compile() {
++grusha-kernel_src_compile() {
+ 	if [ -n "${K_FIRMWARE_PACKAGE}" ]; then
+ 		_firmwares_src_compile
+ 	elif [ -n "${K_ONLY_SOURCES}" ]; then
+ 		kernel-2_src_compile
+ 	else
+ 		_kernel_src_compile
+ 	fi
+@@ -419,15 +419,15 @@
+ 		--iscsi \
+ 		--mdadm \
+ 		--module-prefix="${WORKDIR}"/lib \
+ 		all || die "genkernel failed"
+ 	ARCH=${OLDARCH}
+ }
+ 
+-sabayon-kernel_src_install() {
++grusha-kernel_src_install() {
+ 	if [ -n "${K_FIRMWARE_PACKAGE}" ]; then
+ 		_firmwares_src_install
+ 	elif [ -n "${K_ONLY_SOURCES}" ]; then
+ 		_kernel_sources_src_install
+ 	else
+ 		_kernel_src_install
+ 	fi
+@@ -528,20 +528,20 @@
+ 		insinto "${base_dir}"
+ 		echo "${KV_FULL}" > "RELEASE_LEVEL"
+ 		doins "RELEASE_LEVEL"
+ 		einfo "Installing ${base_dir}/RELEASE_LEVEL file: ${KV_FULL}"
+ 	fi
+ }
+ 
+-sabayon-kernel_pkg_preinst() {
++grusha-kernel_pkg_preinst() {
+ 	if _is_kernel_binary; then
+ 		mount-boot_pkg_preinst
+ 	fi
+ }
+-sabayon-kernel_grub2_mkconfig() {
++grusha-kernel_grub2_mkconfig() {
+ 	if [ -x "${ROOT}sbin/grub-mkconfig" ]; then
+ 		"${ROOT}sbin/grub-mkdevicemap" --device-map="${ROOT}boot/grub/device.map"
+ 		"${ROOT}sbin/grub-mkconfig" -o "${ROOT}boot/grub/grub.cfg"
+ 	fi
+ }
+ 
+ _get_real_extraversion() {
+@@ -561,25 +561,25 @@
+ 		# need to add another final .0 to the version part
+ 		echo "${KV_FULL/-/.0-}"
+ 	else
+ 		echo "${KV_FULL}"
+ 	fi
+ }
+ 
+-sabayon-kernel_pkg_postinst() {
++grusha-kernel_pkg_postinst() {
+ 	if _is_kernel_binary; then
+ 		fstab_file="${ROOT}etc/fstab"
+ 		einfo "Removing extents option for ext4 drives from ${fstab_file}"
+ 		# Remove "extents" from /etc/fstab
+ 		if [ -f "${fstab_file}" ]; then
+ 			sed -i '/ext4/ s/extents//g' "${fstab_file}"
+ 		fi
+ 
+ 		# Update kernel initramfs to match user customizations
+-		update_sabayon_kernel_initramfs_splash
++		update_grusha_kernel_initramfs_splash
+ 
+ 		# Add kernel to grub.conf
+ 		if use grub; then
+ 			if use amd64; then
+ 				local kern_arch="x86_64"
+ 			else
+ 				local kern_arch="x86"
+@@ -587,57 +587,57 @@
+ 			# grub-legacy
+ 			if [ -x "${ROOT}usr/sbin/grub-handler" ]; then
+ 				"${ROOT}usr/sbin/grub-handler" add \
+ 					"/boot/kernel-genkernel-${kern_arch}-${KV_FULL}" \
+ 					"/boot/initramfs-genkernel-${kern_arch}-${KV_FULL}"
+ 			fi
+ 
+-			sabayon-kernel_grub2_mkconfig
++			grusha-kernel_grub2_mkconfig
+ 		fi
+ 
+ 		kernel-2_pkg_postinst
+ 		local depmod_r=$(_get_release_level)
+ 		_update_depmod "${depmod_r}"
+ 
+ 		elog "Please report kernel bugs at:"
+-		elog "http://bugs.sabayon.org"
++		elog "http://bugs.grusha.org"
+ 
+ 		elog "The source code of this kernel is located at"
+ 		elog "=${K_KERNEL_SOURCES_PKG}."
+-		elog "Sabayon Linux recommends that portage users install"
++		elog "grusha Linux recommends that portage users install"
+ 		elog "${K_KERNEL_SOURCES_PKG} if you want"
+ 		elog "to build any packages that install kernel modules"
+ 		elog "(such as ati-drivers, nvidia-drivers, virtualbox, etc...)."
+ 	else
+ 		kernel-2_pkg_postinst
+ 	fi
+ }
+ 
+-sabayon-kernel_pkg_prerm() {
++grusha-kernel_pkg_prerm() {
+ 	if _is_kernel_binary; then
+ 		mount-boot_pkg_prerm
+ 	fi
+ }
+ 
+-sabayon-kernel_pkg_postrm() {
++grusha-kernel_pkg_postrm() {
+ 	if _is_kernel_binary; then
+ 		# Remove kernel from grub.conf
+ 		if use grub; then
+ 			if use amd64; then
+ 				local kern_arch="x86_64"
+ 			else
+ 				local kern_arch="x86"
+ 			fi
+ 			if [ -x "${ROOT}usr/sbin/grub-handler" ]; then
+ 				"${ROOT}usr/sbin/grub-handler" remove \
+ 					"/boot/kernel-genkernel-${kern_arch}-${KV_FULL}" \
+ 					"/boot/initramfs-genkernel-${kern_arch}-${KV_FULL}"
+ 			fi
+ 
+-			sabayon-kernel_grub2_mkconfig
++			grusha-kernel_grub2_mkconfig
+ 		fi
+ 	fi
+ }
+ 
+ # export all the available functions here
+ EXPORT_FUNCTIONS pkg_setup src_unpack src_compile src_install pkg_preinst pkg_postinst pkg_prerm pkg_postrm
+ 
