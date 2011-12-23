@@ -8,7 +8,7 @@ K_SABKERNEL_FORCE_SUBLEVEL="0"
 inherit grusha-kernel
 
 KEYWORDS="~amd64 ~x86"
-DESCRIPTION="Official Sabayon Linux Fusion (on steroids) kernel image"
+DESCRIPTION="Official Grusha Linux Fusion (on steroids) kernel image"
 RESTRICT="mirror"
 
 src_unpack() {
