@@ -15,6 +15,8 @@ src_unpack() {
 	grusha-kernel_src_unpack
 	# fixup EXTRAVERSION, we don't want anything to append stuff
 	sed -i "s/^EXTRAVERSION :=.*//" "${S}/Makefile" || die
-	#copy correct config
-        cp "${FILESDIR}/grusha-3.1-x86.config" ${S}/sabayon/config/
+	#copying correct config 
+	#cp "${FILESDIR}/grusha-3.1-x86.config" ${S}/sabayon/config/
+	einfo "applying ${K_SABKERNEL_NAME}-${PV}-${ARCH}.config"
+	cp "${FILESDIR}/${K_SABKERNEL_NAME}-${PV}-${ARCH}.config" ${S}/sabayon/config/
 }
