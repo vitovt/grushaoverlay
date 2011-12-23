@@ -1,0 +1,12 @@
+--- src/main.cpp  2011-11-11 14:39:38.000000000 +0200
++++ src/main.cpp  2011-12-19 08:57:00.000000000 +0200
+@@ -29,8 +29,7 @@
+     qDebug() << "Locale:" << QLocale::system().name();
+     QString lang = "qxkb_" + QLocale::system().name().split("_")[0];
+     qDebug()<<"Language:"<<lang;
+-    QString langPath(QXKB_TRANSLATION_PATH);
+-    qDebug()<<"Language path (trying):"<<langPath;
++    QString langPath=QLibraryInfo::location(QLibraryInfo::TranslationsPath);
+     if (!QFile::exists(langPath+"/"+lang+".qm"))
+         langPath =  QCoreApplication::applicationDirPath() + "/language/";
+     qDebug()<<"Language path (fallback):"<<langPath;
