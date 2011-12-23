@@ -603,7 +603,7 @@ grusha-kernel_pkg_postinst() {
 
 		elog "The source code of this kernel is located at"
 		elog "=${K_KERNEL_SOURCES_PKG}."
-		elog "grusha Linux recommends that portage users install"
+		elog "Grusha Linux recommends that portage users install"
 		elog "${K_KERNEL_SOURCES_PKG} if you want"
 		elog "to build any packages that install kernel modules"
 		elog "(such as ati-drivers, nvidia-drivers, virtualbox, etc...)."
