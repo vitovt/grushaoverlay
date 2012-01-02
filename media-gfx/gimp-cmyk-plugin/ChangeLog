@@ -1,0 +1,52 @@
+# ChangeLog for media-gfx/gimp-cmyk-plugin
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  04 Jul 2011; Piotr Szymaniak <szarpaj@grubelek.pl>
+  gimp-cmyk-plugin-0.5.8.ebuild:
+  EAPI bump, fixed and added missing depends.
+
+  30 Apr 2011; Justin Lecher <jlec@gentoo.org>
+  gimp-cmyk-plugin-0.5.8.ebuild:
+  Moved media-libs/jpeg > virtual/jpeg
+
+  20 Nov 2010; Justin Lecher <jlec@gentoo.org>
+  -gimp-cmyk-plugin-0.5.7.ebuild, -files/0.5.7-Makefile.patch,
+  +files/0.5.8-Makefile.patch, +gimp-cmyk-plugin-0.5.8.ebuild:
+  Version Bump and ~amd64 readded
+
+*gimp-cmyk-plugin-0.5.7 (20 Sep 2010)
+
+  20 Sep 2010; Justin Lecher <jlec@gentoo.org> -files/0.5.5-Makefile.patch,
+  -gimp-cmyk-plugin-0.5.5.ebuild, +files/0.5.7-Makefile.patch,
+  +gimp-cmyk-plugin-0.5.7.ebuild:
+  Version Bump, removed 64bit keyword due to "Function lcms_open_profile
+  implicitly converted to pointer"
+
+  09 Jan 2010; Justin Lecher (jlec) <jlec@j-schmitz.net>
+  gimp-cmyk-plugin-0.5.5.ebuild:
+  missing eutils.eclass added
+
+  22 Dec 2009; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  gimp-cmyk-plugin-0.5.5.ebuild:
+  Add missing die, drop base eclass, reduce number of linebreaks
+
+  20 Dec 2009; Justin Lecher (jlec) <jlec@j-schmitz.net>
+  +gimp-cmyk-plugin-0.5.5.ebuild, -files/0.5.4-Makefile.patch,
+  +files/0.5.5-Makefile.patch, -gimp-cmyk-plugin-0.5.4.ebuild:
+  Version bump, including jpeg support
+
+  12 Aug 2009; Justin Lecher (jlec) <jlec@j-schmitz.net>
+  +files/0.5.4-Makefile.patch, -gimp-cmyk-plugin-0.5.3.ebuild,
+  +gimp-cmyk-plugin-0.5.4.ebuild, -files/installer.patch:
+  version bump, CC, LDFLAGS and CFLAGS are respected now, keyworded for
+  ~amd64, make use of base.eclass
+
+  12 Jul 2009; Thomas Sachau (Tommy[D]) <tommy@gentoo.org>
+  gimp-cmyk-plugin-0.5.3.ebuild:
+  Whitespace, simplify
+
+  27 May 2009; Ian Stakenvicius (_AxS_) <ian@aerobiology.ca>
+  +gimp-cmyk-plugin-0.5.3.ebuild, +files/installer.patch, +metadata.xml:
+  New ebuild for bug 24837, thanks to scarabeus, nikai, palatis, and dm.konrad
+
