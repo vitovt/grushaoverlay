@@ -1,0 +1,11 @@
+--- configure	2012-01-02 11:53:04.531693002 +0000
++++ configure	2012-01-02 11:53:29.255026335 +0000
+@@ -17275,7 +17275,7 @@
+ fi
+ 
+ # Add remaining compiler flags we want to use
+-CFLAGS="$CFLAGS -Wall -Werror -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE"
++CFLAGS="$CFLAGS -Wno-error=unused-but-set-variable -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE"
+ 
+ # Filter CFLAGS (remove duplicate flags)
+ cflags_filter() {

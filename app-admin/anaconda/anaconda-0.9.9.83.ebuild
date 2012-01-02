@@ -145,8 +145,6 @@ src_configure() {
 
 	# configure anaconda
 	cd "${S}"
-	ewarn "Applying gcc 2.6.x Werror issue patch"
-    epatch "${FILESDIR}"/configure.Werror.patch
 	einfo "configuring anaconda"
 	econf \
 		$(use_enable ipv6) $(use_enable selinux) \
