@@ -258,7 +258,7 @@ src_install() {
 	insinto /etc/default
 	newins "${FILESDIR}"/grub2-default-1.99 grub
 	cat <<-EOF >> "${ED}"/lib*/grub/grub-mkconfig_lib
-	GRUB_DISTRIBUTOR="Grusha
+	GRUB_DISTRIBUTOR="Grusha"
 EOF
 
 	# Install fonts setup hook

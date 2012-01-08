@@ -5,7 +5,7 @@ sys-boot/grub:0:
   - remove some code on pkg_postinst which causes segfaults
 sys-boot/grub:2:
   - provide /etc/default/grub
-  - make grub.cfg generate entries with "Sabayon" tag
+  - make grub.cfg generate entries with "Grusha" tag
   - add sys-boot/os-prober to PDEPEND
   - fix Genkernel patch, improve Gentoo support
   - ability to set wallpaper from /etc/default/grub
