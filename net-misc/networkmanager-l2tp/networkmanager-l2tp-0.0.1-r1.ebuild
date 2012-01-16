@@ -40,6 +40,9 @@ S=${WORKDIR}/NetworkManager-l2tp-${PV}
 ewarn "work dir ${S}"
 
 src_prepare() {
+epatch  "${FILESDIR}/port_everything_to_NM_0.9.patch"
+epatch  "${FILESDIR}/replace-nm_warning-with-g_warning_and_replace-nm_info-with-g_message.patch"
+epatch  "${FILESDIR}/04_deprecated_GTK.patch"
 einfo "Preparing sources"
 	./autogen.sh
 	}

@@ -1,0 +1,458 @@
+diff -U4 -r orig//auth-dialog/main.c patched//auth-dialog/main.c
+--- orig//auth-dialog/main.c	2011-01-31 18:13:05.000000000 +0000
++++ patched//auth-dialog/main.c	2012-01-16 21:26:16.755026334 +0000
+@@ -25,41 +25,71 @@
+ #endif
+ 
+ #include <string.h>
+ #include <stdlib.h>
++#include <errno.h>
+ #include <glib/gi18n.h>
+ #include <gtk/gtk.h>
+ 
+ #include <nm-setting-vpn.h>
++#include <nm-vpn-plugin-utils.h>
+ 
+ #include "src/nm-l2tp-service.h"
+ #include "common-gnome/keyring-helpers.h"
+ #include "gnome-two-password-dialog.h"
+ 
+-#define KEYRING_UUID_TAG "connection-uuid"
+-#define KEYRING_SN_TAG "setting-name"
+-#define KEYRING_SK_TAG "setting-key"
+-
+ static gboolean
+ get_secrets (const char *vpn_uuid,
+              const char *vpn_name,
+-             const char *vpn_service,
+              gboolean retry,
+-             char **password)
++             gboolean allow_interaction,
++             const char *in_pw,
++             char **out_pw,
++             NMSettingSecretFlags pw_flags)
+ {
+ 	GnomeTwoPasswordDialog *dialog;
+ 	gboolean is_session = TRUE;
+-	char *prompt;
++	char *prompt, *pw = NULL;
+ 
+ 	g_return_val_if_fail (vpn_uuid != NULL, FALSE);
+ 	g_return_val_if_fail (vpn_name != NULL, FALSE);
+-	g_return_val_if_fail (password != NULL, FALSE);
+-	g_return_val_if_fail (*password == NULL, FALSE);
++	g_return_val_if_fail (out_pw != NULL, FALSE);
++	g_return_val_if_fail (*out_pw == NULL, FALSE);
+ 
+-	*password = keyring_helpers_lookup_secret (vpn_uuid, NM_L2TP_KEY_PASSWORD, &is_session);
+-	if (!retry && *password)
++	/* Get the existing secret, if any */
++	if (   !(pw_flags & NM_SETTING_SECRET_FLAG_NOT_SAVED)
++	    && !(pw_flags & NM_SETTING_SECRET_FLAG_NOT_REQUIRED)) {
++		if (in_pw)
++			pw = gnome_keyring_memory_strdup (in_pw);
++		else
++			pw = keyring_helpers_lookup_secret (vpn_uuid, NM_L2TP_KEY_PASSWORD, &is_session);
++	}
++
++	/* Don't ask if the passwords is unused */
++	if (pw_flags & NM_SETTING_SECRET_FLAG_NOT_REQUIRED) {
++		gnome_keyring_memory_free (pw);
+ 		return TRUE;
++	}
+ 
++		if (!retry) {
++		/* Don't ask the user if we don't need a new password (ie, !retry),
++		 * we have an existing PW, and the password is saved.
++		 */
++		if (pw && !(pw_flags & NM_SETTING_SECRET_FLAG_NOT_SAVED)) {
++			*out_pw = pw;
++			return TRUE;
++		}
++	}
++
++	/* If interaction isn't allowed, just return existing secrets */
++	if (allow_interaction == FALSE) {
++		*out_pw = pw;
++	return TRUE;
++	}
++ 
++	/* Otherwise, we have no saved password, or the password flags indicated
++	 * that the password should never be saved.
++	 */
+ 	prompt = g_strdup_printf (_("You need to authenticate to access the Virtual Private Network '%s'."), vpn_name);
+ 	dialog = GNOME_TWO_PASSWORD_DIALOG (gnome_two_password_dialog_new (_("Authenticate VPN"), prompt, NULL, NULL, FALSE));
+ 	g_free (prompt);
+ 
+@@ -69,31 +99,28 @@
+ 	gnome_two_password_dialog_set_show_remember (dialog, TRUE);
+ 	gnome_two_password_dialog_set_show_password_secondary (dialog, FALSE);
+ 
+ 	/* If nothing was found in the keyring, default to not remembering any secrets */
+-	if (*password) {
++	if (pw) {
+ 		/* Otherwise set default remember based on which keyring the secrets were found in */
+ 		if (is_session)
+ 			gnome_two_password_dialog_set_remember (dialog, GNOME_TWO_PASSWORD_DIALOG_REMEMBER_SESSION);
+ 		else
+ 			gnome_two_password_dialog_set_remember (dialog, GNOME_TWO_PASSWORD_DIALOG_REMEMBER_FOREVER);
+ 	} else
+ 		gnome_two_password_dialog_set_remember (dialog, GNOME_TWO_PASSWORD_DIALOG_REMEMBER_NOTHING);
+ 
+-	/* if retrying, pre-fill dialog with the password */
+-	if (*password) {
+-		gnome_two_password_dialog_set_password (dialog, *password);
+-		g_free (*password);
+-		*password = NULL;
+-	}
++	/* pre-fill dialog with the password */
++	if (pw && !(pw_flags & NM_SETTING_SECRET_FLAG_NOT_SAVED))
++		gnome_two_password_dialog_set_password (dialog, pw);
+ 
+ 	gtk_widget_show (GTK_WIDGET (dialog));
+ 
+ 	if (gnome_two_password_dialog_run_and_block (dialog)) {
+ 		const char *keyring = NULL;
+ 		gboolean save = FALSE;
+ 
+-		*password = gnome_two_password_dialog_get_password (dialog);
++		*out_pw = gnome_two_password_dialog_get_password (dialog);
+ 
+ 		switch (gnome_two_password_dialog_get_remember (dialog)) {
+ 		case GNOME_TWO_PASSWORD_DIALOG_REMEMBER_SESSION:
+ 			keyring = "session";
+@@ -104,12 +131,14 @@
+ 		default:
+ 			break;
+ 		}
+ 
+-		if (save) {
+-			if (*password) {
+-				keyring_helpers_save_secret (vpn_uuid, vpn_name, keyring,
+-					   	NM_L2TP_KEY_PASSWORD, *password);
++		if (save && (pw_flags & NM_SETTING_SECRET_FLAG_AGENT_OWNED)) {
++		    if (*out_pw && !(pw_flags & NM_SETTING_SECRET_FLAG_NOT_SAVED))
++				keyring_helpers_save_secret (vpn_uuid, vpn_name, keyring, NM_L2TP_KEY_PASSWORD, *out_pw);
++			else {
++				/* Clear the password from the keyring */
++				keyring_helpers_delete_secret (vpn_uuid, NM_L2TP_KEY_PASSWORD);
+ 			}
+ 		}
+ 	}
+ 
+@@ -118,24 +147,47 @@
+ 
+ 	return TRUE;
+ }
+ 
++static void
++wait_for_quit (void)
++{
++	GString *str;
++	char c;
++	ssize_t n;
++	time_t start;
++
++	str = g_string_sized_new (10);
++	start = time (NULL);
++	do {
++		errno = 0;
++		n = read (0, &c, 1);
++		if (n == 0 || (n < 0 && errno == EAGAIN))
++			g_usleep (G_USEC_PER_SEC / 10);
++		else if (n == 1) {
++			g_string_append_c (str, c);
++			if (strstr (str->str, "QUIT") || (str->len > 10))
++				break;
++		} else
++			break;
++	} while (time (NULL) < start + 20);
++	g_string_free (str, TRUE);
++}
++
+ int 
+ main (int argc, char *argv[])
+ {
+-	gboolean retry = FALSE;
+-	gchar *vpn_name = NULL;
+-	gchar *vpn_uuid = NULL;
+-	gchar *vpn_service = NULL;
+-	char *password = NULL;
+-	char buf[1];
+-	int ret;
++	gboolean retry = FALSE, allow_interaction = FALSE;
++	char *vpn_name = NULL, *vpn_uuid = NULL, *vpn_service = NULL, *password = NULL;
++	GHashTable *data = NULL, *secrets = NULL;
++	NMSettingSecretFlags pw_flags = NM_SETTING_SECRET_FLAG_NONE;
+ 	GOptionContext *context;
+ 	GOptionEntry entries[] = {
+ 			{ "reprompt", 'r', 0, G_OPTION_ARG_NONE, &retry, "Reprompt for passwords", NULL},
+ 			{ "uuid", 'u', 0, G_OPTION_ARG_STRING, &vpn_uuid, "UUID of VPN connection", NULL},
+ 			{ "name", 'n', 0, G_OPTION_ARG_STRING, &vpn_name, "Name of VPN connection", NULL},
+ 			{ "service", 's', 0, G_OPTION_ARG_STRING, &vpn_service, "VPN service type", NULL},
++			{ "allow-interaction", 'i', 0, G_OPTION_ARG_NONE, &allow_interaction, "Allow user interaction", NULL},
+ 			{ NULL }
+ 		};
+ 
+ 	bindtextdomain (GETTEXT_PACKAGE, NULL);
+@@ -149,20 +201,31 @@
+ 	g_option_context_parse (context, &argc, &argv, NULL);
+ 	g_option_context_free (context);
+ 
+ 
+-	if (vpn_uuid == NULL || vpn_name == NULL || vpn_service == NULL) {
+-		fprintf (stderr, "Have to supply UUID, name, and service\n");
+-		return EXIT_FAILURE;
++	if (!vpn_uuid || !vpn_service || !vpn_name) {
++		fprintf (stderr, "A connection UUID, name, and VPN plugin service name are required.\n");
++		return 1;
++	
+ 	}
+-
+ 	if (strcmp (vpn_service, NM_DBUS_SERVICE_L2TP) != 0) {
+ 		fprintf (stderr, "This dialog only works with the '%s' service\n", NM_DBUS_SERVICE_L2TP);
+-		return EXIT_FAILURE;
++		return 1;
++	}
++
++	if (!nm_vpn_plugin_utils_read_vpn_details (0, &data, &secrets)) {
++		fprintf (stderr, "Failed to read '%s' (%s) data and secrets from stdin.\n",
++		         vpn_name, vpn_uuid);
++		return 1;
+ 	}
+ 
+-	if (!get_secrets (vpn_uuid, vpn_name, vpn_service, retry, &password))
+-		return EXIT_FAILURE;
++	nm_vpn_plugin_utils_get_secret_flags (secrets, NM_L2TP_KEY_PASSWORD, &pw_flags);
++
++	if (!get_secrets (vpn_uuid, vpn_name, retry, allow_interaction,
++	                  g_hash_table_lookup (secrets, NM_L2TP_KEY_PASSWORD),
++	                  &password,
++	                  pw_flags))
++		return 1;
+ 
+ 	/* dump the passwords to stdout */
+ 	printf ("%s\n%s\n", NM_L2TP_KEY_PASSWORD, password);
+ 	printf ("\n\n");
+@@ -174,9 +237,13 @@
+ 
+ 	/* for good measure, flush stdout since Kansas is going Bye-Bye */
+ 	fflush (stdout);
+ 
+-	/* wait for data on stdin  */
+-	ret = fread (buf, sizeof (char), sizeof (buf), stdin);
++	/* Wait for quit signal */
++	wait_for_quit ();
+ 
+-	return EXIT_SUCCESS;
++	if (data)
++		g_hash_table_unref (data);
++	if (secrets)
++		g_hash_table_unref (secrets);
++	return 0;
+ }
+diff -U4 -r orig//auth-dialog/Makefile.am patched//auth-dialog/Makefile.am
+--- orig//auth-dialog/Makefile.am	2011-01-31 18:13:05.000000000 +0000
++++ patched//auth-dialog/Makefile.am	2012-01-16 20:51:03.818359667 +0000
+@@ -12,10 +12,9 @@
+ 	-DGLADEDIR=\""$(gladedir)"\"		\
+ 	-DBINDIR=\""$(bindir)"\"		\
+ 	-DG_DISABLE_DEPRECATED			\
+ 	-DGDK_DISABLE_DEPRECATED		\
+-	-DGNOME_DISABLE_DEPRECATED		\
+-	-DGNOMELOCALEDIR=\"$(datadir)/locale\"	\
++        -DGTK_DISABLE_DEPRECATED 
+ 	-DVERSION=\"$(VERSION)\"
+ 
+ nm_l2tp_auth_dialog_SOURCES =			\
+ 	main.c					\
+@@ -23,8 +22,7 @@
+ 	gnome-two-password-dialog.h
+ 
+ nm_l2tp_auth_dialog_LDADD =			\
+ 	$(GTK_LIBS)				\
+-	$(GCONF_LIBS)				\
+ 	$(top_builddir)/common-gnome/libnm-l2tp-common-gnome.la
+ 
+ CLEANFILES = *~
+diff -U4 -r orig//configure.ac patched//configure.ac
+--- orig//configure.ac	2011-01-31 18:13:05.000000000 +0000
++++ patched//configure.ac	2012-01-16 21:09:29.491693001 +0000
+@@ -77,20 +77,12 @@
+ 	PKG_CHECK_MODULES(GTK, gtk+-2.0 >= 2.6)
+ 	AC_SUBST(GTK_CFLAGS)
+ 	AC_SUBST(GTK_LIBS)
+ 
+-	PKG_CHECK_MODULES(GDK_PIXBUF, gdk-pixbuf-2.0)
+-	AC_SUBST(GDK_PIXBUF_CFLAGS)
+-	AC_SUBST(GDK_PIXBUF_LIBS)
+-
+ 	PKG_CHECK_MODULES(GLADE, libglade-2.0)
+ 	AC_SUBST(GLADE_CFLAGS)
+ 	AC_SUBST(GLADE_LIBS)
+ 
+-	PKG_CHECK_MODULES(GCONF, gconf-2.0)
+-	AC_SUBST(GCONF_CFLAGS)
+-	AC_SUBST(GCONF_LIBS)
+-
+ 	PKG_CHECK_MODULES(GNOMEKEYRING, gnome-keyring-1)
+ 	AC_SUBST(GNOMEKEYRING_CFLAGS)
+ 	AC_SUBST(GNOMEKEYRING_LIBS)
+ fi
+diff -U4 -r orig//properties/Makefile.am patched//properties/Makefile.am
+--- orig//properties/Makefile.am	2011-01-31 18:13:05.000000000 +0000
++++ patched//properties/Makefile.am	2012-01-16 21:11:40.548359668 +0000
+@@ -14,25 +14,20 @@
+ 
+ libnm_l2tp_properties_la_CFLAGS =                    \
+         $(GLADE_CFLAGS)                                 \
+         $(GTK_CFLAGS)                                   \
+-        $(GCONF_CFLAGS)                                 \
+-        $(LIBGNOMEUI_CFLAGS)                            \
+         $(GNOMEKEYRING_CFLAGS)                          \
+         $(NM_UTILS_CFLAGS)                              \
+         -DICONDIR=\""$(datadir)/pixmaps"\"              \
+         -DGLADEDIR=\""$(gladedir)"\"                    \
+         -DG_DISABLE_DEPRECATED                          \
+         -DGDK_DISABLE_DEPRECATED                        \
+-        -DGNOME_DISABLE_DEPRECATED                      \
+-        -DGNOMELOCALEDIR=\"$(datadir)/locale\"          \
++	-DGTK_DISABLE_DEPRECATED                        \
+         -DVERSION=\"$(VERSION)\"
+ 
+ libnm_l2tp_properties_la_LIBADD =    \
+         $(GLADE_LIBS)                   \
+         $(GTK_LIBS)                     \
+-        $(GCONF_LIBS)                   \
+-        $(LIBGNOMEUI_LIBS)              \
+         $(top_builddir)/common-gnome/libnm-l2tp-common-gnome.la	\
+         $(NM_UTILS_LIBS)
+ 
+ libnm_l2tp_properties_la_LDFLAGS =   \
+diff -U4 -r orig//properties/nm-l2tp.c patched//properties/nm-l2tp.c
+--- orig//properties/nm-l2tp.c	2011-01-31 18:13:05.000000000 +0000
++++ patched//properties/nm-l2tp.c	2012-01-16 21:14:48.735026333 +0000
+@@ -230,36 +230,29 @@
+                const char *password_type)
+ {
+ 	GtkWidget *widget = NULL;
+ 	gchar *password = NULL;
++	NMSettingVPN *s_vpn;
++	gboolean unused;
+ 
+ 	widget = glade_xml_get_widget (xml, widget_name);
+ 	g_assert (widget);
+ 
+ 	if (!connection)
+ 		return widget;
+ 
+-	password = NULL;
++	/* Try the connection first */
++	s_vpn = (NMSettingVPN *) nm_connection_get_setting (connection, NM_TYPE_SETTING_VPN);
++	if (s_vpn) {
++		const gchar *tmp = NULL;
+ 
+-	if (nm_connection_get_scope (connection) == NM_CONNECTION_SCOPE_SYSTEM) {
+-		NMSettingVPN *s_vpn;
++		tmp = nm_setting_vpn_get_secret (s_vpn, password_type);
++		if (tmp)
++			password = gnome_keyring_memory_strdup (tmp);
++	}
+ 
+-		s_vpn = (NMSettingVPN *) nm_connection_get_setting (connection, NM_TYPE_SETTING_VPN);
+-		if (s_vpn) {
+-			const gchar *tmp = NULL;
+-
+-			tmp = nm_setting_vpn_get_secret (s_vpn, password_type);
+-			if (tmp)
+-				password = gnome_keyring_memory_strdup (tmp);
+-		}
+-	} else {
+-		NMSettingConnection *s_con = NULL;
+-		gboolean unused;
+-		const char *uuid;
+-
+-		s_con = NM_SETTING_CONNECTION (nm_connection_get_setting (connection, NM_TYPE_SETTING_CONNECTION));
+-		uuid = nm_setting_connection_get_uuid (s_con);
+-		password = keyring_helpers_lookup_secret (uuid,
++	if (!password) {
++		password = keyring_helpers_lookup_secret (nm_connection_get_uuid (connection),
+ 		                                          password_type,
+ 		                                          &unused);
+ 	}
+ 
+@@ -417,28 +410,26 @@
+ {
+ 	L2tpPluginUiWidget *self = L2TP_PLUGIN_UI_WIDGET (iface);
+ 	L2tpPluginUiWidgetPrivate *priv = L2TP_PLUGIN_UI_WIDGET_GET_PRIVATE (self);
+ 	GnomeKeyringResult ret;
+-	NMSettingConnection *s_con;
+ 	GtkWidget *widget;
+ 	const char *str, *uuid, *id;
++	NMSettingSecretFlags flags = NM_SETTING_SECRET_FLAG_NONE;
+ 
+-	s_con = (NMSettingConnection *) nm_connection_get_setting (connection, NM_TYPE_SETTING_CONNECTION);
+-	if (!s_con) {
++	id = nm_connection_get_id (connection);
++	uuid = nm_connection_get_uuid (connection);
++	if (!id || !uuid) {
+ 		g_set_error (error,
+ 		             L2TP_PLUGIN_UI_ERROR,
+ 		             L2TP_PLUGIN_UI_ERROR_INVALID_CONNECTION,
+-		             "missing 'connection' setting");
++		             "missing ID or UUID");
+ 		return FALSE;
+ 	}
+ 
+-	id = nm_setting_connection_get_id (s_con);
+-	uuid = nm_setting_connection_get_uuid (s_con);
+-
+     widget = glade_xml_get_widget (priv->xml, "user_password_entry");
+     g_assert (widget);
+     str = gtk_entry_get_text (GTK_ENTRY (widget));
+-    if (str && strlen (str)) {
++    if (str && strlen (str) && (flags & NM_SETTING_SECRET_FLAG_AGENT_OWNED)) {
+         ret = keyring_helpers_save_secret (uuid, id, NULL, NM_L2TP_KEY_PASSWORD, str);
+         if (ret != GNOME_KEYRING_RESULT_OK)
+             g_warning ("%s: failed to save user password to keyring.", __func__);
+     } else
+diff -U4 -r orig//src/nm-l2tp-service.c patched//src/nm-l2tp-service.c
+--- orig//src/nm-l2tp-service.c	2011-01-31 18:13:05.000000000 +0000
++++ patched//src/nm-l2tp-service.c	2012-01-16 21:22:55.925026333 +0000
+@@ -1134,21 +1134,29 @@
+                    NMConnection *connection,
+                    char **setting_name,
+                    GError **error)
+ {
+-	NMSettingVPN *s_vpn;
++	NMSetting *s_vpn;
++	NMSettingSecretFlags flags = NM_SETTING_SECRET_FLAG_NONE;
+ 
+ 	g_return_val_if_fail (NM_IS_VPN_PLUGIN (plugin), FALSE);
+ 	g_return_val_if_fail (NM_IS_CONNECTION (connection), FALSE);
+ 
+-	s_vpn = NM_SETTING_VPN (nm_connection_get_setting (connection, NM_TYPE_SETTING_VPN));
++	s_vpn = nm_connection_get_setting (connection, NM_TYPE_SETTING_VPN);
+ 
+-	if (!nm_setting_vpn_get_secret (s_vpn, NM_L2TP_KEY_PASSWORD)) {
+-		*setting_name = NM_SETTING_VPN_SETTING_NAME;
+-		return TRUE;
+-	}
++	nm_setting_get_secret_flags (NM_SETTING (s_vpn), NM_L2TP_KEY_PASSWORD, &flags, NULL);
+ 
+-	return FALSE;
++	/* Don't need the password if it's not required */
++	if (flags & NM_SETTING_SECRET_FLAG_NOT_REQUIRED)
++		return FALSE;
++
++	/* Don't need the password if we already have one */
++	if (nm_setting_vpn_get_secret (NM_SETTING_VPN (s_vpn), NM_L2TP_KEY_PASSWORD))
++		return FALSE;
++
++	/* Otherwise we need a password */
++	*setting_name = NM_SETTING_VPN_SETTING_NAME;
++	return TRUE;
+ }
+ 
+ static gboolean
+ ensure_killed (gpointer data)

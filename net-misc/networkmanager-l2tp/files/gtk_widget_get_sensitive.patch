@@ -1,0 +1,41 @@
+diff -U5 -r orig//auth-dialog/gnome-two-password-dialog.c patched3//auth-dialog/gnome-two-password-dialog.c
+--- orig//auth-dialog/gnome-two-password-dialog.c	2011-01-31 18:13:05.000000000 +0000
++++ patched3//auth-dialog/gnome-two-password-dialog.c	2012-01-16 21:51:37.905026334 +0000
+@@ -258,17 +258,17 @@
+ 	GnomeTwoPasswordDialog *password_dialog;
+ 
+ 	password_dialog = GNOME_TWO_PASSWORD_DIALOG (dialog);
+ 	
+ 	if (GTK_WIDGET_VISIBLE (password_dialog->details->domain_entry) &&
+-	    GTK_WIDGET_SENSITIVE (password_dialog->details->domain_entry))
++	    gtk_widget_get_sensitive (password_dialog->details->domain_entry))
+ 		gtk_widget_grab_focus (password_dialog->details->domain_entry);
+ 	else if (GTK_WIDGET_VISIBLE (password_dialog->details->password_entry) &&
+-		 GTK_WIDGET_SENSITIVE (password_dialog->details->password_entry))
++		 gtk_widget_get_sensitive (password_dialog->details->password_entry))
+ 		gtk_widget_grab_focus (password_dialog->details->password_entry);
+ 	else if (GTK_WIDGET_VISIBLE (password_dialog->details->password_entry_secondary) &&
+-		 GTK_WIDGET_SENSITIVE (password_dialog->details->password_entry_secondary))
++		 gtk_widget_get_sensitive (password_dialog->details->password_entry_secondary))
+ 		gtk_widget_grab_focus (password_dialog->details->password_entry_secondary);
+ }
+ 
+ static void
+ domain_entry_activate (GtkWidget *widget, GtkWidget *dialog)
+@@ -276,14 +276,14 @@
+ 	GnomeTwoPasswordDialog *password_dialog;
+ 
+ 	password_dialog = GNOME_TWO_PASSWORD_DIALOG (dialog);
+ 	
+ 	if (GTK_WIDGET_VISIBLE (password_dialog->details->password_entry) &&
+-	    GTK_WIDGET_SENSITIVE (password_dialog->details->password_entry))
++	    gtk_widget_get_sensitive (password_dialog->details->password_entry))
+ 		gtk_widget_grab_focus (password_dialog->details->password_entry);
+ 	else if (GTK_WIDGET_VISIBLE (password_dialog->details->password_entry_secondary) &&
+-		 GTK_WIDGET_SENSITIVE (password_dialog->details->password_entry_secondary))
++		 gtk_widget_get_sensitive (password_dialog->details->password_entry_secondary))
+ 		gtk_widget_grab_focus (password_dialog->details->password_entry_secondary);
+ }
+ 
+ 
+ /* Public GnomeTwoPasswordDialog methods */
