@@ -8,7 +8,7 @@ inherit eutils kde4-base
 
 DESCRIPTION="Grusha Linux Official KDE artwork"
 HOMEPAGE="http://grusha.org.ua/"
-SRC_URI="http://distfiles.grusha.org.ua/${MY_PN}-${PV}.tar.bz2"
+SRC_URI="http://distfiles.grusha.org.ua/${MY_PN}-3.5.tar.bz2"
 LICENSE="CCPL-Attribution-ShareAlike-3.0"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"

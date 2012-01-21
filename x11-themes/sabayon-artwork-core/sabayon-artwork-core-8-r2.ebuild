@@ -3,7 +3,7 @@
 #
 MY_PN="grusha-artwork-core"
 
-EAPI=3
+EAPI=4
 inherit eutils mount-boot sabayon-artwork
 
 
@@ -11,7 +11,7 @@ DESCRIPTION="Grusha Core Artwork, contains Gensplash, Wallpapers and Mouse theme
 HOMEPAGE="http://www.grusha.org.ua/"
 #SRC_URI="http://distfiles.grusha.org.ua/${CATEGORY}/${PN}/${P}.tar.bz2"
 #SRC_URI="http://distfiles.grusha.org.ua/${MY_PN}-${PV}.tar.bz2"
-SRC_URI="http://distfiles.grusha.org.ua/${MY_PN}-6.tar.bz2"
+SRC_URI="http://distfiles.grusha.org.ua/${MY_PN}-3.5.tar.bz2"
 LICENSE="CCPL-Attribution-ShareAlike-3.0"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
