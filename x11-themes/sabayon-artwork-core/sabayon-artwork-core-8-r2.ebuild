@@ -10,7 +10,8 @@ inherit eutils mount-boot sabayon-artwork
 DESCRIPTION="Grusha Core Artwork, contains Gensplash, Wallpapers and Mouse themes, Sabayon replacement"
 HOMEPAGE="http://www.grusha.org.ua/"
 #SRC_URI="http://distfiles.grusha.org.ua/${CATEGORY}/${PN}/${P}.tar.bz2"
-SRC_URI="http://distfiles.grusha.org.ua/${MY_PN}-${PV}.tar.bz2"
+#SRC_URI="http://distfiles.grusha.org.ua/${MY_PN}-${PV}.tar.bz2"
+SRC_URI="http://distfiles.grusha.org.ua/${MY_PN}-6.tar.bz2"
 LICENSE="CCPL-Attribution-ShareAlike-3.0"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
@@ -24,9 +25,9 @@ S="${WORKDIR}/${MY_PN}"
 
 src_install() {
 	# Fbsplash theme
-	cd ${S}/fbsplash
+	cd ${S}/gensplash
 	dodir /etc/splash/sabayon
-	cp -r ${S}/fbsplash/sabayon/* ${D}/etc/splash/sabayon
+	cp -r ${S}/gensplash/sabayon/* ${D}/etc/splash/sabayon
 
 	# Cursors
 	cd ${S}/mouse/entis/cursors/
